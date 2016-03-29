@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2CC669D3-4907-4726-B381-992E53CD0534}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elrob.Terminal</RootNamespace>
+    <AssemblyName>Elrob</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.0.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Common\CustomBindingList.cs" />
+    <Compile Include="Common\Delegates.cs" />
+    <Compile Include="Common\DependencyBindings.cs" />
+    <Compile Include="Common\GenericSortComparer.cs" />
+    <Compile Include="Common\Helpers.cs" />
+    <Compile Include="Common\ISortComparer.cs" />
+    <Compile Include="Common\SqlStatementInterceptor.cs" />
+    <Compile Include="Common\UISafeThread.cs" />
+    <Compile Include="Controllers\IUserFactory.cs" />
+    <Compile Include="Controllers\UserFactory.cs" />
+    <Compile Include="Converters\IPermissionConverter.cs" />
+    <Compile Include="Converters\PermissionGroupConverter.cs" />
+    <Compile Include="Converters\IPermissionGroupConverter.cs" />
+    <Compile Include="Converters\IOrderProgressConverter.cs" />
+    <Compile Include="Converters\IMaterialConverter.cs" />
+    <Compile Include="Converters\IOrderConverter.cs" />
+    <Compile Include="Converters\IPlaceConverter.cs" />
+    <Compile Include="Converters\IOrderContentConverter.cs" />
+    <Compile Include="Converters\IGroupConverter.cs" />
+    <Compile Include="Converters\IUserConverter.cs" />
+    <Compile Include="Converters\OrderProgressConverter.cs" />
+    <Compile Include="Converters\MaterialConverter.cs" />
+    <Compile Include="Converters\OrderConverter.cs" />
+    <Compile Include="Converters\PermissionConverter.cs" />
+    <Compile Include="Converters\PlaceConverter.cs" />
+    <Compile Include="Converters\OrderContentConverter.cs" />
+    <Compile Include="Converters\GroupConverter.cs" />
+    <Compile Include="Converters\UserConverter.cs" />
+    <Compile Include="Domain\Mappings\PermissionGroupMap.cs" />
+    <Compile Include="Domain\Mappings\OrderContentMap.cs" />
+    <Compile Include="Domain\Mappings\PermissionMap.cs" />
+    <Compile Include="Domain\Mappings\OrderMap.cs" />
+    <Compile Include="Domain\Mappings\MaterialMap.cs" />
+    <Compile Include="Domain\Group.cs" />
+    <Compile Include="Domain\Mappings\OrderProgressMap.cs" />
+    <Compile Include="Domain\Material.cs" />
+    <Compile Include="Common\NHibernateHelper.cs" />
+    <Compile Include="Domain\OrderProgress.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderContent.cs" />
+    <Compile Include="Domain\Permission.cs" />
+    <Compile Include="Domain\PermissionGroup.cs" />
+    <Compile Include="Dto\OrderProgress.cs" />
+    <Compile Include="Dto\PermissionType.cs" />
+    <Compile Include="Domain\Place.cs" />
+    <Compile Include="Domain\Mappings\GroupMap.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Domain\Mappings\PlaceMap.cs" />
+    <Compile Include="Domain\Mappings\UserMap.cs" />
+    <Compile Include="Dto\Group.cs" />
+    <Compile Include="Dto\Material.cs" />
+    <Compile Include="Dto\Order.cs" />
+    <Compile Include="Dto\OrderContent.cs" />
+    <Compile Include="Dto\Permission.cs" />
+    <Compile Include="Dto\PermissionGroup.cs" />
+    <Compile Include="Dto\Place.cs" />
+    <Compile Include="Dto\User.cs" />
+    <Compile Include="Model\Implementations\Choose\OrderContentChooseModel.cs" />
+    <Compile Include="Model\Implementations\Choose\OrderChooseModel.cs" />
+    <Compile Include="Model\Implementations\Item\OrderPreviewItemModel.cs" />
+    <Compile Include="Model\Interfaces\Choose\IOrderContentChooseModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IOrderPreviewItemModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IGroupModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IGroupItemModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IPermissionGroupItemModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IPermissionGroupModel.cs" />
+    <Compile Include="Model\Interfaces\Choose\IOrderChooseModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IUserItemModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IUserModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IOrderProgressItemModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IOrderProgressModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IOrderContentItemModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IPlaceItemModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IMaterialItemModel.cs" />
+    <Compile Include="Model\Interfaces\Item\IOrderItemModel.cs" />
+    <Compile Include="Model\Interfaces\Choose\IPlaceChooseModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IOrderContentModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IOrderModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IPlaceModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IMaterialModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IOrderPreviewModel.cs" />
+    <Compile Include="Model\Interfaces\Main\ILoginModel.cs" />
+    <Compile Include="Model\Interfaces\Main\IMainModel.cs" />
+    <Compile Include="Model\Implementations\Main\GroupModel.cs" />
+    <Compile Include="Model\Implementations\Item\GroupItemModel.cs" />
+    <Compile Include="Model\Implementations\Item\PermissionGroupItemModel.cs" />
+    <Compile Include="Model\Implementations\Main\PermissionGroupModel.cs" />
+    <Compile Include="Model\Implementations\Item\UserItemModel.cs" />
+    <Compile Include="Model\Implementations\Main\UserModel.cs" />
+    <Compile Include="Model\Implementations\Item\OrderProgressItemModel.cs" />
+    <Compile Include="Model\Implementations\Main\OrderProgressModel.cs" />
+    <Compile Include="Model\Implementations\Item\OrderContentItemModel.cs" />
+    <Compile Include="Model\Implementations\Item\PlaceItemModel.cs" />
+    <Compile Include="Model\Implementations\Item\MaterialItemModel.cs" />
+    <Compile Include="Model\Implementations\Main\OrderContentModel.cs" />
+    <Compile Include="Model\Implementations\Item\OrderItemModel.cs" />
+    <Compile Include="Model\Implementations\Main\OrderModel.cs" />
+    <Compile Include="Model\Implementations\Choose\PlaceChooseModel.cs" />
+    <Compile Include="Model\Implementations\Main\PlaceModel.cs" />
+    <Compile Include="Model\Implementations\Main\MaterialModel.cs" />
+    <Compile Include="Model\Implementations\Main\OrderPreviewModel.cs" />
+    <Compile Include="Model\Implementations\Main\LoginModel.cs" />
+    <Compile Include="Model\Implementations\Main\MainModel.cs" />
+    <Compile Include="Presenter\Implementation\Choose\OrderContentChoosePresenter.cs" />
+    <Compile Include="Presenter\Implementation\Choose\OrderChoosePresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\OrderPreviewItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Choose\IOrderContentChoosePresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Choose\IOrderChoosePresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IOrderPreviewItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IGroupPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IGroupItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IPermissionGroupItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IPermissionGroupPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IUserItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IUserPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IOrderProgressItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IOrderProgressPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IOrderContentItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IPlaceItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IMaterialItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\IOrderItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Choose\IPlaceChoosePresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IOrderContentPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IOrderPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IPlacePresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IMaterialPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IOrderPreviewPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\ILoginPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\IMainPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\GroupPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\GroupItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\PermissionGroupItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\PermissionGroupPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\UserItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\UserPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\OrderProgressItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\OrderProgressPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\OrderContentItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\PlaceItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\MaterialItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\OrderItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Choose\PlaceChoosePresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\OrderContentPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\OrderPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\PlacePresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\MaterialPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\OrderPreviewPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\LoginPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\MainPresenter.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service References\ExcelServiceServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Choose\OrderContentChooseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Choose\OrderContentChooseView.Designer.cs">
+      <DependentUpon>OrderContentChooseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Choose\OrderChooseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Choose\OrderChooseView.Designer.cs">
+      <DependentUpon>OrderChooseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderPreviewItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderPreviewItemView.Designer.cs">
+      <DependentUpon>OrderPreviewItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Interfaces\Choose\IOrderContentChooseView.cs" />
+    <Compile Include="View\Interfaces\Choose\IOrderChooseView.cs" />
+    <Compile Include="View\Interfaces\Item\IOrderPreviewItemView.cs" />
+    <Compile Include="View\Interfaces\Main\IGroupView.cs" />
+    <Compile Include="View\Interfaces\Item\IGroupItemView.cs" />
+    <Compile Include="View\Interfaces\Item\IPermissionGroupItemView.cs" />
+    <Compile Include="View\Interfaces\Main\IPermissionGroupView.cs" />
+    <Compile Include="View\Interfaces\Item\IUserItemView.cs" />
+    <Compile Include="View\Interfaces\Main\IUserView.cs" />
+    <Compile Include="View\Interfaces\Item\IOrderProgressItemView.cs" />
+    <Compile Include="View\Interfaces\Main\IOrderProgressView.cs" />
+    <Compile Include="View\Interfaces\Item\IOrderContentItemView.cs" />
+    <Compile Include="View\Interfaces\Item\IPlaceItemView.cs" />
+    <Compile Include="View\Interfaces\Item\IMaterialItemView.cs" />
+    <Compile Include="View\Interfaces\Item\IOrderItemView.cs" />
+    <Compile Include="View\Interfaces\Choose\IPlaceChooseView.cs" />
+    <Compile Include="View\Interfaces\Main\ILoginView.cs" />
+    <Compile Include="View\Interfaces\Main\IMainView.cs" />
+    <Compile Include="View\Interfaces\Main\IOrderContentView.cs" />
+    <Compile Include="View\Interfaces\Main\IOrderView.cs" />
+    <Compile Include="View\Interfaces\Main\IPlaceView.cs" />
+    <Compile Include="View\Interfaces\Main\IMaterialView.cs" />
+    <Compile Include="View\Interfaces\Main\IOrderPreviewView.cs" />
+    <Compile Include="View\Implementations\Main\GroupView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\GroupView.Designer.cs">
+      <DependentUpon>GroupView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\GroupItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\GroupItemView.Designer.cs">
+      <DependentUpon>GroupItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\PermissionGroupItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\PermissionGroupItemView.Designer.cs">
+      <DependentUpon>PermissionGroupItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\PermissionGroupView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\PermissionGroupView.Designer.cs">
+      <DependentUpon>PermissionGroupView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\UserItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\UserItemView.Designer.cs">
+      <DependentUpon>UserItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\UserView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\UserView.Designer.cs">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderProgressItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderProgressItemView.Designer.cs">
+      <DependentUpon>OrderProgressItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderProgressView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderProgressView.Designer.cs">
+      <DependentUpon>OrderProgressView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderContentItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderContentItemView.Designer.cs">
+      <DependentUpon>OrderContentItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\PlaceItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\PlaceItemView.Designer.cs">
+      <DependentUpon>PlaceItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\MaterialItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\MaterialItemView.Designer.cs">
+      <DependentUpon>MaterialItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\OrderItemView.Designer.cs">
+      <DependentUpon>OrderItemView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Choose\PlaceChooseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Choose\PlaceChooseView.Designer.cs">
+      <DependentUpon>PlaceChooseView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\LoginView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\LoginView.Designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\MainView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\MainView.Designer.cs">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderContentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderContentView.Designer.cs">
+      <DependentUpon>OrderContentView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderView.Designer.cs">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\PlaceView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\PlaceView.Designer.cs">
+      <DependentUpon>PlaceView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\MaterialView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\MaterialView.Designer.cs">
+      <DependentUpon>MaterialView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderPreviewView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\OrderPreviewView.Designer.cs">
+      <DependentUpon>OrderPreviewView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\OrderPreviewViewModel.cs" />
+    <None Include="Service References\ExcelServiceServiceReference\Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\ExcelServiceServiceReference\ExcelService3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExcelServiceServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\ExcelServiceServiceReference\configuration.svcinfo" />
+    <None Include="Service References\ExcelServiceServiceReference\configuration91.svcinfo" />
+    <None Include="Service References\ExcelServiceServiceReference\ExcelService.disco" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="View\Implementations\Choose\OrderContentChooseView.resx">
+      <DependentUpon>OrderContentChooseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Choose\OrderChooseView.resx">
+      <DependentUpon>OrderChooseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\OrderPreviewItemView.resx">
+      <DependentUpon>OrderPreviewItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\GroupView.resx">
+      <DependentUpon>GroupView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\GroupItemView.resx">
+      <DependentUpon>GroupItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\PermissionGroupItemView.resx">
+      <DependentUpon>PermissionGroupItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\PermissionGroupView.resx">
+      <DependentUpon>PermissionGroupView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\UserItemView.resx">
+      <DependentUpon>UserItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\UserView.resx">
+      <DependentUpon>UserView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\OrderProgressItemView.resx">
+      <DependentUpon>OrderProgressItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\OrderProgressView.resx">
+      <DependentUpon>OrderProgressView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\OrderContentItemView.resx">
+      <DependentUpon>OrderContentItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\PlaceItemView.resx">
+      <DependentUpon>PlaceItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\MaterialItemView.resx">
+      <DependentUpon>MaterialItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\OrderItemView.resx">
+      <DependentUpon>OrderItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Choose\PlaceChooseView.resx">
+      <DependentUpon>PlaceChooseView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\LoginView.resx">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="View\Implementations\Main\MainView.resx">
+      <DependentUpon>MainView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\OrderContentView.resx">
+      <DependentUpon>OrderContentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\OrderView.resx">
+      <DependentUpon>OrderView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\PlaceView.resx">
+      <DependentUpon>PlaceView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\MaterialView.resx">
+      <DependentUpon>MaterialView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\OrderPreviewView.resx">
+      <DependentUpon>OrderPreviewView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Service References\ExcelServiceServiceReference\ExcelService.wsdl" />
+    <None Include="Service References\ExcelServiceServiceReference\ExcelService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExcelServiceServiceReference\ExcelService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ExcelServiceServiceReference\ExcelService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ExcelServiceServiceReference\" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

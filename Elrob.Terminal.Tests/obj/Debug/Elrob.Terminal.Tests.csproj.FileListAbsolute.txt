@@ -1,0 +1,20 @@
+c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.dll
+c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.pdb
+c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
+c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb
+c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
+D:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.dll
+D:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.pdb
+D:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
+D:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
+D:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb
+d:\repo\Elrob.Terminal\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.dll
+d:\repo\Elrob.Terminal\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.pdb
+d:\repo\Elrob.Terminal\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
+d:\repo\Elrob.Terminal\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
+d:\repo\Elrob.Terminal\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.dll
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.pdb
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb

@@ -1,0 +1,8 @@
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\Elrob.Webservice.dll.config
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\Elrob.Webservice.dll
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\Elrob.Webservice.pdb
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.dll
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.xml
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.csproj.ResolveComReference.cache
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.dll
+d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.pdb

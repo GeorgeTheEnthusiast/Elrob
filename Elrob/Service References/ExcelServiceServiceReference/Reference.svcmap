@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="d1637c26-d33e-4b0b-bb47-da22fc992078" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:30761/ExcelService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ExcelService.disco" MetadataType="Disco" ID="3e8b2a6e-c1d2-4019-86c6-28aedfa0727e" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?disco" />
+    <MetadataFile FileName="ExcelService2.xsd" MetadataType="Schema" ID="ae2b3ee5-f65a-4676-b97f-b86d4b79dca5" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd0" />
+    <MetadataFile FileName="ExcelService.wsdl" MetadataType="Wsdl" ID="4bcca7ed-1aa2-4432-8533-91ade0544bc9" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?wsdl" />
+    <MetadataFile FileName="ExcelService.xsd" MetadataType="Schema" ID="a9f952a6-5770-4f6d-8ee2-2894e78c3d29" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd2" />
+    <MetadataFile FileName="ExcelService1.xsd" MetadataType="Schema" ID="f27bb50e-c5a0-412f-a3ff-6d5def4e3887" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd1" />
+    <MetadataFile FileName="ExcelService3.xsd" MetadataType="Schema" ID="b8454a48-fc30-4a90-b0eb-dfe33d7463d9" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
