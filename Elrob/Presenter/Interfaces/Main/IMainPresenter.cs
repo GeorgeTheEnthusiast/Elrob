@@ -9,9 +9,7 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
     {
         User GetUser(string loginName);
 
-        void ImportData();
-
-        event EventHandler<OrderPreviewViewModel> ImportDataCompleted;
+        OrderPreviewViewModel ImportData();
 
         DialogResult ShowDialog();
     }

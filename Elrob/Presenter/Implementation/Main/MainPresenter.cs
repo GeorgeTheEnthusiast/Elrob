@@ -39,7 +39,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             return _mainModel.GetUserByLoginName(loginName);
         }
 
-        public void ImportData()
+        public OrderPreviewViewModel ImportData()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -65,7 +65,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                     MessageBox.Show("Plik jest używany przez inną aplikację. Zamknij ją, a następnie spróbuj ponownie.",
                         "Brak dostępu do pliku", MessageBoxButtons.OK);
 
-                    return;
+                    return null;
                 }
 
                 using (var serviceClient = new ExcelServiceClient())
@@ -82,29 +82,33 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                         if (!string.IsNullOrEmpty(response.ResponseMessage))
                         {
                             MessageBox.Show(response.ResponseMessage);
-                            return;
+                            return null;
                         }
 
                         _mainView.ButtonImport.Enabled = false;
-                        AfterImportData(response);
+                        var result = AfterImportData(response);
+
+                        return result;
                     }
                     catch (FaultException<FileWithThatNameAlreadyExistException> ex)
                     {
                         MessageBox.Show("Plik o tej nazwie został już zaimportowany do systemu!");
+                        return null;
                     }
-                   
                 }
             }
+            else
+            {
+                return null;
+            }
         }
-
-        public event EventHandler<OrderPreviewViewModel> ImportDataCompleted;
-
+        
         public DialogResult ShowDialog()
         {
             return _mainView.ShowDialog();
         }
 
-        private void AfterImportData(ExcelServiceServiceReference.ImportDataResponse importDataResponse)
+        private OrderPreviewViewModel AfterImportData(ExcelServiceServiceReference.ImportDataResponse importDataResponse)
         {
             _mainView.UseWaitCursor = false;
 
@@ -132,32 +136,25 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                 foreach (var oc in orderViewModel.OrderContents)
                 {
                     int materialId = orderViewModel.Materials.First(x => x.Name == oc.Material.Name).Id;
-                    //oc.MaterialId = materialId;
                     oc.Material.Id = materialId;
                     int placeId = orderViewModel.Places.First(x => x.Name == oc.Place.Name).Id;
-                    //oc.PlaceId = placeId;
                     oc.Place.Id = placeId;
                 }
                 orderViewModel.Materials.Sort((material1, material2) => String.Compare(material1.Name, material2.Name, StringComparison.Ordinal));
                 orderViewModel.Places.Sort((p1, p2) => String.Compare(p1.Name, p2.Name, StringComparison.Ordinal));
 
-                OnImportDataCompleted(orderViewModel);
+                return orderViewModel;
             }
             else
             {
                 MessageBox.Show(
                     "Coś poszło nie tak przy imporcie danych, skontaktuj się z administratorem systemu!");
+                _mainView.ButtonImport.Enabled = true;
+
+                return null;
             }
 
             Common.UISafeThread.SetControlPropertyThreadSafe(_mainView.ButtonImport, "Enabled", true);
-        }
-
-        protected void OnImportDataCompleted(OrderPreviewViewModel orderViewModel)
-        {
-            if (ImportDataCompleted != null)
-            {
-                ImportDataCompleted(this, orderViewModel);
-            }
         }
     }
 }

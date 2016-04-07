@@ -31,7 +31,6 @@ namespace Elrob.Terminal.View.Implementations.Main
         public MainView()
         {
             _mainPresenter = new MainPresenter(this, Program.Kernel.Get<IMainModel>(), Program.Kernel.Get<IOrderContentConverter>());
-            _mainPresenter.ImportDataCompleted += MainPresenterOnImportDataCompleted;
             
             InitializeComponent();
             
@@ -42,12 +41,6 @@ namespace Elrob.Terminal.View.Implementations.Main
             buttonUsers.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_View);
             buttonGroups.Enabled = UserFactory.Instance.HasPermission(PermissionType.GroupView_View);
             buttonOrderProgress.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_View);
-        }
-
-        private void MainPresenterOnImportDataCompleted(object sender, OrderPreviewViewModel orderViewModel)
-        {
-            _orderPreviewPresenter = Program.Kernel.Get<IOrderPreviewPresenter>();
-            _orderPreviewPresenter.ShowDialog(orderViewModel);
         }
 
         public DialogResult ShowDialog()
@@ -61,7 +54,15 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         private void buttonImport_Click(object sender, EventArgs e)
         {
-            _mainPresenter.ImportData();
+            var importResult = _mainPresenter.ImportData();
+
+            if (importResult == null)
+            {
+                return;
+            }
+
+            _orderPreviewPresenter = Program.Kernel.Get<IOrderPreviewPresenter>();
+            _orderPreviewPresenter.ShowDialog(importResult);
         }
 
         private void buttonMaterials_Click(object sender, EventArgs e)

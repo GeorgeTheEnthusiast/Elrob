@@ -50,12 +50,15 @@ namespace Elrob.Webservice
             var excelProcesses = Process.GetProcessesByName("EXCEL");
             foreach (var excelProcess in excelProcesses)
             {
+                _logger.Debug("Closing process with Id [{0}]...", excelProcess.Id);
                 excelProcess.Kill();
             }
 
+            _logger.Debug("Saving excel file to server...");
             string filePath = _fileController.SaveFile(importDataRequest.FileBytes, importDataRequest.FileName);
 
             Excel.Application excelApplication = new Excel.Application();
+            _logger.Debug("Opening excel workbook...");
             Excel.Workbook workbook = excelApplication.Workbooks.Open(filePath);
             var sheet = workbook.Sheets
                 .Cast<Excel.Worksheet>()
@@ -75,6 +78,8 @@ namespace Elrob.Webservice
 
             var range = sheet.UsedRange;
             int rows = range.Rows.Count;
+
+            _logger.Debug("Rows: [{0}]", rows);
 
             string orderName = range.Cells[1, 1].Value2;
 
@@ -98,7 +103,9 @@ namespace Elrob.Webservice
                 response.ResponseMessage = "Nagłówek kolumny 'ID' nie znajduje się w komórce A3!"; ;
                 return response;
             }
-            
+
+            _logger.Debug("Reading rows...");
+
             for (int row = 4; row <= rows; row++)
             {
                 OrderContent content = new OrderContent()
@@ -125,6 +132,8 @@ namespace Elrob.Webservice
 
                 response.OrderContents.Add(content);
             }
+
+            _logger.Debug("Grouping data...");
 
             var list = (from c in response.OrderContents
                 group c by
