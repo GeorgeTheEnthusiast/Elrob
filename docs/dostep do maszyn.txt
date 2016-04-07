@@ -1,0 +1,11 @@
+Komputer wirtualny:
+ID: 673 487 007
+H: laser1234
+
+a potem komp przemka:
+192.168.0.248
+
+
+komputer Przemka:
+ID 208 790 324
+H myszas11

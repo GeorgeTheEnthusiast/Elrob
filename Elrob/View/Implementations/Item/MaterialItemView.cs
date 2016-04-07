@@ -13,10 +13,14 @@ namespace Elrob.Terminal.View.Implementations.Item
     public partial class MaterialItemView : Form, IMaterialItemView
     {
         private readonly IMaterialItemPresenter _materialItemPresenter;
+        
+        public ErrorProvider ErrorProviderName => nameErrorProvider;
 
-        private bool _isInEditMode;
+        public TextBox TextBoxName => textBoxName;
 
-        private Material _material;
+        public bool IsInEditMode { get; set; }
+
+        public Material PassedMaterial { get; set; }
 
         public MaterialItemView()
         {
@@ -28,57 +32,17 @@ namespace Elrob.Terminal.View.Implementations.Item
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         private void buttonAccept_Click(object sender, System.EventArgs e)
         {
-            var orderExists = _materialItemPresenter.IsMaterialExist(Material.Name);
-
-            if (orderExists)
-            {
-                nameErrorProvider.SetError(textBoxName, "Materiał z taką nazwą już istnieje!");
-                return;
-            }
-            else
-            {
-                nameErrorProvider.Clear();
-            }
-
-            if (_isInEditMode)
-            {
-                _materialItemPresenter.UpdateMaterial(Material);
-            }
-            else
-            {
-                _materialItemPresenter.AddMaterial(Material);
-            }
-
-            DialogResult = DialogResult.OK;
+            _materialItemPresenter.AcceptChanges(IsInEditMode);
         }
 
         public Material Material => new Material()
         {
             Name = textBoxName.Text.Trim(),
-            Id = _material?.Id ?? 0
+            Id = PassedMaterial?.Id ?? 0
         };
-
-        public DialogResult ShowDialog(Material material)
-        {
-            _material = material;
-            nameErrorProvider.Clear();
-
-            if (_material != null)
-            {
-                _isInEditMode = true;
-                textBoxName.Text = _material.Name;
-            }
-            else
-            {
-                _isInEditMode = false;
-            }
-
-            return base.ShowDialog();
-        }
     }
 }

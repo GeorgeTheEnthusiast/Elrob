@@ -32,3 +32,4 @@ d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.dll
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.pdb
 D:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.dll
 D:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.xml
+d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csprojResolveAssemblyReference.cache

@@ -21,24 +21,48 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
             _materialItemModel = materialItemModel;
         }
 
-        public bool IsMaterialExist(string materialName)
+        public void AcceptChanges(bool IsInEditMode)
         {
-            return _materialItemModel.IsMaterialExist(materialName);
-        }
+            var orderExists = _materialItemModel.IsMaterialExist(_materialItemView.Material.Name);
 
-        public void UpdateMaterial(Material material)
-        {
-            _materialItemModel.UpdateMaterial(material);
-        }
+            if (orderExists)
+            {
+                _materialItemView.ErrorProviderName.SetError(_materialItemView.TextBoxName, "Materiał z taką nazwą już istnieje!");
+                return;
+            }
+            else
+            {
+                _materialItemView.ErrorProviderName.Clear();
+            }
 
-        public void AddMaterial(Material material)
-        {
-            _materialItemModel.AddMaterial(material);
+            if (_materialItemView.IsInEditMode)
+            {
+                _materialItemModel.UpdateMaterial(_materialItemView.Material);
+            }
+            else
+            {
+                _materialItemModel.AddMaterial(_materialItemView.Material);
+            }
+
+            _materialItemView.DialogResult = DialogResult.OK;
         }
 
         public DialogResult ShowDialog(Material material)
         {
-            return _materialItemView.ShowDialog(material);
+            _materialItemView.PassedMaterial = material;
+            _materialItemView.ErrorProviderName.Clear();
+
+            if (_materialItemView.PassedMaterial != null)
+            {
+                _materialItemView.IsInEditMode = true;
+                _materialItemView.TextBoxName.Text = material.Name;
+            }
+            else
+            {
+                _materialItemView.IsInEditMode = false;
+            }
+
+            return _materialItemView.ShowDialog();
         }
     }
 }
