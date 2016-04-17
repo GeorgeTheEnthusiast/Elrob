@@ -44,6 +44,12 @@ namespace Elrob.Terminal.Controllers
 
         public void StartTimer()
         {
+            if (CheckerThread != null)
+            {
+                CheckerThread.Abort();
+                CheckerThread = new Thread(Checker);
+            }
+
             CheckerThread.Start();
         }
 

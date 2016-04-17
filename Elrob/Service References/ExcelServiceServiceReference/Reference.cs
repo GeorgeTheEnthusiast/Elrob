@@ -475,58 +475,11 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="FileWithThatNameAlreadyExistException", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Exceptions")]
-    [System.SerializableAttribute()]
-    public partial class FileWithThatNameAlreadyExistException : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FilePathField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FilePath {
-            get {
-                return this.FilePathField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.FilePathField, value) != true)) {
-                    this.FilePathField = value;
-                    this.RaisePropertyChanged("FilePath");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ExcelServiceServiceReference.IExcelService")]
     public interface IExcelService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IExcelService/ImportData", ReplyAction="http://tempuri.org/IExcelService/ImportDataResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(Elrob.Terminal.ExcelServiceServiceReference.FileWithThatNameAlreadyExistException), Action="http://tempuri.org/IExcelService/ImportDataFileWithThatNameAlreadyExistExceptionF" +
-            "ault", Name="FileWithThatNameAlreadyExistException", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Exceptions")]
         Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse ImportData(Elrob.Terminal.ExcelServiceServiceReference.ImportDataRequest importDataRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IExcelService/ImportData", ReplyAction="http://tempuri.org/IExcelService/ImportDataResponse")]

@@ -19,16 +19,11 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class MainView : Form, IMainView
     {
         private readonly IMainPresenter _mainPresenter;
-        private IOrderPreviewPresenter _orderPreviewPresenter;
         private IMaterialPresenter _materialPresenter;
         private IPlacePresenter _placePresenter;
         private IOrderPresenter _orderPresenter;
         private IUserPresenter _userPresenter;
         private IGroupPresenter _groupPresenter;
-        private IOrderChoosePresenter _orderChoosePresenter;
-        private IPlaceChoosePresenter _placeChoosePresenter;
-        private IOrderContentChoosePresenter _orderContentChoosePresenter;
-        private IOrderProgressPresenter _orderProgressPresenter;
         
         public MainView()
         {
@@ -45,28 +40,13 @@ namespace Elrob.Terminal.View.Implementations.Main
             buttonOrderProgress.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_View);
         }
 
-        public DialogResult ShowDialog()
-        {
-            string userNameFormat = string.Format("{0} {1}", UserFactory.Instance.LoggedUser.FirstName, UserFactory.Instance.LoggedUser.LastName);
-            textBoxUserName.Text = userNameFormat;
-            InactivityChecker.Instance.StartTimer();
-
-            return base.ShowDialog();
-        }
-
         public Button ButtonImport => buttonImport;
+
+        public TextBox TextBoxUserName => textBoxUserName;
 
         private void buttonImport_Click(object sender, EventArgs e)
         {
-            var importResult = _mainPresenter.ImportData();
-
-            if (importResult == null)
-            {
-                return;
-            }
-
-            _orderPreviewPresenter = Program.Kernel.Get<IOrderPreviewPresenter>();
-            _orderPreviewPresenter.ShowDialog(importResult);
+            _mainPresenter.ImportOrder();
         }
 
         private void buttonMaterials_Click(object sender, EventArgs e)
@@ -101,33 +81,17 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         private void buttonOrderProgress_Click(object sender, EventArgs e)
         {
-            _orderChoosePresenter = Program.Kernel.Get<IOrderChoosePresenter>();
-            var orderDialogResult = _orderChoosePresenter.ShowDialog();
-
-            if (orderDialogResult == DialogResult.OK)
-            {
-                _placeChoosePresenter = Program.Kernel.Get<IPlaceChoosePresenter>();
-                var placeDialogResult = _placeChoosePresenter.ShowDialog();
-
-                if (placeDialogResult == DialogResult.OK)
-                {
-                    _orderContentChoosePresenter = Program.Kernel.Get<IOrderContentChoosePresenter>();
-                    var orderContentDialogResult =
-                        _orderContentChoosePresenter.ShowDialog(_orderChoosePresenter.ChoosedOrder,
-                            _placeChoosePresenter.ChoosedPlace);
-
-                    if (orderContentDialogResult == DialogResult.OK)
-                    {
-                        _orderProgressPresenter = Program.Kernel.Get<IOrderProgressPresenter>();
-                        _orderProgressPresenter.ShowDialog(_orderContentChoosePresenter.ChoosedOrderContent);
-                    }
-                }
-            }
+            _mainPresenter.ShowOrderProgressView();
         }
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
         {
             InactivityChecker.Instance.StopTimer();
+        }
+
+        private void buttonLogOut_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
         }
     }
 }

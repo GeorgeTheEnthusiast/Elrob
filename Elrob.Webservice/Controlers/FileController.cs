@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.ServiceModel;
 using System.Web;
-using Elrob.Webservice.Exceptions;
 
 namespace Elrob.Webservice.Controlers
 {

@@ -4,13 +4,16 @@ using System.Linq;
 using System.ServiceModel;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Converters;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.ExcelServiceServiceReference;
 using Elrob.Terminal.Model.Interfaces.Main;
+using Elrob.Terminal.Presenter.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces.Main;
 using Elrob.Terminal.View;
 using Elrob.Terminal.View.Interfaces.Main;
+using Ninject;
 using NLog;
 
 namespace Elrob.Terminal.Presenter.Implementation.Main
@@ -22,6 +25,11 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         private readonly IOrderContentConverter _orderContentConverter;
         private Task<Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse> excelTask;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
+        private IOrderPreviewPresenter _orderPreviewPresenter;
+        private IOrderChoosePresenter _orderChoosePresenter;
+        private IPlaceChoosePresenter _placeChoosePresenter;
+        private IOrderContentChoosePresenter _orderContentChoosePresenter;
+        private IOrderProgressPresenter _orderProgressPresenter;
 
         public MainPresenter(IMainView mainView, IMainModel mainModel, IOrderContentConverter orderContentConverter)
         {
@@ -38,8 +46,16 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         {
             return _mainModel.GetUserByLoginName(loginName);
         }
+        
+        public DialogResult ShowDialog()
+        {
+            _mainView.TextBoxUserName.Text = string.Format("{0} {1}", UserFactory.Instance.LoggedUser.FirstName, UserFactory.Instance.LoggedUser.LastName); ;
+            InactivityChecker.Instance.StartTimer();
 
-        public OrderPreviewViewModel ImportData()
+            return _mainView.ShowDialog();
+        }
+
+        public void ImportOrder()
         {
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
@@ -50,66 +66,91 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                 Title = "Wybierz plik Excel z zamówieniem do zaimportowania"
             };
 
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                byte[] fileBytes;
+            var dialogResult = openFileDialog.ShowDialog();
 
+            if (dialogResult == DialogResult.Cancel)
+            {
+                return;
+            }
+
+            byte[] fileBytes;
+
+            try
+            {
+                fileBytes = File.ReadAllBytes(openFileDialog.FileName);
+            }
+            catch (IOException ex)
+            {
+                _logger.Error("Excel file is being used by other process!");
+
+                MessageBox.Show("Plik jest używany przez inną aplikację. Zamknij ją, a następnie spróbuj ponownie.",
+                    "Brak dostępu do pliku", MessageBoxButtons.OK);
+
+                return;
+            }
+
+            OrderPreviewViewModel orderPreviewViewModel;
+
+            using (var serviceClient = new ExcelServiceClient())
+            {
+                ImportDataRequest importDataRequest = new ImportDataRequest()
+                {
+                    FileBytes = fileBytes,
+                    FileName = openFileDialog.SafeFileName
+                };
                 try
                 {
-                    fileBytes = File.ReadAllBytes(openFileDialog.FileName);
+                    var response = serviceClient.ImportData(importDataRequest);
+
+                    if (!string.IsNullOrEmpty(response.ResponseMessage))
+                    {
+                        MessageBox.Show(response.ResponseMessage);
+                        return;
+                    }
+
+                    _mainView.ButtonImport.Enabled = false;
+                    orderPreviewViewModel = AfterImportData(response);
                 }
-                catch (IOException ex)
+                catch (Exception ex)
                 {
-                    _logger.Error("Excel file is being used by other process!");
-
-                    MessageBox.Show("Plik jest używany przez inną aplikację. Zamknij ją, a następnie spróbuj ponownie.",
-                        "Brak dostępu do pliku", MessageBoxButtons.OK);
-
-                    return null;
+                    MessageBox.Show("Wystąpił błąd podczas importu danych na serwerze. Skontaktuj się z administratorem.");
+                    _logger.Error(ex);
+                    return;
                 }
-
-                using (var serviceClient = new ExcelServiceClient())
+                finally
                 {
-                    ImportDataRequest importDataRequest = new ImportDataRequest()
-                    {
-                        FileBytes = fileBytes,
-                        FileName = openFileDialog.SafeFileName
-                    };
-                    try
-                    {
-                        var response = serviceClient.ImportData(importDataRequest);
-
-                        if (!string.IsNullOrEmpty(response.ResponseMessage))
-                        {
-                            MessageBox.Show(response.ResponseMessage);
-                            return null;
-                        }
-
-                        _mainView.ButtonImport.Enabled = false;
-                        var result = AfterImportData(response);
-
-                        return result;
-                    }
-                    catch (FaultException<FileWithThatNameAlreadyExistException> ex)
-                    {
-                        MessageBox.Show("Plik o tej nazwie został już zaimportowany do systemu!");
-                        return null;
-                    }
-                    finally
-                    {
-                        _mainView.ButtonImport.Enabled = true;
-                    }
+                    _mainView.ButtonImport.Enabled = true;
                 }
             }
-            else
-            {
-                return null;
-            }
+
+            _orderPreviewPresenter = Program.Kernel.Get<IOrderPreviewPresenter>();
+            _orderPreviewPresenter.ShowDialog(orderPreviewViewModel);
         }
-        
-        public DialogResult ShowDialog()
+
+        public void ShowOrderProgressView()
         {
-            return _mainView.ShowDialog();
+            _orderChoosePresenter = Program.Kernel.Get<IOrderChoosePresenter>();
+            var orderDialogResult = _orderChoosePresenter.ShowDialog();
+
+            if (orderDialogResult == DialogResult.OK)
+            {
+                _placeChoosePresenter = Program.Kernel.Get<IPlaceChoosePresenter>();
+                var placeDialogResult = _placeChoosePresenter.ShowDialog();
+
+                if (placeDialogResult == DialogResult.OK)
+                {
+                    _orderContentChoosePresenter = Program.Kernel.Get<IOrderContentChoosePresenter>();
+                    var orderContentDialogResult =
+                        _orderContentChoosePresenter.ShowDialog(_orderChoosePresenter.ChoosedOrder,
+                            _placeChoosePresenter.ChoosedPlace);
+
+                    if (orderContentDialogResult == DialogResult.OK)
+                    {
+                        _orderProgressPresenter = Program.Kernel.Get<IOrderProgressPresenter>();
+                        _orderProgressPresenter.ShowDialog(_orderContentChoosePresenter.ChoosedOrderContent);
+                    }
+                }
+            }
         }
 
         private OrderPreviewViewModel AfterImportData(ExcelServiceServiceReference.ImportDataResponse importDataResponse)

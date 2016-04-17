@@ -16,3 +16,4 @@ d:\repo\Elrob\Elrob.Webservice\bin\NLog.xml
 d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.csproj.ResolveComReference.cache
 d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.dll
 d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.pdb
+d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.csprojResolveAssemblyReference.cache

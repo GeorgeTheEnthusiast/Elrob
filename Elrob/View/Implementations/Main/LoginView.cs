@@ -22,19 +22,20 @@ namespace Elrob.Terminal.View.Implementations.Main
             
             InitializeComponent();
         }
-
-        public bool IsLoggedIn => _loginPresenter.CanLogIn();
-
+        
         public User User => new User()
         {
             LoginName = textBoxUser.Text.Trim(),
             Password = textBoxPassword.Text
         };
 
+        public TextBox TextBoxLogin => textBoxUser;
+
+        public TextBox TextBoxPassword => textBoxPassword;
+
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         private void buttonLogin_Click(object sender, System.EventArgs e)

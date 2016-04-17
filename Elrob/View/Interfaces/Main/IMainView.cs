@@ -9,5 +9,7 @@ namespace Elrob.Terminal.View.Interfaces.Main
         bool UseWaitCursor { get; set; }
 
         Button ButtonImport { get; }
+
+        TextBox TextBoxUserName { get; }
     }
 }

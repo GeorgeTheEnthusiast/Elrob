@@ -38,6 +38,7 @@
             this.buttonUsers = new System.Windows.Forms.Button();
             this.buttonGroups = new System.Windows.Forms.Button();
             this.buttonOrderProgress = new System.Windows.Forms.Button();
+            this.buttonLogOut = new System.Windows.Forms.Button();
             this.panelUser.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,11 +140,22 @@
             this.buttonOrderProgress.UseVisualStyleBackColor = true;
             this.buttonOrderProgress.Click += new System.EventHandler(this.buttonOrderProgress_Click);
             // 
+            // buttonLogOut
+            // 
+            this.buttonLogOut.Location = new System.Drawing.Point(684, 532);
+            this.buttonLogOut.Name = "buttonLogOut";
+            this.buttonLogOut.Size = new System.Drawing.Size(206, 86);
+            this.buttonLogOut.TabIndex = 8;
+            this.buttonLogOut.Text = "Wyloguj";
+            this.buttonLogOut.UseVisualStyleBackColor = true;
+            this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 630);
+            this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.buttonOrderProgress);
             this.Controls.Add(this.buttonGroups);
             this.Controls.Add(this.buttonUsers);
@@ -178,5 +190,6 @@
         private System.Windows.Forms.Button buttonUsers;
         private System.Windows.Forms.Button buttonGroups;
         private System.Windows.Forms.Button buttonOrderProgress;
+        private System.Windows.Forms.Button buttonLogOut;
     }
 }

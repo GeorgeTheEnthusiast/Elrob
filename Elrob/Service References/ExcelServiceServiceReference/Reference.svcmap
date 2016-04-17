@@ -24,12 +24,11 @@
     <MetadataSource Address="http://localhost:30761/ExcelService.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="ExcelService.disco" MetadataType="Disco" ID="3e8b2a6e-c1d2-4019-86c6-28aedfa0727e" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?disco" />
-    <MetadataFile FileName="ExcelService2.xsd" MetadataType="Schema" ID="ae2b3ee5-f65a-4676-b97f-b86d4b79dca5" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd0" />
     <MetadataFile FileName="ExcelService.wsdl" MetadataType="Wsdl" ID="4bcca7ed-1aa2-4432-8533-91ade0544bc9" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?wsdl" />
     <MetadataFile FileName="ExcelService.xsd" MetadataType="Schema" ID="a9f952a6-5770-4f6d-8ee2-2894e78c3d29" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd2" />
     <MetadataFile FileName="ExcelService1.xsd" MetadataType="Schema" ID="f27bb50e-c5a0-412f-a3ff-6d5def4e3887" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd1" />
-    <MetadataFile FileName="ExcelService3.xsd" MetadataType="Schema" ID="b8454a48-fc30-4a90-b0eb-dfe33d7463d9" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd3" />
+    <MetadataFile FileName="ExcelService.disco" MetadataType="Disco" ID="3e8b2a6e-c1d2-4019-86c6-28aedfa0727e" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?disco" />
+    <MetadataFile FileName="ExcelService2.xsd" MetadataType="Schema" ID="ae2b3ee5-f65a-4676-b97f-b86d4b79dca5" SourceId="1" SourceUrl="http://localhost:30761/ExcelService.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

@@ -89,7 +89,6 @@
     <Compile Include="ExcelService.svc.cs">
       <DependentUpon>ExcelService.svc</DependentUpon>
     </Compile>
-    <Compile Include="Exceptions\FileWithThatNameAlreadyExistException.cs" />
     <Compile Include="IConfigurationManager.cs" />
     <Compile Include="IExcelService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

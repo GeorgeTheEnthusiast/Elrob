@@ -35,18 +35,19 @@ namespace Elrob.Terminal
                 Kernel = new StandardKernel();
                 Kernel.Load(Assembly.GetExecutingAssembly());
 
-                ILoginView loginView = Kernel.Get<ILoginView>();
-                DialogResult loginViewDialogResult = loginView.ShowDialog();
+                ILoginPresenter loginPresenter = Kernel.Get<ILoginPresenter>();
+
+                DialogResult loginViewDialogResult = loginPresenter.ShowDialog();
 
                 while (loginViewDialogResult == DialogResult.OK)
                 {
-                    if (loginView.IsLoggedIn)
+                    if (loginPresenter.CanLogIn())
                     {
                         IMainPresenter mainPresenter = Kernel.Get<IMainPresenter>();
                         mainPresenter.ShowDialog();
                     }
 
-                    loginViewDialogResult = loginView.ShowDialog();
+                    loginViewDialogResult = loginPresenter.ShowDialog();
                 }
             }
             catch (Exception ex)

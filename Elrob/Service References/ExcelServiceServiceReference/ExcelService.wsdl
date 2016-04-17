@@ -3,7 +3,6 @@
   <wsdl:types>
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:30761/ExcelService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
-      <xsd:import schemaLocation="http://localhost:30761/ExcelService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Exceptions" />
       <xsd:import schemaLocation="http://localhost:30761/ExcelService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://localhost:30761/ExcelService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto" />
     </xsd:schema>
@@ -14,14 +13,10 @@
   <wsdl:message name="IExcelService_ImportData_OutputMessage">
     <wsdl:part name="parameters" element="tns:ImportDataResponse" />
   </wsdl:message>
-  <wsdl:message name="IExcelService_ImportData_FileWithThatNameAlreadyExistExceptionFault_FaultMessage">
-    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Exceptions" name="detail" element="q1:FileWithThatNameAlreadyExistException" />
-  </wsdl:message>
   <wsdl:portType name="IExcelService">
     <wsdl:operation name="ImportData">
       <wsdl:input wsaw:Action="http://tempuri.org/IExcelService/ImportData" message="tns:IExcelService_ImportData_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IExcelService/ImportDataResponse" message="tns:IExcelService_ImportData_OutputMessage" />
-      <wsdl:fault wsaw:Action="http://tempuri.org/IExcelService/ImportDataFileWithThatNameAlreadyExistExceptionFault" name="FileWithThatNameAlreadyExistExceptionFault" message="tns:IExcelService_ImportData_FileWithThatNameAlreadyExistExceptionFault_FaultMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IExcelService" type="tns:IExcelService">
@@ -34,9 +29,6 @@
       <wsdl:output>
         <soap:body use="literal" />
       </wsdl:output>
-      <wsdl:fault name="FileWithThatNameAlreadyExistExceptionFault">
-        <soap:fault use="literal" name="FileWithThatNameAlreadyExistExceptionFault" namespace="" />
-      </wsdl:fault>
     </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="ExcelService">

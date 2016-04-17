@@ -24,7 +24,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
 
         public bool CanLogIn()
         {
-            var user = LoggedUser;
+            var user = _loginModel.GetUserByLoginName(_loginView.User.LoginName); ;
 
             if (user == null
                 || user.Password != _loginView.User.Password)
@@ -37,7 +37,13 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
 
             return true;
         }
+        
+        public DialogResult ShowDialog()
+        {
+            _loginView.TextBoxLogin.Text = "";
+            _loginView.TextBoxPassword.Text = "";
 
-        public User LoggedUser => _loginModel.GetUserByLoginName(_loginView.User.LoginName);
+            return _loginView.ShowDialog();
+        }
     }
 }

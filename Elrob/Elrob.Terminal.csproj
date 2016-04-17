@@ -426,9 +426,6 @@
     <None Include="Service References\ExcelServiceServiceReference\Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ExcelServiceServiceReference\ExcelService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ExcelServiceServiceReference\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

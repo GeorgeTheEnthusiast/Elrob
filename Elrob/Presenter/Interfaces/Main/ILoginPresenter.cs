@@ -1,4 +1,5 @@
-﻿using Elrob.Terminal.Dto;
+﻿using System.Windows.Forms;
+using Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Presenter.Interfaces.Main
 {
@@ -6,6 +7,6 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
     {
         bool CanLogIn();
 
-        User LoggedUser { get; }
+        DialogResult ShowDialog();
     }
 }
