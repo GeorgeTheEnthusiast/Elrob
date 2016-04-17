@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Converters;
+using Elrob.Terminal.Handlers;
 using Elrob.Terminal.Model;
 using Elrob.Terminal.Presenter;
 using Elrob.Terminal.Presenter.Interfaces;
@@ -24,6 +27,11 @@ namespace Elrob.Terminal
         {
             try
             {
+                GlobalApplicationHandler globalApplicationHandler = new GlobalApplicationHandler();
+                globalApplicationHandler.TheMouseMoved += GlobalApplicationHandlerOnTheMouseMoved;
+                globalApplicationHandler.KeyDown += GlobalApplicationHandlerOnKeyDown;
+                Application.AddMessageFilter(globalApplicationHandler);
+
                 Kernel = new StandardKernel();
                 Kernel.Load(Assembly.GetExecutingAssembly());
 
@@ -46,7 +54,16 @@ namespace Elrob.Terminal
                 _logger.Error(ex);
                 MessageBox.Show("Wystąpił błąd programu. Skontaktuj się z administratorem systemu.");
             }
-           
+        }
+
+        private static void GlobalApplicationHandlerOnKeyDown()
+        {
+            InactivityChecker.Instance.ResetTimer();
+        }
+
+        private static void GlobalApplicationHandlerOnTheMouseMoved()
+        {
+            InactivityChecker.Instance.ResetTimer();
         }
     }
 }

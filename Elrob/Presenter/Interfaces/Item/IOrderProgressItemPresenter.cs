@@ -5,9 +5,7 @@ namespace Elrob.Terminal.Presenter.Interfaces.Item
 {
     public interface IOrderProgressItemPresenter
     {
-        void UpdateOrderProgress(OrderProgress orderProgress);
-
-        void AddOrderProgress(OrderProgress orderProgress);
+        void AcceptChanges();
 
         DialogResult ShowDialog(OrderContent orderContent, OrderProgress orderProgress);
     }

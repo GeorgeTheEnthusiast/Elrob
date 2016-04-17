@@ -6,7 +6,7 @@ namespace Elrob.Terminal.View.Interfaces.Item
 {
     public interface IPermissionGroupItemView
     {
-        DialogResult ShowDialog(Group group);
+        DialogResult ShowDialog();
 
         BindingList<Permission> Permissions { get; set; }
 

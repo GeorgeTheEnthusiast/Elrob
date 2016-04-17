@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Diagnostics;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
@@ -9,10 +11,12 @@ using System.ServiceModel.Web;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web.Hosting;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Spreadsheet;
 using Elrob.Webservice.Controlers;
 using Elrob.Webservice.Dto;
 using NLog;
-using Excel = Microsoft.Office.Interop.Excel;
+using DataTable = DocumentFormat.OpenXml.Drawing.Charts.DataTable;
 
 namespace Elrob.Webservice
 {
@@ -20,7 +24,7 @@ namespace Elrob.Webservice
     {
         private readonly IFileController _fileController;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
-        private const string SheetName = "Arkusz2";
+        public string SheetName { get; } = "Arkusz2";
 
         public ExcelService() : this(new FileController(new ConfigurationManager()))
         {
@@ -44,93 +48,167 @@ namespace Elrob.Webservice
             };
 
             _logger.Debug("Starting to import excel data...");
-
-            _logger.Debug("Closing all excel processes...");
-
-            var excelProcesses = Process.GetProcessesByName("EXCEL");
-            foreach (var excelProcess in excelProcesses)
-            {
-                _logger.Debug("Closing process with Id [{0}]...", excelProcess.Id);
-                excelProcess.Kill();
-            }
-
+            
             _logger.Debug("Saving excel file to server...");
             string filePath = _fileController.SaveFile(importDataRequest.FileBytes, importDataRequest.FileName);
 
-            Excel.Application excelApplication = new Excel.Application();
-            _logger.Debug("Opening excel workbook...");
-            Excel.Workbook workbook = excelApplication.Workbooks.Open(filePath);
-            var sheet = workbook.Sheets
-                .Cast<Excel.Worksheet>()
-                .FirstOrDefault(x => x.Name == SheetName);
-
-            if (sheet == null)
+            using (FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
             {
-                _logger.Warn("There is not sheet called {0}", SheetName);
-                response.ResponseMessage = string.Format("Arkusz o nazwie '{0}' nie istnieje!", SheetName); ;
-                return response;
-            }
-
-            if (sheet.Visible != Excel.XlSheetVisibility.xlSheetVisible)
-            {
-                _logger.Debug("Sheet is not visible!");
-            }
-
-            var range = sheet.UsedRange;
-            int rows = range.Rows.Count;
-
-            _logger.Debug("Rows: [{0}]", rows);
-
-            string orderName = range.Cells[1, 1].Value2;
-
-            if (string.IsNullOrEmpty(orderName))
-            {
-                _logger.Warn("Order name is not in the A1 cell!");
-                response.ResponseMessage = "Nazwa zamówienia nie znajduje się w komórce A1!"; ;
-                return response;
-            }
-
-            Order order = new Order()
-            {
-                Name = orderName
-            };
-
-            string idColumn = range.Cells[3, 1].Value2;
-
-            if (string.IsNullOrEmpty(idColumn) || idColumn.Trim() != "ID")
-            {
-                _logger.Warn("The column header 'ID' is not in the A3 cell!");
-                response.ResponseMessage = "Nagłówek kolumny 'ID' nie znajduje się w komórce A3!"; ;
-                return response;
-            }
-
-            _logger.Debug("Reading rows...");
-
-            for (int row = 4; row <= rows; row++)
-            {
-                OrderContent content = new OrderContent()
+                using (SpreadsheetDocument doc = SpreadsheetDocument.Open(fs, false))
                 {
-                    Order = order
-                };
+                    WorkbookPart workbookPart = doc.WorkbookPart;
+                    SharedStringTablePart sstpart = workbookPart.GetPartsOfType<SharedStringTablePart>().First();
+                    SharedStringTable sst = sstpart.SharedStringTable;
 
-                content.DocumentNumber = range.Cells[row, 2].Value2.ToString().Trim();  //Numer dokumentu
-                content.Name = range.Cells[row, 3].Value2.ToString().Trim();    //Nazwa
-                content.Place = new Place()
-                {
-                    Name = range.Cells[row, 4].Value2.ToString().Trim() //Typ
-                };
-                content.PackageQuantity = ParseExcelValue<int>(sheet, row, 5);  //Ilość na kpl.
-                content.Material = new Material()
-                {
-                    Name = range.Cells[row, 6].Value2.ToString().Trim() //Materiał
-                };
-                content.Thickness = ParseExcelNullValue<decimal?>(sheet, row, 7);   //Grubość
-                content.Width = ParseExcelNullValue<decimal?>(sheet, row, 8);   //Kier. X
-                content.Height = ParseExcelNullValue<decimal?>(sheet, row, 9);  //Kier. Y
-                content.UnitWeight = ParseExcelValue<decimal>(sheet, row, 10);  //Masa (jednostkowa)
-                content.ToComplete = ParseExcelValue<int>(sheet, row, 11);  //Do realizacji
+                    //var sheet = workbookPart.Workbook.Sheets.ChildElements.FirstOrDefault(x => x.GetAttributes().Any(y => y.LocalName == "name" && y.Value == SheetName));
+                    Sheet sheet = workbookPart
+                        .Workbook
+                        .Descendants<Sheet>()
+                        .FirstOrDefault(x => x.Name == SheetName);
 
-                response.OrderContents.Add(content);
+                    if (sheet == null)
+                    {
+                        _logger.Warn("There is not sheet called {0}", SheetName);
+                        response.ResponseMessage = string.Format("Arkusz o nazwie '{0}' nie istnieje!", SheetName); ;
+                        return response;
+                    }
+
+                    if (sheet.State == "hidden")
+                    {
+                        _logger.Warn("Sheet [{0}] is not visible!", SheetName);
+                        response.ResponseMessage = string.Format("Arkusz o nazwie '{0}' jest ukryty!", SheetName); ;
+                        return response;
+                    }
+
+                    WorksheetPart worksheetPart = (WorksheetPart)workbookPart.GetPartById(sheet.Id);
+                    SheetData sheetData = worksheetPart.Worksheet.Elements<SheetData>().FirstOrDefault();
+
+                    var rows = sheetData.Elements<Row>();
+
+                    if (rows.LongCount() <= 0)
+                    {
+                        _logger.Warn("Sheet do not have cells!");
+                        response.ResponseMessage = string.Format("Arkusz o nazwie '{0}' nie ma rekordów!", SheetName); ;
+                        return response;
+                    }
+
+                    var rowA1 = rows.FirstOrDefault()
+                        .Elements<Cell>()
+                        .First();
+
+                    string orderName = ParseExcelValue<string>(rowA1, sst);
+
+                    if (string.IsNullOrEmpty(orderName))
+                    {
+                        _logger.Warn("Order name is not in the A1 cell!");
+                        response.ResponseMessage = "Nazwa zamówienia nie znajduje się w komórce A1!"; ;
+                        return response;
+                    }
+
+                    var rowA3 = rows.Skip(2)
+                        .First()
+                        .Elements<Cell>()
+                        .First();
+
+                    string idColumn = ParseExcelValue<string>(rowA3, sst);
+
+                    if (string.IsNullOrEmpty(idColumn) || idColumn.Trim() != "ID")
+                    {
+                        _logger.Warn("The column header 'ID' is not in the A3 cell!");
+                        response.ResponseMessage = "Nagłówek kolumny 'ID' nie znajduje się w komórce A3!"; ;
+                        return response;
+                    }
+
+                    var rowsList = rows
+                        .Skip(3)
+                        .ToList();
+                    Order order = new Order()
+                    {
+                        Name = orderName
+                    };
+
+                    _logger.Debug("Reading rows...");
+
+                    try
+                    {
+                        foreach (var row in rowsList)
+                        {
+                            OrderContent content = new OrderContent()
+                            {
+                                Order = order
+                            };
+                            var cells = row.Elements<Cell>().ToList();
+
+                            int columnIndex = 0;
+                            foreach (Cell cell in cells)
+                            {
+                                // Gets the column index of the cell with data
+                                int cellColumnIndex = (int)GetColumnIndexFromName(GetColumnName(cell.CellReference));
+                            
+                                if (columnIndex < cellColumnIndex)
+                                {
+                                    do
+                                    {
+                                        //Insert blank data here;
+                                        columnIndex++;
+                                    }
+                                    while (columnIndex < cellColumnIndex);
+                                }
+
+                                switch (columnIndex)
+                                {
+                                    case 1:
+                                        content.DocumentNumber = ParseExcelValue<string>(cell, sst); //Numer dokumentu
+                                        break;
+                                    case 2:
+                                        content.Name = ParseExcelValue<string>(cell, sst); //Nazwa
+                                        break;
+                                    case 3:
+                                        content.Place = new Place()
+                                        {
+                                            Name = ParseExcelValue<string>(cell, sst)  //Typ
+                                        };
+                                        break;
+                                    case 4:
+                                        content.PackageQuantity = ParseExcelValue<int>(cell, sst);  //Ilość na kpl.
+                                        break;
+                                    case 5:
+                                        content.Material = new Material()
+                                        {
+                                            Name = ParseExcelValue<string>(cell, sst) //Materiał
+                                        };
+                                        break;
+                                    case 6:
+                                        content.Thickness = ParseExcelValue<decimal?>(cell, sst);   //Grubość
+                                        break;
+                                    case 7:
+                                        content.Width = ParseExcelValue<decimal?>(cell, sst);   //Kier. X
+                                        break;
+                                    case 8:
+                                        content.Height = ParseExcelValue<decimal?>(cell, sst);  //Kier. Y
+                                        break;
+                                    case 9:
+                                        content.UnitWeight = ParseExcelValue<decimal>(cell, sst);  //Masa (jednostkowa)
+                                        break;
+                                    case 10:
+                                        content.ToComplete = ParseExcelValue<int>(cell, sst);  //Do realizacji
+                                        break;
+                                }
+                            
+                                columnIndex++;
+                            }
+                        
+                            response.OrderContents.Add(content);
+                         }
+                    }
+                    catch (FormatException e)
+                    {
+                        response.ResponseMessage = e.Message;
+                        return response;
+                    }
+                    
+                    
+                }
             }
 
             _logger.Debug("Grouping data...");
@@ -183,76 +261,87 @@ namespace Elrob.Webservice
             return response;
         }
 
-        private T ParseExcelValue<T>(Excel.Worksheet sheet, int row, int column)
+        private T ParseExcelValue<T>(Cell cell, SharedStringTable sst)
         {
-            var range = (Excel.Range)sheet.Cells[row, column];
-            string value = range.Value.ToString();
-
-            if (typeof(T) == typeof(int))
+            if ((cell.DataType != null) && (cell.DataType == CellValues.SharedString))
             {
-                int tempValue;
-                value = ExtractOnlyNumbers(value);
+                int ssid = int.Parse(cell.CellValue.Text);
+                string str = sst.ChildElements[ssid].InnerText;
 
-                if (int.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out tempValue) == false)
+                if (typeof (T) == typeof (string))
                 {
-                    _logger.Warn("The value in row {0} and column {1} is not a int value! Provided value: {2}", row, column, value);
-
-                    throw new FormatException(string.Format("The value {0} is not correct int value!", value));
+                    return (T)(object)str.Trim();
                 }
-                return (T)(object)tempValue;
-            }
-
-            if (typeof(T) == typeof(decimal))
-            {
-                decimal tempValue;
-                value = ExtractOnlyNumbers(value);
-
-                if (decimal.TryParse(value, NumberStyles.Any, CultureInfo.InvariantCulture, out tempValue) == false)
+                else if (typeof (T) == typeof (int))
                 {
-                    _logger.Warn("The value in row {0} and column {1} is not a decimal value! Provided value: {2}", row, column, value);
+                    int tempValue;
+                    str = ExtractOnlyNumbers(str);
 
-                    throw new FormatException(string.Format("The value {0} is not correct decimal value!", value));
-                }
-                return (T)(object)tempValue;
-            }
-
-            throw new NotSupportedException(string.Format("This type of T [{0}] is not supported!", typeof(T)));
-        }
-
-        private T ParseExcelNullValue<T>(Excel.Worksheet sheet, int row, int column)
-        {
-            var range = (Excel.Range)sheet.Cells[row, column];
-            object value = range.Value;
-
-            if (value != null && string.IsNullOrEmpty(value.ToString()) == false)
-            {
-                if (typeof(T) == typeof(decimal?))
-                {
-                    decimal tempValue;
-                    string stringValue = value.ToString();
-                    stringValue = ExtractOnlyNumbers(stringValue);
-
-                    if (
-                        decimal.TryParse(stringValue, NumberStyles.Any, CultureInfo.InvariantCulture, out tempValue) ==
-                        false)
+                    if (int.TryParse(str, NumberStyles.Any, CultureInfo.InstalledUICulture, out tempValue) == false)
                     {
-                        _logger.Warn("The value in row {0} and column {1} is not a decimal value! Provided value: {2}",
-                            row, column, value);
+                        _logger.Warn("The value [{0}] in cell [{1}] is not correct int value!", str, cell.CellReference);
 
-                        throw new FormatException(string.Format("The value {0} is not correct decimal value!", value));
+                        throw new FormatException(string.Format("Wartość [{0}] w komórce [{1}] nie jest prawidłową liczbą całkowitą!", str, cell.CellReference));
                     }
-
                     return (T)(object)tempValue;
                 }
-                else
+                else if (typeof (T) == typeof (decimal) ||
+                    typeof(T) == typeof(decimal?))
                 {
-                    throw new NotSupportedException(string.Format("This type of T [{0}] is not supported!", typeof(T)));
+                    decimal tempValue;
+                    str = ExtractOnlyNumbers(str);
+
+                    if (decimal.TryParse(str, NumberStyles.Any, CultureInfo.InstalledUICulture, out tempValue) == false)
+                    {
+                        _logger.Warn("The value [{0}] in cell [{1}] is not correct decimal value!", str, cell.CellReference);
+
+                        throw new FormatException(string.Format("Wartość [{0}] w komórce [{1}] nie jest prawidłową liczbą zmiennoprzecinkową!", str, cell.CellReference));
+                    }
+                    return (T)(object)tempValue;
                 }
+
+                throw new NotSupportedException(string.Format("This type of T [{0}] is not supported!", typeof(T)));
             }
-            else
+            else if (cell.CellValue != null)
             {
-                return (T)(object)null;
+                string str = cell.CellValue.Text.Trim();
+
+                if (typeof(T) == typeof(string))
+                {
+                    return (T)(object)str.Trim();
+                }
+                else if (typeof(T) == typeof(int))
+                {
+                    int tempValue;
+                    str = ExtractOnlyNumbers(str);
+
+                    if (int.TryParse(str, NumberStyles.Any, CultureInfo.InstalledUICulture, out tempValue) == false)
+                    {
+                        _logger.Warn("The value [{0}] in cell [{1}] is not correct int value!", str, cell.CellReference);
+
+                        throw new FormatException(string.Format("Wartość [{0}] w komórce [{1}] nie jest prawidłową liczbą całkowitą!", str, cell.CellReference));
+                    }
+                    return (T)(object)tempValue;
+                }
+                else if (typeof(T) == typeof(decimal) ||
+                    typeof(T) == typeof(decimal?))
+                {
+                    decimal tempValue;
+                    str = ExtractOnlyNumbers(str);
+
+                    if (decimal.TryParse(str, NumberStyles.Any, CultureInfo.InstalledUICulture, out tempValue) == false)
+                    {
+                        _logger.Warn("The value [{0}] in cell [{1}] is not correct decimal value!", str, cell.CellReference);
+
+                        throw new FormatException(string.Format("Wartość [{0}] w komórce [{1}] nie jest prawidłową wartością zmiennoprzecinkową!", str, cell.CellReference));
+                    }
+                    return (T)(object)tempValue;
+                }
+
+                throw new NotSupportedException(string.Format("This type of T [{0}] is not supported!", typeof(T)));
             }
+
+            return default(T);
         }
 
         private string ExtractOnlyNumbers(string value)
@@ -265,6 +354,64 @@ namespace Elrob.Webservice
                 result = result.Replace(".", ",");
 
             return result;
+        }
+
+        private static List<char> Letters = new List<char>() { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', ' ' };
+
+        /// <summary>
+        /// Given a cell name, parses the specified cell to get the column name.
+        /// </summary>
+        /// <param name="cellReference">Address of the cell (ie. B2)</param>
+        /// <returns>Column Name (ie. B)</returns>
+        public string GetColumnName(string cellReference)
+        {
+            // Create a regular expression to match the column name portion of the cell name.
+            Regex regex = new Regex("[A-Za-z]+");
+            Match match = regex.Match(cellReference);
+
+            return match.Value;
+        }
+
+        /// <summary>
+        /// Given just the column name (no row index), it will return the zero based column index.
+        /// Note: This method will only handle columns with a length of up to two (ie. A to Z and AA to ZZ). 
+        /// A length of three can be implemented when needed.
+        /// </summary>
+        /// <param name="columnName">Column Name (ie. A or AB)</param>
+        /// <returns>Zero based index if the conversion was successful; otherwise null</returns>
+        public int? GetColumnIndexFromName(string columnName)
+        {
+            int? columnIndex = null;
+
+            string[] colLetters = Regex.Split(columnName, "([A-Z]+)");
+            colLetters = colLetters.Where(s => !string.IsNullOrEmpty(s)).ToArray();
+
+            if (colLetters.Count() <= 2)
+            {
+                int index = 0;
+                foreach (string col in colLetters)
+                {
+                    List<char> col1 = colLetters.ElementAt(index).ToCharArray().ToList();
+                    int? indexValue = Letters.IndexOf(col1.ElementAt(index));
+
+                    if (indexValue != -1)
+                    {
+                        // The first letter of a two digit column needs some extra calculations
+                        if (index == 0 && colLetters.Count() == 2)
+                        {
+                            columnIndex = columnIndex == null ? (indexValue + 1) * 26 : columnIndex + ((indexValue + 1) * 26);
+                        }
+                        else
+                        {
+                            columnIndex = columnIndex == null ? indexValue : columnIndex + indexValue;
+                        }
+                    }
+
+                    index++;
+                }
+            }
+
+            return columnIndex;
         }
     }
 }

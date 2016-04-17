@@ -1,0 +1,16 @@
+D:\repo\Elrob\Elrob.Webservice.Tests\obj\Debug\Elrob.Webservice.Tests.csprojResolveAssemblyReference.cache
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\Elrob.Webservice.Tests.dll.config
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\Elrob.Webservice.Tests.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\Elrob.Webservice.Tests.pdb
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\Elrob.Webservice.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\NSubstitute.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\nunit.framework.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\NLog.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\DocumentFormat.OpenXml.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\System.IO.Packaging.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\Elrob.Webservice.pdb
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\NSubstitute.xml
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\nunit.framework.xml
+D:\repo\Elrob\Elrob.Webservice.Tests\bin\Debug\NLog.xml
+D:\repo\Elrob\Elrob.Webservice.Tests\obj\Debug\Elrob.Webservice.Tests.dll
+D:\repo\Elrob\Elrob.Webservice.Tests\obj\Debug\Elrob.Webservice.Tests.pdb

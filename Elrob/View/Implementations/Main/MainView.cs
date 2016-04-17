@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Windows.Forms;
+using Elrob.Terminal.Common;
 using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Converters;
 using Elrob.Terminal.Dto;
@@ -47,6 +49,8 @@ namespace Elrob.Terminal.View.Implementations.Main
         {
             string userNameFormat = string.Format("{0} {1}", UserFactory.Instance.LoggedUser.FirstName, UserFactory.Instance.LoggedUser.LastName);
             textBoxUserName.Text = userNameFormat;
+            InactivityChecker.Instance.StartTimer();
+
             return base.ShowDialog();
         }
 
@@ -119,6 +123,11 @@ namespace Elrob.Terminal.View.Implementations.Main
                     }
                 }
             }
+        }
+
+        private void MainView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            InactivityChecker.Instance.StopTimer();
         }
     }
 }

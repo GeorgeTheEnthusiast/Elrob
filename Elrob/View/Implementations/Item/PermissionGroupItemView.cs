@@ -27,7 +27,6 @@ namespace Elrob.Terminal.View.Implementations.Item
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         private void buttonAccept_Click(object sender, System.EventArgs e)
@@ -35,13 +34,6 @@ namespace Elrob.Terminal.View.Implementations.Item
             _permissionGroupItemPresenter.MergePermissionGroup();
 
             DialogResult = DialogResult.OK;
-        }
-
-        public DialogResult ShowDialog(Group group)
-        {
-            Group = group;
-
-            return base.ShowDialog();
         }
 
         public BindingList<Permission> Permissions { get; set; }

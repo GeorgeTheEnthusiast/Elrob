@@ -36,7 +36,7 @@ namespace Elrob.Terminal.View.Implementations.Item
 
         private void buttonAccept_Click(object sender, System.EventArgs e)
         {
-            _materialItemPresenter.AcceptChanges(IsInEditMode);
+            _materialItemPresenter.AcceptChanges();
         }
 
         public Material Material => new Material()

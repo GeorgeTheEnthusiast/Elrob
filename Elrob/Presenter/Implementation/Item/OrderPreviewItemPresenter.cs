@@ -36,17 +36,28 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
                 .Distinct(new PlaceComparer())
                 .ToList();
 
-            return _orderPreviewItemView.ShowDialog(order, orderContent, materials, places);
-        }
+            _orderPreviewItemView.PassedOrderContent = orderContent;
+            _orderPreviewItemView.PassedOrder = order;
 
-        public List<Material> GetAllMaterials()
-        {
-            return _orderPreviewItemModel.GetAllMaterials();
-        }
+            _orderPreviewItemView.ComboBoxMaterial.DataSource = materials;
+            _orderPreviewItemView.ComboBoxPlace.DataSource = places;
 
-        public List<Place> GetAllPlaces()
-        {
-            return _orderPreviewItemModel.GetAllPlaces();
+            if (_orderPreviewItemView.PassedOrderContent != null)
+            {
+                _orderPreviewItemView.ComboBoxMaterial.SelectedIndex = materials.IndexOf(materials.FirstOrDefault(x => x.Name == orderContent.Material.Name));
+                _orderPreviewItemView.ComboBoxPlace.SelectedIndex = places.IndexOf(places.FirstOrDefault(x => x.Name == orderContent.Place.Name));
+                
+                _orderPreviewItemView.TextBoxName.Text = _orderPreviewItemView.PassedOrderContent.Name;
+                _orderPreviewItemView.TextBoxDocumentNumber.Text = _orderPreviewItemView.PassedOrderContent.DocumentNumber;
+                _orderPreviewItemView.NumericUpDownHeight.Value = _orderPreviewItemView.PassedOrderContent.Height.GetValueOrDefault();
+                _orderPreviewItemView.NumericUpDownWidth.Value = _orderPreviewItemView.PassedOrderContent.Width.GetValueOrDefault();
+                _orderPreviewItemView.NumericUpDownPackageQuantity.Value = _orderPreviewItemView.PassedOrderContent.PackageQuantity;
+                _orderPreviewItemView.NumericUpDownThickness.Value = _orderPreviewItemView.PassedOrderContent.Thickness.GetValueOrDefault();
+                _orderPreviewItemView.NumericUpDownToComplete.Value = _orderPreviewItemView.PassedOrderContent.ToComplete;
+                _orderPreviewItemView.NumericUpDownUnitWeight.Value = _orderPreviewItemView.PassedOrderContent.UnitWeight;
+            }
+
+            return _orderPreviewItemView.ShowDialog();
         }
 
         public OrderContent OrderContent => _orderPreviewItemView.OrderContent;

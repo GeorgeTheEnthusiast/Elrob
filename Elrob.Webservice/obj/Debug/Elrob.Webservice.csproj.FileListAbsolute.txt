@@ -33,3 +33,5 @@ d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.pdb
 D:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.dll
 D:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.xml
 d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csprojResolveAssemblyReference.cache
+d:\repo\Elrob\Elrob.Webservice\bin\DocumentFormat.OpenXml.dll
+d:\repo\Elrob\Elrob.Webservice\bin\System.IO.Packaging.dll

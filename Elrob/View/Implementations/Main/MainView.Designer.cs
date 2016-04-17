@@ -159,6 +159,7 @@
             this.Name = "MainView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Elrob.Terminal";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.panelUser.ResumeLayout(false);
             this.panelUser.PerformLayout();
             this.ResumeLayout(false);

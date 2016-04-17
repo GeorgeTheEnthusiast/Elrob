@@ -36,5 +36,16 @@ namespace Elrob.Terminal.Common
                     new object[] { propertyValue });
             }
         }
+
+        public static void CloseAllForms()
+        {
+            for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
+            {
+                Application.OpenForms[i].Invoke((MethodInvoker) delegate
+                {
+                    Application.OpenForms[i].Close();
+                });
+            }
+        }
     }
 }

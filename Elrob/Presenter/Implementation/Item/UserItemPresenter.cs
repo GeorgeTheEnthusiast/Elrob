@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Item;
@@ -22,29 +23,74 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
             _userItemModel = userItemModel;
         }
 
-        public void UpdateUser(User user)
-        {
-            _userItemModel.UpdateUser(user);
-        }
-
-        public void AddUser(User user)
-        {
-            _userItemModel.AddUser(user);
-        }
-
         public DialogResult ShowDialog(User user)
         {
-            return _userItemView.ShowDialog(user);
+            _userItemView.PassedUser = user;
+
+            var groups = _userItemModel.GetAllGroups();
+            _userItemView.ComboBoxGroup.DataSource = groups;
+
+            _userItemView.LoginNameErrorProvider.Clear();
+            _userItemView.PasswordErrorProvider.Clear();
+
+            if (_userItemView.PassedUser != null)
+            {
+                _userItemView.IsInEditMode = true;
+
+                _userItemView.ComboBoxGroup.SelectedIndex = groups.IndexOf(groups.FirstOrDefault(x => x.Id == user.Group.Id));
+
+                _userItemView.TextBoxLogin.Text = _userItemView.PassedUser.LoginName;
+                _userItemView.TextBoxFirstName.Text = _userItemView.PassedUser.FirstName;
+                _userItemView.TextBoxLastName.Text = _userItemView.PassedUser.LastName;
+                _userItemView.TextBoxPassword.Text = _userItemView.PassedUser.Password;
+                _userItemView.TextBoxRepeatPassword.Text = _userItemView.PassedUser.Password;
+            }
+            else
+            {
+                _userItemView.IsInEditMode = false;
+            }
+            
+            return _userItemView.ShowDialog();
         }
 
-        public bool IsUserExist(string loginName)
+        public void AcceptChanges()
         {
-            return _userItemModel.IsUserExist(loginName);
-        }
+            if (!_userItemView.IsInEditMode || _userItemView.PassedUser.LoginName != _userItemView.User.LoginName)
+            {
+                var userExist = _userItemModel.IsUserExist(_userItemView.User.LoginName);
 
-        public List<Group> GetAllGroups()
-        {
-            return _userItemModel.GetAllGroups();
+                if (userExist)
+                {
+                    _userItemView.LoginNameErrorProvider.SetError(_userItemView.TextBoxLogin, "Użytkownik o takim loginie już istnieje!");
+                    return;
+                }
+                else
+                {
+                    _userItemView.LoginNameErrorProvider.Clear();
+                }
+            }
+
+            if (_userItemView.TextBoxPassword.Text != _userItemView.TextBoxRepeatPassword.Text)
+            {
+                _userItemView.PasswordErrorProvider.SetError(_userItemView.TextBoxPassword, "Wpisane hasła nie są zgodne!");
+                _userItemView.PasswordErrorProvider.SetError(_userItemView.TextBoxRepeatPassword, "Wpisane hasła nie są zgodne!");
+                return;
+            }
+            else
+            {
+                _userItemView.PasswordErrorProvider.Clear();
+            }
+
+            if (_userItemView.IsInEditMode)
+            {
+                _userItemModel.UpdateUser(_userItemView.User);
+            }
+            else
+            {
+                _userItemModel.AddUser(_userItemView.User);
+            }
+
+            _userItemView.DialogResult = DialogResult.OK;
         }
     }
 }

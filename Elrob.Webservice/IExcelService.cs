@@ -18,5 +18,7 @@ namespace Elrob.Webservice
         [FaultContract(typeof(FileWithThatNameAlreadyExistException))]
         [OperationContract]
         ImportDataResponse ImportData(ImportDataRequest importDataRequest);
+
+        string SheetName { get; } 
     }
 }

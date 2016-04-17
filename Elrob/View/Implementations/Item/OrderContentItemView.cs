@@ -18,6 +18,12 @@ namespace Elrob.Terminal.View.Implementations.Item
         private OrderContent _orderContent;
         private Order _order;
 
+        public NumericUpDown NumericUpDownUnitWeight => numericUpDownUnitWeight;
+
+        public Order PassedOrder { get; set; }
+
+        public OrderContent PassedOrderContent { get; set; }
+
         public OrderContentItemView()
         {
             _orderContentItemPresenter = new OrderContentItemPresenter(this, Program.Kernel.Get<IOrderContentItemModel>());
@@ -53,33 +59,20 @@ namespace Elrob.Terminal.View.Implementations.Item
 
         public ComboBox ComboBoxPlace => comboBoxPlaces;
 
-        public DialogResult ShowDialog(Order order, OrderContent orderContent, Place place)
-        {
-            _orderContent = orderContent;
-            _order = order;
+        public ComboBox ComboBoxMaterial => comboBoxMaterial;
 
-            var materials = _orderContentItemPresenter.GetAllMaterials();
-            var places = _orderContentItemPresenter.GetAllPlaces(place);
+        public TextBox TextBoxName => textBoxName;
 
-            comboBoxMaterial.DataSource = materials;
-            comboBoxPlaces.DataSource = places;
+        public TextBox TextBoxDocumentNumber => textBoxDocumentNumber;
 
-            if (_orderContent != null)
-            {
-                comboBoxMaterial.SelectedIndex = materials.IndexOf(materials.FirstOrDefault(x => x.Id == orderContent.Material.Id));
-                comboBoxPlaces.SelectedIndex = places.IndexOf(places.FirstOrDefault(x => x.Id == orderContent.Place.Id));
+        public NumericUpDown NumericUpDownHeight => numericUpDownHeight;
 
-                textBoxName.Text = _orderContent.Name;
-                textBoxDocumentNumber.Text = _orderContent.DocumentNumber;
-                numericUpDownHeight.Value = _orderContent.Height.GetValueOrDefault();
-                numericUpDownWidth.Value = _orderContent.Width.GetValueOrDefault();
-                numericUpDownPackageQuantity.Value = _orderContent.PackageQuantity;
-                numericUpDownThickness.Value = _orderContent.Thickness.GetValueOrDefault();
-                numericUpDownToComplete.Value = _orderContent.ToComplete;
-                numericUpDownUnitWeight.Value = _orderContent.UnitWeight;
-            }
+        public NumericUpDown NumericUpDownWidth => numericUpDownWidth;
 
-            return base.ShowDialog();
-        }
+        public NumericUpDown NumericUpDownPackageQuantity => numericUpDownPackageQuantity;
+
+        public NumericUpDown NumericUpDownThickness => numericUpDownThickness;
+
+        public NumericUpDown NumericUpDownToComplete => numericUpDownToComplete;
     }
 }

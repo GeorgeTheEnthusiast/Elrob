@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
-using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.View.Interfaces.Item;
+using NHibernate.Criterion;
+using Order = Elrob.Terminal.Dto.Order;
 
 namespace Elrob.Terminal.Presenter.Implementation.Item
 {
@@ -33,12 +34,51 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
 
         public DialogResult ShowDialog(Order order)
         {
-            return _orderItemView.ShowDialog(order);
+            _orderItemView.PassedOrder = order;
+            _orderItemView.NameErrorProvider.Clear();
+
+            if (_orderItemView.PassedOrder != null)
+            {
+                _orderItemView.IsInEditMode = true;
+                _orderItemView.TextBoxName.Text = _orderItemView.PassedOrder.Name;
+            }
+            else
+            {
+                _orderItemView.IsInEditMode = false;
+            }
+
+            return _orderItemView.ShowDialog();
         }
 
         public bool IsOrderExist(string orderName)
         {
             return _orderItemModel.IsOrderExist(orderName);
+        }
+
+        public void AcceptChanges()
+        {
+            var orderExists = _orderItemModel.IsOrderExist(_orderItemView.Order.Name);
+
+            if (orderExists)
+            {
+                _orderItemView.NameErrorProvider.SetError(_orderItemView.TextBoxName, "Zamówienie z taką nazwą już istnieje!");
+                return;
+            }
+            else
+            {
+                _orderItemView.NameErrorProvider.Clear();
+            }
+
+            if (_orderItemView.IsInEditMode)
+            {
+                _orderItemModel.UpdateOrder(_orderItemView.Order);
+            }
+            else
+            {
+                _orderItemModel.AddOrder(_orderItemView.Order);
+            }
+
+            _orderItemView.DialogResult = DialogResult.OK;
         }
     }
 }

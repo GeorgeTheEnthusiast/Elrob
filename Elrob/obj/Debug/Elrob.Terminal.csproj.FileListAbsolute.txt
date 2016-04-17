@@ -160,3 +160,7 @@ d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.OrderView
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.PlaceView.resources
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.MaterialView.resources
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.OrderPreviewView.resources
+d:\repo\Elrob\Elrob\bin\Debug\Elrob.exe.manifest
+d:\repo\Elrob\Elrob\bin\Debug\Elrob.application
+d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe.manifest
+d:\repo\Elrob\Elrob\obj\Debug\Elrob.application

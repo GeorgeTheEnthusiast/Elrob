@@ -52,7 +52,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                byte[] fileBytes = null;
+                byte[] fileBytes;
 
                 try
                 {
@@ -94,6 +94,10 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                     {
                         MessageBox.Show("Plik o tej nazwie został już zaimportowany do systemu!");
                         return null;
+                    }
+                    finally
+                    {
+                        _mainView.ButtonImport.Enabled = true;
                     }
                 }
             }
@@ -149,12 +153,9 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             {
                 MessageBox.Show(
                     "Coś poszło nie tak przy imporcie danych, skontaktuj się z administratorem systemu!");
-                _mainView.ButtonImport.Enabled = true;
 
                 return null;
             }
-
-            Common.UISafeThread.SetControlPropertyThreadSafe(_mainView.ButtonImport, "Enabled", true);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
             _materialItemModel = materialItemModel;
         }
 
-        public void AcceptChanges(bool IsInEditMode)
+        public void AcceptChanges()
         {
             var orderExists = _materialItemModel.IsMaterialExist(_materialItemView.Material.Name);
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Converters;
 using Elrob.Terminal.Model;
 using Elrob.Terminal.Model.Implementations;
@@ -37,6 +38,10 @@ namespace Elrob.Terminal.Common
     {
         public override void Load()
         {
+            #region
+            Bind<IInactivityChecker>().To<InactivityChecker>();
+            #endregion
+
             #region Converters
             Bind<IMaterialConverter>().To<MaterialConverter>();
             Bind<IOrderContentConverter>().To<OrderContentConverter>();

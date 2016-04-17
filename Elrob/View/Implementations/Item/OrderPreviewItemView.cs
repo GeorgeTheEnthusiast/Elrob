@@ -16,8 +16,29 @@ namespace Elrob.Terminal.View.Implementations.Item
     {
         private readonly IOrderPreviewItemPresenter _orderPreviewItemPresenter;
         
-        private OrderContent _orderContent;
-        private Order _order;
+        public OrderContent PassedOrderContent { get; set; }
+
+        public Order PassedOrder { get; set; }
+
+        public ComboBox ComboBoxMaterial => comboBoxMaterial;
+
+        public ComboBox ComboBoxPlace => comboBoxPlaces;
+
+        public TextBox TextBoxName => textBoxName;
+
+        public TextBox TextBoxDocumentNumber => textBoxDocumentNumber;
+
+        public NumericUpDown NumericUpDownHeight => numericUpDownHeight;
+
+        public NumericUpDown NumericUpDownWidth => numericUpDownWidth;
+
+        public NumericUpDown NumericUpDownPackageQuantity => numericUpDownPackageQuantity;
+
+        public NumericUpDown NumericUpDownThickness => numericUpDownThickness;
+
+        public NumericUpDown NumericUpDownToComplete => numericUpDownToComplete;
+
+        public NumericUpDown NumericUpDownUnitWeight => numericUpDownUnitWeight;
 
         public OrderPreviewItemView()
         {
@@ -29,7 +50,6 @@ namespace Elrob.Terminal.View.Implementations.Item
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         private void buttonAccept_Click(object sender, System.EventArgs e)
@@ -40,7 +60,7 @@ namespace Elrob.Terminal.View.Implementations.Item
         public OrderContent OrderContent => new OrderContent()
         {
             Name = textBoxName.Text.Trim(),
-            Order = _order,
+            Order = PassedOrder,
             DocumentNumber = textBoxDocumentNumber.Text.Trim(),
             Material = comboBoxMaterial.SelectedItem as Material,
             Place = comboBoxPlaces.SelectedItem as Place,
@@ -50,35 +70,7 @@ namespace Elrob.Terminal.View.Implementations.Item
             Thickness = numericUpDownThickness.Value,
             ToComplete = (int)numericUpDownToComplete.Value,
             UnitWeight = numericUpDownUnitWeight.Value,
-            Id = _orderContent == null ? 0 : _orderContent.Id
+            Id = PassedOrderContent == null ? 0 : PassedOrderContent.Id
         };
-
-        public ComboBox ComboBoxPlace => comboBoxPlaces;
-
-        public DialogResult ShowDialog(Order order, OrderContent orderContent, List<Material> materials, List<Place> places)
-        {
-            _orderContent = orderContent;
-            _order = order;
-
-            comboBoxMaterial.DataSource = materials;
-            comboBoxPlaces.DataSource = places;
-            
-            if (_orderContent != null)
-            {
-                comboBoxMaterial.SelectedIndex = materials.IndexOf(materials.FirstOrDefault(x => x.Name == orderContent.Material.Name));
-                comboBoxPlaces.SelectedIndex = places.IndexOf(places.FirstOrDefault(x => x.Name == orderContent.Place.Name));
-
-                textBoxName.Text = _orderContent.Name;
-                textBoxDocumentNumber.Text = _orderContent.DocumentNumber;
-                numericUpDownHeight.Value = _orderContent.Height.GetValueOrDefault();
-                numericUpDownWidth.Value = _orderContent.Width.GetValueOrDefault();
-                numericUpDownPackageQuantity.Value = _orderContent.PackageQuantity;
-                numericUpDownThickness.Value = _orderContent.Thickness.GetValueOrDefault();
-                numericUpDownToComplete.Value = _orderContent.ToComplete;
-                numericUpDownUnitWeight.Value = _orderContent.UnitWeight;
-            }
-
-            return base.ShowDialog();
-        }
     }
 }

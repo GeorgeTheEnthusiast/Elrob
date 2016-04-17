@@ -6,3 +6,13 @@ d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.xml
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.csproj.ResolveComReference.cache
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.dll
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.pdb
+d:\repo\Elrob\Elrob.Webservice\bin\Elrob.Webservice.dll.config
+d:\repo\Elrob\Elrob.Webservice\bin\Elrob.Webservice.dll
+d:\repo\Elrob\Elrob.Webservice\bin\Elrob.Webservice.pdb
+d:\repo\Elrob\Elrob.Webservice\bin\DocumentFormat.OpenXml.dll
+d:\repo\Elrob\Elrob.Webservice\bin\NLog.dll
+d:\repo\Elrob\Elrob.Webservice\bin\System.IO.Packaging.dll
+d:\repo\Elrob\Elrob.Webservice\bin\NLog.xml
+d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.csproj.ResolveComReference.cache
+d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.dll
+d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.pdb

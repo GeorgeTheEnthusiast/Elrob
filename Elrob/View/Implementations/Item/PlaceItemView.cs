@@ -14,70 +14,35 @@ namespace Elrob.Terminal.View.Implementations.Item
     {
         private IPlaceItemPresenter _placeItemPresenter;
 
-        private bool _isInEditMode;
+        public bool IsInEditMode { get; set; }
 
-        private Place _place;
+        public Place PassedPlace { get; set; }
+
+        public TextBox TextBoxName => textBoxName;
+
+        public ErrorProvider NameErrorProvider => nameErrorProvider;
 
         public PlaceItemView()
         {
+            _placeItemPresenter = new PlaceItemPresenter(this, Program.Kernel.Get<IPlaceItemModel>());
+
             InitializeComponent();
         }
 
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         private void buttonAccept_Click(object sender, System.EventArgs e)
         {
-            var placeExist = _placeItemPresenter.IsPlaceExist(Place.Name);
-
-            if (placeExist)
-            {
-                nameErrorProvider.SetError(textBoxName, "Placówka z taką nazwą już istnieje!");
-                return;
-            }
-            else
-            {
-                nameErrorProvider.Clear();
-            }
-
-            if (_isInEditMode)
-            {
-                _placeItemPresenter.UpdatePlace(Place);
-            }
-            else
-            {
-                _placeItemPresenter.AddPlace(Place);
-            }
-
-            DialogResult = DialogResult.OK;
+            _placeItemPresenter.AcceptChanges();
         }
 
         public Place Place => new Place()
         {
             Name = textBoxName.Text.Trim(),
-            Id = _place?.Id ?? 0
+            Id = PassedPlace?.Id ?? 0
         };
-
-        public DialogResult ShowDialog(Place place)
-        {
-            _placeItemPresenter = new PlaceItemPresenter(this, Program.Kernel.Get<IPlaceItemModel>());
-            _place = place;
-            nameErrorProvider.Clear();
-
-            if (_place != null)
-            {
-                _isInEditMode = true;
-                textBoxName.Text = _place.Name;
-            }
-            else
-            {
-                _isInEditMode = false;
-            }
-
-            return base.ShowDialog();
-        }
     }
 }

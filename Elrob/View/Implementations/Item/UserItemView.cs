@@ -14,10 +14,26 @@ namespace Elrob.Terminal.View.Implementations.Item
     public partial class UserItemView : Form, IUserItemView
     {
         private readonly IUserItemPresenter _userItemPresenter;
+        
+        public bool IsInEditMode { get; set; }
 
-        private bool _isInEditMode;
+        public User PassedUser { get; set; }
 
-        private User _user;
+        public ErrorProvider LoginNameErrorProvider => loginNameErrorProvider;
+
+        public ErrorProvider PasswordErrorProvider => passwordErrorProvider;
+
+        public ComboBox ComboBoxGroup => comboBoxGroup;
+
+        public TextBox TextBoxLogin => textBoxLogin;
+
+        public TextBox TextBoxFirstName => textBoxFirstName;
+
+        public TextBox TextBoxLastName => textBoxLastName;
+
+        public TextBox TextBoxPassword => textBoxPassword;
+
+        public TextBox TextBoxRepeatPassword => textBoxRepeatPassword;
 
         public UserItemView()
         {
@@ -29,82 +45,16 @@ namespace Elrob.Terminal.View.Implementations.Item
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         private void buttonAccept_Click(object sender, System.EventArgs e)
         {
-            if (!_isInEditMode || _user.LoginName != User.LoginName)
-            {
-                var userExist = _userItemPresenter.IsUserExist(User.LoginName);
-
-                if (userExist)
-                {
-                    loginNameErrorProvider.SetError(textBoxLogin, "Użytkownik o takim loginie już istnieje!");
-                    return;
-                }
-                else
-                {
-                    loginNameErrorProvider.Clear();
-                }
-            }
-                
-            if (textBoxPassword.Text != textBoxRepeatPassword.Text)
-            {
-                passwordErrorProvider.SetError(textBoxPassword, "Wpisane hasła nie są zgodne!");
-                passwordErrorProvider.SetError(textBoxRepeatPassword, "Wpisane hasła nie są zgodne!");
-                return;
-            }
-            else
-            {
-                passwordErrorProvider.Clear();
-            }
-
-            if (_isInEditMode)
-            {
-                _userItemPresenter.UpdateUser(User);
-            }
-            else
-            {
-                _userItemPresenter.AddUser(User);
-            }
-
-            DialogResult = DialogResult.OK;
-        }
-
-        public DialogResult ShowDialog(User user)
-        {
-            _user = user;
-
-            var groups = _userItemPresenter.GetAllGroups();
-            comboBoxGroup.DataSource = groups;
-
-            loginNameErrorProvider.Clear();
-            passwordErrorProvider.Clear();
-
-            if (_user != null)
-            {
-                _isInEditMode = true;
-
-                comboBoxGroup.SelectedIndex = groups.IndexOf(groups.FirstOrDefault(x => x.Id == user.Group.Id));
-
-                textBoxLogin.Text = _user.LoginName;
-                textBoxFirstName.Text = _user.FirstName;
-                textBoxLastName.Text = _user.LastName;
-                textBoxPassword.Text = _user.Password;
-                textBoxRepeatPassword.Text = _user.Password;
-            }
-            else
-            {
-                _isInEditMode = false;
-            }
-
-            return base.ShowDialog();
+            _userItemPresenter.AcceptChanges();
         }
 
         public User User => new User()
         {
-            Id = _user?.Id ?? 0,
+            Id = PassedUser?.Id ?? 0,
             LoginName = textBoxLogin.Text.Trim(),
             FirstName = textBoxFirstName.Text.Trim(),
             LastName = textBoxLastName.Text.Trim(),

@@ -5,8 +5,30 @@ namespace Elrob.Terminal.View.Interfaces.Item
 {
     public interface IUserItemView
     {
-        DialogResult ShowDialog(User user);
+        DialogResult ShowDialog();
 
         User User { get; }
+
+        bool IsInEditMode { get; set; }
+
+        User PassedUser { get; set; }
+
+        ErrorProvider LoginNameErrorProvider { get; }
+
+        ErrorProvider PasswordErrorProvider { get; }
+
+        ComboBox ComboBoxGroup { get; }
+
+        TextBox TextBoxLogin { get; }
+
+        TextBox TextBoxFirstName { get; }
+
+        TextBox TextBoxLastName { get; }
+
+        TextBox TextBoxPassword { get; }
+
+        TextBox TextBoxRepeatPassword { get; }
+
+        DialogResult DialogResult { get; set; }
     }
 }

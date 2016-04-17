@@ -4,6 +4,7 @@ using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.View.Interfaces.Item;
+using Ninject;
 
 namespace Elrob.Terminal.Presenter.Implementation.Item
 {
@@ -33,12 +34,46 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
 
         public DialogResult ShowDialog(Place place)
         {
-            return _placeItemView.ShowDialog(place);
+            _placeItemView.PassedPlace = place;
+            _placeItemView.NameErrorProvider.Clear();
+
+            if (_placeItemView.PassedPlace != null)
+            {
+                _placeItemView.IsInEditMode = true;
+                _placeItemView.TextBoxName.Text = _placeItemView.PassedPlace.Name;
+            }
+            else
+            {
+                _placeItemView.IsInEditMode = false;
+            }
+            
+            return _placeItemView.ShowDialog();
         }
 
-        public bool IsPlaceExist(string placeName)
+        public void AcceptChanges()
         {
-            return _placeItemModel.IsPlaceExist(placeName);
+            var placeExist = _placeItemModel.IsPlaceExist(_placeItemView.Place.Name);
+
+            if (placeExist)
+            {
+                _placeItemView.NameErrorProvider.SetError(_placeItemView.TextBoxName, "Placówka z taką nazwą już istnieje!");
+                return;
+            }
+            else
+            {
+                _placeItemView.NameErrorProvider.Clear();
+            }
+
+            if (_placeItemView.IsInEditMode)
+            {
+                _placeItemModel.UpdatePlace(_placeItemView.Place);
+            }
+            else
+            {
+                _placeItemModel.AddPlace(_placeItemView.Place);
+            }
+
+            _placeItemView.DialogResult = DialogResult.OK;
         }
     }
 }

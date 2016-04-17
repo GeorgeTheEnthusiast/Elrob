@@ -7,6 +7,16 @@ namespace Elrob.Terminal.View.Interfaces.Item
     {
         Order Order { get; }
 
-        DialogResult ShowDialog(Order order);
+        DialogResult ShowDialog();
+
+        Order PassedOrder { get; set; }
+
+        TextBox TextBoxName { get; }
+
+        ErrorProvider NameErrorProvider { get; }
+
+        bool IsInEditMode { get; set; }
+
+        DialogResult DialogResult { get; set; }
     }
 }

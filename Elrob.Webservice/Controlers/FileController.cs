@@ -21,16 +21,12 @@ namespace Elrob.Webservice.Controlers
 
         public string SaveFile(byte[] fileBytes, string fileName)
         {
+            fileName = string.Format("{0}_{1}", fileName, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
             string resultFilePath = Path.Combine(_configurationManager.ExcelOutputDir, fileName);
 
             if (!Directory.Exists(_configurationManager.ExcelOutputDir))
             {
                 Directory.CreateDirectory(_configurationManager.ExcelOutputDir);
-            }
-
-            if (File.Exists(resultFilePath))
-            {
-                throw new FaultException<FileWithThatNameAlreadyExistException>(new FileWithThatNameAlreadyExistException(resultFilePath));
             }
 
             using (var stream = new FileStream(resultFilePath, FileMode.Create, FileAccess.Write))

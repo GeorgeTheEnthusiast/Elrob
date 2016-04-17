@@ -10,5 +10,15 @@ namespace Elrob.Terminal.View.Interfaces.Main
         DialogResult ShowDialog();
 
         CustomBindingList<Group> Groups { get; set; }
+
+        DataGridView DataGridViewGroups { get; }
+
+        Button ButtonEdit { get; }
+
+        Button ButtonAdd { get; }
+
+        Button ButtonDelete { get; }
+
+        Button ButtonPermissionGroup { get; }
     }
 }

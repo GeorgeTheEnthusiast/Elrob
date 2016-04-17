@@ -7,6 +7,6 @@ namespace Elrob.Terminal.Presenter.Interfaces.Item
     {
         DialogResult ShowDialog(Material material);
 
-        void AcceptChanges(bool IsInEditMode);
+        void AcceptChanges();
     }
 }

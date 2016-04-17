@@ -5,8 +5,20 @@ namespace Elrob.Terminal.View.Interfaces.Item
 {
     public interface IOrderProgressItemView
     {
-        DialogResult ShowDialog(OrderContent orderContent, OrderProgress OrderProgress);
+        DialogResult ShowDialog();
 
         OrderProgress OrderProgress { get; }
+
+        OrderProgress PassedOrderProgress { get; set; }
+
+        OrderContent PassedOrderContent { get; set; }
+
+        bool IsInEditMode { get; set; }
+
+        NumericUpDown NumericUpDownCompleted { get; }
+
+        DateTimePicker DateTimePickerTimeSpend { get; }
+
+        DialogResult DialogResult { get; set; }
     }
 }

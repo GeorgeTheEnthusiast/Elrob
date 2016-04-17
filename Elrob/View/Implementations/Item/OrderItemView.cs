@@ -14,9 +14,13 @@ namespace Elrob.Terminal.View.Implementations.Item
     {
         private readonly IOrderItemPresenter _orderItemPresenter;
 
-        private bool _isInEditMode;
+        public Order PassedOrder { get; set; }
 
-        private Order _order;
+        public TextBox TextBoxName => textBoxName;
+
+        public ErrorProvider NameErrorProvider => nameErrorProvider;
+
+        public bool IsInEditMode { get; set; }
 
         public OrderItemView()
         {
@@ -28,57 +32,17 @@ namespace Elrob.Terminal.View.Implementations.Item
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
-            Close();
         }
 
         private void buttonAccept_Click(object sender, System.EventArgs e)
         {
-            var orderExists = _orderItemPresenter.IsOrderExist(Order.Name);
-
-            if (orderExists)
-            {
-                nameErrorProvider.SetError(textBoxName, "Zamówienie z taką nazwą już istnieje!");
-                return;
-            }
-            else
-            {
-                nameErrorProvider.Clear();
-            }
-
-            if (_isInEditMode)
-            {
-                _orderItemPresenter.UpdateOrder(Order);
-            }
-            else
-            {
-                _orderItemPresenter.AddOrder(Order);
-            }
-
-            DialogResult = DialogResult.OK;
+            _orderItemPresenter.AcceptChanges();
         }
 
         public Order Order => new Order()
         {
             Name = textBoxName.Text.Trim(),
-            Id = _order?.Id ?? 0
+            Id = PassedOrder?.Id ?? 0
         };
-
-        public DialogResult ShowDialog(Order order)
-        {
-            _order = order;
-            nameErrorProvider.Clear();
-
-            if (_order != null)
-            {
-                _isInEditMode = true;
-                textBoxName.Text = _order.Name;
-            }
-            else
-            {
-                _isInEditMode = false;
-            }
-
-            return base.ShowDialog();
-        }
     }
 }

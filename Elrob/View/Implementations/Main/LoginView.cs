@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Forms;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Main;
 using Elrob.Terminal.Presenter;

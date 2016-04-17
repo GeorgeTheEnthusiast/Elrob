@@ -5,12 +5,18 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
 {
     public interface IGroupPresenter
     {
-        List<Group> GetAllGroups();
-
-        bool DeleteGroup(Group group);
-
         void ShowDialog();
 
         void RefreshData();
+
+        void ShowGroupEditForm();
+
+        void ShowGroupAddForm();
+
+        void ShowPermissionGroupForm();
+
+        void DeleteGroup();
+
+        void SetPermissions();
     }
 }

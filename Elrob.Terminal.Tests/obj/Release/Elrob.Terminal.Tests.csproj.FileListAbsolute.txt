@@ -1,0 +1,9 @@
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Release\Elrob.Terminal.Tests.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Release\Elrob.Terminal.Tests.pdb
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Release\NSubstitute.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Release\nunit.framework.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Release\NSubstitute.xml
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Release\nunit.framework.xml
+d:\repo\Elrob\Elrob.Terminal.Tests\obj\Release\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
+d:\repo\Elrob\Elrob.Terminal.Tests\obj\Release\Elrob.Terminal.Tests.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\obj\Release\Elrob.Terminal.Tests.pdb

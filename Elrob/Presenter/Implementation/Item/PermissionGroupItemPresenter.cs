@@ -25,18 +25,6 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
         
         public void MergePermissionGroup()
         {
-//            List<Permission> permissions = new List<Permission>();
-//
-//            for (int i = 0; i < _permissionGroupItemView.Permissions.Count; i++)
-//            {
-//                bool itemChecked = _permissionGroupItemView.CheckedListBoxPermissions.GetItemCheckState(i) == CheckState.Checked;
-//
-//                if (itemChecked)
-//                {
-//                    permissions.Add(_permissionGroupItemView.Permissions.First(x => x.Id));
-//                }
-//            }
-
             var checkedItems = _permissionGroupItemView.CheckedListBoxPermissions.CheckedItems.Cast<Permission>().ToList();
 
             _permissionGroupItemModel.MergePermissionGroup(_permissionGroupItemView.Group, checkedItems);
@@ -44,6 +32,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
 
         public DialogResult ShowDialog(Group group, List<PermissionGroup> permissionGroups)
         {
+            _permissionGroupItemView.Group = group;
             _permissionGroupItemView.Permissions.Clear();
             var items = _permissionGroupItemModel.GetAllPermissions();
 
@@ -58,7 +47,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
                 _permissionGroupItemView.CheckedListBoxPermissions.SetItemChecked(i, existInGroup);
             }
 
-            return _permissionGroupItemView.ShowDialog(group);
+            return _permissionGroupItemView.ShowDialog();
         }
     }
 }
