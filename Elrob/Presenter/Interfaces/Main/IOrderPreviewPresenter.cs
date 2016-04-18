@@ -7,14 +7,14 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
 {
     public interface IOrderPreviewPresenter
     {
-        bool SaveOrder(Order order, List<OrderContent> orderContents);
-
-        void AddOrderContent(OrderContent orderContent);
-
-        void UpdateOrderContent(OrderContent orderContent);
-
-        void DeleteOrderContent(OrderContent orderContent);
-
         DialogResult ShowDialog(OrderPreviewViewModel orderPreviewViewModel);
+
+        void ShowAddForm();
+
+        void ShowEditForm();
+
+        void DeleteOrderContent();
+
+        void AcceptChanges();
     }
 }

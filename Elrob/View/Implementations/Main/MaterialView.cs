@@ -18,7 +18,10 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class MaterialView : Form, IMaterialView
     {
         private readonly IMaterialPresenter _materialPresenter;
-        private IMaterialItemPresenter _materialItemPresenter;
+
+        public CustomBindingList<Material> Materials { get; set; }
+
+        public DataGridView DataGridViewMaterials => dataGridViewMaterials;
 
         public MaterialView()
         {
@@ -36,55 +39,22 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
-
-        public CustomBindingList<Material> Materials { get; set; }
-
+        
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _materialItemPresenter = Program.Kernel.Get<IMaterialItemPresenter>();
-            _materialItemPresenter.ShowDialog(null);
-            _materialPresenter.RefreshData();
+            _materialPresenter.ShowAddForm();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<Material>(dataGridViewMaterials);
-
-            if (selectedRow == default(Material))
-            {
-                return;
-            }
-
-            _materialItemPresenter = Program.Kernel.Get<IMaterialItemPresenter>();
-            _materialItemPresenter.ShowDialog(selectedRow);
-            _materialPresenter.RefreshData();
+            _materialPresenter.ShowEditForm();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<Material>(dataGridViewMaterials);
-
-            if (selectedRow == default(Material))
-            {
-                return;
-            }
-
-            if (MessageBox.Show(
-                "Usunięcie tego materiału spowoduje również usunięcie jego wpisów w zamówieniach. Czy aby napewno chcesz usunąć ten materiał?",
-                "Potwierdź",
-                MessageBoxButtons.YesNo) ==
-                DialogResult.Yes)
-            {
-                _materialPresenter.DeleteMaterial(selectedRow);
-                _materialPresenter.RefreshData();
-            }
-        }
-
-        public DialogResult ShowDialog()
-        {
-            return base.ShowDialog();
+            _materialPresenter.DeleteMaterial();
         }
 
         private void dataGridViewMaterials_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

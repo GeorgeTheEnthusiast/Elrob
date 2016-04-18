@@ -30,7 +30,6 @@ namespace Elrob.Webservice.Tests
                 FileBytes = new byte[0],
                 FileName = "excelFile.xlsx"
             };
-            int i = 0;
 
             _fileController.SaveFile(importDataRequest.FileBytes, importDataRequest.FileName).Returns(@"..\..\docs\Zamówienie nr 55.xlsx");
 

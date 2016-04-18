@@ -58,9 +58,19 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
                 foreach (var content in orderContent)
                 {
+                    var orderProgress = session.QueryOver<domain.OrderProgress>()
+                    .Where(x => x.OrderContent.Id == content.Id)
+                    .List()
+                    .ToList();
+
+                    foreach (var progress in orderProgress)
+                    {
+                        session.Delete(progress);
+                    }
+
                     session.Delete(content);
                 }
-
+                
                 var order = session.QueryOver<domain.Order>()
                     .Where(x => x.Id == orderDomain.Id)
                     .SingleOrDefault();

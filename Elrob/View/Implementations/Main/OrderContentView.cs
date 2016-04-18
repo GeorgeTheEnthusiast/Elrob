@@ -20,7 +20,6 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class OrderContentView : Form, IOrderContentView
     {
         private readonly IOrderContentPresenter _orderContentPresenter;
-        private IOrderContentItemPresenter _orderContentItemPresenter;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public OrderContentView()
@@ -32,19 +31,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             dataGridViewOrderContent.AutoGenerateColumns = false;
             dataGridViewOrderContent.DataSource = OrderContents = new CustomBindingList<OrderContent>();
 
-            buttonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderContentView_EditRows);
-            buttonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderContentView_AddRows);
-            buttonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderContentView_DeleteRows);
-        }
-
-        public DialogResult ShowDialog(Order order, Place place)
-        {
-            textBoxOrderName.Text = order.Name;
-            textBoxPlace.Text = place.Name;
-            Order = order;
-            Place = place;
-
-            return base.ShowDialog();
+            _orderContentPresenter.SetPermissions();
         }
 
         public CustomBindingList<OrderContent> OrderContents { get; set; }
@@ -53,53 +40,36 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         public Place Place { get; set; }
 
+        public TextBox TextBoxOrderName => textBoxOrderName;
+
+        public TextBox TextBoxPlace => textBoxPlace;
+
+        public Button ButtonEdit => buttonEdit;
+
+        public Button ButtonAdd => buttonAdd;
+
+        public Button ButtonDelete => buttonDelete;
+
+        public DataGridView DataGridViewOrderContent => dataGridViewOrderContent;
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _orderContentItemPresenter = Program.Kernel.Get<IOrderContentItemPresenter>();
-            var dialogResult = _orderContentItemPresenter.ShowDialog(Order, null, Place);
-
-            if (dialogResult == DialogResult.OK)
-            {
-                _orderContentPresenter.AddOrderContent(_orderContentItemPresenter.OrderContent);
-                _orderContentPresenter.RefreshData(Order, Place);
-            }
+            _orderContentPresenter.ShowAddForm();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<OrderContent>(dataGridViewOrderContent);
-
-            if (selectedRow == default(OrderContent))
-            {
-                return;
-            }
-
-            _orderContentItemPresenter = Program.Kernel.Get<IOrderContentItemPresenter>();
-            var dialogResult = _orderContentItemPresenter.ShowDialog(Order, selectedRow, Place);
-
-            if (dialogResult == DialogResult.OK)
-            {
-                _orderContentPresenter.UpdateOrderContent(_orderContentItemPresenter.OrderContent);
-                _orderContentPresenter.RefreshData(Order, Place);
-            }
+            _orderContentPresenter.ShowEditForm();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<OrderContent>(dataGridViewOrderContent);
-
-            if (selectedRow == default(OrderContent))
-            {
-                return;
-            }
-
-            _orderContentPresenter.DeleteOrderContent(selectedRow);
-            _orderContentPresenter.RefreshData(Order, Place);
+            _orderContentPresenter.DeleteOrderContent();
         }
 
         private void dataGridViewOrderContent_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

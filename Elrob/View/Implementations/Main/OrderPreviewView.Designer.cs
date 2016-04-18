@@ -226,7 +226,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.textBoxOrderName.Name = "textBoxOrderName";
             this.textBoxOrderName.Size = new System.Drawing.Size(1242, 38);
             this.textBoxOrderName.TabIndex = 4;
-            this.textBoxOrderName.TextChanged += new System.EventHandler(this.textBoxOrderName_TextChanged_1);
+            this.textBoxOrderName.TextChanged += new System.EventHandler(this.textBoxOrderName_TextChanged);
             // 
             // buttonAdd
             // 

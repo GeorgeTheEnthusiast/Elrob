@@ -22,5 +22,15 @@ namespace Elrob.Terminal.View.Interfaces.Main
         TextBox TextBoxToComplete { get; }
 
         TextBox TextBoxCompletedSum { get; }
+
+        Button ButtonEdit { get; }
+
+        Button ButtonAdd { get; }
+
+        Button ButtonDelete { get; }
+
+        DataGridViewTextBoxColumn DataGridViewUserColumn { get; }
+
+        DataGridView DataGridViewOrderProgress { get; }
     }
 }

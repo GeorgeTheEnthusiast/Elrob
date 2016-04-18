@@ -1,0 +1,10 @@
+2016-04-18 19:12:33	This log contains information about the import schema operation into project 'Elrob.Database' on computer 'PEDZEL-KOMPUTER' by user 'Pedzel'.
+2016-04-18 19:12:33	Deserializing model
+2016-04-18 19:12:34	Resolving model
+2016-04-18 19:12:35	Visiting imported model for types
+2016-04-18 19:12:35	Scanning project for duplicate elements
+2016-04-18 19:12:35	Finished duplicate element processing
+2016-04-18 19:12:36	Processing extra files
+2016-04-18 19:12:36	Finished importing Data-tier Application file.
+2016-04-18 19:12:36	A summary of the import was saved to the following location: D:\repo\Elrob\Elrob.Database\Import Schema Logs\Elrob.Database_20160418051233.log
+2016-04-18 19:12:36	Click Finish to continue...

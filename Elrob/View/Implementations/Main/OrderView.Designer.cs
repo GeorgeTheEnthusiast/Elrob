@@ -47,6 +47,8 @@ namespace Elrob.Terminal.View.Implementations.Main
             // 
             // dataGridViewOrders
             // 
+            this.dataGridViewOrders.AllowUserToAddRows = false;
+            this.dataGridViewOrders.AllowUserToDeleteRows = false;
             this.dataGridViewOrders.AllowUserToOrderColumns = true;
             this.dataGridViewOrders.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 

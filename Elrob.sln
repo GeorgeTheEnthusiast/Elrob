@@ -14,6 +14,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elrob.Webservice", "Elrob.W
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Elrob.Webservice.Tests", "Elrob.Webservice.Tests\Elrob.Webservice.Tests.csproj", "{BFF0F535-6011-4CFA-8EFA-E88231974BFF}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Elrob.Database", "Elrob.Database\Elrob.Database.sqlproj", "{6A02F036-498D-4623-9C4B-139AD33127DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +38,12 @@ Global
 		{BFF0F535-6011-4CFA-8EFA-E88231974BFF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BFF0F535-6011-4CFA-8EFA-E88231974BFF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BFF0F535-6011-4CFA-8EFA-E88231974BFF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A02F036-498D-4623-9C4B-139AD33127DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A02F036-498D-4623-9C4B-139AD33127DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A02F036-498D-4623-9C4B-139AD33127DF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6A02F036-498D-4623-9C4B-139AD33127DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A02F036-498D-4623-9C4B-139AD33127DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A02F036-498D-4623-9C4B-139AD33127DF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

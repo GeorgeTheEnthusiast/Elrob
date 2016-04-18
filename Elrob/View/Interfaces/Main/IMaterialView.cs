@@ -10,5 +10,7 @@ namespace Elrob.Terminal.View.Interfaces.Main
         DialogResult ShowDialog();
 
         CustomBindingList<Material> Materials { get; set; }
+
+        DataGridView DataGridViewMaterials { get; }
     }
 }

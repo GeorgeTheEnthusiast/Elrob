@@ -18,7 +18,6 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class PlaceView : Form, IPlaceView
     {
         private readonly IPlacePresenter _placePresenter;
-        private IPlaceItemPresenter _placeItemPresenter;
 
         public PlaceView()
         {
@@ -29,62 +28,37 @@ namespace Elrob.Terminal.View.Implementations.Main
             dataGridViewPlaces.AutoGenerateColumns = false;
             dataGridViewPlaces.DataSource = Places = new CustomBindingList<Place>();
 
-            buttonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_EditRows);
-            buttonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_AddRows);
-            buttonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_DeleteRows);
+            _placePresenter.SetPermissions();
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
 
         public CustomBindingList<Place> Places { get; set; }
 
+        public DataGridView DataGridViewPlaces => dataGridViewPlaces;
+
+        public Button ButtonEdit => buttonEdit;
+
+        public Button ButtonAdd => buttonAdd;
+
+        public Button ButtonDelete => buttonDelete;
+
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _placeItemPresenter = Program.Kernel.Get<IPlaceItemPresenter>();
-            _placeItemPresenter.ShowDialog(null);
-            _placePresenter.RefreshData();
+            _placePresenter.ShowAddForm();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<Place>(dataGridViewPlaces);
-
-            if (selectedRow == default(Place))
-            {
-                return;
-            }
-
-            _placeItemPresenter = Program.Kernel.Get<IPlaceItemPresenter>();
-            _placeItemPresenter.ShowDialog(selectedRow);
-            _placePresenter.RefreshData();
+            _placePresenter.ShowEditForm();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<Place>(dataGridViewPlaces);
-
-            if (selectedRow == default(Place))
-            {
-                return;
-            }
-
-            if (MessageBox.Show(
-                "Usunięcie tej placówki spowoduje również usunięcie jej wpisów w zamówieniach. Czy aby napewno chcesz usunąć tą placówkę?",
-                "Potwierdź",
-                MessageBoxButtons.YesNo) ==
-                DialogResult.Yes)
-            {
-                _placePresenter.DeletePlace(selectedRow);
-                _placePresenter.RefreshData();
-            }
-        }
-
-        public DialogResult ShowDialog()
-        {
-            return base.ShowDialog();
+            _placePresenter.DeletePlace();
         }
 
         private void dataGridViewPlaces_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)

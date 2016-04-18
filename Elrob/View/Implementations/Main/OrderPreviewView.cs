@@ -21,7 +21,6 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class OrderPreviewView : Form, IOrderPreviewView
     {
         private readonly IOrderPreviewPresenter _orderPreviewPresenter;
-        private IOrderPreviewItemPresenter _orderPreviewItemPresenter;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
 
         public OrderPreviewView()
@@ -34,25 +33,6 @@ namespace Elrob.Terminal.View.Implementations.Main
             dataGridViewOrderContent.DataSource = OrderContents = new CustomBindingList<OrderContent>();
         }
 
-        public DialogResult ShowDialog(OrderPreviewViewModel orderViewModel)
-        {
-            foreach (var orderContent in orderViewModel.OrderContents)
-            {
-                OrderContents.Add(orderContent);
-            }
-            
-            if (orderViewModel.Order != null)
-            {
-                textBoxOrderName.Text = orderViewModel.Order.Name;
-                Order = orderViewModel.Order;
-            }
-
-            Materials = orderViewModel.Materials;
-            Places = orderViewModel.Places;
-
-            return ShowDialog();
-        }
-
         public CustomBindingList<OrderContent> OrderContents { get; set; }
 
         public Order Order { get; set; }
@@ -61,56 +41,28 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         public List<Place> Places { get; set; }
 
+        public TextBox TextBoxOrderName => textBoxOrderName;
+
+        public DataGridView DataGridViewOrderContent => dataGridViewOrderContent;
+
         private void buttonAccept_Click(object sender, EventArgs e)
         {
-            Order.Name = textBoxOrderName.Text.Trim();
-            bool saveResult = _orderPreviewPresenter.SaveOrder(Order, OrderContents.ToList());
-
-            if (saveResult)
-            {
-                Close();
-            }
+            _orderPreviewPresenter.AcceptChanges();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _orderPreviewItemPresenter = Program.Kernel.Get<IOrderPreviewItemPresenter>();
-            var dialogResult = _orderPreviewItemPresenter.ShowDialog(Order, null, Materials, Places);
-
-            if (dialogResult == DialogResult.OK)
-            {
-                _orderPreviewPresenter.AddOrderContent(_orderPreviewItemPresenter.OrderContent);
-            }
+            _orderPreviewPresenter.ShowAddForm();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<OrderContent>(dataGridViewOrderContent);
-
-            if (selectedRow == default(OrderContent))
-            {
-                return;
-            }
-
-            _orderPreviewItemPresenter = Program.Kernel.Get<IOrderPreviewItemPresenter>();
-            var dialogResult = _orderPreviewItemPresenter.ShowDialog(Order, selectedRow, Materials, Places);
-
-            if (dialogResult == DialogResult.OK)
-            {
-                _orderPreviewPresenter.UpdateOrderContent(_orderPreviewItemPresenter.OrderContent);
-            }
+            _orderPreviewPresenter.ShowEditForm();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<OrderContent>(dataGridViewOrderContent);
-
-            if (selectedRow == default(OrderContent))
-            {
-                return;
-            }
-
-            _orderPreviewPresenter.DeleteOrderContent(selectedRow);
+            _orderPreviewPresenter.DeleteOrderContent();
         }
 
         private void dataGridViewOrderContent_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -119,11 +71,6 @@ namespace Elrob.Terminal.View.Implementations.Main
         }
 
         private void textBoxOrderName_TextChanged(object sender, EventArgs e)
-        {
-            Helpers.textBox_FitHeightToText(sender, e);
-        }
-
-        private void textBoxOrderName_TextChanged_1(object sender, EventArgs e)
         {
             Helpers.textBox_FitHeightToText(sender, e);
         }

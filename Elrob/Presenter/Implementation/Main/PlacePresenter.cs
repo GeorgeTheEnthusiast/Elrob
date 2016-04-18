@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using Elrob.Terminal.Common;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Main;
+using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Main;
 using Elrob.Terminal.View.Interfaces.Main;
+using Ninject;
 
 namespace Elrob.Terminal.Presenter.Implementation.Main
 {
@@ -11,6 +16,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
     {
         private readonly IPlaceView _placeView;
         private readonly IPlaceModel _placeModel;
+        private IPlaceItemPresenter _placeItemPresenter;
 
         public PlacePresenter(IPlaceView placeView, IPlaceModel placeModel)
         {
@@ -21,27 +27,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             _placeModel = placeModel;
         }
 
-        public List<Place> GetAllPlaces()
-        {
-            return _placeModel.GetAllPlaces();
-        }
-
-        public bool DeletePlace(Place place)
-        {
-            return _placeModel.DeletePlace(place);
-        }
-
-        public void UpdatePlace(Place place)
-        {
-            _placeModel.UpdatePlace(place);
-        }
-
-        public void AddPlace(Place place)
-        {
-            _placeModel.AddPlace(place);
-        }
-
-        public void ShowDialog()
+        public DialogResult ShowDialog()
         {
             _placeView.Places.Clear();
             var items = _placeModel.GetAllPlaces();
@@ -50,17 +36,73 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                 _placeView.Places.Add(item);
             }
 
-            _placeView.ShowDialog();
+            return _placeView.ShowDialog();
         }
 
         public void RefreshData()
         {
             _placeView.Places.Clear();
-            var items = GetAllPlaces();
+            var items = _placeModel.GetAllPlaces();
             foreach (var item in items)
             {
                 _placeView.Places.Add(item);
             }
+        }
+
+        public void ShowAddForm()
+        {
+            _placeItemPresenter = Program.Kernel.Get<IPlaceItemPresenter>();
+            var dialogResult = _placeItemPresenter.ShowDialog(null);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                RefreshData();
+            }
+        }
+
+        public void ShowEditForm()
+        {
+            var selectedRow = Helpers.GetSelectedRow<Place>(_placeView.DataGridViewPlaces);
+
+            if (selectedRow == default(Place))
+            {
+                return;
+            }
+
+            _placeItemPresenter = Program.Kernel.Get<IPlaceItemPresenter>();
+            var dialogResult = _placeItemPresenter.ShowDialog(selectedRow);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                RefreshData();
+            }
+        }
+
+        public void DeletePlace()
+        {
+            var selectedRow = Helpers.GetSelectedRow<Place>(_placeView.DataGridViewPlaces);
+
+            if (selectedRow == default(Place))
+            {
+                return;
+            }
+
+            if (MessageBox.Show(
+                "Usunięcie tej placówki spowoduje również usunięcie jej wpisów w zamówieniach. Czy aby napewno chcesz usunąć tą placówkę?",
+                "Potwierdź",
+                MessageBoxButtons.YesNo) ==
+                DialogResult.Yes)
+            {
+                _placeModel.DeletePlace(selectedRow);
+                RefreshData();
+            }
+        }
+
+        public void SetPermissions()
+        {
+            _placeView.ButtonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_EditRows);
+            _placeView.ButtonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_AddRows);
+            _placeView.ButtonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_DeleteRows);
         }
     }
 }

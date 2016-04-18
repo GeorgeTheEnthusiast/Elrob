@@ -1,0 +1,5 @@
+D:\repo\Elrob\Elrob.Database\bin\Debug\Elrob.Database.dacpac
+D:\repo\Elrob\Elrob.Database\bin\Debug\Elrob.Database.dll
+D:\repo\Elrob\Elrob.Database\bin\Debug\Elrob.Database.pdb
+D:\repo\Elrob\Elrob.Database\obj\Debug\Elrob.Database.dll
+D:\repo\Elrob\Elrob.Database\obj\Debug\Elrob.Database.pdb

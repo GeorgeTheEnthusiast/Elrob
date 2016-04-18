@@ -18,7 +18,6 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class OrderProgressView : Form, IOrderProgressView
     {
         private readonly IOrderProgressPresenter _orderProgressPresenter;
-        private IOrderProgressItemPresenter _orderProgressItemPresenter;
 
         public OrderProgressView()
         {
@@ -29,61 +28,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             dataGridViewOrderProgress.AutoGenerateColumns = false;
             dataGridViewOrderProgress.DataSource = OrderProgresses = new CustomBindingList<OrderProgress>();
 
-            buttonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_EditRows);
-            buttonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_AddRows);
-            buttonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_DeleteRows);
-            UserColumn.Visible = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_SeeWhoAddRows);
-        }
-
-        private void buttonOK_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            _orderProgressItemPresenter = Program.Kernel.Get<IOrderProgressItemPresenter>();
-            _orderProgressItemPresenter.ShowDialog(OrderContent, null);
-            _orderProgressPresenter.RefreshData();
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            var selectedRow = Helpers.GetSelectedRow<OrderProgress>(dataGridViewOrderProgress);
-
-            if (selectedRow == default(OrderProgress))
-            {
-                return;
-            }
-
-            _orderProgressItemPresenter = Program.Kernel.Get<IOrderProgressItemPresenter>();
-            _orderProgressItemPresenter.ShowDialog(OrderContent, selectedRow);
-            _orderProgressPresenter.RefreshData();
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            var selectedRow = Helpers.GetSelectedRow<OrderProgress>(dataGridViewOrderProgress);
-
-            if (selectedRow == default(OrderProgress))
-            {
-                return;
-            }
-
-            if (MessageBox.Show(
-                "Czy aby napewno chcesz usunąć ten wpis?",
-                "Potwierdź",
-                MessageBoxButtons.YesNo) ==
-                DialogResult.Yes)
-            {
-                _orderProgressPresenter.DeleteOrderProgress(selectedRow);
-                _orderProgressPresenter.RefreshData();
-            }
-        }
-
-        public DialogResult ShowDialog()
-        {
-            return base.ShowDialog();
+            _orderProgressPresenter.SetPermissions();
         }
 
         public CustomBindingList<OrderProgress> OrderProgresses { get; set; }
@@ -99,6 +44,36 @@ namespace Elrob.Terminal.View.Implementations.Main
         public TextBox TextBoxToComplete => textBoxToComplete;
 
         public TextBox TextBoxCompletedSum => _textBoxCompletedSum;
+
+        public Button ButtonEdit => buttonEdit;
+
+        public Button ButtonAdd => buttonAdd;
+
+        public Button ButtonDelete => buttonDelete;
+
+        public DataGridViewTextBoxColumn DataGridViewUserColumn => UserColumn;
+
+        public DataGridView DataGridViewOrderProgress => dataGridViewOrderProgress;
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            _orderProgressPresenter.ShowAddForm();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            _orderProgressPresenter.ShowEditForm();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            _orderProgressPresenter.DeleteOrderProgress();
+        }
 
         private void dataGridViewOrderProgress_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {

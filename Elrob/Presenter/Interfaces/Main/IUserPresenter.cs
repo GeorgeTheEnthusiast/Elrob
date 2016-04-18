@@ -13,5 +13,13 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
         DialogResult ShowDialog();
 
         void RefreshData();
+
+        void ShowAddForm();
+
+        void ShowEditForm();
+
+        void DeleteUser();
+
+        void SetPermissions();
     }
 }

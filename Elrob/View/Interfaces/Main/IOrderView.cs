@@ -7,10 +7,20 @@ namespace Elrob.Terminal.View.Interfaces.Main
 {
     public interface IOrderView
     {
-        DialogResult ShowDialog(Place place);
+        DialogResult ShowDialog();
 
         CustomBindingList<Order> Orders { get; set; }
 
         Place Place { get; set; }
+
+        Button ButtonAdd { get; }
+
+        Button ButtonEdit { get; }
+
+        Button ButtonDelete { get; }
+
+        DataGridView DataGridViewOrders { get; }
+
+        TextBox TextBoxPlace { get; }
     }
 }

@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
+using Elrob.Terminal.Common;
 using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Main;
+using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Main;
 using Elrob.Terminal.View.Interfaces.Main;
+using Ninject;
 
 namespace Elrob.Terminal.Presenter.Implementation.Main
 {
@@ -12,6 +16,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
     {
         private readonly IOrderContentView _orderContentView;
         private readonly IOrderContentModel _orderContentModel;
+        private IOrderContentItemPresenter _orderContentItemPresenter;
 
         public OrderContentPresenter(IOrderContentView orderContentView, IOrderContentModel orderContentModel)
         {
@@ -22,26 +27,16 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             _orderContentModel = orderContentModel;
         }
 
-        public void DeleteOrderContent(OrderContent orderContent)
-        {
-            _orderContentModel.DeleteOrderContent(orderContent);
-        }
-
-        public void UpdateOrderContent(OrderContent orderContent)
-        {
-            _orderContentModel.UpdateOrderContent(orderContent);
-        }
-
-        public void AddOrderContent(OrderContent orderContent)
-        {
-            _orderContentModel.AddOrderContent(orderContent);
-        }
-
-        public void ShowDialog(Order order, Place place)
+        public DialogResult ShowDialog(Order order, Place place)
         {
             RefreshData(order, place);
 
-            _orderContentView.ShowDialog(order, place);
+            _orderContentView.TextBoxOrderName.Text = order.Name;
+            _orderContentView.TextBoxPlace.Text = place.Name;
+            _orderContentView.Order = order;
+            _orderContentView.Place = place;
+
+            return _orderContentView.ShowDialog();
         }
 
         public void RefreshData(Order order, Place place)
@@ -62,6 +57,57 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             {
                 _orderContentView.OrderContents.Add(item);
             }
+        }
+
+        public void ShowAddForm()
+        {
+            _orderContentItemPresenter = Program.Kernel.Get<IOrderContentItemPresenter>();
+            var dialogResult = _orderContentItemPresenter.ShowDialog(_orderContentView.Order, null, _orderContentView.Place);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                _orderContentModel.AddOrderContent(_orderContentItemPresenter.OrderContent);
+                RefreshData(_orderContentView.Order, _orderContentView.Place);
+            }
+        }
+
+        public void ShowEditForm()
+        {
+            var selectedRow = Helpers.GetSelectedRow<OrderContent>(_orderContentView.DataGridViewOrderContent);
+
+            if (selectedRow == default(OrderContent))
+            {
+                return;
+            }
+
+            _orderContentItemPresenter = Program.Kernel.Get<IOrderContentItemPresenter>();
+            var dialogResult = _orderContentItemPresenter.ShowDialog(_orderContentView.Order, selectedRow, _orderContentView.Place);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                _orderContentModel.UpdateOrderContent(_orderContentItemPresenter.OrderContent);
+                RefreshData(_orderContentView.Order, _orderContentView.Place);
+            }
+        }
+
+        public void DeleteOrderContent()
+        {
+            var selectedRow = Helpers.GetSelectedRow<OrderContent>(_orderContentView.DataGridViewOrderContent);
+
+            if (selectedRow == default(OrderContent))
+            {
+                return;
+            }
+
+            _orderContentModel.DeleteOrderContent(selectedRow);
+            RefreshData(_orderContentView.Order, _orderContentView.Place);
+        }
+
+        public void SetPermissions()
+        {
+            _orderContentView.ButtonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderContentView_EditRows);
+            _orderContentView.ButtonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderContentView_AddRows);
+            _orderContentView.ButtonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderContentView_DeleteRows);
         }
     }
 }

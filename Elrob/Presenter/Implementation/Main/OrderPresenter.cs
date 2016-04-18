@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using Elrob.Terminal.Common;
 using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Main;
 using Elrob.Terminal.Presenter.Interfaces.Choose;
+using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Main;
 using Elrob.Terminal.View.Interfaces.Main;
 using Ninject;
@@ -16,6 +18,8 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         private readonly IOrderView _orderView;
         private readonly IOrderModel _orderModel;
         private IPlaceChoosePresenter _placeChoosePresenter;
+        private IOrderItemPresenter _orderItemPresenter;
+        private IOrderContentPresenter _orderContentPresenter;
 
         public OrderPresenter(IOrderView orderView, IOrderModel orderModel)
         {
@@ -24,21 +28,6 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
 
             _orderView = orderView;
             _orderModel = orderModel;
-        }
-
-        public void DeleteOrder(Order order)
-        {
-            _orderModel.DeleteOrder(order);
-        }
-
-        public void UpdateOrder(Order order)
-        {
-            _orderModel.UpdateOrder(order);
-        }
-
-        public void AddOrder(Order order)
-        {
-            _orderModel.AddOrder(order);
         }
 
         public void ShowDialog()
@@ -50,7 +39,10 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             {
                 RefreshData(_placeChoosePresenter.ChoosedPlace);
 
-                _orderView.ShowDialog(_placeChoosePresenter.ChoosedPlace);
+                _orderView.TextBoxPlace.Text = _placeChoosePresenter.ChoosedPlace.Name;
+                _orderView.Place = _placeChoosePresenter.ChoosedPlace;
+
+                _orderView.ShowDialog();
             }
         }
 
@@ -72,6 +64,80 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             foreach (var item in items)
             {
                 _orderView.Orders.Add(item);
+            }
+        }
+
+        public void SetPermissions()
+        {
+            _orderView.ButtonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_EditRows);
+            _orderView.ButtonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_AddRows);
+            _orderView.ButtonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_DeleteRows);
+        }
+
+        public void ShowAddForm()
+        {
+            _orderItemPresenter = Program.Kernel.Get<IOrderItemPresenter>();
+            var dialogResult = _orderItemPresenter.ShowDialog(null);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                RefreshData(_orderView.Place);
+            }
+        }
+
+        public void ShowEditForm()
+        {
+            var selectedRow = Helpers.GetSelectedRow<Order>(_orderView.DataGridViewOrders);
+
+            if (selectedRow == default(Order))
+            {
+                return;
+            }
+
+            _orderItemPresenter = Program.Kernel.Get<IOrderItemPresenter>();
+            var dialogResult = _orderItemPresenter.ShowDialog(selectedRow);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                RefreshData(_orderView.Place);
+            }
+        }
+
+        public void DeleteOrder()
+        {
+            var selectedRow = Helpers.GetSelectedRow<Order>(_orderView.DataGridViewOrders);
+
+            if (selectedRow == default(Order))
+            {
+                return;
+            }
+
+            if (MessageBox.Show(
+                "Usunięcie zamówienia spowoduje również usunięcie jego całej zawartości oraz raportów z przepracowanych godzin. Czy aby napewno chcesz usunąć te zamówienia?",
+                "Potwierdź",
+                MessageBoxButtons.YesNo) ==
+                DialogResult.Yes)
+            {
+                _orderModel.DeleteOrder(selectedRow);
+                RefreshData(_orderView.Place);
+            }
+        }
+
+        public void ShowOrderContentForm()
+        {
+            var selectedRow = Helpers.GetSelectedRow<Order>(_orderView.DataGridViewOrders);
+
+            if (selectedRow == default(Order))
+            {
+                return;
+            }
+
+            _orderContentPresenter = Program.Kernel.Get<IOrderContentPresenter>();
+            var dialogResult = _orderContentPresenter.ShowDialog(selectedRow, _orderView.Place);
+
+            if (dialogResult == DialogResult.OK)
+            {
+                RefreshData(_orderView.Place);
             }
         }
     }

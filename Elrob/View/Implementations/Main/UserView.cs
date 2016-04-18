@@ -19,7 +19,6 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class UserView : Form, IUserView
     {
         private readonly IUserPresenter _userPresenter;
-        private IUserItemPresenter _userItemPresenter;
 
         public UserView()
         {
@@ -30,72 +29,39 @@ namespace Elrob.Terminal.View.Implementations.Main
             dataGridViewUsers.AutoGenerateColumns = false;
             dataGridViewUsers.DataSource = Users = new CustomBindingList<User>();
 
-            buttonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_EditRows);
-            buttonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_AddRows);
-            buttonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_DeleteRows);
-        }
-
-        private void buttonOK_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            _userItemPresenter = Program.Kernel.Get<IUserItemPresenter>();
-            _userItemPresenter.ShowDialog(null);
-            _userPresenter.RefreshData();
-        }
-
-        private void buttonEdit_Click(object sender, EventArgs e)
-        {
-            var selectedRow = Helpers.GetSelectedRow<User>(dataGridViewUsers);
-
-            if (selectedRow == default(User))
-            {
-                return;
-            }
-
-            _userItemPresenter = Program.Kernel.Get<IUserItemPresenter>();
-            _userItemPresenter.ShowDialog(selectedRow);
-            _userPresenter.RefreshData();
-        }
-
-        private void buttonDelete_Click(object sender, EventArgs e)
-        {
-            var selectedRow = Helpers.GetSelectedRow<User>(dataGridViewUsers);
-
-            if (selectedRow == default(User))
-            {
-                return;
-            }
-
-            if (MessageBox.Show(
-                "Czy aby napewno chcesz usunąć tego użytkownika?",
-                "Potwierdź",
-                MessageBoxButtons.YesNo) ==
-                DialogResult.Yes)
-            {
-                bool result = _userPresenter.DeleteUser(selectedRow);
-
-                if (result)
-                {
-                    _userPresenter.RefreshData();
-                }
-                else
-                {
-                    MessageBox.Show("Użytkownik ten zaraportował już pracę, nie da się go usunąć!");
-                }
-            }
-        }
-
-        public DialogResult ShowDialog()
-        {
-            return base.ShowDialog();
+            _userPresenter.SetPermissions();
         }
 
         public CustomBindingList<User> Users { get; set; }
 
+        public DataGridView DataGridViewUsers => dataGridViewUsers;
+
+        public Button ButtonEdit => buttonEdit;
+
+        public Button ButtonAdd => buttonAdd;
+
+        public Button ButtonDelete => buttonDelete;
+
+        private void buttonOK_Click(object sender, EventArgs e)
+        {
+            DialogResult = DialogResult.OK;
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            _userPresenter.ShowAddForm();
+        }
+
+        private void buttonEdit_Click(object sender, EventArgs e)
+        {
+            _userPresenter.ShowEditForm();
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            _userPresenter.DeleteUser();
+        }
+        
         private void dataGridViewUsers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Helpers.SortDataGridView(dataGridViewUsers, e.ColumnIndex);

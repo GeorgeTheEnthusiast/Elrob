@@ -18,8 +18,6 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class OrderView : Form, IOrderView
     {
         private readonly IOrderPresenter _orderPresenter;
-        private IOrderContentPresenter _orderContentPresenter;
-        private IOrderItemPresenter _orderItemPresenter;
 
         public OrderView()
         {
@@ -29,82 +27,47 @@ namespace Elrob.Terminal.View.Implementations.Main
 
             dataGridViewOrders.AutoGenerateColumns = false;
             dataGridViewOrders.DataSource = Orders = new CustomBindingList<Order>();
-            
-            buttonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_EditRows);
-            buttonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_AddRows);
-            buttonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_DeleteRows);
+
+            _orderPresenter.SetPermissions();
         }
 
         private void buttonAccept_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
 
         public CustomBindingList<Order> Orders { get; set; }
 
         public Place Place { get; set; }
 
+        public Button ButtonAdd => buttonAdd;
+
+        public Button ButtonEdit => buttonEdit;
+
+        public Button ButtonDelete => buttonDelete;
+
+        public TextBox TextBoxPlace => textBoxPlace;
+
+        public DataGridView DataGridViewOrders => dataGridViewOrders;
+
         private void buttonOrderContent_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<Order>(dataGridViewOrders);
-
-            if (selectedRow == default(Order))
-            {
-                return;
-            }
-
-            _orderContentPresenter = Program.Kernel.Get<IOrderContentPresenter>();
-            _orderContentPresenter.ShowDialog(selectedRow, Place);
-            _orderPresenter.RefreshData(Place);
+            _orderPresenter.ShowOrderContentForm();
         }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            _orderItemPresenter = Program.Kernel.Get<IOrderItemPresenter>();
-            _orderItemPresenter.ShowDialog(null);
-            _orderPresenter.RefreshData(Place);
+            _orderPresenter.ShowAddForm();
         }
 
         private void buttonEdit_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<Order>(dataGridViewOrders);
-
-            if (selectedRow == default(Order))
-            {
-                return;
-            }
-
-            _orderItemPresenter = Program.Kernel.Get<IOrderItemPresenter>();
-            _orderItemPresenter.ShowDialog(selectedRow);
-            _orderPresenter.RefreshData(Place);
+            _orderPresenter.ShowEditForm();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<Order>(dataGridViewOrders);
-
-            if (selectedRow == default(Order))
-            {
-                return;
-            }
-
-            if (MessageBox.Show(
-                "Usunięcie zamówienia spowoduje również usunięcie jego całej zawartości. Czy aby napewno chcesz usunąć te zamówienia?",
-                "Potwierdź",
-                MessageBoxButtons.YesNo) ==
-                DialogResult.Yes)
-            {
-                _orderPresenter.DeleteOrder(selectedRow);
-                _orderPresenter.RefreshData(Place);
-            }
-        }
-
-        public DialogResult ShowDialog(Place place)
-        {
-            textBoxPlace.Text = place.Name;
-            Place = place;
-
-            return base.ShowDialog();
+            _orderPresenter.DeleteOrder();
         }
 
         private void dataGridViewOrders_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
