@@ -12,6 +12,7 @@ namespace Elrob.Terminal.Domain.Mappings
             Map(x => x.LastName);
             Map(x => x.Password);
             References(x => x.Group, "GroupId");
+            References(x => x.Card, "CardId");
             Table("[User]");
         }
     }

@@ -1,17 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using Elrob.Terminal.Converters.Interfaces;
 using UserDto = Elrob.Terminal.Dto.User;
 using UserDomain = Elrob.Terminal.Domain.User;
 using GroupDto = Elrob.Terminal.Dto.Group;
 using GroupDomain = Elrob.Terminal.Domain.Group;
 using PermissionDto = Elrob.Terminal.Dto.Permission;
 using PermissionDomain = Elrob.Terminal.Domain.Permission;
-using AutoMapper;
+using CardDto = Elrob.Terminal.Dto.Card;
+using CardDomain = Elrob.Terminal.Domain.Card;
 
-namespace Elrob.Terminal.Converters
+namespace Elrob.Terminal.Converters.Implementations
 {
     public class UserConverter : IUserConverter
     {
@@ -24,10 +23,12 @@ namespace Elrob.Terminal.Converters
                 x.CreateMap<UserDomain, UserDto>();
                 x.CreateMap<GroupDomain, GroupDto>();
                 x.CreateMap<PermissionDomain, PermissionDto>();
+                x.CreateMap<CardDomain, CardDto>();
 
                 x.CreateMap<UserDto, UserDomain>();
                 x.CreateMap<GroupDto, GroupDomain>();
                 x.CreateMap<PermissionDto, PermissionDomain>();
+                x.CreateMap<CardDto, CardDomain>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

@@ -23,6 +23,12 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         public DataGridView DataGridViewMaterials => dataGridViewMaterials;
 
+        public Button ButtonEdit => buttonEdit;
+
+        public Button ButtonAdd => buttonAdd;
+
+        public Button ButtonDelete => buttonDelete;
+
         public MaterialView()
         {
             _materialPresenter = new MaterialPresenter(this, Program.Kernel.Get<IMaterialModel>());
@@ -32,9 +38,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             dataGridViewMaterials.AutoGenerateColumns = false;
             dataGridViewMaterials.DataSource = Materials = new CustomBindingList<Material>();
 
-            buttonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_EditRows);
-            buttonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_AddRows);
-            buttonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_DeleteRows);
+            _materialPresenter.SetPermissions();
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using OrderProgressDto = Elrob.Terminal.Dto.OrderProgress;
 using OrderProgressDomain = Elrob.Terminal.Domain.OrderProgress;
 
-namespace Elrob.Terminal.Converters
+namespace Elrob.Terminal.Converters.Interfaces
 {
     public interface IOrderProgressConverter
     {

@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Elrob.Terminal.Dto;
 
-namespace Elrob.Terminal.Converters
+namespace Elrob.Terminal.Converters.Interfaces
 {
     public interface IPermissionConverter
     {

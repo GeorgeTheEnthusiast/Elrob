@@ -1,6 +1,7 @@
 ﻿using System;
 using Elrob.Terminal.Common;
 using Elrob.Terminal.Converters;
+using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Item;
 using dto = Elrob.Terminal.Dto;
 

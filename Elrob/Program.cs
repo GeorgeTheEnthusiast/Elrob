@@ -55,6 +55,10 @@ namespace Elrob.Terminal
                 _logger.Error(ex);
                 MessageBox.Show("Wystąpił błąd programu. Skontaktuj się z administratorem systemu.");
             }
+            finally
+            {
+                Application.Exit();
+            }
         }
 
         private static void GlobalApplicationHandlerOnKeyDown()

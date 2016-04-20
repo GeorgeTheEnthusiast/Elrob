@@ -23,7 +23,11 @@ namespace Elrob.Terminal.View.Implementations.Item
 
         public ErrorProvider PasswordErrorProvider => passwordErrorProvider;
 
+        public ErrorProvider CardErrorProvider => cardErrorProvider;
+
         public ComboBox ComboBoxGroup => comboBoxGroup;
+
+        public ComboBox ComboBoxCard => comboBoxCard;
 
         public TextBox TextBoxLogin => textBoxLogin;
 
@@ -59,7 +63,8 @@ namespace Elrob.Terminal.View.Implementations.Item
             FirstName = textBoxFirstName.Text.Trim(),
             LastName = textBoxLastName.Text.Trim(),
             Password = textBoxPassword.Text.Trim(),
-            Group = comboBoxGroup.SelectedItem as Group
+            Group = comboBoxGroup.SelectedItem as Group,
+            Card = comboBoxCard.SelectedItem as Card
         };
     }
 }

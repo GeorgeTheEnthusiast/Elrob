@@ -19,7 +19,6 @@ namespace Elrob.Terminal.View.Implementations.Main
     public partial class PermissionGroupView : Form, IPermissionGroupView
     {
         private readonly IPermissionGroupPresenter _permissionGroupPresenter;
-        private IPermissionGroupItemPresenter _permissionGroupItemPresenter;
 
         public PermissionGroupView()
         {
@@ -29,55 +28,37 @@ namespace Elrob.Terminal.View.Implementations.Main
 
             dataGridViewPermissionGroups.AutoGenerateColumns = false;
             dataGridViewPermissionGroups.DataSource = PermissionGroups = new CustomBindingList<PermissionGroup>();
-            
-            buttonChange.Enabled = UserFactory.Instance.HasPermission(PermissionType.PermissionGroupView_ChangePermissions);
-            buttonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.PermissionGroupView_DeletePermission);
+
+            _permissionGroupPresenter.SetPermissions();
         }
 
         public Group Group { get; set; }
 
+        public Button ButtonChange => buttonChange;
+
+        public Button ButtonDelete => buttonDelete;
+
+        public TextBox TextBoxGroup => textBoxGroup;
+
+        public DataGridView DataGridViewPermissionGroups => dataGridViewPermissionGroups;
+
+        public CustomBindingList<PermissionGroup> PermissionGroups { get; set; }
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
-            Close();
+            DialogResult = DialogResult.OK;
         }
 
         private void buttonChange_Click(object sender, EventArgs e)
         {
-            _permissionGroupItemPresenter = Program.Kernel.Get<IPermissionGroupItemPresenter>();
-            _permissionGroupItemPresenter.ShowDialog(Group, PermissionGroups.ToList());
-            _permissionGroupPresenter.RefreshData(Group);
+            _permissionGroupPresenter.ShowChangeForm();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
-            var selectedRow = Helpers.GetSelectedRow<PermissionGroup>(dataGridViewPermissionGroups);
-
-            if (selectedRow == default(PermissionGroup))
-            {
-                return;
-            }
-
-            if (MessageBox.Show(
-                "Czy aby napewno chcesz usunąć to uprawnienie?",
-                "Potwierdź",
-                MessageBoxButtons.YesNo) ==
-                DialogResult.Yes)
-            {
-                _permissionGroupPresenter.DeletePermissionGroup(selectedRow);
-                _permissionGroupPresenter.RefreshData(Group);
-            }
+            _permissionGroupPresenter.DeletePermissionGroup();
         }
-
-        public DialogResult ShowDialog(Group group)
-        {
-            Group = group;
-            textBoxGroup.Text = Group.Name;
-
-            return base.ShowDialog();
-        }
-
-        public CustomBindingList<PermissionGroup> PermissionGroups { get; set; }
-
+        
         private void dataGridViewPermissionGroups_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Helpers.SortDataGridView(dataGridViewPermissionGroups, e.ColumnIndex);

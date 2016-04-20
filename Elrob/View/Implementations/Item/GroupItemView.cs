@@ -21,16 +21,6 @@ namespace Elrob.Terminal.View.Implementations.Item
             InitializeComponent();
         }
 
-        private void buttonCancel_Click(object sender, System.EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
-        }
-
-        private void buttonAccept_Click(object sender, System.EventArgs e)
-        {
-            _groupItemPresenter.AcceptChanges(IsInEditMode);
-        }
-
         public Group FilledGroup => new Group()
         {
             Name = textBoxName.Text.Trim(),
@@ -44,5 +34,15 @@ namespace Elrob.Terminal.View.Implementations.Item
         public TextBox TextBoxName => textBoxName;
 
         public bool IsInEditMode { get; set; }
+
+        private void buttonCancel_Click(object sender, System.EventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
+
+        private void buttonAccept_Click(object sender, System.EventArgs e)
+        {
+            _groupItemPresenter.AcceptChanges(IsInEditMode);
+        }
     }
 }

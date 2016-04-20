@@ -12,5 +12,11 @@ namespace Elrob.Terminal.View.Interfaces.Main
         CustomBindingList<Material> Materials { get; set; }
 
         DataGridView DataGridViewMaterials { get; }
+
+        Button ButtonEdit { get; }
+
+        Button ButtonAdd { get; }
+
+        Button ButtonDelete { get; }
     }
 }

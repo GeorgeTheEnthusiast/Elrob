@@ -113,24 +113,26 @@
     <Compile Include="Controllers\InactivityChecker.cs" />
     <Compile Include="Controllers\IUserFactory.cs" />
     <Compile Include="Controllers\UserFactory.cs" />
-    <Compile Include="Converters\IPermissionConverter.cs" />
-    <Compile Include="Converters\PermissionGroupConverter.cs" />
-    <Compile Include="Converters\IPermissionGroupConverter.cs" />
-    <Compile Include="Converters\IOrderProgressConverter.cs" />
-    <Compile Include="Converters\IMaterialConverter.cs" />
-    <Compile Include="Converters\IOrderConverter.cs" />
-    <Compile Include="Converters\IPlaceConverter.cs" />
-    <Compile Include="Converters\IOrderContentConverter.cs" />
-    <Compile Include="Converters\IGroupConverter.cs" />
-    <Compile Include="Converters\IUserConverter.cs" />
-    <Compile Include="Converters\OrderProgressConverter.cs" />
-    <Compile Include="Converters\MaterialConverter.cs" />
-    <Compile Include="Converters\OrderConverter.cs" />
-    <Compile Include="Converters\PermissionConverter.cs" />
-    <Compile Include="Converters\PlaceConverter.cs" />
-    <Compile Include="Converters\OrderContentConverter.cs" />
-    <Compile Include="Converters\GroupConverter.cs" />
-    <Compile Include="Converters\UserConverter.cs" />
+    <Compile Include="Converters\Implementations\CardConverter.cs" />
+    <Compile Include="Converters\Interfaces\ICardConverter.cs" />
+    <Compile Include="Converters\Interfaces\IPermissionConverter.cs" />
+    <Compile Include="Converters\Implementations\PermissionGroupConverter.cs" />
+    <Compile Include="Converters\Interfaces\IPermissionGroupConverter.cs" />
+    <Compile Include="Converters\Interfaces\IOrderProgressConverter.cs" />
+    <Compile Include="Converters\Interfaces\IMaterialConverter.cs" />
+    <Compile Include="Converters\Interfaces\IOrderConverter.cs" />
+    <Compile Include="Converters\Interfaces\IPlaceConverter.cs" />
+    <Compile Include="Converters\Interfaces\IOrderContentConverter.cs" />
+    <Compile Include="Converters\Interfaces\IGroupConverter.cs" />
+    <Compile Include="Converters\Interfaces\IUserConverter.cs" />
+    <Compile Include="Converters\Implementations\OrderProgressConverter.cs" />
+    <Compile Include="Converters\Implementations\MaterialConverter.cs" />
+    <Compile Include="Converters\Implementations\OrderConverter.cs" />
+    <Compile Include="Converters\Implementations\PermissionConverter.cs" />
+    <Compile Include="Converters\Implementations\PlaceConverter.cs" />
+    <Compile Include="Converters\Implementations\OrderContentConverter.cs" />
+    <Compile Include="Converters\Implementations\GroupConverter.cs" />
+    <Compile Include="Converters\Implementations\UserConverter.cs" />
     <Compile Include="Domain\Mappings\PermissionGroupMap.cs" />
     <Compile Include="Domain\Mappings\OrderContentMap.cs" />
     <Compile Include="Domain\Mappings\PermissionMap.cs" />
@@ -138,6 +140,7 @@
     <Compile Include="Domain\Mappings\MaterialMap.cs" />
     <Compile Include="Domain\Group.cs" />
     <Compile Include="Domain\Mappings\OrderProgressMap.cs" />
+    <Compile Include="Domain\Mappings\CardMap.cs" />
     <Compile Include="Domain\Material.cs" />
     <Compile Include="Common\NHibernateHelper.cs" />
     <Compile Include="Domain\OrderProgress.cs" />
@@ -145,6 +148,7 @@
     <Compile Include="Domain\OrderContent.cs" />
     <Compile Include="Domain\Permission.cs" />
     <Compile Include="Domain\PermissionGroup.cs" />
+    <Compile Include="Domain\Card.cs" />
     <Compile Include="Dto\OrderProgress.cs" />
     <Compile Include="Dto\PermissionType.cs" />
     <Compile Include="Domain\Place.cs" />
@@ -159,16 +163,23 @@
     <Compile Include="Dto\Permission.cs" />
     <Compile Include="Dto\PermissionGroup.cs" />
     <Compile Include="Dto\Place.cs" />
+    <Compile Include="Dto\Card.cs" />
     <Compile Include="Dto\User.cs" />
     <Compile Include="Handlers\GlobalApplicationHandler.cs" />
     <Compile Include="Model\Implementations\Choose\OrderContentChooseModel.cs" />
     <Compile Include="Model\Implementations\Choose\OrderChooseModel.cs" />
+    <Compile Include="Model\Implementations\CardReaderModel.cs" />
+    <Compile Include="Model\Implementations\Item\CardItemModel.cs" />
     <Compile Include="Model\Implementations\Item\OrderPreviewItemModel.cs" />
+    <Compile Include="Model\Implementations\Main\CardModel.cs" />
     <Compile Include="Model\Interfaces\Choose\IOrderContentChooseModel.cs" />
+    <Compile Include="Model\Interfaces\ICardReaderModel.cs" />
+    <Compile Include="Model\Interfaces\Item\ICardItemModel.cs" />
     <Compile Include="Model\Interfaces\Item\IOrderPreviewItemModel.cs" />
     <Compile Include="Model\Interfaces\Main\IGroupModel.cs" />
     <Compile Include="Model\Interfaces\Item\IGroupItemModel.cs" />
     <Compile Include="Model\Interfaces\Item\IPermissionGroupItemModel.cs" />
+    <Compile Include="Model\Interfaces\Main\ICardModel.cs" />
     <Compile Include="Model\Interfaces\Main\IPermissionGroupModel.cs" />
     <Compile Include="Model\Interfaces\Choose\IOrderChooseModel.cs" />
     <Compile Include="Model\Interfaces\Item\IUserItemModel.cs" />
@@ -209,13 +220,19 @@
     <Compile Include="Model\Implementations\Main\MainModel.cs" />
     <Compile Include="Presenter\Implementation\Choose\OrderContentChoosePresenter.cs" />
     <Compile Include="Presenter\Implementation\Choose\OrderChoosePresenter.cs" />
+    <Compile Include="Presenter\Implementation\Item\CardItemPresenter.cs" />
     <Compile Include="Presenter\Implementation\Item\OrderPreviewItemPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Main\CardPresenter.cs" />
+    <Compile Include="Presenter\Implementation\CardReaderPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\ICardReaderPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Choose\IOrderContentChoosePresenter.cs" />
     <Compile Include="Presenter\Interfaces\Choose\IOrderChoosePresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Item\ICardItemPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Item\IOrderPreviewItemPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Main\IGroupPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Item\IGroupItemPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Item\IPermissionGroupItemPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Main\ICardPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Main\IPermissionGroupPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Item\IUserItemPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Main\IUserPresenter.cs" />
@@ -272,18 +289,39 @@
     <Compile Include="View\Implementations\Choose\OrderChooseView.Designer.cs">
       <DependentUpon>OrderChooseView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Implementations\Item\CardItemView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Item\CardItemView.Designer.cs">
+      <DependentUpon>CardItemView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Implementations\Item\OrderPreviewItemView.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Implementations\Item\OrderPreviewItemView.Designer.cs">
       <DependentUpon>OrderPreviewItemView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Implementations\Main\CardView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Main\CardView.Designer.cs">
+      <DependentUpon>CardView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Implementations\CardReaderView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\CardReaderView.Designer.cs">
+      <DependentUpon>CardReaderView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Interfaces\ICardReaderView.cs" />
     <Compile Include="View\Interfaces\Choose\IOrderContentChooseView.cs" />
     <Compile Include="View\Interfaces\Choose\IOrderChooseView.cs" />
+    <Compile Include="View\Interfaces\Item\ICardItemView.cs" />
     <Compile Include="View\Interfaces\Item\IOrderPreviewItemView.cs" />
     <Compile Include="View\Interfaces\Main\IGroupView.cs" />
     <Compile Include="View\Interfaces\Item\IGroupItemView.cs" />
     <Compile Include="View\Interfaces\Item\IPermissionGroupItemView.cs" />
+    <Compile Include="View\Interfaces\Main\ICardView.cs" />
     <Compile Include="View\Interfaces\Main\IPermissionGroupView.cs" />
     <Compile Include="View\Interfaces\Item\IUserItemView.cs" />
     <Compile Include="View\Interfaces\Main\IUserView.cs" />
@@ -422,6 +460,9 @@
       <DependentUpon>OrderPreviewView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\OrderPreviewViewModel.cs" />
+    <EmbeddedResource Include="View\Implementations\CardReaderView.resx">
+      <DependentUpon>CardReaderView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Elrob.Terminal_TemporaryKey.pfx" />
     <None Include="Service References\ExcelServiceServiceReference\Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -449,6 +490,9 @@
     <EmbeddedResource Include="View\Implementations\Choose\OrderChooseView.resx">
       <DependentUpon>OrderChooseView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Item\CardItemView.resx">
+      <DependentUpon>CardItemView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Implementations\Item\OrderPreviewItemView.resx">
       <DependentUpon>OrderPreviewItemView.cs</DependentUpon>
     </EmbeddedResource>
@@ -460,6 +504,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Implementations\Item\PermissionGroupItemView.resx">
       <DependentUpon>PermissionGroupItemView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Implementations\Main\CardView.resx">
+      <DependentUpon>CardView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Implementations\Main\PermissionGroupView.resx">
       <DependentUpon>PermissionGroupView.cs</DependentUpon>

@@ -6,6 +6,7 @@ using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.View.Interfaces.Item;
+using FluentNHibernate.Utils;
 
 namespace Elrob.Terminal.Presenter.Implementation.Item
 {
@@ -13,6 +14,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
     {
         private readonly IUserItemView _userItemView;
         private readonly IUserItemModel _userItemModel;
+        private const string cardEmptyName = "Brak";
 
         public UserItemPresenter(IUserItemView userItemView, IUserItemModel userItemModel)
         {
@@ -28,16 +30,33 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
             _userItemView.PassedUser = user;
 
             var groups = _userItemModel.GetAllGroups();
+            var cards = _userItemModel.GetAllCards();
+            cards.Insert(0, new Card()
+            {
+                Id = -1,
+                Name = cardEmptyName
+            });
             _userItemView.ComboBoxGroup.DataSource = groups;
+            _userItemView.ComboBoxCard.DataSource = cards;
 
             _userItemView.LoginNameErrorProvider.Clear();
             _userItemView.PasswordErrorProvider.Clear();
+            _userItemView.CardErrorProvider.Clear();
 
             if (_userItemView.PassedUser != null)
             {
                 _userItemView.IsInEditMode = true;
 
                 _userItemView.ComboBoxGroup.SelectedIndex = groups.IndexOf(groups.FirstOrDefault(x => x.Id == user.Group.Id));
+
+                if (user.Card != null)
+                {
+                    _userItemView.ComboBoxCard.SelectedIndex = cards.IndexOf(cards.FirstOrDefault(x => x != null && x.Id == user.Card.Id));
+                }
+                else
+                {
+                    _userItemView.ComboBoxCard.SelectedIndex = 0;
+                }
 
                 _userItemView.TextBoxLogin.Text = _userItemView.PassedUser.LoginName;
                 _userItemView.TextBoxFirstName.Text = _userItemView.PassedUser.FirstName;
@@ -81,13 +100,34 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
                 _userItemView.PasswordErrorProvider.Clear();
             }
 
-            if (_userItemView.IsInEditMode)
+            User user = _userItemView.User;
+
+            if (user.Card != null && user.Card.Id == -1)
             {
-                _userItemModel.UpdateUser(_userItemView.User);
+                user.Card = null;
             }
             else
             {
-                _userItemModel.AddUser(_userItemView.User);
+                var isCardIsUnique = _userItemModel.IsCardIsUnique(_userItemView.User.Card.Id, _userItemView.User.Id);
+
+                if (isCardIsUnique == false)
+                {
+                    _userItemView.CardErrorProvider.SetError(_userItemView.ComboBoxCard, "Ta karta została już przypisana do innego użytkownika!");
+                    return;
+                }
+                else
+                {
+                    _userItemView.CardErrorProvider.Clear();
+                }
+            }
+            
+            if (_userItemView.IsInEditMode)
+            {
+                _userItemModel.UpdateUser(user);
+            }
+            else
+            {
+                _userItemModel.AddUser(user);
             }
 
             _userItemView.DialogResult = DialogResult.OK;

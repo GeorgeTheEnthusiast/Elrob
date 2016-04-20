@@ -21,5 +21,7 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
         void DeleteUser();
 
         void SetPermissions();
+
+        void ShowCardForm();
     }
 }

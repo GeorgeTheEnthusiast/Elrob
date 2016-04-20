@@ -45,8 +45,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.comboBoxGroup = new System.Windows.Forms.ComboBox();
             this.passwordErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.comboBoxCard = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cardErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.loginNameErrorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordErrorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -69,7 +73,7 @@
             // 
             // buttonAccept
             // 
-            this.buttonAccept.Location = new System.Drawing.Point(155, 357);
+            this.buttonAccept.Location = new System.Drawing.Point(155, 406);
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
@@ -81,7 +85,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(424, 357);
+            this.buttonCancel.Location = new System.Drawing.Point(424, 406);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
@@ -171,7 +175,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(37, 303);
+            this.label6.Location = new System.Drawing.Point(37, 301);
             this.label6.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(89, 31);
@@ -193,14 +197,41 @@
             // 
             this.passwordErrorProvider.ContainerControl = this;
             // 
+            // comboBoxCard
+            // 
+            this.comboBoxCard.DisplayMember = "Name";
+            this.comboBoxCard.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxCard.FormattingEnabled = true;
+            this.comboBoxCard.Location = new System.Drawing.Point(238, 343);
+            this.comboBoxCard.Name = "comboBoxCard";
+            this.comboBoxCard.Size = new System.Drawing.Size(447, 39);
+            this.comboBoxCard.TabIndex = 17;
+            this.comboBoxCard.ValueMember = "Id";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(37, 349);
+            this.label7.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(79, 31);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Karta";
+            // 
+            // cardErrorProvider
+            // 
+            this.cardErrorProvider.ContainerControl = this;
+            // 
             // UserItemView
             // 
             this.AcceptButton = this.buttonAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(757, 435);
+            this.ClientSize = new System.Drawing.Size(757, 483);
             this.ControlBox = false;
+            this.Controls.Add(this.comboBoxCard);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.comboBoxGroup);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBoxLastName);
@@ -225,6 +256,7 @@
             this.Text = "Elrob.Terminal";
             ((System.ComponentModel.ISupportInitialize)(this.loginNameErrorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.passwordErrorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cardErrorProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,5 +280,8 @@
         private System.Windows.Forms.ComboBox comboBoxGroup;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ErrorProvider passwordErrorProvider;
+        private System.Windows.Forms.ComboBox comboBoxCard;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ErrorProvider cardErrorProvider;
     }
 }

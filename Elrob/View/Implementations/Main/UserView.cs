@@ -42,6 +42,8 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         public Button ButtonDelete => buttonDelete;
 
+        public Button ButtonCards => buttonCards;
+
         private void buttonOK_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.OK;
@@ -65,6 +67,11 @@ namespace Elrob.Terminal.View.Implementations.Main
         private void dataGridViewUsers_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             Helpers.SortDataGridView(dataGridViewUsers, e.ColumnIndex);
+        }
+
+        private void buttonCards_Click(object sender, EventArgs e)
+        {
+            _userPresenter.ShowCardForm();
         }
     }
 }

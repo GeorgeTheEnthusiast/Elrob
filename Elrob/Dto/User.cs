@@ -16,6 +16,8 @@ namespace Elrob.Terminal.Dto
 
         public string Password { get; set; }
 
+        public Card Card { get; set; }
+
         public override string ToString() => LoginName;
     }
 }

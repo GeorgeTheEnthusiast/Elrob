@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using Elrob.Terminal.Common;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Main;
 using Elrob.Terminal.Presenter.Interfaces.Item;
@@ -90,6 +91,13 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                 _materialModel.DeleteMaterial(selectedRow);
                 RefreshData();
             }
+        }
+
+        public void SetPermissions()
+        {
+            _materialView.ButtonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_EditRows);
+            _materialView.ButtonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_AddRows);
+            _materialView.ButtonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_DeleteRows);
         }
     }
 }

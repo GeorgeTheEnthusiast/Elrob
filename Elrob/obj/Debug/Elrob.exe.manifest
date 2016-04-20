@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="223720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="243688">
       <assemblyIdentity name="Elrob" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Jvo9Omye+Z3n9xOUASQgU3K7GmWPReaih6lZZdH+4Y4=</dsig:DigestValue>
+        <dsig:DigestValue>tJXDFfCmAQ/LUqfOIN392UWcIx8mmLNr8PqS3dtfhtU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

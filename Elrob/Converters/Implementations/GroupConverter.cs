@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UserDto = Elrob.Terminal.Dto.User;
-using UserDomain = Elrob.Terminal.Domain.User;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using Elrob.Terminal.Converters.Interfaces;
 using GroupDto = Elrob.Terminal.Dto.Group;
 using GroupDomain = Elrob.Terminal.Domain.Group;
 using PermissionDto = Elrob.Terminal.Dto.Permission;
 using PermissionDomain = Elrob.Terminal.Domain.Permission;
-using AutoMapper;
 
-namespace Elrob.Terminal.Converters
+namespace Elrob.Terminal.Converters.Implementations
 {
     public class GroupConverter : IGroupConverter
     {

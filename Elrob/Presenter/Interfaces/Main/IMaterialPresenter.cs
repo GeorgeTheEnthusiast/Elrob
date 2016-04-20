@@ -14,5 +14,7 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
         void ShowEditForm();
 
         void DeleteMaterial();
+
+        void SetPermissions();
     }
 }

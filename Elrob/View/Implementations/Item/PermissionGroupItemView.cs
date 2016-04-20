@@ -24,6 +24,12 @@ namespace Elrob.Terminal.View.Implementations.Item
             checkedListBoxPermissions.DataSource = Permissions = new BindingList<Permission>();
         }
 
+        public BindingList<Permission> Permissions { get; set; }
+
+        public CheckedListBox CheckedListBoxPermissions => checkedListBoxPermissions;
+
+        public Group Group { get; set; }
+
         private void buttonCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -35,11 +41,5 @@ namespace Elrob.Terminal.View.Implementations.Item
 
             DialogResult = DialogResult.OK;
         }
-
-        public BindingList<Permission> Permissions { get; set; }
-
-        public CheckedListBox CheckedListBoxPermissions => checkedListBoxPermissions;
-
-        public Group Group { get; set; }
     }
 }

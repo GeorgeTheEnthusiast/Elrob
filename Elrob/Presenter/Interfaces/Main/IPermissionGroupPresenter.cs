@@ -6,12 +6,14 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
 {
     public interface IPermissionGroupPresenter
     {
-        List<PermissionGroup> GetPermissionGroupsByGroupId(int groupId);
-
-        void DeletePermissionGroup(PermissionGroup permissionGroup);
-
         DialogResult ShowDialog(Group group);
 
         void RefreshData(Group group);
+
+        void SetPermissions();
+
+        void ShowChangeForm();
+
+        void DeletePermissionGroup();
     }
 }

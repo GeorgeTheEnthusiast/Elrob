@@ -7,6 +7,7 @@
     [FirstName]        NVARCHAR (200) NOT NULL,
     [LastName]         NVARCHAR (200) NOT NULL,
     [GroupId]          INT            NOT NULL,
+    [CardId]           INT            NULL,
     [createdBy]        NVARCHAR (100) DEFAULT (user_name()) NOT NULL,
     [createdDate]      DATETIME       DEFAULT (getdate()) NOT NULL,
     [modifiedBy]       NVARCHAR (100) NULL,

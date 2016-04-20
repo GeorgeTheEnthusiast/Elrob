@@ -18,5 +18,7 @@ namespace Elrob.Terminal.View.Interfaces.Main
         Button ButtonAdd { get; }
 
         Button ButtonDelete { get; }
+
+        Button ButtonCards { get; }
     }
 }

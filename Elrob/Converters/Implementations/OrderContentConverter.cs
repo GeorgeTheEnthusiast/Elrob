@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using AutoMapper;
+using Elrob.Terminal.Converters.Interfaces;
 using OrderContentDto = Elrob.Terminal.Dto.OrderContent;
 using OrderContentDomain = Elrob.Terminal.Domain.OrderContent;
 using OrderContentWebservice = Elrob.Terminal.ExcelServiceServiceReference.OrderContent;
@@ -14,10 +12,9 @@ using MaterialDomain = Elrob.Terminal.Domain.Material;
 using MaterialWebservice = Elrob.Terminal.ExcelServiceServiceReference.Material;
 using PlaceWebservice = Elrob.Terminal.ExcelServiceServiceReference.Place;
 using DomainEntities = Elrob.Terminal.Domain;
-using AutoMapper;
-using Elrob.Terminal.Dto;
+using Place = Elrob.Terminal.Dto.Place;
 
-namespace Elrob.Terminal.Converters
+namespace Elrob.Terminal.Converters.Implementations
 {
     public class OrderContentConverter : IOrderContentConverter
     {
@@ -76,9 +73,9 @@ namespace Elrob.Terminal.Converters
             return _mapper.Map<OrderContentDomain>(input);
         }
 
-        public OrderContent Clone(OrderContent source, OrderContent destination)
+        public OrderContentDto Clone(OrderContentDto source, OrderContentDto destination)
         {
-            return _mapper.Map<OrderContent, OrderContent>(source, destination);
+            return _mapper.Map<OrderContentDto, OrderContentDto>(source, destination);
         }
     }
 }

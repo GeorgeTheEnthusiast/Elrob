@@ -84,7 +84,9 @@
     <Recovery>SIMPLE</Recovery>
     <EnableFullTextSearch>True</EnableFullTextSearch>
     <DefaultFilegroup>PRIMARY</DefaultFilegroup>
-    <DacDescription>1.0 - podstawowa wersja bazy danych Elrob</DacDescription>
+    <DacDescription>1.0 - podstawowa wersja bazy danych Elrob
+1.1 - dodanie tabeli Card oraz zaleznosci do niej w tabelce User</DacDescription>
+    <DacVersion>1.1.0.0</DacVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <OutputPath>bin\Release\</OutputPath>
@@ -204,5 +206,16 @@
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
     <Build Include="Security\audit.sql" />
+    <Build Include="dbo\Tables\Card.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+    <Build Include="audit\Tables\Card.sql">
+      <AnsiNulls>On</AnsiNulls>
+      <QuotedIdentifier>On</QuotedIdentifier>
+    </Build>
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="Elrob.Database.refactorlog" />
   </ItemGroup>
 </Project>

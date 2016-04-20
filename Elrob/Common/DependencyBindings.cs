@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Converters;
+using Elrob.Terminal.Converters.Implementations;
+using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model;
 using Elrob.Terminal.Model.Implementations;
 using Elrob.Terminal.Model.Implementations.Choose;
@@ -15,6 +17,7 @@ using Elrob.Terminal.Model.Interfaces.Choose;
 using Elrob.Terminal.Model.Interfaces.Item;
 using Elrob.Terminal.Model.Interfaces.Main;
 using Elrob.Terminal.Presenter;
+using Elrob.Terminal.Presenter.Implementation;
 using Elrob.Terminal.Presenter.Implementation.Choose;
 using Elrob.Terminal.Presenter.Implementation.Item;
 using Elrob.Terminal.Presenter.Implementation.Main;
@@ -23,6 +26,7 @@ using Elrob.Terminal.Presenter.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Main;
 using Elrob.Terminal.View;
+using Elrob.Terminal.View.Implementations;
 using Elrob.Terminal.View.Implementations.Choose;
 using Elrob.Terminal.View.Implementations.Item;
 using Elrob.Terminal.View.Implementations.Main;
@@ -52,6 +56,7 @@ namespace Elrob.Terminal.Common
             Bind<IGroupConverter>().To<GroupConverter>();
             Bind<IPermissionGroupConverter>().To<PermissionGroupConverter>();
             Bind<IPermissionConverter>().To<PermissionConverter>();
+            Bind<ICardConverter>().To<CardConverter>();
             #endregion
 
             #region Model
@@ -78,6 +83,9 @@ namespace Elrob.Terminal.Common
             Bind<IOrderChooseModel>().To<OrderChooseModel>();
             Bind<IOrderContentChooseModel>().To<OrderContentChooseModel>();
             Bind<IOrderPreviewItemModel>().To<OrderPreviewItemModel>();
+            Bind<ICardModel>().To<CardModel>();
+            Bind<ICardReaderModel>().To<CardReaderModel>();
+            Bind<ICardItemModel>().To<CardItemModel>();
             #endregion
 
             #region View
@@ -104,6 +112,9 @@ namespace Elrob.Terminal.Common
             Bind<IOrderChooseView>().To<OrderChooseView>();
             Bind<IOrderContentChooseView>().To<OrderContentChooseView>();
             Bind<IOrderPreviewItemView>().To<OrderPreviewItemView>();
+            Bind<ICardView>().To<CardView>();
+            Bind<ICardReaderView>().To<CardReaderView>();
+            Bind<ICardItemView>().To<CardItemView>();
             #endregion
 
             #region Presenter
@@ -130,6 +141,9 @@ namespace Elrob.Terminal.Common
             Bind<IOrderChoosePresenter>().To<OrderChoosePresenter>();
             Bind<IOrderContentChoosePresenter>().To<OrderContentChoosePresenter>();
             Bind<IOrderPreviewItemPresenter>().To<OrderPreviewItemPresenter>();
+            Bind<ICardPresenter>().To<CardPresenter>();
+            Bind<ICardReaderPresenter>().To<CardReaderPresenter>();
+            Bind<ICardItemPresenter>().To<CardItemPresenter>();
             #endregion
         }
     }

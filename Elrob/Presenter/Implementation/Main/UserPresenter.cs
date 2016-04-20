@@ -17,6 +17,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         private readonly IUserView _userView;
         private readonly IUserModel _userModel;
         private IUserItemPresenter _userItemPresenter;
+        private ICardPresenter _cardPresenter;
 
         public UserPresenter(IUserView userView, IUserModel userModel)
         {
@@ -99,6 +100,18 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             _userView.ButtonEdit.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_EditRows);
             _userView.ButtonAdd.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_AddRows);
             _userView.ButtonDelete.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_DeleteRows);
+            _userView.ButtonCards.Enabled = UserFactory.Instance.HasPermission(PermissionType.CardView_View);
+        }
+
+        public void ShowCardForm()
+        {
+            _cardPresenter = Program.Kernel.Get<ICardPresenter>();
+            var dialogResult = _cardPresenter.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                RefreshData();
+            }
         }
 
         public List<User> GetAllUsers()

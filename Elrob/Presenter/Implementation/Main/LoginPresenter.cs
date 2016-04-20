@@ -42,6 +42,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         {
             _loginView.TextBoxLogin.Text = "";
             _loginView.TextBoxPassword.Text = "";
+            _loginView.TextBoxLogin.Focus();
 
             return _loginView.ShowDialog();
         }

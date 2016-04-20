@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UserDto = Elrob.Terminal.Dto.User;
 using UserDomain = Elrob.Terminal.Domain.User;
 
-namespace Elrob.Terminal.Converters
+namespace Elrob.Terminal.Converters.Interfaces
 {
     public interface IUserConverter
     {

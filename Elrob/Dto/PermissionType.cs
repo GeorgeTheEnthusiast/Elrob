@@ -35,6 +35,10 @@
         PermissionGroupView_View = 41,
         PermissionGroupView_DeletePermission = 40,
         PermissionGroupView_ChangePermissions = 39,
-        PlaceChoose_All = 42
+        PlaceChoose_All = 42,
+        CardView_View = 44,
+        CardView_AddRows = 45,
+        CardView_DeleteRows = 46,
+        CardView_EditRows = 50
     }
 }

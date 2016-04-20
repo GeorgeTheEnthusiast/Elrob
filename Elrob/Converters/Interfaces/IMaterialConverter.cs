@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MaterialDto = Elrob.Terminal.Dto.Material;
 using MaterialDomain = Elrob.Terminal.Domain.Material;
 
-namespace Elrob.Terminal.Converters
+namespace Elrob.Terminal.Converters.Interfaces
 {
     public interface IMaterialConverter
     {

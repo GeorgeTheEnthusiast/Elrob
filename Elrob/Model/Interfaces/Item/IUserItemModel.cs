@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Reflection;
 using Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Interfaces.Item
@@ -12,5 +13,9 @@ namespace Elrob.Terminal.Model.Interfaces.Item
         bool IsUserExist(string loginName);
 
         List<Group> GetAllGroups();
+
+        List<Card> GetAllCards();
+
+        bool IsCardIsUnique(int cardId, int userId);
     }
 }

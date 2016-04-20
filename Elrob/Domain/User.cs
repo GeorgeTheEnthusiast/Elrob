@@ -15,5 +15,7 @@ namespace Elrob.Terminal.Domain
         public virtual string LoginName { get; set; }
 
         public virtual string Password { get; set; }
+
+        public virtual Card Card { get; set; }
     }
 }

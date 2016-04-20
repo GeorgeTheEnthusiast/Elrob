@@ -15,14 +15,29 @@ namespace Elrob.Terminal.View.Implementations.Item
     {
         private readonly IOrderContentItemPresenter _orderContentItemPresenter;
         
-        private OrderContent _orderContent;
-        private Order _order;
-
         public NumericUpDown NumericUpDownUnitWeight => numericUpDownUnitWeight;
 
         public Order PassedOrder { get; set; }
 
         public OrderContent PassedOrderContent { get; set; }
+
+        public ComboBox ComboBoxPlace => comboBoxPlaces;
+
+        public ComboBox ComboBoxMaterial => comboBoxMaterial;
+
+        public TextBox TextBoxName => textBoxName;
+
+        public TextBox TextBoxDocumentNumber => textBoxDocumentNumber;
+
+        public NumericUpDown NumericUpDownHeight => numericUpDownHeight;
+
+        public NumericUpDown NumericUpDownWidth => numericUpDownWidth;
+
+        public NumericUpDown NumericUpDownPackageQuantity => numericUpDownPackageQuantity;
+
+        public NumericUpDown NumericUpDownThickness => numericUpDownThickness;
+
+        public NumericUpDown NumericUpDownToComplete => numericUpDownToComplete;
 
         public OrderContentItemView()
         {
@@ -44,7 +59,7 @@ namespace Elrob.Terminal.View.Implementations.Item
         public OrderContent OrderContent => new OrderContent()
         {
             Name = textBoxName.Text.Trim(),
-            Order = _order,
+            Order = PassedOrder,
             DocumentNumber = textBoxDocumentNumber.Text.Trim(),
             Material = comboBoxMaterial.SelectedItem as Material,
             Place = comboBoxPlaces.SelectedItem as Place,
@@ -54,25 +69,7 @@ namespace Elrob.Terminal.View.Implementations.Item
             Thickness = numericUpDownThickness.Value,
             ToComplete = (int)numericUpDownToComplete.Value,
             UnitWeight = numericUpDownUnitWeight.Value,
-            Id = _orderContent == null ? 0 : _orderContent.Id
+            Id = PassedOrderContent == null ? 0 : PassedOrderContent.Id
         };
-
-        public ComboBox ComboBoxPlace => comboBoxPlaces;
-
-        public ComboBox ComboBoxMaterial => comboBoxMaterial;
-
-        public TextBox TextBoxName => textBoxName;
-
-        public TextBox TextBoxDocumentNumber => textBoxDocumentNumber;
-
-        public NumericUpDown NumericUpDownHeight => numericUpDownHeight;
-
-        public NumericUpDown NumericUpDownWidth => numericUpDownWidth;
-
-        public NumericUpDown NumericUpDownPackageQuantity => numericUpDownPackageQuantity;
-
-        public NumericUpDown NumericUpDownThickness => numericUpDownThickness;
-
-        public NumericUpDown NumericUpDownToComplete => numericUpDownToComplete;
     }
 }

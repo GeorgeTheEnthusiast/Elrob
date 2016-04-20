@@ -17,7 +17,11 @@ namespace Elrob.Terminal.View.Interfaces.Item
 
         ErrorProvider PasswordErrorProvider { get; }
 
+        ErrorProvider CardErrorProvider { get; }
+
         ComboBox ComboBoxGroup { get; }
+
+        ComboBox ComboBoxCard { get; }
 
         TextBox TextBoxLogin { get; }
 
