@@ -21,6 +21,8 @@ namespace Elrob.Terminal.Converters.Implementations
                 x.CreateMap<Domain.Place, Place>();
                 x.CreateMap<Domain.Material, Material>();
                 x.CreateMap<Domain.Permission, Permission>();
+                x.CreateMap<Domain.Card, Card>();
+
                 x.CreateMap<OrderProgress, Domain.OrderProgress>();
                 x.CreateMap<User, Domain.User>();
                 x.CreateMap<OrderContent, Domain.OrderContent>();
@@ -29,6 +31,7 @@ namespace Elrob.Terminal.Converters.Implementations
                 x.CreateMap<Place, Domain.Place>();
                 x.CreateMap<Material, Domain.Material>();
                 x.CreateMap<Permission, Domain.Permission>();
+                x.CreateMap<Card, Domain.Card>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();

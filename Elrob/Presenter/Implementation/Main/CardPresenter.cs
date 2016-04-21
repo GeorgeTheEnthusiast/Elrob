@@ -8,6 +8,7 @@ using Elrob.Terminal.Model.Interfaces.Main;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Main;
+using Elrob.Terminal.Presenter.Interfaces.Other;
 using Elrob.Terminal.View.Interfaces.Main;
 using Ninject;
 using Card = Elrob.Terminal.Dto.Card;

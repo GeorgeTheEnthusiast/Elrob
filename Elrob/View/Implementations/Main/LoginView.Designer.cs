@@ -39,7 +39,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 43);
+            this.label1.Location = new System.Drawing.Point(37, 41);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(154, 31);
@@ -52,7 +52,8 @@
             this.textBoxUser.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.textBoxUser.Name = "textBoxUser";
             this.textBoxUser.Size = new System.Drawing.Size(500, 38);
-            this.textBoxUser.TabIndex = 1;
+            this.textBoxUser.TabIndex = 0;
+            this.textBoxUser.Click += new System.EventHandler(this.control_Click);
             // 
             // textBoxPassword
             // 
@@ -61,13 +62,14 @@
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(500, 38);
-            this.textBoxPassword.TabIndex = 3;
+            this.textBoxPassword.TabIndex = 1;
             this.textBoxPassword.UseSystemPasswordChar = true;
+            this.textBoxPassword.Click += new System.EventHandler(this.control_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(37, 105);
+            this.label2.Location = new System.Drawing.Point(37, 102);
             this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 31);
@@ -80,7 +82,7 @@
             this.buttonLogin.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonLogin.Name = "buttonLogin";
             this.buttonLogin.Size = new System.Drawing.Size(200, 55);
-            this.buttonLogin.TabIndex = 4;
+            this.buttonLogin.TabIndex = 2;
             this.buttonLogin.Text = "Zaloguj";
             this.buttonLogin.UseVisualStyleBackColor = true;
             this.buttonLogin.Click += new System.EventHandler(this.buttonLogin_Click);
@@ -92,7 +94,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);

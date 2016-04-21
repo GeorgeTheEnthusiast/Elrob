@@ -1,15 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Elrob.Terminal.Dto;
-using Elrob.Terminal.Model.Interfaces;
-using Elrob.Terminal.Model.Interfaces.Choose;
-using Elrob.Terminal.Presenter.Interfaces;
-using Elrob.Terminal.Presenter.Interfaces.Choose;
-using Elrob.Terminal.View.Interfaces;
-using Elrob.Terminal.View.Interfaces.Choose;
+using Elrob.Terminal.Model.Interfaces.Other;
+using Elrob.Terminal.Presenter.Interfaces.Other;
+using Elrob.Terminal.View.Interfaces.Other;
 
-namespace Elrob.Terminal.Presenter.Implementation
+namespace Elrob.Terminal.Presenter.Implementation.Other
 {
     public class CardReaderPresenter : ICardReaderPresenter
     {

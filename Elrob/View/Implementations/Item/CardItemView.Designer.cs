@@ -57,7 +57,8 @@
             this.textBoxName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(468, 38);
-            this.textBoxName.TabIndex = 1;
+            this.textBoxName.TabIndex = 0;
+            this.textBoxName.Click += new System.EventHandler(this.textBoxName_Click);
             // 
             // buttonAccept
             // 
@@ -65,7 +66,7 @@
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 4;
+            this.buttonAccept.TabIndex = 1;
             this.buttonAccept.Text = "Akceptuj";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -77,7 +78,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -94,6 +95,7 @@
             this.textBoxLogin.ReadOnly = true;
             this.textBoxLogin.Size = new System.Drawing.Size(468, 38);
             this.textBoxLogin.TabIndex = 7;
+            this.textBoxLogin.TabStop = false;
             // 
             // label2
             // 
@@ -113,6 +115,7 @@
             this.textBoxPassword.ReadOnly = true;
             this.textBoxPassword.Size = new System.Drawing.Size(468, 38);
             this.textBoxPassword.TabIndex = 9;
+            this.textBoxPassword.TabStop = false;
             // 
             // label3
             // 

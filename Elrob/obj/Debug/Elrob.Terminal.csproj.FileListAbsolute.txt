@@ -164,7 +164,7 @@ d:\repo\Elrob\Elrob\bin\Debug\Elrob.exe.manifest
 d:\repo\Elrob\Elrob\bin\Debug\Elrob.application
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe.manifest
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.application
-d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.CardReaderView.resources
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.CardView.resources
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.CardItemView.resources
 D:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Choose.LogInMethodChooseView.resources
+D:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Other.CardReaderView.resources

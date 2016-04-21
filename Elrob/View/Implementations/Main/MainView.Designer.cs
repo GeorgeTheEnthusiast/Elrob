@@ -60,6 +60,7 @@
             this.textBoxUserName.ReadOnly = true;
             this.textBoxUserName.Size = new System.Drawing.Size(614, 38);
             this.textBoxUserName.TabIndex = 1;
+            this.textBoxUserName.TabStop = false;
             // 
             // label1
             // 
@@ -75,7 +76,7 @@
             this.buttonImport.Location = new System.Drawing.Point(13, 72);
             this.buttonImport.Name = "buttonImport";
             this.buttonImport.Size = new System.Drawing.Size(206, 86);
-            this.buttonImport.TabIndex = 1;
+            this.buttonImport.TabIndex = 0;
             this.buttonImport.Text = "Importuj zamówienie";
             this.buttonImport.UseVisualStyleBackColor = true;
             this.buttonImport.Click += new System.EventHandler(this.buttonImport_Click);
@@ -85,7 +86,7 @@
             this.buttonMaterials.Location = new System.Drawing.Point(14, 256);
             this.buttonMaterials.Name = "buttonMaterials";
             this.buttonMaterials.Size = new System.Drawing.Size(206, 86);
-            this.buttonMaterials.TabIndex = 2;
+            this.buttonMaterials.TabIndex = 1;
             this.buttonMaterials.Text = "Materiały";
             this.buttonMaterials.UseVisualStyleBackColor = true;
             this.buttonMaterials.Click += new System.EventHandler(this.buttonMaterials_Click);
@@ -95,7 +96,7 @@
             this.buttonPlaces.Location = new System.Drawing.Point(14, 348);
             this.buttonPlaces.Name = "buttonPlaces";
             this.buttonPlaces.Size = new System.Drawing.Size(206, 86);
-            this.buttonPlaces.TabIndex = 3;
+            this.buttonPlaces.TabIndex = 2;
             this.buttonPlaces.Text = "Placówki";
             this.buttonPlaces.UseVisualStyleBackColor = true;
             this.buttonPlaces.Click += new System.EventHandler(this.buttonPlaces_Click);
@@ -105,7 +106,7 @@
             this.buttonOrders.Location = new System.Drawing.Point(14, 440);
             this.buttonOrders.Name = "buttonOrders";
             this.buttonOrders.Size = new System.Drawing.Size(206, 86);
-            this.buttonOrders.TabIndex = 4;
+            this.buttonOrders.TabIndex = 3;
             this.buttonOrders.Text = "Zamówienia";
             this.buttonOrders.UseVisualStyleBackColor = true;
             this.buttonOrders.Click += new System.EventHandler(this.buttonOrders_Click);
@@ -135,7 +136,7 @@
             this.buttonOrderProgress.Location = new System.Drawing.Point(14, 532);
             this.buttonOrderProgress.Name = "buttonOrderProgress";
             this.buttonOrderProgress.Size = new System.Drawing.Size(206, 86);
-            this.buttonOrderProgress.TabIndex = 7;
+            this.buttonOrderProgress.TabIndex = 4;
             this.buttonOrderProgress.Text = "Raportowanie";
             this.buttonOrderProgress.UseVisualStyleBackColor = true;
             this.buttonOrderProgress.Click += new System.EventHandler(this.buttonOrderProgress_Click);
@@ -145,7 +146,7 @@
             this.buttonLogOut.Location = new System.Drawing.Point(684, 532);
             this.buttonLogOut.Name = "buttonLogOut";
             this.buttonLogOut.Size = new System.Drawing.Size(206, 86);
-            this.buttonLogOut.TabIndex = 8;
+            this.buttonLogOut.TabIndex = 7;
             this.buttonLogOut.Text = "Wyloguj";
             this.buttonLogOut.UseVisualStyleBackColor = true;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);

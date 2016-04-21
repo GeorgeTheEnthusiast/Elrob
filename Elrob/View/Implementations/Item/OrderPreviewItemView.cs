@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Item;
 using Elrob.Terminal.Presenter;
@@ -72,5 +73,10 @@ namespace Elrob.Terminal.View.Implementations.Item
             UnitWeight = numericUpDownUnitWeight.Value,
             Id = PassedOrderContent == null ? 0 : PassedOrderContent.Id
         };
+
+        private void control_Click(object sender, System.EventArgs e)
+        {
+            OnScreenKeyboardController.ShowOnScreenKeyboard();
+        }
     }
 }

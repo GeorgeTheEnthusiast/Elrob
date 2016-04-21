@@ -1,17 +1,12 @@
 ﻿using System;
 using System.Windows.Forms;
-using Elrob.Terminal.Dto;
-using Elrob.Terminal.Model.Interfaces;
-using Elrob.Terminal.Model.Interfaces.Choose;
-using Elrob.Terminal.Presenter.Implementation;
-using Elrob.Terminal.Presenter.Implementation.Choose;
-using Elrob.Terminal.Presenter.Interfaces;
-using Elrob.Terminal.Presenter.Interfaces.Choose;
-using Elrob.Terminal.View.Interfaces;
-using Elrob.Terminal.View.Interfaces.Choose;
+using Elrob.Terminal.Model.Interfaces.Other;
+using Elrob.Terminal.Presenter.Implementation.Other;
+using Elrob.Terminal.Presenter.Interfaces.Other;
+using Elrob.Terminal.View.Interfaces.Other;
 using Ninject;
 
-namespace Elrob.Terminal.View.Implementations
+namespace Elrob.Terminal.View.Implementations.Other
 {
     public partial class CardReaderView : Form, ICardReaderView
     {

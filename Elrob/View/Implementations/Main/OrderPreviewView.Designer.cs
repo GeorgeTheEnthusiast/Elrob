@@ -85,6 +85,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.dataGridViewOrderContent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOrderContent.Size = new System.Drawing.Size(1232, 709);
             this.dataGridViewOrderContent.TabIndex = 0;
+            this.dataGridViewOrderContent.TabStop = false;
             this.dataGridViewOrderContent.VirtualMode = true;
             this.dataGridViewOrderContent.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOrderContent_ColumnHeaderMouseClick);
             // 
@@ -188,7 +189,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 1;
+            this.buttonAccept.TabIndex = 4;
             this.buttonAccept.Text = "Akceptuj";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -202,7 +203,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.TabIndex = 5;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
@@ -225,7 +226,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.textBoxOrderName.Multiline = true;
             this.textBoxOrderName.Name = "textBoxOrderName";
             this.textBoxOrderName.Size = new System.Drawing.Size(1242, 38);
-            this.textBoxOrderName.TabIndex = 4;
+            this.textBoxOrderName.TabIndex = 0;
             this.textBoxOrderName.TextChanged += new System.EventHandler(this.textBoxOrderName_TextChanged);
             // 
             // buttonAdd
@@ -235,7 +236,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(292, 86);
-            this.buttonAdd.TabIndex = 5;
+            this.buttonAdd.TabIndex = 1;
             this.buttonAdd.Text = "Dodaj";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -247,7 +248,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonEdit.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(292, 86);
-            this.buttonEdit.TabIndex = 6;
+            this.buttonEdit.TabIndex = 2;
             this.buttonEdit.Text = "Edytuj";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
@@ -259,7 +260,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(292, 86);
-            this.buttonDelete.TabIndex = 7;
+            this.buttonDelete.TabIndex = 3;
             this.buttonDelete.Text = "Usuń";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);

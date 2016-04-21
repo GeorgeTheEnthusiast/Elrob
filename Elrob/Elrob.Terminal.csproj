@@ -112,6 +112,7 @@
     <Compile Include="Controllers\IInactivityChecker.cs" />
     <Compile Include="Controllers\InactivityChecker.cs" />
     <Compile Include="Controllers\IUserFactory.cs" />
+    <Compile Include="Controllers\OnScreenKeyboardController.cs" />
     <Compile Include="Controllers\UserFactory.cs" />
     <Compile Include="Converters\Implementations\CardConverter.cs" />
     <Compile Include="Converters\Interfaces\ICardConverter.cs" />
@@ -170,13 +171,13 @@
     <Compile Include="Model\Implementations\Choose\LogInMethodChooseModel.cs" />
     <Compile Include="Model\Implementations\Choose\OrderContentChooseModel.cs" />
     <Compile Include="Model\Implementations\Choose\OrderChooseModel.cs" />
-    <Compile Include="Model\Implementations\CardReaderModel.cs" />
+    <Compile Include="Model\Implementations\Other\CardReaderModel.cs" />
     <Compile Include="Model\Implementations\Item\CardItemModel.cs" />
     <Compile Include="Model\Implementations\Item\OrderPreviewItemModel.cs" />
     <Compile Include="Model\Implementations\Main\CardModel.cs" />
     <Compile Include="Model\Interfaces\Choose\ILogInMethodChooseModel.cs" />
     <Compile Include="Model\Interfaces\Choose\IOrderContentChooseModel.cs" />
-    <Compile Include="Model\Interfaces\ICardReaderModel.cs" />
+    <Compile Include="Model\Interfaces\Other\ICardReaderModel.cs" />
     <Compile Include="Model\Interfaces\Item\ICardItemModel.cs" />
     <Compile Include="Model\Interfaces\Item\IOrderPreviewItemModel.cs" />
     <Compile Include="Model\Interfaces\Main\IGroupModel.cs" />
@@ -227,9 +228,9 @@
     <Compile Include="Presenter\Implementation\Item\CardItemPresenter.cs" />
     <Compile Include="Presenter\Implementation\Item\OrderPreviewItemPresenter.cs" />
     <Compile Include="Presenter\Implementation\Main\CardPresenter.cs" />
-    <Compile Include="Presenter\Implementation\CardReaderPresenter.cs" />
+    <Compile Include="Presenter\Implementation\Other\CardReaderPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Choose\ILogInMethodChoosePresenter.cs" />
-    <Compile Include="Presenter\Interfaces\ICardReaderPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Other\ICardReaderPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Choose\IOrderContentChoosePresenter.cs" />
     <Compile Include="Presenter\Interfaces\Choose\IOrderChoosePresenter.cs" />
     <Compile Include="Presenter\Interfaces\Item\ICardItemPresenter.cs" />
@@ -318,14 +319,14 @@
     <Compile Include="View\Implementations\Main\CardView.Designer.cs">
       <DependentUpon>CardView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Implementations\CardReaderView.cs">
+    <Compile Include="View\Implementations\Other\CardReaderView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Implementations\CardReaderView.Designer.cs">
+    <Compile Include="View\Implementations\Other\CardReaderView.Designer.cs">
       <DependentUpon>CardReaderView.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Interfaces\Choose\ILogInMethodChooseView.cs" />
-    <Compile Include="View\Interfaces\ICardReaderView.cs" />
+    <Compile Include="View\Interfaces\Other\ICardReaderView.cs" />
     <Compile Include="View\Interfaces\Choose\IOrderContentChooseView.cs" />
     <Compile Include="View\Interfaces\Choose\IOrderChooseView.cs" />
     <Compile Include="View\Interfaces\Item\ICardItemView.cs" />
@@ -471,8 +472,8 @@
     <Compile Include="View\Implementations\Main\OrderPreviewView.Designer.cs">
       <DependentUpon>OrderPreviewView.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\OrderPreviewViewModel.cs" />
-    <EmbeddedResource Include="View\Implementations\CardReaderView.resx">
+    <Compile Include="Dto\OrderPreviewViewModel.cs" />
+    <EmbeddedResource Include="View\Implementations\Other\CardReaderView.resx">
       <DependentUpon>CardReaderView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Elrob.Terminal_TemporaryKey.pfx" />
@@ -638,6 +639,7 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,6 +9,6 @@ namespace Elrob.Terminal.View.Interfaces.Choose
 
         DialogResult ShowDialog();
 
-        ComboBox ComboBoxOrders { get; }
+        ComboBox ComboBoxOrderContent { get; }
     }
 }

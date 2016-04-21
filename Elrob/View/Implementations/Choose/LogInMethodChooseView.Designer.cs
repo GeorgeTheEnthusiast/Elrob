@@ -40,7 +40,7 @@
             this.buttonLoginAndPassword.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonLoginAndPassword.Name = "buttonLoginAndPassword";
             this.buttonLoginAndPassword.Size = new System.Drawing.Size(244, 97);
-            this.buttonLoginAndPassword.TabIndex = 4;
+            this.buttonLoginAndPassword.TabIndex = 0;
             this.buttonLoginAndPassword.Text = "Login/Hasło";
             this.buttonLoginAndPassword.UseVisualStyleBackColor = true;
             this.buttonLoginAndPassword.Click += new System.EventHandler(this.buttonLoginAndPassword_Click);
@@ -48,7 +48,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(170, 26);
+            this.label1.Location = new System.Drawing.Point(159, 26);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(346, 31);
             this.label1.TabIndex = 5;
@@ -60,7 +60,7 @@
             this.buttonCard.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCard.Name = "buttonCard";
             this.buttonCard.Size = new System.Drawing.Size(254, 97);
-            this.buttonCard.TabIndex = 6;
+            this.buttonCard.TabIndex = 1;
             this.buttonCard.Text = "Karta";
             this.buttonCard.UseVisualStyleBackColor = true;
             this.buttonCard.Click += new System.EventHandler(this.buttonCard_Click);
@@ -71,7 +71,7 @@
             this.buttonExit.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(244, 97);
-            this.buttonExit.TabIndex = 7;
+            this.buttonExit.TabIndex = 2;
             this.buttonExit.Text = "Wyjdź";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);

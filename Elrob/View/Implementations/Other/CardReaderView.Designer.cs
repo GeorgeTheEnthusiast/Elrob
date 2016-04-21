@@ -1,4 +1,4 @@
-﻿namespace Elrob.Terminal.View.Implementations
+﻿namespace Elrob.Terminal.View.Implementations.Other
 {
     partial class CardReaderView
     {

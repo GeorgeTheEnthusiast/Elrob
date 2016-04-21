@@ -69,6 +69,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOrders.Size = new System.Drawing.Size(1232, 705);
             this.dataGridViewOrders.TabIndex = 0;
+            this.dataGridViewOrders.TabStop = false;
             this.dataGridViewOrders.VirtualMode = true;
             this.dataGridViewOrders.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOrders_ColumnHeaderMouseClick);
             // 
@@ -98,7 +99,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 1;
+            this.buttonAccept.TabIndex = 4;
             this.buttonAccept.Text = "OK";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -122,7 +123,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(292, 86);
-            this.buttonAdd.TabIndex = 4;
+            this.buttonAdd.TabIndex = 0;
             this.buttonAdd.Text = "Dodaj";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
@@ -134,7 +135,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonEdit.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(292, 86);
-            this.buttonEdit.TabIndex = 5;
+            this.buttonEdit.TabIndex = 1;
             this.buttonEdit.Text = "Edytuj";
             this.buttonEdit.UseVisualStyleBackColor = true;
             this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
@@ -146,7 +147,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(292, 86);
-            this.buttonDelete.TabIndex = 6;
+            this.buttonDelete.TabIndex = 2;
             this.buttonDelete.Text = "Usuń";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -171,6 +172,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.textBoxPlace.ReadOnly = true;
             this.textBoxPlace.Size = new System.Drawing.Size(1320, 38);
             this.textBoxPlace.TabIndex = 8;
+            this.textBoxPlace.TabStop = false;
             this.textBoxPlace.TextChanged += new System.EventHandler(this.textBoxPlace_TextChanged);
             // 
             // tableLayoutPanel1

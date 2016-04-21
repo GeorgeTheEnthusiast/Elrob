@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Item;
 using Elrob.Terminal.Presenter;
@@ -44,5 +45,10 @@ namespace Elrob.Terminal.View.Implementations.Item
             Name = textBoxName.Text.Trim(),
             Id = PassedOrder?.Id ?? 0
         };
+
+        private void textBoxName_Click(object sender, System.EventArgs e)
+        {
+            OnScreenKeyboardController.ShowOnScreenKeyboard();
+        }
     }
 }

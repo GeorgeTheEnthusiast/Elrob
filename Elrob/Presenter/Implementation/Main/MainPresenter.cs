@@ -8,10 +8,10 @@ using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Dto;
-using Elrob.Terminal.ExcelServiceServiceReference;
 using Elrob.Terminal.Model.Interfaces.Main;
 using Elrob.Terminal.Presenter.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces.Main;
+using Elrob.Terminal.Service_References.ExcelServiceServiceReference;
 using Elrob.Terminal.View;
 using Elrob.Terminal.View.Interfaces.Main;
 using Ninject;
@@ -24,7 +24,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         private readonly IMainView _mainView;
         private readonly IMainModel _mainModel;
         private readonly IOrderContentConverter _orderContentConverter;
-        private Task<Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse> excelTask;
+        private Task<ImportDataResponse> excelTask;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
         private IOrderPreviewPresenter _orderPreviewPresenter;
         private IOrderChoosePresenter _orderChoosePresenter;
@@ -148,13 +148,13 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                     if (orderContentDialogResult == DialogResult.OK)
                     {
                         _orderProgressPresenter = Program.Kernel.Get<IOrderProgressPresenter>();
-                        _orderProgressPresenter.ShowDialog(_orderContentChoosePresenter.ChoosedOrderContent);
+                        _orderProgressPresenter.ShowDialog(_orderContentChoosePresenter.ChoosedOrderContent, _placeChoosePresenter.ChoosedPlace);
                     }
                 }
             }
         }
 
-        private OrderPreviewViewModel AfterImportData(ExcelServiceServiceReference.ImportDataResponse importDataResponse)
+        private OrderPreviewViewModel AfterImportData(ImportDataResponse importDataResponse)
         {
             _mainView.UseWaitCursor = false;
 

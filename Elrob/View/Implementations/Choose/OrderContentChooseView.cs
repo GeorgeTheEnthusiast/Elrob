@@ -31,6 +31,6 @@ namespace Elrob.Terminal.View.Implementations.Choose
 
         public OrderContent OrderContent => comboBoxOrderContents.SelectedItem as OrderContent;
 
-        public ComboBox ComboBoxOrders => comboBoxOrderContents;
+        public ComboBox ComboBoxOrderContent => comboBoxOrderContents;
     }
 }

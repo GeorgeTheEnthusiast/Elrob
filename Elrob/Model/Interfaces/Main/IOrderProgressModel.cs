@@ -8,5 +8,9 @@ namespace Elrob.Terminal.Model.Interfaces.Main
         List<OrderProgress> GetOrderContentProgressById(int orderContentId);
 
         void DeleteOrderProgress(OrderProgress orderProgress);
+
+        List<OrderContent> GetOrderContent(int orderId);
+
+        List<OrderContent> GetOrderContent(int orderId, int placeId);
     }
 }

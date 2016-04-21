@@ -3,7 +3,7 @@
   <asmv1:assemblyIdentity name="Elrob.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="msil" type="win32" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Elrob" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Elrob" version="1.3.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Elrob.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -54,14 +54,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="247784">
-      <assemblyIdentity name="Elrob" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="252392">
+      <assemblyIdentity name="Elrob" version="1.3.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>E24jzGnLy5jTYJ1f63VJGwpMyCma8RP0q1WhCj0fwvI=</dsig:DigestValue>
+        <dsig:DigestValue>nzZQPcme3pnziXdLns7qRHbGi+N66mu2okf49q1BJJA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

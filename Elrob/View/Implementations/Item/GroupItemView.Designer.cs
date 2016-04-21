@@ -40,7 +40,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(37, 43);
+            this.label1.Location = new System.Drawing.Point(37, 39);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 31);
@@ -53,7 +53,8 @@
             this.textBoxName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(500, 38);
-            this.textBoxName.TabIndex = 1;
+            this.textBoxName.TabIndex = 0;
+            this.textBoxName.Click += new System.EventHandler(this.textBoxName_Click);
             // 
             // buttonAccept
             // 
@@ -61,7 +62,7 @@
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 4;
+            this.buttonAccept.TabIndex = 1;
             this.buttonAccept.Text = "Akceptuj";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -73,7 +74,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);

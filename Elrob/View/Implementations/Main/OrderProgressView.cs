@@ -33,17 +33,21 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         public CustomBindingList<OrderProgress> OrderProgresses { get; set; }
 
-        public OrderContent OrderContent { get; set; }
+        public OrderContent OrderContent => comboBoxOrderContent.SelectedItem as OrderContent;
 
-        public TextBox TextBoxOrderContent => textBoxOrderContent;
+        public Place Place { get; set; }
+
+        public ComboBox ComboBoxOrderContent => comboBoxOrderContent;
+
+        public ComboBox ComboBoxOrderContentByDocumentNumber => comboBoxOrderContentByDocumentNumber;
 
         public TextBox TextBoxOrder => textBoxOrder;
-
-        public TextBox TextBoxDocumentNumber => textBoxDocumentNumber;
-
+        
         public TextBox TextBoxToComplete => textBoxToComplete;
 
         public TextBox TextBoxCompletedSum => _textBoxCompletedSum;
+
+        public TextBox TextBoxTimeSpendSum => textBoxTimeSpendSum;
 
         public Button ButtonEdit => buttonEdit;
 
@@ -85,14 +89,10 @@ namespace Elrob.Terminal.View.Implementations.Main
             Helpers.textBox_FitHeightToText(sender, e);
         }
 
-        private void textBoxOrderContent_TextChanged(object sender, EventArgs e)
+        private void comboBoxOrderContent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Helpers.textBox_FitHeightToText(sender, e);
-        }
-
-        private void textBoxDocumentNumber_TextChanged(object sender, EventArgs e)
-        {
-            Helpers.textBox_FitHeightToText(sender, e);
+            ComboBox comboBox = sender as ComboBox;
+            _orderProgressPresenter.RefreshComboBoxes(comboBox);
         }
     }
 }

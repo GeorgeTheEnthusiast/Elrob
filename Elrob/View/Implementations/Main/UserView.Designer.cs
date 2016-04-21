@@ -31,17 +31,17 @@ namespace Elrob.Terminal.View.Implementations.Main
         private void InitializeComponent()
         {
             this.dataGridViewUsers = new System.Windows.Forms.DataGridView();
+            this.loginNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.GroupColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CardColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonOK = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonCards = new System.Windows.Forms.Button();
-            this.loginNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.GroupColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CardColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUsers)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -72,95 +72,9 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.dataGridViewUsers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewUsers.Size = new System.Drawing.Size(1232, 753);
             this.dataGridViewUsers.TabIndex = 0;
+            this.dataGridViewUsers.TabStop = false;
             this.dataGridViewUsers.VirtualMode = true;
             this.dataGridViewUsers.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewUsers_ColumnHeaderMouseClick);
-            // 
-            // buttonOK
-            // 
-            this.buttonOK.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tableLayoutPanel1.SetColumnSpan(this.buttonOK, 2);
-            this.buttonOK.Location = new System.Drawing.Point(680, 774);
-            this.buttonOK.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.buttonOK.Name = "buttonOK";
-            this.buttonOK.Size = new System.Drawing.Size(200, 55);
-            this.buttonOK.TabIndex = 1;
-            this.buttonOK.Text = "OK";
-            this.buttonOK.UseVisualStyleBackColor = true;
-            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
-            // 
-            // buttonAdd
-            // 
-            this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonAdd.Location = new System.Drawing.Point(1258, 7);
-            this.buttonAdd.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(292, 86);
-            this.buttonAdd.TabIndex = 2;
-            this.buttonAdd.Text = "Dodaj";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
-            // 
-            // buttonEdit
-            // 
-            this.buttonEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonEdit.Location = new System.Drawing.Point(1258, 107);
-            this.buttonEdit.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.buttonEdit.Name = "buttonEdit";
-            this.buttonEdit.Size = new System.Drawing.Size(292, 86);
-            this.buttonEdit.TabIndex = 3;
-            this.buttonEdit.Text = "Edytuj";
-            this.buttonEdit.UseVisualStyleBackColor = true;
-            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
-            // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDelete.Location = new System.Drawing.Point(1258, 207);
-            this.buttonDelete.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(292, 86);
-            this.buttonDelete.TabIndex = 4;
-            this.buttonDelete.Text = "Usuń";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.buttonCards, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.buttonAdd, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonOK, 0, 4);
-            this.tableLayoutPanel1.Controls.Add(this.buttonDelete, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewUsers, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.buttonEdit, 1, 1);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1560, 837);
-            this.tableLayoutPanel1.TabIndex = 5;
-            // 
-            // buttonCards
-            // 
-            this.buttonCards.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonCards.Location = new System.Drawing.Point(1258, 674);
-            this.buttonCards.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
-            this.buttonCards.Name = "buttonCards";
-            this.buttonCards.Size = new System.Drawing.Size(292, 86);
-            this.buttonCards.TabIndex = 5;
-            this.buttonCards.Text = "Karty";
-            this.buttonCards.UseVisualStyleBackColor = true;
-            this.buttonCards.Click += new System.EventHandler(this.buttonCards_Click);
             // 
             // loginNameColumn
             // 
@@ -210,6 +124,93 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.CardColumn.Name = "CardColumn";
             this.CardColumn.ReadOnly = true;
             this.CardColumn.Width = 104;
+            // 
+            // buttonOK
+            // 
+            this.buttonOK.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tableLayoutPanel1.SetColumnSpan(this.buttonOK, 2);
+            this.buttonOK.Location = new System.Drawing.Point(680, 774);
+            this.buttonOK.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.buttonOK.Name = "buttonOK";
+            this.buttonOK.Size = new System.Drawing.Size(200, 55);
+            this.buttonOK.TabIndex = 4;
+            this.buttonOK.Text = "OK";
+            this.buttonOK.UseVisualStyleBackColor = true;
+            this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
+            // 
+            // buttonAdd
+            // 
+            this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonAdd.Location = new System.Drawing.Point(1258, 7);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.buttonAdd.Name = "buttonAdd";
+            this.buttonAdd.Size = new System.Drawing.Size(292, 86);
+            this.buttonAdd.TabIndex = 0;
+            this.buttonAdd.Text = "Dodaj";
+            this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonEdit.Location = new System.Drawing.Point(1258, 107);
+            this.buttonEdit.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(292, 86);
+            this.buttonEdit.TabIndex = 1;
+            this.buttonEdit.Text = "Edytuj";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEdit_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.buttonDelete.Location = new System.Drawing.Point(1258, 207);
+            this.buttonDelete.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(292, 86);
+            this.buttonDelete.TabIndex = 2;
+            this.buttonDelete.Text = "Usuń";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonCards, 0, 3);
+            this.tableLayoutPanel1.Controls.Add(this.buttonAdd, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonOK, 0, 4);
+            this.tableLayoutPanel1.Controls.Add(this.buttonDelete, 1, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewUsers, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.buttonEdit, 1, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1560, 837);
+            this.tableLayoutPanel1.TabIndex = 5;
+            // 
+            // buttonCards
+            // 
+            this.buttonCards.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.buttonCards.Location = new System.Drawing.Point(1258, 674);
+            this.buttonCards.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
+            this.buttonCards.Name = "buttonCards";
+            this.buttonCards.Size = new System.Drawing.Size(292, 86);
+            this.buttonCards.TabIndex = 3;
+            this.buttonCards.Text = "Karty";
+            this.buttonCards.UseVisualStyleBackColor = true;
+            this.buttonCards.Click += new System.EventHandler(this.buttonCards_Click);
             // 
             // UserView
             // 

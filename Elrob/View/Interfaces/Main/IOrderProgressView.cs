@@ -11,17 +11,21 @@ namespace Elrob.Terminal.View.Interfaces.Main
 
         CustomBindingList<OrderProgress> OrderProgresses { get; set; }
 
-        OrderContent OrderContent { get; set; }
+        OrderContent OrderContent { get; }
 
-        TextBox TextBoxOrderContent { get; }
+        Place Place { get; set; }
+
+        ComboBox ComboBoxOrderContent { get; }
+
+        ComboBox ComboBoxOrderContentByDocumentNumber { get; }
 
         TextBox TextBoxOrder { get; }
-
-        TextBox TextBoxDocumentNumber { get; }
 
         TextBox TextBoxToComplete { get; }
 
         TextBox TextBoxCompletedSum { get; }
+
+        TextBox TextBoxTimeSpendSum { get; }
 
         Button ButtonEdit { get; }
 

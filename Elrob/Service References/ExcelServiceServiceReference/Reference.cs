@@ -8,24 +8,23 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Elrob.Terminal.ExcelServiceServiceReference {
-    using System.Runtime.Serialization;
-    using System;
-    
-    
+using System;
+using System.Runtime.Serialization;
+
+namespace Elrob.Terminal.Service_References.ExcelServiceServiceReference {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ImportDataRequest", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="ImportDataRequest", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
+    [Serializable()]
     public partial class ImportDataRequest : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private byte[] FileBytesField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string FileNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -38,7 +37,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public byte[] FileBytes {
             get {
                 return this.FileBytesField;
@@ -51,7 +50,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string FileName {
             get {
                 return this.FileNameField;
@@ -76,17 +75,17 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ImportDataResponse", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="ImportDataResponse", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
+    [Serializable()]
     public partial class ImportDataResponse : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Collections.Generic.List<Elrob.Terminal.ExcelServiceServiceReference.OrderContent> OrderContentsField;
+        [OptionalField()]
+        private System.Collections.Generic.List<OrderContent> OrderContentsField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string ResponseMessageField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -99,8 +98,8 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Collections.Generic.List<Elrob.Terminal.ExcelServiceServiceReference.OrderContent> OrderContents {
+        [DataMember()]
+        public System.Collections.Generic.List<OrderContent> OrderContents {
             get {
                 return this.OrderContentsField;
             }
@@ -112,7 +111,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string ResponseMessage {
             get {
                 return this.ResponseMessageField;
@@ -137,44 +136,44 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="OrderContent", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="OrderContent", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
+    [Serializable()]
     public partial class OrderContent : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string DocumentNumberField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Nullable<decimal> HeightField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Elrob.Terminal.ExcelServiceServiceReference.Material MaterialField;
+        [OptionalField()]
+        private Material MaterialField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string NameField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Elrob.Terminal.ExcelServiceServiceReference.Order OrderField;
+        [OptionalField()]
+        private Order OrderField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int PackageQuantityField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Elrob.Terminal.ExcelServiceServiceReference.Place PlaceField;
+        [OptionalField()]
+        private Place PlaceField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Nullable<decimal> ThicknessField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private int ToCompleteField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private decimal UnitWeightField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private System.Nullable<decimal> WidthField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -187,7 +186,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string DocumentNumber {
             get {
                 return this.DocumentNumberField;
@@ -200,7 +199,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Nullable<decimal> Height {
             get {
                 return this.HeightField;
@@ -213,8 +212,8 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Elrob.Terminal.ExcelServiceServiceReference.Material Material {
+        [DataMember()]
+        public Material Material {
             get {
                 return this.MaterialField;
             }
@@ -226,7 +225,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Name {
             get {
                 return this.NameField;
@@ -239,8 +238,8 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Elrob.Terminal.ExcelServiceServiceReference.Order Order {
+        [DataMember()]
+        public Order Order {
             get {
                 return this.OrderField;
             }
@@ -252,7 +251,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int PackageQuantity {
             get {
                 return this.PackageQuantityField;
@@ -265,8 +264,8 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Elrob.Terminal.ExcelServiceServiceReference.Place Place {
+        [DataMember()]
+        public Place Place {
             get {
                 return this.PlaceField;
             }
@@ -278,7 +277,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Nullable<decimal> Thickness {
             get {
                 return this.ThicknessField;
@@ -291,7 +290,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public int ToComplete {
             get {
                 return this.ToCompleteField;
@@ -304,7 +303,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public decimal UnitWeight {
             get {
                 return this.UnitWeightField;
@@ -317,7 +316,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public System.Nullable<decimal> Width {
             get {
                 return this.WidthField;
@@ -342,14 +341,14 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Material", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="Material", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
+    [Serializable()]
     public partial class Material : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string NameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -362,7 +361,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Name {
             get {
                 return this.NameField;
@@ -387,14 +386,14 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="Order", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
+    [Serializable()]
     public partial class Order : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string NameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -407,7 +406,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Name {
             get {
                 return this.NameField;
@@ -432,14 +431,14 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Place", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
-    [System.SerializableAttribute()]
+    [DataContract(Name="Place", Namespace="http://schemas.datacontract.org/2004/07/Elrob.Webservice.Dto")]
+    [Serializable()]
     public partial class Place : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
-        [System.NonSerializedAttribute()]
+        [NonSerialized()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        [OptionalField()]
         private string NameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
@@ -452,7 +451,7 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
             }
         }
         
-        [System.Runtime.Serialization.DataMemberAttribute()]
+        [DataMember()]
         public string Name {
             get {
                 return this.NameField;
@@ -480,19 +479,19 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
     public interface IExcelService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IExcelService/ImportData", ReplyAction="http://tempuri.org/IExcelService/ImportDataResponse")]
-        Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse ImportData(Elrob.Terminal.ExcelServiceServiceReference.ImportDataRequest importDataRequest);
+        ImportDataResponse ImportData(ImportDataRequest importDataRequest);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IExcelService/ImportData", ReplyAction="http://tempuri.org/IExcelService/ImportDataResponse")]
-        System.Threading.Tasks.Task<Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse> ImportDataAsync(Elrob.Terminal.ExcelServiceServiceReference.ImportDataRequest importDataRequest);
+        System.Threading.Tasks.Task<ImportDataResponse> ImportDataAsync(ImportDataRequest importDataRequest);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IExcelServiceChannel : Elrob.Terminal.ExcelServiceServiceReference.IExcelService, System.ServiceModel.IClientChannel {
+    public interface IExcelServiceChannel : IExcelService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ExcelServiceClient : System.ServiceModel.ClientBase<Elrob.Terminal.ExcelServiceServiceReference.IExcelService>, Elrob.Terminal.ExcelServiceServiceReference.IExcelService {
+    public partial class ExcelServiceClient : System.ServiceModel.ClientBase<IExcelService>, IExcelService {
         
         public ExcelServiceClient() {
         }
@@ -513,11 +512,11 @@ namespace Elrob.Terminal.ExcelServiceServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse ImportData(Elrob.Terminal.ExcelServiceServiceReference.ImportDataRequest importDataRequest) {
+        public ImportDataResponse ImportData(ImportDataRequest importDataRequest) {
             return base.Channel.ImportData(importDataRequest);
         }
         
-        public System.Threading.Tasks.Task<Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse> ImportDataAsync(Elrob.Terminal.ExcelServiceServiceReference.ImportDataRequest importDataRequest) {
+        public System.Threading.Tasks.Task<ImportDataResponse> ImportDataAsync(ImportDataRequest importDataRequest) {
             return base.Channel.ImportDataAsync(importDataRequest);
         }
     }

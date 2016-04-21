@@ -6,7 +6,7 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
 {
     public interface IOrderProgressPresenter
     {
-        DialogResult ShowDialog(OrderContent orderContent);
+        DialogResult ShowDialog(OrderContent orderContent, Place place);
 
         void RefreshData();
 
@@ -17,5 +17,7 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
         void ShowEditForm();
 
         void DeleteOrderProgress();
+
+        void RefreshComboBoxes(ComboBox comboBox);
     }
 }

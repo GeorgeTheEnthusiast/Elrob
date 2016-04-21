@@ -65,6 +65,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.dataGridViewPermissionGroups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewPermissionGroups.Size = new System.Drawing.Size(1232, 709);
             this.dataGridViewPermissionGroups.TabIndex = 0;
+            this.dataGridViewPermissionGroups.TabStop = false;
             this.dataGridViewPermissionGroups.VirtualMode = true;
             this.dataGridViewPermissionGroups.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewPermissionGroups_ColumnHeaderMouseClick);
             // 
@@ -85,7 +86,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonOK.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(200, 55);
-            this.buttonOK.TabIndex = 1;
+            this.buttonOK.TabIndex = 2;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -97,7 +98,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonChange.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonChange.Name = "buttonChange";
             this.buttonChange.Size = new System.Drawing.Size(292, 86);
-            this.buttonChange.TabIndex = 2;
+            this.buttonChange.TabIndex = 0;
             this.buttonChange.Text = "Zmień";
             this.buttonChange.UseVisualStyleBackColor = true;
             this.buttonChange.Click += new System.EventHandler(this.buttonChange_Click);
@@ -109,7 +110,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(292, 86);
-            this.buttonDelete.TabIndex = 4;
+            this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Usuń";
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
@@ -134,6 +135,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.textBoxGroup.ReadOnly = true;
             this.textBoxGroup.Size = new System.Drawing.Size(1398, 38);
             this.textBoxGroup.TabIndex = 6;
+            this.textBoxGroup.TabStop = false;
             // 
             // tableLayoutPanel1
             // 

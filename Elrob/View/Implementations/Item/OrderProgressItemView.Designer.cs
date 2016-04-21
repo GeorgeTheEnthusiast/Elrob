@@ -56,7 +56,7 @@
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 4;
+            this.buttonAccept.TabIndex = 2;
             this.buttonAccept.Text = "Akceptuj";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -68,7 +68,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -94,7 +94,7 @@
             this.dateTimePickerTimeSpend.Name = "dateTimePickerTimeSpend";
             this.dateTimePickerTimeSpend.ShowUpDown = true;
             this.dateTimePickerTimeSpend.Size = new System.Drawing.Size(386, 38);
-            this.dateTimePickerTimeSpend.TabIndex = 7;
+            this.dateTimePickerTimeSpend.TabIndex = 1;
             this.dateTimePickerTimeSpend.Value = new System.DateTime(2016, 3, 9, 0, 0, 0, 0);
             // 
             // numericUpDownCompleted
@@ -107,7 +107,8 @@
             0});
             this.numericUpDownCompleted.Name = "numericUpDownCompleted";
             this.numericUpDownCompleted.Size = new System.Drawing.Size(386, 38);
-            this.numericUpDownCompleted.TabIndex = 8;
+            this.numericUpDownCompleted.TabIndex = 0;
+            this.numericUpDownCompleted.Click += new System.EventHandler(this.control_Click);
             // 
             // OrderProgressItemView
             // 

@@ -50,7 +50,7 @@
             this.buttonOK.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(200, 55);
-            this.buttonOK.TabIndex = 4;
+            this.buttonOK.TabIndex = 1;
             this.buttonOK.Text = "OK";
             this.buttonOK.UseVisualStyleBackColor = true;
             this.buttonOK.Click += new System.EventHandler(this.buttonOK_Click);
@@ -63,7 +63,7 @@
             this.comboBoxOrders.Location = new System.Drawing.Point(290, 26);
             this.comboBoxOrders.Name = "comboBoxOrders";
             this.comboBoxOrders.Size = new System.Drawing.Size(455, 39);
-            this.comboBoxOrders.TabIndex = 6;
+            this.comboBoxOrders.TabIndex = 0;
             this.comboBoxOrders.ValueMember = "Id";
             // 
             // buttonCancel
@@ -73,7 +73,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 7;
+            this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);

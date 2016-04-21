@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Elrob.Terminal.Dto;
+﻿using System.Collections.Generic;
 
-namespace Elrob.Terminal.View
+namespace Elrob.Terminal.Dto
 {
     public class OrderPreviewViewModel
     {

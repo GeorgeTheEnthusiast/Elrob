@@ -30,11 +30,11 @@ namespace Elrob.Terminal.Presenter.Implementation.Choose
         {
             if (place.Id == int.MaxValue)
             {
-                _orderContentChooseView.ComboBoxOrders.DataSource = _orderContentChooseModel.GetOrderContentsByOrder(order);
+                _orderContentChooseView.ComboBoxOrderContent.DataSource = _orderContentChooseModel.GetOrderContentsByOrder(order);
             }
             else
             {
-                _orderContentChooseView.ComboBoxOrders.DataSource = _orderContentChooseModel.GetOrderContentsByOrderAndPlace(order, place);
+                _orderContentChooseView.ComboBoxOrderContent.DataSource = _orderContentChooseModel.GetOrderContentsByOrderAndPlace(order, place);
             }
             
             return _orderContentChooseView.ShowDialog();

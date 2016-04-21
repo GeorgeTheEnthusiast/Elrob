@@ -7,6 +7,7 @@ using Elrob.Terminal.Model.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces.Main;
+using Elrob.Terminal.Presenter.Interfaces.Other;
 using Elrob.Terminal.View.Interfaces.Choose;
 using Ninject;
 

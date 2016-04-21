@@ -18,6 +18,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         private readonly IOrderProgressView _orderProgressView;
         private readonly IOrderProgressModel _orderProgressModel;
         private IOrderProgressItemPresenter _orderProgressItemPresenter;
+        private bool _refreshingComboBoxesData;
 
         public OrderProgressPresenter(IOrderProgressView orderProgressView, IOrderProgressModel orderProgressModel)
         {
@@ -28,16 +29,25 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             _orderProgressModel = orderProgressModel;
         }
 
-        public DialogResult ShowDialog(OrderContent orderContent)
+        public DialogResult ShowDialog(OrderContent orderContent, Place place)
         {
-            _orderProgressView.OrderContent = orderContent;
+            _orderProgressView.Place = place;
+            List<OrderContent> orderContentList; 
 
-            RefreshData();
-
-            _orderProgressView.TextBoxOrderContent.Text = orderContent.Name;
+            if (place.Id == int.MaxValue)
+            {
+                orderContentList = _orderProgressModel.GetOrderContent(orderContent.Order.Id);
+            }
+            else
+            {
+                orderContentList = _orderProgressModel.GetOrderContent(orderContent.Order.Id, place.Id);
+            }
+            
+            _orderProgressView.ComboBoxOrderContent.DataSource = orderContentList;
+            _orderProgressView.ComboBoxOrderContentByDocumentNumber.DataSource = orderContentList;
+            _orderProgressView.ComboBoxOrderContent.SelectedIndex = orderContentList.IndexOf(orderContentList.FirstOrDefault(x => x.Id == orderContent.Id));
+            _orderProgressView.ComboBoxOrderContentByDocumentNumber.SelectedIndex = _orderProgressView.ComboBoxOrderContent.SelectedIndex;
             _orderProgressView.TextBoxOrder.Text = orderContent.Order.Name;
-            _orderProgressView.TextBoxDocumentNumber.Text = orderContent.DocumentNumber;
-            _orderProgressView.TextBoxToComplete.Text = orderContent.ToComplete.ToString();
             
             return _orderProgressView.ShowDialog();
         }
@@ -52,7 +62,16 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                 _orderProgressView.OrderProgresses.Add(item);
             }
 
+            TimeSpan timeSpendSum = new TimeSpan();
+
+            foreach (var orderProgress in _orderProgressView.OrderProgresses)
+            {
+                timeSpendSum += orderProgress.TimeSpend;
+            }
+
             _orderProgressView.TextBoxCompletedSum.Text = _orderProgressView.OrderProgresses.Sum(x => x.Completed).ToString();
+            _orderProgressView.TextBoxTimeSpendSum.Text = string.Format("{0:00}:{1:00}:{2:00}", (int)timeSpendSum.TotalHours, timeSpendSum.Minutes, timeSpendSum.Seconds);
+            _orderProgressView.TextBoxToComplete.Text = _orderProgressView.OrderContent.ToComplete.ToString();
         }
 
         public void SetPermissions()
@@ -109,6 +128,36 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             {
                 _orderProgressModel.DeleteOrderProgress(selectedRow);
                 RefreshData();
+            }
+        }
+
+        public void RefreshComboBoxes(ComboBox comboBox)
+        {
+            if (_refreshingComboBoxesData == false)
+            {
+                _refreshingComboBoxesData = true;
+
+                int index = comboBox.SelectedIndex;
+
+                if (_orderProgressView.ComboBoxOrderContent.SelectedIndex != index
+                    && _orderProgressView.ComboBoxOrderContent.Items.Count > 0)
+                {
+                    _orderProgressView.ComboBoxOrderContent.SelectedIndex = index;
+                }
+
+                if (_orderProgressView.ComboBoxOrderContentByDocumentNumber.SelectedIndex != index
+                    && _orderProgressView.ComboBoxOrderContentByDocumentNumber.Items.Count > 0)
+                {
+                    _orderProgressView.ComboBoxOrderContentByDocumentNumber.SelectedIndex = index;
+                }
+
+                if (_orderProgressView.ComboBoxOrderContent.Items.Count > 0
+                    && _orderProgressView.ComboBoxOrderContentByDocumentNumber.Items.Count > 0)
+                {
+                    RefreshData();
+                }
+
+                _refreshingComboBoxesData = false;
             }
         }
     }

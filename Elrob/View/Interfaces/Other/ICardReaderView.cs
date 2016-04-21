@@ -1,7 +1,6 @@
 ﻿using System.Windows.Forms;
-using Elrob.Terminal.Dto;
 
-namespace Elrob.Terminal.View.Interfaces
+namespace Elrob.Terminal.View.Interfaces.Other
 {
     public interface ICardReaderView
     {

@@ -39,7 +39,7 @@
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 4;
+            this.buttonAccept.TabIndex = 1;
             this.buttonAccept.Text = "Akceptuj";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -51,7 +51,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 2;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -62,7 +62,7 @@
             this.checkedListBoxPermissions.Location = new System.Drawing.Point(12, 12);
             this.checkedListBoxPermissions.Name = "checkedListBoxPermissions";
             this.checkedListBoxPermissions.Size = new System.Drawing.Size(733, 301);
-            this.checkedListBoxPermissions.TabIndex = 6;
+            this.checkedListBoxPermissions.TabIndex = 0;
             // 
             // PermissionGroupItemView
             // 

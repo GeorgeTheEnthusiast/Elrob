@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using Elrob.Terminal.Controllers;
 using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Item;
 using Elrob.Terminal.Presenter;
@@ -66,5 +67,10 @@ namespace Elrob.Terminal.View.Implementations.Item
             Group = comboBoxGroup.SelectedItem as Group,
             Card = comboBoxCard.SelectedItem as Card
         };
+
+        private void control_Click(object sender, System.EventArgs e)
+        {
+            OnScreenKeyboardController.ShowOnScreenKeyboard();
+        }
     }
 }

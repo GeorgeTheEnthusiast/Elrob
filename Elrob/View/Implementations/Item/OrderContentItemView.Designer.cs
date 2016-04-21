@@ -77,7 +77,8 @@
             this.textBoxDocumentNumber.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.textBoxDocumentNumber.Name = "textBoxDocumentNumber";
             this.textBoxDocumentNumber.Size = new System.Drawing.Size(396, 38);
-            this.textBoxDocumentNumber.TabIndex = 1;
+            this.textBoxDocumentNumber.TabIndex = 0;
+            this.textBoxDocumentNumber.Click += new System.EventHandler(this.control_Click);
             // 
             // buttonAccept
             // 
@@ -85,7 +86,7 @@
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 4;
+            this.buttonAccept.TabIndex = 10;
             this.buttonAccept.Text = "Akceptuj";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -97,7 +98,7 @@
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 5;
+            this.buttonCancel.TabIndex = 11;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -112,7 +113,8 @@
             this.textBoxName.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(396, 38);
-            this.textBoxName.TabIndex = 7;
+            this.textBoxName.TabIndex = 1;
+            this.textBoxName.Click += new System.EventHandler(this.control_Click);
             // 
             // label2
             // 
@@ -212,7 +214,7 @@
             this.comboBoxPlaces.Location = new System.Drawing.Point(289, 136);
             this.comboBoxPlaces.Name = "comboBoxPlaces";
             this.comboBoxPlaces.Size = new System.Drawing.Size(396, 39);
-            this.comboBoxPlaces.TabIndex = 24;
+            this.comboBoxPlaces.TabIndex = 2;
             this.comboBoxPlaces.ValueMember = "Id";
             // 
             // numericUpDownPackageQuantity
@@ -225,7 +227,8 @@
             0});
             this.numericUpDownPackageQuantity.Name = "numericUpDownPackageQuantity";
             this.numericUpDownPackageQuantity.Size = new System.Drawing.Size(396, 38);
-            this.numericUpDownPackageQuantity.TabIndex = 25;
+            this.numericUpDownPackageQuantity.TabIndex = 3;
+            this.numericUpDownPackageQuantity.Click += new System.EventHandler(this.control_Click);
             // 
             // comboBoxMaterial
             // 
@@ -235,7 +238,7 @@
             this.comboBoxMaterial.Location = new System.Drawing.Point(289, 245);
             this.comboBoxMaterial.Name = "comboBoxMaterial";
             this.comboBoxMaterial.Size = new System.Drawing.Size(396, 39);
-            this.comboBoxMaterial.TabIndex = 26;
+            this.comboBoxMaterial.TabIndex = 4;
             this.comboBoxMaterial.ValueMember = "Id";
             // 
             // numericUpDownThickness
@@ -254,7 +257,8 @@
             0});
             this.numericUpDownThickness.Name = "numericUpDownThickness";
             this.numericUpDownThickness.Size = new System.Drawing.Size(396, 38);
-            this.numericUpDownThickness.TabIndex = 27;
+            this.numericUpDownThickness.TabIndex = 5;
+            this.numericUpDownThickness.Click += new System.EventHandler(this.control_Click);
             // 
             // numericUpDownWidth
             // 
@@ -272,7 +276,8 @@
             0});
             this.numericUpDownWidth.Name = "numericUpDownWidth";
             this.numericUpDownWidth.Size = new System.Drawing.Size(396, 38);
-            this.numericUpDownWidth.TabIndex = 28;
+            this.numericUpDownWidth.TabIndex = 6;
+            this.numericUpDownWidth.Click += new System.EventHandler(this.control_Click);
             // 
             // numericUpDownHeight
             // 
@@ -290,7 +295,8 @@
             0});
             this.numericUpDownHeight.Name = "numericUpDownHeight";
             this.numericUpDownHeight.Size = new System.Drawing.Size(396, 38);
-            this.numericUpDownHeight.TabIndex = 29;
+            this.numericUpDownHeight.TabIndex = 7;
+            this.numericUpDownHeight.Click += new System.EventHandler(this.control_Click);
             // 
             // numericUpDownUnitWeight
             // 
@@ -308,7 +314,8 @@
             0});
             this.numericUpDownUnitWeight.Name = "numericUpDownUnitWeight";
             this.numericUpDownUnitWeight.Size = new System.Drawing.Size(396, 38);
-            this.numericUpDownUnitWeight.TabIndex = 30;
+            this.numericUpDownUnitWeight.TabIndex = 8;
+            this.numericUpDownUnitWeight.Click += new System.EventHandler(this.control_Click);
             // 
             // numericUpDownToComplete
             // 
@@ -320,7 +327,8 @@
             0});
             this.numericUpDownToComplete.Name = "numericUpDownToComplete";
             this.numericUpDownToComplete.Size = new System.Drawing.Size(396, 38);
-            this.numericUpDownToComplete.TabIndex = 31;
+            this.numericUpDownToComplete.TabIndex = 9;
+            this.numericUpDownToComplete.Click += new System.EventHandler(this.control_Click);
             // 
             // OrderContentItemView
             // 

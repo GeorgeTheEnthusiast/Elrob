@@ -55,5 +55,10 @@ namespace Elrob.Terminal.View.Implementations.Item
             ProgressCreatedDate = PassedOrderProgress?.ProgressCreatedDate ?? DateTime.Now,
             ProgressModifiedDate = PassedOrderProgress == null ? (DateTime?) null : DateTime.Now
         };
+
+        private void control_Click(object sender, EventArgs e)
+        {
+            OnScreenKeyboardController.ShowOnScreenKeyboard();
+        }
     }
 }
