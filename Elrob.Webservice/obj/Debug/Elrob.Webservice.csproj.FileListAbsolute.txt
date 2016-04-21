@@ -6,14 +6,6 @@ c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Webservice\bin
 c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csproj.ResolveComReference.cache
 c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.dll
 c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.pdb
-D:\repo\Elrob\Elrob.Webservice\bin\Elrob.Webservice.dll.config
-D:\repo\Elrob\Elrob.Webservice\bin\Elrob.Webservice.dll
-D:\repo\Elrob\Elrob.Webservice\bin\Elrob.Webservice.pdb
-D:\repo\Elrob\Elrob.Webservice\bin\NLog.dll
-D:\repo\Elrob\Elrob.Webservice\bin\NLog.xml
-D:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csproj.ResolveComReference.cache
-D:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.dll
-D:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.pdb
 d:\repo\Elrob.Terminal\Elrob.Webservice\bin\Elrob.Webservice.dll.config
 d:\repo\Elrob.Terminal\Elrob.Webservice\bin\Elrob.Webservice.dll
 d:\repo\Elrob.Terminal\Elrob.Webservice\bin\Elrob.Webservice.pdb
@@ -32,6 +24,3 @@ d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.dll
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.pdb
 D:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.dll
 D:\Dysk Google\Projekty C#\Elrob\Elrob.Webservice\bin\NLog.xml
-d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csprojResolveAssemblyReference.cache
-d:\repo\Elrob\Elrob.Webservice\bin\DocumentFormat.OpenXml.dll
-d:\repo\Elrob\Elrob.Webservice\bin\System.IO.Packaging.dll

@@ -30,6 +30,7 @@ namespace Elrob.Terminal.View.Implementations.Main
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderPreviewView));
             this.dataGridViewOrderContent = new System.Windows.Forms.DataGridView();
             this.DocumentNumberColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ContentNameColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -303,6 +304,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.ClientSize = new System.Drawing.Size(1584, 861);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
