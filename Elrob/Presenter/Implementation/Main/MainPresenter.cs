@@ -154,6 +154,17 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
             }
         }
 
+        public void SetPermissions()
+        {
+            _mainView.ButtonImport.Enabled = UserFactory.Instance.HasPermission(PermissionType.MainView_RunImport);
+            _mainView.ButtonMaterials.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_View);
+            _mainView.ButtonOrders.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_View);
+            _mainView.ButtonPlaces.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_View);
+            _mainView.ButtonUsers.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_View);
+            _mainView.ButtonGroups.Enabled = UserFactory.Instance.HasPermission(PermissionType.GroupView_View);
+            _mainView.ButtonOrderProgress.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_View);
+        }
+
         private OrderPreviewViewModel AfterImportData(ImportDataResponse importDataResponse)
         {
             _mainView.UseWaitCursor = false;

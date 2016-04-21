@@ -10,6 +10,7 @@ using Elrob.Terminal.Presenter.Implementation.Main;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Item;
 using Elrob.Terminal.Presenter.Interfaces.Main;
+using Elrob.Terminal.Properties;
 using Elrob.Terminal.View.Interfaces.Main;
 using Ninject;
 
@@ -37,6 +38,7 @@ namespace Elrob.Terminal.View.Implementations.Main
 
             dataGridViewCards.AutoGenerateColumns = false;
             dataGridViewCards.DataSource = Cards = new CustomBindingList<Card>();
+            Icon = Resources.purchase_order;
 
             _cardPresenter.SetPermissions();
         }

@@ -14,5 +14,6 @@ namespace Elrob.Terminal.Presenter.Interfaces.Main
         void ImportOrder();
 
         void ShowOrderProgressView();
+        void SetPermissions();
     }
 }

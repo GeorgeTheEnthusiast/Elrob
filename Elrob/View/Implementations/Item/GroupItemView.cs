@@ -6,6 +6,7 @@ using Elrob.Terminal.Presenter;
 using Elrob.Terminal.Presenter.Implementation.Item;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Item;
+using Elrob.Terminal.Properties;
 using Elrob.Terminal.View.Interfaces.Item;
 using Ninject;
 
@@ -20,6 +21,7 @@ namespace Elrob.Terminal.View.Implementations.Item
             _groupItemPresenter = new GroupItemPresenter(this, Program.Kernel.Get<IGroupItemModel>());
             
             InitializeComponent();
+            Icon = Resources.purchase_order;
         }
 
         public Group FilledGroup => new Group()

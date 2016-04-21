@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Elrob.Terminal.Model.Interfaces.Other;
 using Elrob.Terminal.Presenter.Implementation.Other;
 using Elrob.Terminal.Presenter.Interfaces.Other;
+using Elrob.Terminal.Properties;
 using Elrob.Terminal.View.Interfaces.Other;
 using Ninject;
 
@@ -17,6 +18,7 @@ namespace Elrob.Terminal.View.Implementations.Other
             InitializeComponent();
 
             _cardReaderPresenter = new CardReaderPresenter(this, Program.Kernel.Get<ICardReaderModel>());
+            Icon = Resources.purchase_order;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

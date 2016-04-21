@@ -22,6 +22,7 @@ namespace Elrob.Terminal.View.Implementations.Choose
             InitializeComponent();
 
             _logInMethodChoosePresenter = new LogInMethodChoosePresenter(this, Program.Kernel.Get<ILogInMethodChooseModel>());
+            Icon = Resources.purchase_order;
         }
 
         public bool Visible { get { return base.Visible; } set { base.Visible = value; } }

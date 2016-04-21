@@ -8,6 +8,7 @@ using Elrob.Terminal.Presenter;
 using Elrob.Terminal.Presenter.Implementation.Main;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Main;
+using Elrob.Terminal.Properties;
 using Elrob.Terminal.View.Interfaces.Main;
 using Ninject;
 
@@ -22,6 +23,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             _loginPresenter = new LoginPresenter(this, Program.Kernel.Get<ILoginModel>());
             
             InitializeComponent();
+            Icon = Resources.purchase_order;
         }
         
         public User User => new User()

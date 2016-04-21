@@ -61,7 +61,7 @@
     <SignManifests>true</SignManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Resources\Elrob.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\purchase_order.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
@@ -476,7 +476,7 @@
       <DependentUpon>OrderPreviewView.cs</DependentUpon>
     </Compile>
     <Compile Include="Dto\OrderPreviewViewModel.cs" />
-    <None Include="Resources\Elrob.ico" />
+    <None Include="Resources\purchase_order.ico" />
     <EmbeddedResource Include="View\Implementations\Other\CardReaderView.resx">
       <DependentUpon>CardReaderView.cs</DependentUpon>
     </EmbeddedResource>

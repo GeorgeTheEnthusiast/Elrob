@@ -12,6 +12,7 @@ using Elrob.Terminal.Presenter.Implementation.Main;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces.Main;
+using Elrob.Terminal.Properties;
 using Elrob.Terminal.View.Interfaces.Main;
 using Ninject;
 
@@ -31,17 +32,24 @@ namespace Elrob.Terminal.View.Implementations.Main
             _mainPresenter = new MainPresenter(this, Program.Kernel.Get<IMainModel>(), Program.Kernel.Get<IOrderContentConverter>());
             
             InitializeComponent();
-            
-            ButtonImport.Enabled = UserFactory.Instance.HasPermission(PermissionType.MainView_RunImport);
-            buttonMaterials.Enabled = UserFactory.Instance.HasPermission(PermissionType.MaterialView_View);
-            buttonOrders.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderView_View);
-            buttonPlaces.Enabled = UserFactory.Instance.HasPermission(PermissionType.PlaceView_View);
-            buttonUsers.Enabled = UserFactory.Instance.HasPermission(PermissionType.UserView_View);
-            buttonGroups.Enabled = UserFactory.Instance.HasPermission(PermissionType.GroupView_View);
-            buttonOrderProgress.Enabled = UserFactory.Instance.HasPermission(PermissionType.OrderProgressView_View);
+
+            _mainPresenter.SetPermissions();
+            Icon = Resources.purchase_order;
         }
 
         public Button ButtonImport => buttonImport;
+
+        public Button ButtonGroups => buttonGroups;
+
+        public Button ButtonMaterials => buttonMaterials;
+
+        public Button ButtonOrderProgress => buttonOrderProgress;
+
+        public Button ButtonOrders => buttonOrders;
+
+        public Button ButtonPlaces => buttonPlaces;
+
+        public Button ButtonUsers => buttonUsers;
 
         public TextBox TextBoxUserName => textBoxUserName;
 

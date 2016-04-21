@@ -7,6 +7,7 @@ using Elrob.Terminal.Presenter;
 using Elrob.Terminal.Presenter.Implementation.Choose;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Choose;
+using Elrob.Terminal.Properties;
 using Elrob.Terminal.View.Interfaces.Choose;
 using Ninject;
 
@@ -17,6 +18,7 @@ namespace Elrob.Terminal.View.Implementations.Choose
         public OrderContentChooseView()
         {
             InitializeComponent();
+            Icon = Resources.purchase_order;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)

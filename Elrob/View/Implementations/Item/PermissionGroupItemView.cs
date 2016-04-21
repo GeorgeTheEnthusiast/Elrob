@@ -6,6 +6,7 @@ using Elrob.Terminal.Presenter;
 using Elrob.Terminal.Presenter.Implementation.Item;
 using Elrob.Terminal.Presenter.Interfaces;
 using Elrob.Terminal.Presenter.Interfaces.Item;
+using Elrob.Terminal.Properties;
 using Elrob.Terminal.View.Interfaces.Item;
 using Ninject;
 
@@ -22,6 +23,7 @@ namespace Elrob.Terminal.View.Implementations.Item
             InitializeComponent();
 
             checkedListBoxPermissions.DataSource = Permissions = new BindingList<Permission>();
+            Icon = Resources.purchase_order;
         }
 
         public BindingList<Permission> Permissions { get; set; }

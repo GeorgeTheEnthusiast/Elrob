@@ -1,4 +1,6 @@
-﻿namespace Elrob.Terminal.View.Implementations.Choose
+﻿using Elrob.Terminal.Properties;
+
+namespace Elrob.Terminal.View.Implementations.Choose
 {
     partial class LogInMethodChooseView
     {

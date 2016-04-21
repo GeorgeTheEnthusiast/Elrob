@@ -13,3 +13,11 @@ d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.T
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.pdb
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NSubstitute.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\nunit.framework.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NSubstitute.xml
+d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\nunit.framework.xml
+d:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
+d:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb
