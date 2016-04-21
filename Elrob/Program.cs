@@ -8,6 +8,7 @@ using Elrob.Terminal.Handlers;
 using Elrob.Terminal.Model;
 using Elrob.Terminal.Presenter;
 using Elrob.Terminal.Presenter.Interfaces;
+using Elrob.Terminal.Presenter.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces.Main;
 using Elrob.Terminal.View;
 using Elrob.Terminal.View.Interfaces;
@@ -35,20 +36,8 @@ namespace Elrob.Terminal
                 Kernel = new StandardKernel();
                 Kernel.Load(Assembly.GetExecutingAssembly());
 
-                ILoginPresenter loginPresenter = Kernel.Get<ILoginPresenter>();
-
-                DialogResult loginViewDialogResult = loginPresenter.ShowDialog();
-
-                while (loginViewDialogResult == DialogResult.OK)
-                {
-                    if (loginPresenter.CanLogIn())
-                    {
-                        IMainPresenter mainPresenter = Kernel.Get<IMainPresenter>();
-                        mainPresenter.ShowDialog();
-                    }
-
-                    loginViewDialogResult = loginPresenter.ShowDialog();
-                }
+                var logInMethodChoosePresenter = Kernel.Get<ILogInMethodChoosePresenter>();
+                logInMethodChoosePresenter.ShowDialog();
             }
             catch (Exception ex)
             {

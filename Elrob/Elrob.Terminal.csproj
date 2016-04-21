@@ -150,6 +150,7 @@
     <Compile Include="Domain\PermissionGroup.cs" />
     <Compile Include="Domain\Card.cs" />
     <Compile Include="Dto\OrderProgress.cs" />
+    <Compile Include="Dto\LogInMethod.cs" />
     <Compile Include="Dto\PermissionType.cs" />
     <Compile Include="Domain\Place.cs" />
     <Compile Include="Domain\Mappings\GroupMap.cs" />
@@ -166,12 +167,14 @@
     <Compile Include="Dto\Card.cs" />
     <Compile Include="Dto\User.cs" />
     <Compile Include="Handlers\GlobalApplicationHandler.cs" />
+    <Compile Include="Model\Implementations\Choose\LogInMethodChooseModel.cs" />
     <Compile Include="Model\Implementations\Choose\OrderContentChooseModel.cs" />
     <Compile Include="Model\Implementations\Choose\OrderChooseModel.cs" />
     <Compile Include="Model\Implementations\CardReaderModel.cs" />
     <Compile Include="Model\Implementations\Item\CardItemModel.cs" />
     <Compile Include="Model\Implementations\Item\OrderPreviewItemModel.cs" />
     <Compile Include="Model\Implementations\Main\CardModel.cs" />
+    <Compile Include="Model\Interfaces\Choose\ILogInMethodChooseModel.cs" />
     <Compile Include="Model\Interfaces\Choose\IOrderContentChooseModel.cs" />
     <Compile Include="Model\Interfaces\ICardReaderModel.cs" />
     <Compile Include="Model\Interfaces\Item\ICardItemModel.cs" />
@@ -218,12 +221,14 @@
     <Compile Include="Model\Implementations\Main\OrderPreviewModel.cs" />
     <Compile Include="Model\Implementations\Main\LoginModel.cs" />
     <Compile Include="Model\Implementations\Main\MainModel.cs" />
+    <Compile Include="Presenter\Implementation\Choose\LogInMethodChoosePresenter.cs" />
     <Compile Include="Presenter\Implementation\Choose\OrderContentChoosePresenter.cs" />
     <Compile Include="Presenter\Implementation\Choose\OrderChoosePresenter.cs" />
     <Compile Include="Presenter\Implementation\Item\CardItemPresenter.cs" />
     <Compile Include="Presenter\Implementation\Item\OrderPreviewItemPresenter.cs" />
     <Compile Include="Presenter\Implementation\Main\CardPresenter.cs" />
     <Compile Include="Presenter\Implementation\CardReaderPresenter.cs" />
+    <Compile Include="Presenter\Interfaces\Choose\ILogInMethodChoosePresenter.cs" />
     <Compile Include="Presenter\Interfaces\ICardReaderPresenter.cs" />
     <Compile Include="Presenter\Interfaces\Choose\IOrderContentChoosePresenter.cs" />
     <Compile Include="Presenter\Interfaces\Choose\IOrderChoosePresenter.cs" />
@@ -277,6 +282,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="View\Implementations\Choose\LogInMethodChooseView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Implementations\Choose\LogInMethodChooseView.Designer.cs">
+      <DependentUpon>LogInMethodChooseView.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Implementations\Choose\OrderContentChooseView.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -313,6 +324,7 @@
     <Compile Include="View\Implementations\CardReaderView.Designer.cs">
       <DependentUpon>CardReaderView.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Interfaces\Choose\ILogInMethodChooseView.cs" />
     <Compile Include="View\Interfaces\ICardReaderView.cs" />
     <Compile Include="View\Interfaces\Choose\IOrderContentChooseView.cs" />
     <Compile Include="View\Interfaces\Choose\IOrderChooseView.cs" />
@@ -484,6 +496,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Implementations\Choose\LogInMethodChooseView.resx">
+      <DependentUpon>LogInMethodChooseView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Implementations\Choose\OrderContentChooseView.resx">
       <DependentUpon>OrderContentChooseView.cs</DependentUpon>
     </EmbeddedResource>

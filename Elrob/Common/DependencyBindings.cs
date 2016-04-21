@@ -86,6 +86,7 @@ namespace Elrob.Terminal.Common
             Bind<ICardModel>().To<CardModel>();
             Bind<ICardReaderModel>().To<CardReaderModel>();
             Bind<ICardItemModel>().To<CardItemModel>();
+            Bind<ILogInMethodChooseModel>().To<LogInMethodChooseModel>();
             #endregion
 
             #region View
@@ -115,6 +116,7 @@ namespace Elrob.Terminal.Common
             Bind<ICardView>().To<CardView>();
             Bind<ICardReaderView>().To<CardReaderView>();
             Bind<ICardItemView>().To<CardItemView>();
+            Bind<ILogInMethodChooseView>().To<LogInMethodChooseView>();
             #endregion
 
             #region Presenter
@@ -144,6 +146,7 @@ namespace Elrob.Terminal.Common
             Bind<ICardPresenter>().To<CardPresenter>();
             Bind<ICardReaderPresenter>().To<CardReaderPresenter>();
             Bind<ICardItemPresenter>().To<CardItemPresenter>();
+            Bind<ILogInMethodChoosePresenter>().To<LogInMethodChoosePresenter>();
             #endregion
         }
     }

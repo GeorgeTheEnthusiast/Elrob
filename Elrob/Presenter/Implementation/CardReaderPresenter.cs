@@ -46,6 +46,14 @@ namespace Elrob.Terminal.Presenter.Implementation
                     };
                     return DialogResult.OK;
                 }
+                else
+                {
+                    _cardReaderView.EnteredText = "";
+                }
+            }
+            else
+            {
+                _cardReaderView.EnteredText = "";
             }
 
             return DialogResult.Cancel;
