@@ -12,6 +12,8 @@ using CardDomain = Elrob.Terminal.Domain.Card;
 
 namespace Elrob.Terminal.Converters.Implementations
 {
+    using System;
+
     public class UserConverter : IUserConverter
     {
         private IMapper _mapper;
@@ -36,16 +38,28 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public UserDto Convert(UserDomain input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<UserDto>(input);
         }
 
         public List<UserDto> Convert(List<UserDomain> input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<List<UserDto>>(input);
         }
 
         public UserDomain Convert(UserDto input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<UserDomain>(input);
         }
     }

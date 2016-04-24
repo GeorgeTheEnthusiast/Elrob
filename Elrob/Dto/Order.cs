@@ -9,5 +9,7 @@ namespace Elrob.Terminal.Dto
         public string Name { get; set; }
 
         public int PercentageProgress { get; set; }
+
+        public int TotalTimeSpend { get; set; }
     }
 }

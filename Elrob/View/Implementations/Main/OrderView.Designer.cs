@@ -30,10 +30,9 @@ namespace Elrob.Terminal.View.Implementations.Main
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderView));
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
-            this.OrderColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ProgressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.buttonAccept = new System.Windows.Forms.Button();
             this.buttonOrderContent = new System.Windows.Forms.Button();
             this.buttonAdd = new System.Windows.Forms.Button();
@@ -42,6 +41,9 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxPlace = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.OrderColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ProgressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalTimeSpendColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -59,7 +61,8 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderColumn,
-            this.ProgressColumn});
+            this.ProgressColumn,
+            this.TotalTimeSpendColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewOrders, 2);
             this.dataGridViewOrders.Location = new System.Drawing.Point(8, 51);
             this.dataGridViewOrders.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
@@ -73,24 +76,6 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.dataGridViewOrders.TabStop = false;
             this.dataGridViewOrders.VirtualMode = true;
             this.dataGridViewOrders.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOrders_ColumnHeaderMouseClick);
-            // 
-            // OrderColumn
-            // 
-            this.OrderColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.OrderColumn.DataPropertyName = "Name";
-            this.OrderColumn.HeaderText = "Nazwa zamówienia";
-            this.OrderColumn.Name = "OrderColumn";
-            this.OrderColumn.ReadOnly = true;
-            this.OrderColumn.Width = 248;
-            // 
-            // ProgressColumn
-            // 
-            this.ProgressColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.ProgressColumn.DataPropertyName = "PercentageProgress";
-            this.ProgressColumn.HeaderText = "Postęp";
-            this.ProgressColumn.Name = "ProgressColumn";
-            this.ProgressColumn.ReadOnly = true;
-            this.ProgressColumn.Width = 124;
             // 
             // buttonAccept
             // 
@@ -205,6 +190,35 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1560, 833);
             this.tableLayoutPanel1.TabIndex = 9;
             // 
+            // OrderColumn
+            // 
+            this.OrderColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.OrderColumn.DataPropertyName = "Name";
+            this.OrderColumn.HeaderText = "Nazwa zamówienia";
+            this.OrderColumn.Name = "OrderColumn";
+            this.OrderColumn.ReadOnly = true;
+            this.OrderColumn.Width = 248;
+            // 
+            // ProgressColumn
+            // 
+            this.ProgressColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.ProgressColumn.DataPropertyName = "PercentageProgress";
+            dataGridViewCellStyle1.NullValue = null;
+            this.ProgressColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.ProgressColumn.HeaderText = "Postęp [%]";
+            this.ProgressColumn.Name = "ProgressColumn";
+            this.ProgressColumn.ReadOnly = true;
+            this.ProgressColumn.Width = 156;
+            // 
+            // TotalTimeSpendColumn
+            // 
+            this.TotalTimeSpendColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.TotalTimeSpendColumn.DataPropertyName = "TotalTimeSpend";
+            this.TotalTimeSpendColumn.HeaderText = "Poświęcony czas [h]";
+            this.TotalTimeSpendColumn.Name = "TotalTimeSpendColumn";
+            this.TotalTimeSpendColumn.ReadOnly = true;
+            this.TotalTimeSpendColumn.Width = 232;
+            // 
             // OrderView
             // 
             this.AcceptButton = this.buttonAccept;
@@ -237,10 +251,11 @@ namespace Elrob.Terminal.View.Implementations.Main
         private Button buttonAdd;
         private Button buttonEdit;
         private Button buttonDelete;
-        private DataGridViewTextBoxColumn OrderColumn;
-        private DataGridViewTextBoxColumn ProgressColumn;
         private Label label1;
         private TextBox textBoxPlace;
         private TableLayoutPanel tableLayoutPanel1;
+        private DataGridViewTextBoxColumn OrderColumn;
+        private DataGridViewTextBoxColumn ProgressColumn;
+        private DataGridViewTextBoxColumn TotalTimeSpendColumn;
     }
 }

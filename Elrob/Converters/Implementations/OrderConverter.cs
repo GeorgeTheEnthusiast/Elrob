@@ -6,6 +6,8 @@ using OrderDomain = Elrob.Terminal.Domain.Order;
 
 namespace Elrob.Terminal.Converters.Implementations
 {
+    using System;
+
     public class OrderConverter : IOrderConverter
     {
         private IMapper _mapper;
@@ -23,11 +25,19 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public OrderDomain Convert(OrderDto input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<OrderDomain>(input);
         }
 
         public List<OrderDto> Convert(List<OrderDomain> orders)
         {
+            if (orders == null)
+            {
+                throw new ArgumentNullException(nameof(orders));
+            }
             return _mapper.Map<List<OrderDto>>(orders);
         }
     }

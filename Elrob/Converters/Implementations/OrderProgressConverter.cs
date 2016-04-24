@@ -5,6 +5,8 @@ using Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Converters.Implementations
 {
+    using System;
+
     public class OrderProgressConverter : IOrderProgressConverter
     {
         private IMapper _mapper;
@@ -39,11 +41,19 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public List<OrderProgress> Convert(List<Domain.OrderProgress> input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<List<OrderProgress>>(input);
         }
 
         public Domain.OrderProgress Convert(OrderProgress input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<Domain.OrderProgress>(input);
         }
     }

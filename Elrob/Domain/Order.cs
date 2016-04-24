@@ -8,6 +8,6 @@ namespace Elrob.Terminal.Domain
 
         public virtual string Name { get; set; }
 
-        public virtual IList<OrderContent> OrderContents { get; set; }
+        //public virtual IList<OrderContent> OrderContents { get; set; }
     }
 }

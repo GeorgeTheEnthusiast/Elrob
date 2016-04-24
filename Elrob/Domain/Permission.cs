@@ -10,6 +10,6 @@ namespace Elrob.Terminal.Domain
 
         public virtual string DisplayName { get; set; }
 
-        public virtual IList<Group> Groups { get; set; } 
+        //public virtual IList<Group> Groups { get; set; } 
     }
 }

@@ -25,7 +25,6 @@ namespace Elrob.Terminal.Model.Implementations.Choose
         {
             using (var session = NHibernateHelper.OpenSession())
             {
-                Card domaincard;
                 var domain = session.QueryOver<Domain.User>()
                     .JoinQueryOver<Card>(c => c.Card)
                     .Where(x => x.Login == card.Login)

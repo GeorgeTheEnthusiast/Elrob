@@ -9,17 +9,33 @@ using NUnit.Framework;
 
 namespace Elrob.Webservice.Tests
 {
+    using DocumentFormat.OpenXml.Packaging;
+
+    using Elrob.Webservice.Validators;
+
+    using Ploeh.AutoFixture;
+
     [TestFixture]
     public class ExcelServiceTests
     {
         private IExcelService _sut;
         private IFileController _fileController;
+        private ISheetValidator _sheetValidator;
+        private IExcelRowsReader _excelRowsReader;
 
         [SetUp]
         public void SetUp()
         {
             _fileController = Substitute.For<IFileController>();
-            _sut = new ExcelService(_fileController);
+            _sheetValidator = Substitute.For<ISheetValidator>();
+            _excelRowsReader = Substitute.For<IExcelRowsReader>();
+            _sut = new ExcelService(_fileController, _sheetValidator, _excelRowsReader);
+        }
+
+        [Test]
+        public void NullInputThrowsArgumentNullException()
+        {
+            Assert.Throws<ArgumentNullException>(() => _sut.ImportData(null));
         }
 
         [Test]
@@ -30,31 +46,42 @@ namespace Elrob.Webservice.Tests
                 FileBytes = new byte[0],
                 FileName = "excelFile.xlsx"
             };
+            var fixture = new Fixture();
+            var resultList = fixture.Create<List<OrderContent>>();
 
             _fileController.SaveFile(importDataRequest.FileBytes, importDataRequest.FileName).Returns(@"..\..\docs\Zamówienie nr 55.xlsx");
+            _sheetValidator.Validate(Arg.Any<SpreadsheetDocument>()).Returns(true);
+            _excelRowsReader.ReadRows(Arg.Any<SpreadsheetDocument>()).Returns(resultList);
 
             var response = _sut.ImportData(importDataRequest);
 
+            Assert.That(response.ResponseMessage, Is.Null.Or.Empty);
             Assert.That(response, Is.Not.Null);
             Assert.That(response.OrderContents, Is.Not.Null);
             Assert.That(response.OrderContents.Count, Is.GreaterThan(0));
         }
 
         [Test]
-        public void WorkbookWithoutRequiredSheetReturnsEmptyResult()
+        public void InvalidSheetWillCauseEmptyResponse()
         {
             ImportDataRequest importDataRequest = new ImportDataRequest()
             {
                 FileBytes = new byte[0],
                 FileName = "excelFile.xlsx"
             };
-            string uniqueText = Guid.NewGuid().ToString();
-            var returnList = new List<OrderContent>();
+            var fixture = new Fixture();
+            var validationMessage = fixture.Create<string>();
 
             _fileController.SaveFile(importDataRequest.FileBytes, importDataRequest.FileName).Returns(@"..\..\docs\Zamówienie nr 55.xlsx");
-            _sut.SheetName.Returns(uniqueText);
+            _sheetValidator.Validate(Arg.Any<SpreadsheetDocument>()).Returns(false);
+            _sheetValidator.ValidationMessage.Returns(validationMessage);
 
-            Assert.That(_sut.ImportData(importDataRequest).OrderContents, Is.EqualTo(returnList));
+            var response = _sut.ImportData(importDataRequest);
+
+            Assert.That(response, Is.Not.Null);
+            Assert.That(response.ResponseMessage, Is.EqualTo(validationMessage));
+            Assert.That(response.OrderContents, Is.Not.Null);
+            Assert.That(response.OrderContents.Count, Is.EqualTo(0));
         }
     }
 }

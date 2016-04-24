@@ -11,7 +11,7 @@ namespace Elrob.Terminal.Dto
 
         public string DisplayName { get; set; }
 
-        public IList<Group> Groups { get; set; }
+        //public IList<Group> Groups { get; set; }
 
         public override string ToString() => DisplayName;
 

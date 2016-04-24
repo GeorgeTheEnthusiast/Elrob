@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using Elrob.Terminal.Converters.Interfaces;
 using CardDto = Elrob.Terminal.Dto.Card;
@@ -23,11 +24,15 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public List<CardDto> Convert(List<CardDomain> input)
         {
+            if (input == null) throw new ArgumentNullException(nameof(input));
+
             return _mapper.Map<List<CardDto>>(input);
         }
 
         public CardDomain Convert(CardDto input)
         {
+            if (input == null) throw new ArgumentNullException(nameof(input));
+
             return _mapper.Map<CardDomain>(input);
         }
     }

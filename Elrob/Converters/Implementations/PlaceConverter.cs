@@ -5,6 +5,8 @@ using Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Converters.Implementations
 {
+    using System;
+
     public class PlaceConverter : IPlaceConverter
     {
         private IMapper _mapper;
@@ -22,11 +24,19 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public List<Place> Convert(List<Domain.Place> input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<List<Place>>(input);
         }
 
         public Domain.Place Convert(Place place)
         {
+            if (place == null)
+            {
+                throw new ArgumentNullException(nameof(place));
+            }
             return _mapper.Map<Domain.Place>(place);
         }
     }

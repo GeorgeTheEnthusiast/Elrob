@@ -18,16 +18,16 @@ namespace Elrob.Terminal.Domain
 
         public virtual Material Material { get; set; }
 
-        public virtual decimal Thickness { get; set; }
+        public virtual decimal? Thickness { get; set; }
 
-        public virtual decimal Width { get; set; }
+        public virtual decimal? Width { get; set; }
 
-        public virtual decimal Height { get; set; }
+        public virtual decimal? Height { get; set; }
 
         public virtual decimal UnitWeight { get; set; }
 
         public virtual int ToComplete { get; set; }
 
-        public virtual IList<OrderProgress> OrderProgresses { get; set; }
+        //public virtual IList<OrderProgress> OrderProgresses { get; set; }
     }
 }

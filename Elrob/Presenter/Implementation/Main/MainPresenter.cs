@@ -99,29 +99,21 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                     FileBytes = fileBytes,
                     FileName = openFileDialog.SafeFileName
                 };
-                try
-                {
-                    var response = serviceClient.ImportData(importDataRequest);
 
-                    if (!string.IsNullOrEmpty(response.ResponseMessage))
-                    {
-                        MessageBox.Show(response.ResponseMessage);
-                        return;
-                    }
+                _mainView.ButtonImport.Enabled = false;
 
-                    _mainView.ButtonImport.Enabled = false;
-                    orderPreviewViewModel = AfterImportData(response);
-                }
-                catch (Exception ex)
+                var response = serviceClient.ImportData(importDataRequest);
+
+                if (!string.IsNullOrEmpty(response.ResponseMessage))
                 {
-                    MessageBox.Show("Wystąpił błąd podczas importu danych na serwerze. Skontaktuj się z administratorem.");
-                    _logger.Error(ex);
+                    MessageBox.Show(response.ResponseMessage);
+                    _mainView.ButtonImport.Enabled = true;
                     return;
                 }
-                finally
-                {
-                    _mainView.ButtonImport.Enabled = true;
-                }
+                
+                orderPreviewViewModel = AfterImportData(response);
+             
+                _mainView.ButtonImport.Enabled = true;
             }
 
             _orderPreviewPresenter = Program.Kernel.Get<IOrderPreviewPresenter>();

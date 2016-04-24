@@ -6,6 +6,8 @@ using MaterialDomain = Elrob.Terminal.Domain.Material;
 
 namespace Elrob.Terminal.Converters.Implementations
 {
+    using System;
+
     public class MaterialConverter : IMaterialConverter
     {
         private IMapper _mapper;
@@ -23,11 +25,19 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public List<MaterialDto> Convert(List<MaterialDomain> input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<List<MaterialDto>>(input);
         }
 
         public MaterialDomain Convert(MaterialDto input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<MaterialDomain>(input);
         }
     }

@@ -46,6 +46,10 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
@@ -74,11 +78,19 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ExcelService.svc" />
+    <Content Include="Global.asax" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
     <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="Controlers\ExcelRowsReader.cs" />
+    <Compile Include="Controlers\ExcelSheetTools.cs" />
+    <Compile Include="Controlers\ExcelValueParser.cs" />
     <Compile Include="Controlers\FileController.cs" />
+    <Compile Include="Controlers\IExcelRowsReader.cs" />
+    <Compile Include="Controlers\IExcelSheetTools.cs" />
+    <Compile Include="Controlers\IExcelValueParser.cs" />
     <Compile Include="Controlers\IFileController.cs" />
     <Compile Include="Dto\ImportDataRequest.cs" />
     <Compile Include="Dto\ImportDataResponse.cs" />
@@ -89,15 +101,26 @@
     <Compile Include="ExcelService.svc.cs">
       <DependentUpon>ExcelService.svc</DependentUpon>
     </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
     <Compile Include="IConfigurationManager.cs" />
     <Compile Include="IExcelService.cs" />
+    <Compile Include="Validators\ISheetValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validators\SheetValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\PublishProfiles\ToFile.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

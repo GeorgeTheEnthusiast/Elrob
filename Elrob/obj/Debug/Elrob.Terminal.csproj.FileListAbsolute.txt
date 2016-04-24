@@ -1,121 +1,6 @@
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\NLog.config
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\Elrob.exe.config
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\Elrob.exe
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\Elrob.pdb
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\AutoMapper.dll
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\FluentNHibernate.dll
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\Iesi.Collections.dll
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\NHibernate.dll
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\Ninject.dll
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\NLog.dll
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\AutoMapper.xml
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\FluentNHibernate.pdb
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\FluentNHibernate.xml
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\Iesi.Collections.xml
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\NHibernate.xml
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\Ninject.xml
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\bin\Debug\NLog.xml
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.csproj.ResolveComReference.cache
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.Properties.Resources.resources
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.LoginView.resources
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.MainView.resources
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.csproj.GenerateResource.Cache
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.exe
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.pdb
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.OrderPreviewView.resources
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.MaterialsView.resources
-c:\Users\Pedzel\Documents\Visual Studio 2015\Projects\Elrob\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\NLog.config
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\Elrob.exe.config
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\Elrob.exe
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\Elrob.pdb
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\AutoMapper.dll
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\FluentNHibernate.dll
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\Iesi.Collections.dll
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\NHibernate.dll
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\Ninject.dll
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\NLog.dll
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\AutoMapper.xml
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\FluentNHibernate.pdb
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\FluentNHibernate.xml
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\Iesi.Collections.xml
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\NHibernate.xml
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\Ninject.xml
-d:\repo\Elrob.Terminal\Elrob\bin\Debug\NLog.xml
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.csproj.ResolveComReference.cache
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.Properties.Resources.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.OrderItemView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.PlaceChooseView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.LoginView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.MainView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.OrderContentView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.OrderView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.PlaceView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.OrderPreviewView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.csproj.GenerateResource.Cache
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.exe
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.pdb
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.MaterialView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.MaterialItemView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.PlaceItemView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.OrderContentItemView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.OrderProgressView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.OrderProgressItemView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.UserItemView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.UserView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.GroupView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.GroupItemView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.PermissionGroupView.resources
-d:\repo\Elrob.Terminal\Elrob\obj\Debug\Elrob.Terminal.View.PermissionGroupItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\Elrob.exe.config
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.csproj.ResolveComReference.cache
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.exe
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.pdb
-d:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\NLog.config
-d:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\Elrob.exe
-d:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\Elrob.pdb
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.Properties.Resources.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.csproj.GenerateResource.Cache
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.GroupView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.GroupItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.PermissionGroupItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.PermissionGroupView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.UserItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.UserView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.OrderProgressItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.OrderProgressView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.OrderContentItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.PlaceItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.MaterialItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.OrderItemView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Choose.PlaceChooseView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.LoginView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.MainView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.OrderContentView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.OrderView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.PlaceView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.MaterialView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Main.OrderPreviewView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Choose.OrderChooseView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Choose.OrderContentChooseView.resources
-d:\Dysk Google\Projekty C#\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Item.OrderPreviewItemView.resources
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\AutoMapper.dll
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\FluentNHibernate.dll
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\Iesi.Collections.dll
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\NHibernate.dll
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\Ninject.dll
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\NLog.dll
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\AutoMapper.xml
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\FluentNHibernate.pdb
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\FluentNHibernate.xml
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\Iesi.Collections.xml
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\NHibernate.xml
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\Ninject.xml
-D:\Dysk Google\Projekty C#\Elrob\Elrob\bin\Debug\NLog.xml
-d:\repo\Elrob\Elrob\bin\Debug\NLog.config
 d:\repo\Elrob\Elrob\bin\Debug\Elrob.exe.config
+d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csproj.ResolveComReference.cache
+d:\repo\Elrob\Elrob\bin\Debug\NLog.config
 d:\repo\Elrob\Elrob\bin\Debug\Elrob.exe.manifest
 d:\repo\Elrob\Elrob\bin\Debug\Elrob.application
 d:\repo\Elrob\Elrob\bin\Debug\Elrob.exe
@@ -133,7 +18,7 @@ d:\repo\Elrob\Elrob\bin\Debug\Iesi.Collections.xml
 d:\repo\Elrob\Elrob\bin\Debug\NHibernate.xml
 d:\repo\Elrob\Elrob\bin\Debug\Ninject.xml
 d:\repo\Elrob\Elrob\bin\Debug\NLog.xml
-d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csproj.ResolveComReference.cache
+d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Other.CardReaderView.resources
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.Properties.Resources.resources
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Choose.LogInMethodChooseView.resources
@@ -167,4 +52,3 @@ d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe.manifest
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.application
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.pdb
-d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache

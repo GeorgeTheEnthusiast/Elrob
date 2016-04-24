@@ -119,11 +119,13 @@ namespace Elrob.Terminal.Model.Implementations.Main
                     let toCompleteSum = allTablesGrouped.Sum(x => x.ocResult.ToComplete)
                     let completedSum = allTablesGrouped.Sum(x => x.ocpResult.Completed)
                     let completedPercentage =  completedSum * 100 / (toCompleteSum == 0 ? 1 : toCompleteSum)
+                    let timeSpendInHours = allTablesGrouped.Sum(x => x.ocpResult.TimeSpend.TotalHours)
                     select new dto.Order()
                     {
                         Id = allTablesGrouped.Key.Id,
                         Name = allTablesGrouped.Key.Name,
-                        PercentageProgress = completedPercentage
+                        PercentageProgress = completedPercentage,
+                        TotalTimeSpend = (int)timeSpendInHours
                     }
                 )
                     .ToList();
@@ -158,11 +160,13 @@ namespace Elrob.Terminal.Model.Implementations.Main
                             let toCompleteSum = allTablesGrouped.Sum(x => x.ocResult.ToComplete)
                             let completedSum = allTablesGrouped.Sum(x => x.ocpResult.Completed)
                             let completedPercentage = completedSum * 100 / (toCompleteSum == 0 ? 1 : toCompleteSum)
+                            let timeSpendInHours = allTablesGrouped.Sum(x => x.ocpResult.TimeSpend.TotalHours)
                             select new dto.Order()
                             {
                                 Id = allTablesGrouped.Key.Id,
                                 Name = allTablesGrouped.Key.Name,
-                                PercentageProgress = completedPercentage
+                                PercentageProgress = completedPercentage,
+                                TotalTimeSpend = (int)timeSpendInHours
                             }
                 )
                     .ToList();

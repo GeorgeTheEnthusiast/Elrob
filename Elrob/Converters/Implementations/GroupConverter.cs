@@ -8,6 +8,8 @@ using PermissionDomain = Elrob.Terminal.Domain.Permission;
 
 namespace Elrob.Terminal.Converters.Implementations
 {
+    using System;
+
     public class GroupConverter : IGroupConverter
     {
         private IMapper _mapper;
@@ -28,11 +30,18 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public List<GroupDto> Convert(List<GroupDomain> input)
         {
+            if (input == null) throw new ArgumentNullException(nameof(input));
+
             return _mapper.Map<List<GroupDto>>(input);
         }
 
         public GroupDomain Convert(GroupDto group)
         {
+            if (@group == null)
+            {
+                throw new ArgumentNullException(nameof(@group));
+            }
+
             return _mapper.Map<GroupDomain>(group);
         }
     }

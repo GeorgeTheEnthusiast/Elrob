@@ -16,6 +16,8 @@ using Place = Elrob.Terminal.Dto.Place;
 
 namespace Elrob.Terminal.Converters.Implementations
 {
+    using System;
+
     public class OrderContentConverter : IOrderContentConverter
     {
         private readonly IMapper _mapper;
@@ -50,31 +52,59 @@ namespace Elrob.Terminal.Converters.Implementations
 
         public OrderContentDto Convert(OrderContentWebservice input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<OrderContentDto>(input);
         }
 
         public List<OrderContentDto> Convert(List<OrderContentWebservice> input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<List<OrderContentDto>>(input);
         }
 
         public List<OrderContentDomain> Convert(List<OrderContentDto> input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<List<OrderContentDomain>>(input);
         }
 
         public List<OrderContentDto> Convert(List<OrderContentDomain> input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<List<OrderContentDto>>(input);
         }
 
         public OrderContentDomain Convert(OrderContentDto input)
         {
+            if (input == null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
             return _mapper.Map<OrderContentDomain>(input);
         }
 
         public OrderContentDto Clone(OrderContentDto source, OrderContentDto destination)
         {
+            if (source == null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
+            if (destination == null)
+            {
+                throw new ArgumentNullException(nameof(destination));
+            }
             return _mapper.Map<OrderContentDto, OrderContentDto>(source, destination);
         }
     }

@@ -26,8 +26,7 @@ namespace Elrob.Terminal.Common
 
         public CustomBindingList(IEnumerable<T> contents, ISortComparer<T> comparer)
         {
-            if (contents != null)
-                AddRange(contents);
+            if (contents != null) this.AddRange(contents);
 
             if (comparer == null)
                 SortComparer = new GenericSortComparer<T>();
