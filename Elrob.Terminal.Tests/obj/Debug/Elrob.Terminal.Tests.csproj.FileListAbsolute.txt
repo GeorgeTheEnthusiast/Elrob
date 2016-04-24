@@ -13,34 +13,3 @@ d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.T
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
 d:\Dysk Google\Projekty C#\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NLog.config
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.Terminal.Tests.pdb
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.exe
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NSubstitute.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\nunit.framework.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Shouldly.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Ninject.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NLog.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NHibernate.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\FluentNHibernate.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\AutoMapper.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Iesi.Collections.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Elrob.pdb
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NSubstitute.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\nunit.framework.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Shouldly.pdb
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Ninject.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NLog.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\NHibernate.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\FluentNHibernate.pdb
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\FluentNHibernate.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\AutoMapper.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Iesi.Collections.xml
-d:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.csprojResolveAssemblyReference.cache
-d:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.dll
-d:\repo\Elrob\Elrob.Terminal.Tests\obj\Debug\Elrob.Terminal.Tests.pdb
-D:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
-D:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
-D:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Ploeh.AutoFixture.dll
-D:\repo\Elrob\Elrob.Terminal.Tests\bin\Debug\Ploeh.AutoFixture.xml

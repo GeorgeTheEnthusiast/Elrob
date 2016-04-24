@@ -17,3 +17,6 @@ d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.csproj.ResolveComRef
 d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.dll
 d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.pdb
 d:\repo\Elrob\Elrob.Webservice\obj\Release\Elrob.Webservice.csprojResolveAssemblyReference.cache
+d:\repo\Elrob\Elrob.Webservice\bin\NLog.config
+d:\repo\Elrob\Elrob.Webservice\bin\Ninject.dll
+d:\repo\Elrob\Elrob.Webservice\bin\Ninject.xml
