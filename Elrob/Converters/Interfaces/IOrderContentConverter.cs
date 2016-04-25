@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using OrderContentDto = Elrob.Terminal.Dto.OrderContent;
 using OrderContentDomain = Elrob.Terminal.Domain.OrderContent;
-using OrderContentWebservice = Elrob.Terminal.Service_References.ExcelServiceServiceReference.OrderContent;
+using OrderContentWebservice = Elrob.Terminal.ExcelServiceServiceReference.OrderContent;
 
 namespace Elrob.Terminal.Converters.Interfaces
 {

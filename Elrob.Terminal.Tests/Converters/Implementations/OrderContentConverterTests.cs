@@ -7,7 +7,7 @@ using Elrob.Terminal.Converters.Implementations;
 using Elrob.Terminal.Converters.Interfaces;
 using DomainEntities = Elrob.Terminal.Domain;
 using DtoEntities = Elrob.Terminal.Dto;
-using WebServiceEntities = Elrob.Terminal.Service_References.ExcelServiceServiceReference;
+using WebServiceEntities = Elrob.Terminal.ExcelServiceServiceReference;
 using NUnit.Framework;
 
 namespace Elrob.Terminal.Tests.Converters.Implementations

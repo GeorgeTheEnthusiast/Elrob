@@ -40,12 +40,13 @@ namespace Elrob.Terminal.Model.Implementations.Item
             }
         }
 
-        public bool IsOrderExist(string orderName)
+        public bool IsOrderExist(dto.Order order)
         {
             using (var session = NHibernateHelper.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.Order>()
-                    .Where(x => x.Name == orderName)
+                    .Where(x => x.Name == order.Name)
+                    .And(x => x.Id != order.Id)
                     .RowCount();
 
                 return rowCount > 0;

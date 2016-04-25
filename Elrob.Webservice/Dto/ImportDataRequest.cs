@@ -5,10 +5,15 @@ using System.Web;
 
 namespace Elrob.Webservice.Dto
 {
+    using System.Runtime.Serialization;
+
+    [DataContract(Namespace = Namespaces.Dto)]
     public class ImportDataRequest
     {
+        [DataMember]
         public byte[] FileBytes { get; set; }
 
+        [DataMember]
         public string FileName { get; set; }
     }
 }

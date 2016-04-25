@@ -1,6 +1,7 @@
 ﻿CREATE TABLE [dbo].[Order] (
     [Id]           INT            IDENTITY (1, 1) NOT NULL,
     [Name]         NVARCHAR (255) NOT NULL,
+    [StartDate]    DATE		      NOT NULL,
     [createdBy]    NVARCHAR (100) DEFAULT (user_name()) NOT NULL,
     [createdDate]  DATETIME       DEFAULT (getdate()) NOT NULL,
     [modifiedBy]   NVARCHAR (100) NULL,
@@ -21,8 +22,8 @@ AFTER DELETE AS
 BEGIN
 	SET NOCOUNT ON;
 
-	INSERT INTO [audit].[Order] (AuditAction, Id, Name, createdBy, createdDate, modifiedBy, modifiedDate) 
-	SELECT 'D', Id, Name, createdBy, createdDate, modifiedBy, modifiedDate FROM DELETED
+	INSERT INTO [audit].[Order] (AuditAction, Id, Name, StartDate, createdBy, createdDate, modifiedBy, modifiedDate) 
+	SELECT 'D', Id, Name, StartDate, createdBy, createdDate, modifiedBy, modifiedDate FROM DELETED
 
 	SET NOCOUNT OFF;
 END
@@ -33,8 +34,8 @@ AFTER INSERT AS
 BEGIN
 	SET NOCOUNT ON;
 
-	INSERT INTO [audit].[Order] (AuditAction, Id, Name, createdBy, createdDate, modifiedBy, modifiedDate) 
-	SELECT 'I', Id, Name, createdBy, createdDate, modifiedBy, modifiedDate FROM INSERTED
+	INSERT INTO [audit].[Order] (AuditAction, Id, Name, StartDate, createdBy, createdDate, modifiedBy, modifiedDate) 
+	SELECT 'I', Id, Name, StartDate, createdBy, createdDate, modifiedBy, modifiedDate FROM INSERTED
 
 	SET NOCOUNT OFF;
 END
@@ -55,8 +56,8 @@ BEGIN
 		modifiedBy = CURRENT_USER
     WHERE [Id] = @id
 
-	INSERT INTO [audit].[Order] (AuditAction, Id, Name, createdBy, createdDate, modifiedBy, modifiedDate) 
-	SELECT 'U', Id, Name, createdBy, createdDate, modifiedBy, modifiedDate FROM INSERTED
+	INSERT INTO [audit].[Order] (AuditAction, Id, Name, StartDate, createdBy, createdDate, modifiedBy, modifiedDate) 
+	SELECT 'U', Id, Name, StartDate, createdBy, createdDate, modifiedBy, modifiedDate FROM INSERTED
 
 	SET NOCOUNT OFF;
 END

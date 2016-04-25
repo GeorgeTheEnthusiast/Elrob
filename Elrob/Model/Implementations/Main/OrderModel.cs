@@ -115,7 +115,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
                     join p in domainOrderProgress on ocResult.Id equals p.OrderContent.Id into ocp
                     from ocpResult in ocp.DefaultIfEmpty(new domain.OrderProgress())
                             select new { o, ocResult, ocpResult } into allTables
-                    group allTables by new { allTables.o.Id, allTables.o.Name } into allTablesGrouped
+                    group allTables by new { allTables.o.Id, allTables.o.Name, allTables.o.StartDate } into allTablesGrouped
                     let toCompleteSum = allTablesGrouped.Sum(x => x.ocResult.ToComplete)
                     let completedSum = allTablesGrouped.Sum(x => x.ocpResult.Completed)
                     let completedPercentage =  completedSum * 100 / (toCompleteSum == 0 ? 1 : toCompleteSum)
@@ -125,7 +125,8 @@ namespace Elrob.Terminal.Model.Implementations.Main
                         Id = allTablesGrouped.Key.Id,
                         Name = allTablesGrouped.Key.Name,
                         PercentageProgress = completedPercentage,
-                        TotalTimeSpend = (int)timeSpendInHours
+                        TotalTimeSpend = (int)timeSpendInHours,
+                        StartDate = allTablesGrouped.Key.StartDate
                     }
                 )
                     .ToList();
@@ -156,7 +157,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
                             join p in domainOrderProgress on ocResult.Id equals p.OrderContent.Id into ocp
                             from ocpResult in ocp.DefaultIfEmpty(new domain.OrderProgress())
                             select new { o, ocResult, ocpResult } into allTables
-                            group allTables by new { allTables.o.Id, allTables.o.Name } into allTablesGrouped
+                            group allTables by new { allTables.o.Id, allTables.o.Name, allTables.o.StartDate } into allTablesGrouped
                             let toCompleteSum = allTablesGrouped.Sum(x => x.ocResult.ToComplete)
                             let completedSum = allTablesGrouped.Sum(x => x.ocpResult.Completed)
                             let completedPercentage = completedSum * 100 / (toCompleteSum == 0 ? 1 : toCompleteSum)
@@ -166,7 +167,8 @@ namespace Elrob.Terminal.Model.Implementations.Main
                                 Id = allTablesGrouped.Key.Id,
                                 Name = allTablesGrouped.Key.Name,
                                 PercentageProgress = completedPercentage,
-                                TotalTimeSpend = (int)timeSpendInHours
+                                TotalTimeSpend = (int)timeSpendInHours,
+                                StartDate = allTablesGrouped.Key.StartDate
                             }
                 )
                     .ToList();

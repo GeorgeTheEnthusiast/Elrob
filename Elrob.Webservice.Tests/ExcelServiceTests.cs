@@ -9,9 +9,13 @@ using NUnit.Framework;
 
 namespace Elrob.Webservice.Tests
 {
+    using System.Reflection;
+
     using DocumentFormat.OpenXml.Packaging;
 
     using Elrob.Webservice.Validators;
+
+    using Ninject;
 
     using Ploeh.AutoFixture;
 

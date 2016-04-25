@@ -13,6 +13,8 @@ namespace Elrob.Terminal.View.Interfaces.Item
 
         TextBox TextBoxName { get; }
 
+        DateTimePicker DateTimePickerStartDate { get; }
+
         ErrorProvider NameErrorProvider { get; }
 
         bool IsInEditMode { get; set; }

@@ -3,6 +3,7 @@
     [AuditAction]      CHAR (1)       NOT NULL,
     [Id]               INT            NOT NULL,
     [Name]             NVARCHAR (255) NOT NULL,
+    [StartDate]        DATE			  NOT NULL ,
     [createdBy]        NVARCHAR (100) DEFAULT (user_name()) NOT NULL,
     [createdDate]      DATETIME       DEFAULT (getdate()) NOT NULL,
     [modifiedBy]       NVARCHAR (100) NULL,

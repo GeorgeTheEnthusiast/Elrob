@@ -146,6 +146,8 @@ namespace Elrob.Webservice.Controlers
 
         private List<OrderContent> GroupData(List<OrderContent> list)
         {
+            list = list.Where(x => x.Place != null || x.Material != null).ToList();
+
             list = (from c in list
                       group c by
                           new

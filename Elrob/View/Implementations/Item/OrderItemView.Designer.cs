@@ -35,6 +35,8 @@
             this.buttonAccept = new System.Windows.Forms.Button();
             this.buttonCancel = new System.Windows.Forms.Button();
             this.nameErrorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.nameErrorProvider)).BeginInit();
             this.SuspendLayout();
             // 
@@ -59,11 +61,11 @@
             // 
             // buttonAccept
             // 
-            this.buttonAccept.Location = new System.Drawing.Point(155, 100);
+            this.buttonAccept.Location = new System.Drawing.Point(155, 145);
             this.buttonAccept.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAccept.Name = "buttonAccept";
             this.buttonAccept.Size = new System.Drawing.Size(200, 55);
-            this.buttonAccept.TabIndex = 1;
+            this.buttonAccept.TabIndex = 2;
             this.buttonAccept.Text = "Akceptuj";
             this.buttonAccept.UseVisualStyleBackColor = true;
             this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
@@ -71,11 +73,11 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(424, 100);
+            this.buttonCancel.Location = new System.Drawing.Point(424, 145);
             this.buttonCancel.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(200, 55);
-            this.buttonCancel.TabIndex = 2;
+            this.buttonCancel.TabIndex = 3;
             this.buttonCancel.Text = "Anuluj";
             this.buttonCancel.UseVisualStyleBackColor = true;
             this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
@@ -84,13 +86,33 @@
             // 
             this.nameErrorProvider.ContainerControl = this;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(37, 87);
+            this.label2.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(225, 31);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Data rozpoczęcia";
+            // 
+            // dateTimePickerStartDate
+            // 
+            this.dateTimePickerStartDate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(304, 85);
+            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(381, 38);
+            this.dateTimePickerStartDate.TabIndex = 1;
+            // 
             // OrderItemView
             // 
             this.AcceptButton = this.buttonAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.buttonCancel;
-            this.ClientSize = new System.Drawing.Size(757, 185);
+            this.ClientSize = new System.Drawing.Size(757, 221);
+            this.Controls.Add(this.dateTimePickerStartDate);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonAccept);
             this.Controls.Add(this.textBoxName);
@@ -117,5 +139,7 @@
         private System.Windows.Forms.Button buttonAccept;
         private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.ErrorProvider nameErrorProvider;
+        private System.Windows.Forms.DateTimePicker dateTimePickerStartDate;
+        private System.Windows.Forms.Label label2;
     }
 }

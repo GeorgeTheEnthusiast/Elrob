@@ -20,6 +20,8 @@ namespace Elrob.Terminal.View.Implementations.Item
 
         public TextBox TextBoxName => textBoxName;
 
+        public DateTimePicker DateTimePickerStartDate => dateTimePickerStartDate;
+
         public ErrorProvider NameErrorProvider => nameErrorProvider;
 
         public bool IsInEditMode { get; set; }
@@ -45,7 +47,8 @@ namespace Elrob.Terminal.View.Implementations.Item
         public Order Order => new Order()
         {
             Name = textBoxName.Text.Trim(),
-            Id = PassedOrder?.Id ?? 0
+            Id = PassedOrder?.Id ?? 0,
+            StartDate = dateTimePickerStartDate.Value
         };
 
         private void textBoxName_Click(object sender, System.EventArgs e)

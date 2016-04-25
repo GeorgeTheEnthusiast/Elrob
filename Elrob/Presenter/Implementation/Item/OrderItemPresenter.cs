@@ -41,6 +41,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
             {
                 _orderItemView.IsInEditMode = true;
                 _orderItemView.TextBoxName.Text = _orderItemView.PassedOrder.Name;
+                _orderItemView.DateTimePickerStartDate.Value = _orderItemView.PassedOrder.StartDate;
             }
             else
             {
@@ -50,24 +51,17 @@ namespace Elrob.Terminal.Presenter.Implementation.Item
             return _orderItemView.ShowDialog();
         }
 
-        public bool IsOrderExist(string orderName)
-        {
-            return _orderItemModel.IsOrderExist(orderName);
-        }
-
         public void AcceptChanges()
         {
-            var orderExists = _orderItemModel.IsOrderExist(_orderItemView.Order.Name);
+            var orderExists = _orderItemModel.IsOrderExist(_orderItemView.Order);
 
             if (orderExists)
             {
                 _orderItemView.NameErrorProvider.SetError(_orderItemView.TextBoxName, "Zamówienie z taką nazwą już istnieje!");
                 return;
             }
-            else
-            {
-                _orderItemView.NameErrorProvider.Clear();
-            }
+            
+            _orderItemView.NameErrorProvider.Clear();
 
             if (_orderItemView.IsInEditMode)
             {

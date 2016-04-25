@@ -3,14 +3,14 @@ using AutoMapper;
 using Elrob.Terminal.Converters.Interfaces;
 using OrderContentDto = Elrob.Terminal.Dto.OrderContent;
 using OrderContentDomain = Elrob.Terminal.Domain.OrderContent;
-using OrderContentWebservice = Elrob.Terminal.Service_References.ExcelServiceServiceReference.OrderContent;
+using OrderContentWebservice = Elrob.Terminal.ExcelServiceServiceReference.OrderContent;
 using OrderDto = Elrob.Terminal.Dto.Order;
 using OrderDomain = Elrob.Terminal.Domain.Order;
-using OrderWebservice = Elrob.Terminal.Service_References.ExcelServiceServiceReference.Order;
+using OrderWebservice = Elrob.Terminal.ExcelServiceServiceReference.Order;
 using MaterialDto = Elrob.Terminal.Dto.Material;
 using MaterialDomain = Elrob.Terminal.Domain.Material;
-using MaterialWebservice = Elrob.Terminal.Service_References.ExcelServiceServiceReference.Material;
-using PlaceWebservice = Elrob.Terminal.Service_References.ExcelServiceServiceReference.Place;
+using MaterialWebservice = Elrob.Terminal.ExcelServiceServiceReference.Material;
+using PlaceWebservice = Elrob.Terminal.ExcelServiceServiceReference.Place;
 using DomainEntities = Elrob.Terminal.Domain;
 using Place = Elrob.Terminal.Dto.Place;
 

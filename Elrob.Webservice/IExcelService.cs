@@ -11,12 +11,10 @@ using Elrob.Webservice.Dto;
 
 namespace Elrob.Webservice
 {
-    [ServiceContract]
+    [ServiceContract(Namespace = Namespaces.Services)]
     public interface IExcelService
     {
         [OperationContract]
         ImportDataResponse ImportData(ImportDataRequest importDataRequest);
-
-        string SheetName { get; } 
     }
 }

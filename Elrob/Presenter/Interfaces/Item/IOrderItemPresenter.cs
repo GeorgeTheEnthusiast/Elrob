@@ -11,8 +11,6 @@ namespace Elrob.Terminal.Presenter.Interfaces.Item
 
         DialogResult ShowDialog(Order order);
 
-        bool IsOrderExist(string orderName);
-
         void AcceptChanges();
     }
 }

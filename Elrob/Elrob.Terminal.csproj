@@ -478,11 +478,6 @@
       <DependentUpon>OrderPreviewView.cs</DependentUpon>
     </Compile>
     <Compile Include="Dto\OrderPreviewViewModel.cs" />
-    <None Include="Resources\purchase_order.ico" />
-    <EmbeddedResource Include="View\Implementations\Other\CardReaderView.resx">
-      <DependentUpon>CardReaderView.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Elrob.Terminal_TemporaryKey.pfx" />
     <None Include="Service References\ExcelServiceServiceReference\Elrob.Terminal.ExcelServiceServiceReference.ImportDataResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -493,6 +488,11 @@
     <None Include="Service References\ExcelServiceServiceReference\configuration.svcinfo" />
     <None Include="Service References\ExcelServiceServiceReference\configuration91.svcinfo" />
     <None Include="Service References\ExcelServiceServiceReference\ExcelService.disco" />
+    <None Include="Resources\purchase_order.ico" />
+    <EmbeddedResource Include="View\Implementations\Other\CardReaderView.resx">
+      <DependentUpon>CardReaderView.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Elrob.Terminal_TemporaryKey.pfx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -601,6 +601,7 @@
     <None Include="Service References\ExcelServiceServiceReference\ExcelService.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\ExcelServiceServiceReference\ExcelService1.wsdl" />
     <None Include="Service References\ExcelServiceServiceReference\ExcelService1.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -631,9 +632,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ExcelServiceServiceReference\" />
-  </ItemGroup>
-  <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
       <Visible>False</Visible>
       <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
@@ -645,7 +643,9 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ExcelServiceServiceReference\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

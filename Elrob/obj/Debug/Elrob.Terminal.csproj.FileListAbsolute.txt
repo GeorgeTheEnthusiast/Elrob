@@ -51,3 +51,4 @@ d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe.manifest
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.application
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.pdb
+d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache

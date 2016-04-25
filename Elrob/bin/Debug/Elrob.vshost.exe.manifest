@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\purchase_order.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Elrob" version="1.4.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Elrob" version="1.5.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Elrob.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="3062248">
-      <assemblyIdentity name="Elrob" version="1.4.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="3063784">
+      <assemblyIdentity name="Elrob" version="1.5.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Sbu90GFkW9Tc+bmTrCDm5iDSWyA8r3tseOZ8mEPJZlM=</dsig:DigestValue>
+        <dsig:DigestValue>4vlhrMz4JkbxzgSWNKomDqRa5JZW0DXCP+j3QZuZY4Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -126,13 +126,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Elrob.exe.config" size="1338">
+  <file name="Elrob.exe.config" size="1334">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>BLKnl7oe+vbS+/SPolaj2wBlLdCiXgbzAsVXEJG3WXk=</dsig:DigestValue>
+      <dsig:DigestValue>3PzGUN8MrjaH8jsaDb5KVKOoaOlGp0Yl4Zm0BFHS15Q=</dsig:DigestValue>
     </hash>
   </file>
   <file name="NLog.config" size="691">

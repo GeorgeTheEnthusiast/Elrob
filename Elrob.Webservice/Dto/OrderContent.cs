@@ -2,7 +2,7 @@
 
 namespace Elrob.Webservice.Dto
 {
-    [DataContract]
+    [DataContract(Namespace = Namespaces.Dto)]
     public class OrderContent
     {
         [DataMember]

@@ -42,6 +42,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.textBoxPlace = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.OrderColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartDateColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProgressColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalTimeSpendColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
@@ -61,6 +62,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.dataGridViewOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrders.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.OrderColumn,
+            this.StartDateColumn,
             this.ProgressColumn,
             this.TotalTimeSpendColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewOrders, 2);
@@ -199,6 +201,15 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.OrderColumn.ReadOnly = true;
             this.OrderColumn.Width = 248;
             // 
+            // StartDateColumn
+            // 
+            this.StartDateColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.StartDateColumn.DataPropertyName = "StartDate";
+            this.StartDateColumn.HeaderText = "Data rozpoczęcia";
+            this.StartDateColumn.Name = "StartDateColumn";
+            this.StartDateColumn.ReadOnly = true;
+            this.StartDateColumn.Width = 227;
+            // 
             // ProgressColumn
             // 
             this.ProgressColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
@@ -255,6 +266,7 @@ namespace Elrob.Terminal.View.Implementations.Main
         private TextBox textBoxPlace;
         private TableLayoutPanel tableLayoutPanel1;
         private DataGridViewTextBoxColumn OrderColumn;
+        private DataGridViewTextBoxColumn StartDateColumn;
         private DataGridViewTextBoxColumn ProgressColumn;
         private DataGridViewTextBoxColumn TotalTimeSpendColumn;
     }

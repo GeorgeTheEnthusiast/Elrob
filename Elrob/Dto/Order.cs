@@ -11,5 +11,7 @@ namespace Elrob.Terminal.Dto
         public int PercentageProgress { get; set; }
 
         public int TotalTimeSpend { get; set; }
+
+        public DateTime StartDate { get; set; }
     }
 }

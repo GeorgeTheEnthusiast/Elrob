@@ -8,6 +8,6 @@ namespace Elrob.Terminal.Model.Interfaces.Item
 
         void UpdateOrder(Order order);
 
-        bool IsOrderExist(string orderName);
+        bool IsOrderExist(Order order);
     }
 }

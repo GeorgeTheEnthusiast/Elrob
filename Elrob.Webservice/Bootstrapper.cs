@@ -6,6 +6,7 @@ using System.Web;
 namespace Elrob.Webservice
 {
     using Elrob.Webservice.Controlers;
+    using Elrob.Webservice.Validators;
 
     using Ninject.Modules;
 
@@ -16,6 +17,10 @@ namespace Elrob.Webservice
             this.Bind<IConfigurationManager>().To<ConfigurationManager>();
             this.Bind<IExcelService>().To<ExcelService>();
             this.Bind<IFileController>().To<FileController>();
+            this.Bind<ISheetValidator>().To<SheetValidator>();
+            this.Bind<IExcelRowsReader>().To<ExcelRowsReader>();
+            this.Bind<IExcelSheetTools>().To<ExcelSheetTools>();
+            this.Bind<IExcelValueParser>().To<ExcelValueParser>();
         }
     }
 }

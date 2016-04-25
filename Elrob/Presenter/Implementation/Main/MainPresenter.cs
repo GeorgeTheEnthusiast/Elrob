@@ -11,7 +11,7 @@ using Elrob.Terminal.Dto;
 using Elrob.Terminal.Model.Interfaces.Main;
 using Elrob.Terminal.Presenter.Interfaces.Choose;
 using Elrob.Terminal.Presenter.Interfaces.Main;
-using Elrob.Terminal.Service_References.ExcelServiceServiceReference;
+using Elrob.Terminal.ExcelServiceServiceReference;
 using Elrob.Terminal.View;
 using Elrob.Terminal.View.Interfaces.Main;
 using Ninject;
@@ -101,7 +101,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
                 };
 
                 _mainView.ButtonImport.Enabled = false;
-
+                
                 var response = serviceClient.ImportData(importDataRequest);
 
                 if (!string.IsNullOrEmpty(response.ResponseMessage))
