@@ -46,6 +46,8 @@ namespace Elrob.Terminal.View.Implementations.Main
 
         public TextBox TextBoxOrderName => textBoxOrderName;
 
+        public DateTimePicker DateTimePickerStartDate => dateTimePickerStartDate;
+
         public DataGridView DataGridViewOrderContent => dataGridViewOrderContent;
 
         private void buttonAccept_Click(object sender, EventArgs e)

@@ -50,6 +50,8 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.buttonEdit = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerStartDate = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrderContent)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -77,14 +79,14 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.UnitWeightColumn,
             this.ToCompleteColumn});
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridViewOrderContent, 3);
-            this.dataGridViewOrderContent.Location = new System.Drawing.Point(8, 51);
+            this.dataGridViewOrderContent.Location = new System.Drawing.Point(8, 82);
             this.dataGridViewOrderContent.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.dataGridViewOrderContent.MultiSelect = false;
             this.dataGridViewOrderContent.Name = "dataGridViewOrderContent";
             this.dataGridViewOrderContent.ReadOnly = true;
             this.tableLayoutPanel1.SetRowSpan(this.dataGridViewOrderContent, 3);
             this.dataGridViewOrderContent.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewOrderContent.Size = new System.Drawing.Size(1232, 709);
+            this.dataGridViewOrderContent.Size = new System.Drawing.Size(1232, 678);
             this.dataGridViewOrderContent.TabIndex = 0;
             this.dataGridViewOrderContent.TabStop = false;
             this.dataGridViewOrderContent.VirtualMode = true;
@@ -233,7 +235,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             // buttonAdd
             // 
             this.buttonAdd.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonAdd.Location = new System.Drawing.Point(1258, 51);
+            this.buttonAdd.Location = new System.Drawing.Point(1258, 182);
             this.buttonAdd.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonAdd.Name = "buttonAdd";
             this.buttonAdd.Size = new System.Drawing.Size(292, 86);
@@ -245,7 +247,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             // buttonEdit
             // 
             this.buttonEdit.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.buttonEdit.Location = new System.Drawing.Point(1258, 151);
+            this.buttonEdit.Location = new System.Drawing.Point(1258, 82);
             this.buttonEdit.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(292, 86);
@@ -257,7 +259,7 @@ namespace Elrob.Terminal.View.Implementations.Main
             // buttonDelete
             // 
             this.buttonDelete.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.buttonDelete.Location = new System.Drawing.Point(1258, 251);
+            this.buttonDelete.Location = new System.Drawing.Point(1258, 282);
             this.buttonDelete.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.buttonDelete.Name = "buttonDelete";
             this.buttonDelete.Size = new System.Drawing.Size(292, 86);
@@ -276,24 +278,47 @@ namespace Elrob.Terminal.View.Implementations.Main
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.labelOrderName, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.buttonCancel, 2, 4);
             this.tableLayoutPanel1.Controls.Add(this.buttonDelete, 3, 3);
             this.tableLayoutPanel1.Controls.Add(this.buttonAccept, 0, 4);
             this.tableLayoutPanel1.Controls.Add(this.textBoxOrderName, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.dataGridViewOrderContent, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.dataGridViewOrderContent, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.buttonEdit, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.buttonAdd, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.buttonAdd, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.dateTimePickerStartDate, 1, 1);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
+            this.tableLayoutPanel1.RowCount = 6;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1560, 837);
             this.tableLayoutPanel1.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 44);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(306, 31);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Data rozpoczęcia:";
+            // 
+            // dateTimePickerStartDate
+            // 
+            this.dateTimePickerStartDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dateTimePickerStartDate.Location = new System.Drawing.Point(315, 47);
+            this.dateTimePickerStartDate.Name = "dateTimePickerStartDate";
+            this.dateTimePickerStartDate.Size = new System.Drawing.Size(462, 38);
+            this.dateTimePickerStartDate.TabIndex = 7;
             // 
             // OrderPreviewView
             // 
@@ -340,5 +365,7 @@ namespace Elrob.Terminal.View.Implementations.Main
         private DataGridViewTextBoxColumn UnitWeightColumn;
         private DataGridViewTextBoxColumn ToCompleteColumn;
         private TableLayoutPanel tableLayoutPanel1;
+        private Label label1;
+        private DateTimePicker dateTimePickerStartDate;
     }
 }

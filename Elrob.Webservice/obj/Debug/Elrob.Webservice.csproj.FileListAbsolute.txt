@@ -37,4 +37,3 @@ d:\repo\Elrob\Elrob.Webservice\bin\NLog.xml
 d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csproj.ResolveComReference.cache
 d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.dll
 d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.pdb
-d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csprojResolveAssemblyReference.cache

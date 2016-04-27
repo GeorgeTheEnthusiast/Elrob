@@ -146,7 +146,9 @@ namespace Elrob.Webservice.Controlers
 
         private List<OrderContent> GroupData(List<OrderContent> list)
         {
-            list = list.Where(x => x.Place != null || x.Material != null).ToList();
+            list = list.Where(x => x.DocumentNumber != null && x.Material.Name != null && x.Place.Name != null).ToList();
+
+            _logger.Debug("Filtered rows to [{0}] rows", list.Count);
 
             list = (from c in list
                       group c by
@@ -188,6 +190,8 @@ namespace Elrob.Webservice.Controlers
                           UnitWeight = grouped.Key.UnitWeight,
                           ToComplete = ToCompleteSum
                       }).ToList();
+
+            _logger.Debug("Grouped rows to [{0}] rows", list.Count);
 
             return list;
         }

@@ -17,6 +17,7 @@ d:\repo\Elrob\Elrob\bin\Debug\Iesi.Collections.xml
 d:\repo\Elrob\Elrob\bin\Debug\NHibernate.xml
 d:\repo\Elrob\Elrob\bin\Debug\Ninject.xml
 d:\repo\Elrob\Elrob\bin\Debug\NLog.xml
+d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csproj.ResolveComReference.cache
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.View.Implementations.Other.CardReaderView.resources
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.Properties.Resources.resources
@@ -51,4 +52,3 @@ d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe.manifest
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.application
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.exe
 d:\repo\Elrob\Elrob\obj\Debug\Elrob.pdb
-d:\repo\Elrob\Elrob\obj\Debug\Elrob.Terminal.csprojResolveAssemblyReference.cache

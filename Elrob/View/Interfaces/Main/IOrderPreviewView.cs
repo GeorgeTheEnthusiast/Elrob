@@ -16,6 +16,8 @@ namespace Elrob.Terminal.View.Interfaces.Main
 
         TextBox TextBoxOrderName { get; }
 
+        DateTimePicker DateTimePickerStartDate { get; }
+
         List<Material> Materials { get; set; }
 
         List<Place> Places { get; set; }

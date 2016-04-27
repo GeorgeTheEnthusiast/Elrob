@@ -124,6 +124,7 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
 
             var orderContentList = _orderPreviewView.OrderContents.ToList();
             orderContentList.ForEach(x => x.Id = 0);
+            _orderPreviewView.Order.StartDate = _orderPreviewView.DateTimePickerStartDate.Value;
 
             _orderPreviewModel.SaveOrder(_orderPreviewView.Order, orderContentList);
 

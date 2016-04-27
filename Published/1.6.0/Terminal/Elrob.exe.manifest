@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="3064296">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="3063784">
       <assemblyIdentity name="Elrob" version="1.6.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Mx8+jw6iNgrI0D6/1AXC1lKgWCD8CTMzFiAZMbpenYc=</dsig:DigestValue>
+        <dsig:DigestValue>5NNusOMPewdqjeWTcPI5GTkx2Yu3zlt8xYTkdlrabLE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -141,7 +141,7 @@
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>pWQWZlas/1/FuBYnOyymRs1+PtUegKP3cGCYCYGiZnY=</dsig:DigestValue>
+      <dsig:DigestValue>yySvkgIzbSNf+B1YgyQ5/iVF827WX93saH/Go1ylA+c=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Resources\purchase_order.ico" size="67646">

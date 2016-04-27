@@ -23,7 +23,7 @@ namespace Elrob.Webservice.MessageInspectors
 
         public void BeforeSendReply(ref Message reply, object correlationState)
         {
-            _logger.Debug("RESPONSE:" + reply);
+            //_logger.Debug("RESPONSE:" + reply);
         }
     }
 }
