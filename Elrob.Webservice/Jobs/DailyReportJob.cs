@@ -10,6 +10,7 @@ namespace Elrob.Webservice.Jobs
 
     using Elrob.Webservice.Controllers;
     using Elrob.Webservice.Converters.Interfaces;
+    using Elrob.Webservice.Dto;
 
     using NLog;
 
@@ -64,28 +65,29 @@ namespace Elrob.Webservice.Jobs
                     DateTime.Now,
                     CalendarWeekRule.FirstFourDayWeek,
                     DayOfWeek.Monday);
-                string oldPlaceName = string.Empty;
-                int lp = 1;
-
-                foreach (var row in dailyReportData)
+                
+                foreach (Place row in dailyReportData.Keys)
                 {
-                    if (oldPlaceName != row.PlaceName)
+                    emailMessage.AppendLine(new string('-', 100));
+                    emailMessage.AppendLine(string.Format("Placówka: {0}", row.Name));
+                    emailMessage.AppendLine(string.Format("Tydzień: {0}", weekNumber));
+                    emailMessage.AppendLine("LP.");
+                    int lp = 1;
+
+                    if (dailyReportData[row].Count == 0)
                     {
-                        emailMessage.AppendLine(new string('-', 20));
-                        emailMessage.AppendLine(string.Format("Placówka: {0}", row.PlaceName));
-                        emailMessage.AppendLine(string.Format("Tydzień: {0}", weekNumber));
-                        emailMessage.AppendLine("LP.");
-                        lp = 1;
+                        emailMessage.AppendLine("Brak zamówień w bieżącym tygodniu.");
                     }
-                    
-                    emailMessage.AppendLine(string.Format("{0}. {1} {2} zrobiony w {3}%", 
+
+                    foreach (var dailyReport in dailyReportData[row])
+                    {
+                        emailMessage.AppendLine(string.Format("{0}. {1} {2} zrobiony w {3}%",
                         lp,
-                        row.OrderContentDocumentNumber,
-                        row.OrderContentName,
-                        row.PercentageProgress));
-                    
-                    oldPlaceName = row.PlaceName;
-                    lp++;
+                        dailyReport.OrderContentDocumentNumber,
+                        dailyReport.OrderContentName,
+                        dailyReport.PercentageProgress));
+                        lp++;
+                    }
                 }
 
                 _emailSenderController.SendEmail(emailMessage.ToString(), emailSubject);

@@ -7,8 +7,6 @@ namespace Elrob.Webservice.Dto
 {
     public class DailyReport
     {
-        public string OrderName { get; set; }
-
         public string PlaceName { get; set; }
 
         public string OrderContentName { get; set; }

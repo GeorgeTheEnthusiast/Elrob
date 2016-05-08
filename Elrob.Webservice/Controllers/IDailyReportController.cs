@@ -6,6 +6,6 @@ namespace Elrob.Webservice.Controllers
 
     public interface IDailyReportController
     {
-        List<DailyReport> GetDailyReport(WeekRange weekRange);
+        Dictionary<Dto.Place, List<DailyReport>> GetDailyReport(WeekRange weekRange);
     }
 }

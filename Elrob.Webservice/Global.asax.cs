@@ -24,7 +24,8 @@ namespace Elrob.Webservice
             Kernel = new StandardKernel();
             Kernel.Load(Assembly.GetExecutingAssembly());
 
-            QuartzJobFactory.ScheduleJob<DailyReportJob>(SimpleScheduleBuilder.Create());
+            //QuartzJobFactory.ScheduleJob<DailyReportJob>(SimpleScheduleBuilder.Create());
+            QuartzJobFactory.ScheduleJob<DailyReportJob>(CronScheduleBuilder.DailyAtHourAndMinute(00, 00));
         }
 
         protected void Session_Start(object sender, EventArgs e)

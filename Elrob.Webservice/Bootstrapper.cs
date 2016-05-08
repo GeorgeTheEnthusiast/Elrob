@@ -32,6 +32,8 @@ namespace Elrob.Webservice
             this.Bind<IJob>().To<DailyReportJob>();
             this.Bind<IWeekRangeConverter>().To<WeekRangeConverter>();
             this.Bind<IJobFactory>().To<NinjectJobFactory>();
+            this.Bind<IPlaceConverter>().To<PlaceConverter>();
+            this.Bind<IOrderProgressConverter>().To<OrderProgressConverter>();
         }
     }
 }
