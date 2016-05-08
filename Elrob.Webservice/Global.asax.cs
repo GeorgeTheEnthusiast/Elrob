@@ -9,7 +9,11 @@ namespace Elrob.Webservice
 {
     using System.Reflection;
 
+    using Elrob.Webservice.Jobs;
+
     using Ninject;
+
+    using Quartz;
 
     public class Global : System.Web.HttpApplication
     {
@@ -19,6 +23,8 @@ namespace Elrob.Webservice
         {
             Kernel = new StandardKernel();
             Kernel.Load(Assembly.GetExecutingAssembly());
+
+            QuartzJobFactory.ScheduleJob<DailyReportJob>(SimpleScheduleBuilder.Create());
         }
 
         protected void Session_Start(object sender, EventArgs e)

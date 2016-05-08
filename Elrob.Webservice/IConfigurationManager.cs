@@ -9,5 +9,7 @@ namespace Elrob.Webservice
     public interface IConfigurationManager
     {
         string ExcelOutputDir { get; }
+
+        string DailyReportRecipient { get; }
     }
 }

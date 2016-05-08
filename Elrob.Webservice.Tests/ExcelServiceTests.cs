@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using Elrob.Webservice.Controlers;
+
 using Elrob.Webservice.Dto;
 using NSubstitute;
 using NSubstitute.ExceptionExtensions;
@@ -13,6 +13,7 @@ namespace Elrob.Webservice.Tests
 
     using DocumentFormat.OpenXml.Packaging;
 
+    using Elrob.Webservice.Controllers;
     using Elrob.Webservice.Validators;
 
     using Ninject;

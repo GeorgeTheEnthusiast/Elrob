@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Resources\purchase_order.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="Elrob" version="1.6.0.0" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="Elrob" version="1.7.0.0" language="neutral" processorArchitecture="msil" />
     <commandLine file="Elrob.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -56,13 +56,13 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="3064296">
-      <assemblyIdentity name="Elrob" version="1.6.0.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Elrob" version="1.7.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Mx8+jw6iNgrI0D6/1AXC1lKgWCD8CTMzFiAZMbpenYc=</dsig:DigestValue>
+        <dsig:DigestValue>fr+bIpCWZWBQY50uxgu5yZ4+GQF5x3OTpRQM0RrhUQo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -91,14 +91,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NHibernate.dll" size="3313664">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="NHibernate.dll" size="3319296">
       <assemblyIdentity name="NHibernate" version="4.0.0.4000" publicKeyToken="AA95F207798DFDB4" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wW8TqYxjD6CReUu3vjk0+zkZeN/dywPaArv+7IC1YbA=</dsig:DigestValue>
+        <dsig:DigestValue>ms7aHGXsdGAd/W683IqKuLqfGSYiHRUEmNifsCZoCK4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

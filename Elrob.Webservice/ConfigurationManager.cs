@@ -9,5 +9,7 @@ namespace Elrob.Webservice
     public class ConfigurationManager : IConfigurationManager
     {
         public string ExcelOutputDir => System.Configuration.ConfigurationManager.AppSettings["excelOutputDir"];
+
+        public string DailyReportRecipient => System.Configuration.ConfigurationManager.AppSettings["dailyReportRecipient"];
     }
 }

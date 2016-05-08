@@ -5,10 +5,16 @@ using System.Web;
 
 namespace Elrob.Webservice
 {
-    using Elrob.Webservice.Controlers;
+    using Elrob.Webservice.Controllers;
+    using Elrob.Webservice.Converters.Implementations;
+    using Elrob.Webservice.Converters.Interfaces;
+    using Elrob.Webservice.Jobs;
     using Elrob.Webservice.Validators;
 
     using Ninject.Modules;
+
+    using Quartz;
+    using Quartz.Spi;
 
     public class Bootstrapper : NinjectModule
     {
@@ -21,6 +27,11 @@ namespace Elrob.Webservice
             this.Bind<IExcelRowsReader>().To<ExcelRowsReader>();
             this.Bind<IExcelSheetTools>().To<ExcelSheetTools>();
             this.Bind<IExcelValueParser>().To<ExcelValueParser>();
+            this.Bind<IDailyReportController>().To<DailyReportController>();
+            this.Bind<IEmailSenderController>().To<EmailSenderController>();
+            this.Bind<IJob>().To<DailyReportJob>();
+            this.Bind<IWeekRangeConverter>().To<WeekRangeConverter>();
+            this.Bind<IJobFactory>().To<NinjectJobFactory>();
         }
     }
 }
