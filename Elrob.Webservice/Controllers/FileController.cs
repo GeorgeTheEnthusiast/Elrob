@@ -16,7 +16,9 @@
 
         public string SaveFile(byte[] fileBytes, string fileName)
         {
-            fileName = string.Format("{0}_{1}", fileName, DateTime.Now.ToString("yyyyMMdd-HHmmss"));
+            string fileNameWithoutExtension = Path.GetFileNameWithoutExtension(fileName);
+            string fileExtension = Path.GetExtension(fileName);
+            fileName = string.Format("{0}_{1}.{2}", fileNameWithoutExtension, DateTime.Now.ToString("yyyyMMdd-HHmmss"), fileExtension);
             string resultFilePath = Path.Combine(this._configurationManager.ExcelOutputDir, fileName);
 
             if (!Directory.Exists(this._configurationManager.ExcelOutputDir))

@@ -9,11 +9,29 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>D:\repo\Elrob\Published\Webservice</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="bin/AutoMapper.dll">
+      <publishTime>03/21/2016 21:44:21</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.Core.dll">
+      <publishTime>01/10/2015 21:28:30</publishTime>
+    </File>
+    <File Include="bin/Common.Logging.dll">
+      <publishTime>01/10/2015 21:28:30</publishTime>
+    </File>
     <File Include="bin/DocumentFormat.OpenXml.dll">
       <publishTime>11/27/2015 23:21:08</publishTime>
     </File>
     <File Include="bin/Elrob.Webservice.dll">
-      <publishTime>04/27/2016 20:11:15</publishTime>
+      <publishTime>05/08/2016 12:02:24</publishTime>
+    </File>
+    <File Include="bin/FluentNHibernate.dll">
+      <publishTime>03/21/2016 21:44:21</publishTime>
+    </File>
+    <File Include="bin/Iesi.Collections.dll">
+      <publishTime>03/21/2016 21:44:21</publishTime>
+    </File>
+    <File Include="bin/NHibernate.dll">
+      <publishTime>08/17/2015 23:18:30</publishTime>
     </File>
     <File Include="bin/Ninject.dll">
       <publishTime>03/21/2016 21:44:21</publishTime>
@@ -23,6 +41,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="bin/NLog.dll">
       <publishTime>03/21/2016 21:44:21</publishTime>
+    </File>
+    <File Include="bin/Quartz.dll">
+      <publishTime>07/09/2015 08:36:22</publishTime>
     </File>
     <File Include="bin/System.IO.Packaging.dll">
       <publishTime>11/27/2015 23:21:08</publishTime>
@@ -37,10 +58,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/27/2016 19:49:39</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>04/23/2016 19:01:26</publishTime>
+      <publishTime>04/28/2016 18:52:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>04/27/2016 20:11:15</publishTime>
+      <publishTime>05/08/2016 12:02:25</publishTime>
     </File>
   </ItemGroup>
 </Project>
