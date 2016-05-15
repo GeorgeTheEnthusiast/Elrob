@@ -19,10 +19,13 @@ namespace Elrob.Webservice.Tests.Controllers
     {
         private IDailyReportController _sut;
 
+        private IPlaceConverter _placeConverter;
+
         [SetUp]
         public void SetUp()
         {
-            _sut = new DailyReportController();
+            _placeConverter = Substitute.For<IPlaceConverter>();
+            _sut = new DailyReportController(_placeConverter);
         }
 
         [Test]

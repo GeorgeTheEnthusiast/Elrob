@@ -22,7 +22,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/27/2015 23:21:08</publishTime>
     </File>
     <File Include="bin/Elrob.Webservice.dll">
-      <publishTime>05/08/2016 12:02:24</publishTime>
+      <publishTime>05/14/2016 09:24:00</publishTime>
     </File>
     <File Include="bin/FluentNHibernate.dll">
       <publishTime>03/21/2016 21:44:21</publishTime>
@@ -61,7 +61,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>04/28/2016 18:52:53</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>05/08/2016 12:02:25</publishTime>
+      <publishTime>05/14/2016 09:20:52</publishTime>
+    </File>
+    <File Include="Web.Debug.config">
+      <publishTime>05/14/2016 08:56:02</publishTime>
     </File>
   </ItemGroup>
 </Project>

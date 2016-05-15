@@ -1,2 +1,0 @@
-Server=ELROBTERMINAL\SQLEXPRESS;User Id=ElrobTestUser;
-Password=testowehaslo123;Integrated Security=False
