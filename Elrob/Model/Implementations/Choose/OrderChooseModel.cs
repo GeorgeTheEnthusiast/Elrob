@@ -13,17 +13,24 @@ namespace Elrob.Terminal.Model.Implementations.Choose
     {
         private readonly IOrderConverter _orderConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderChooseModel( 
-            IOrderConverter orderConverter)
+            IOrderConverter orderConverter, ISessionFactory sessionFactory)
         {
             if (orderConverter == null) throw new ArgumentNullException("orderConverter");
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _orderConverter = orderConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.Order> GetAllOrders()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Order>()
                     .List()

@@ -1,5 +1,7 @@
 ﻿namespace Elrob.Webservice
 {
+    using System.Reflection;
+
     using Elrob.Webservice.Domain;
 
     using FluentNHibernate.Cfg;
@@ -8,29 +10,23 @@
     using NHibernate;
     using NHibernate.Tool.hbm2ddl;
 
-    public class NHibernateHelper
+    public class SessionFactory : ISessionFactory
     {
-        public static ISession OpenSession()
+        public ISession OpenSession()
         {
-            ISessionFactory sessionFactory = Fluently.Configure()
+            NHibernate.ISessionFactory sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
                   .ConnectionString(c => c.FromConnectionStringWithKey("Elrob.Terminal.Properties.Settings.ElrobConnectionString"))
                     .ShowSql()
                 )
-               .Mappings(m =>
-                          m.FluentMappings
-                              .AddFromAssemblyOf<User>()
-                              .AddFromAssemblyOf<Place>()
-                              .AddFromAssemblyOf<Order>()
-                              .AddFromAssemblyOf<OrderContent>()
-                              .AddFromAssemblyOf<Material>()
-                              )
+               .Mappings(m => m.FluentMappings.AddFromAssembly(Assembly.GetExecutingAssembly()))
                 .ExposeConfiguration(cfg =>
                 {
                     new SchemaExport(cfg).Create(false, false);
                     //cfg.SetInterceptor(new SqlStatementInterceptor());
                 })
                 .BuildSessionFactory();
+
             return sessionFactory.OpenSession();
         }
     }

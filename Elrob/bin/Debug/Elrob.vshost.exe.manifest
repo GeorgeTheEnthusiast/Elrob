@@ -55,14 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="3064296">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Elrob.exe" size="3065832">
       <assemblyIdentity name="Elrob" version="1.8.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>88FAZIRb9AmtlT6ili5dbaQrKp+g0r1kMObVdBILsq0=</dsig:DigestValue>
+        <dsig:DigestValue>a/wi3hLb1fC5L0LKuN0IBdmsyYwgnb862vmbIb9nFok=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -126,13 +126,13 @@
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="Elrob.exe.config" size="1334">
+  <file name="Elrob.exe.config" size="1033">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>3PzGUN8MrjaH8jsaDb5KVKOoaOlGp0Yl4Zm0BFHS15Q=</dsig:DigestValue>
+      <dsig:DigestValue>dnEwI6L8BO3+OUh+Rdj9PrYBDYrMSSXL7gaEM2EXhcc=</dsig:DigestValue>
     </hash>
   </file>
   <file name="NLog.config" size="691">

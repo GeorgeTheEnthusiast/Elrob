@@ -14,17 +14,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     {
         private readonly IUserConverter _userConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public UserModel( 
-            IUserConverter userConverter)
+            IUserConverter userConverter, ISessionFactory sessionFactory)
         {
-            if (userConverter == null) throw new ArgumentNullException("userConverter");
+            if (userConverter == null) throw new ArgumentNullException(nameof(userConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _userConverter = userConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.User> GetAllUsers()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.User>()
                     .List()
@@ -38,7 +45,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         
         public bool DeleteUser(dto.User user)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domainOrderContent = session.QueryOver<domain.OrderProgress>()
                     .Where(x => x.User.Id == user.Id)

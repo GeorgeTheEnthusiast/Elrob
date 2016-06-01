@@ -14,17 +14,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     {
         private readonly IPlaceConverter _placeConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public PlaceModel( 
-            IPlaceConverter placeConverter)
+            IPlaceConverter placeConverter, ISessionFactory sessionFactory)
         {
-            if (placeConverter == null) throw new ArgumentNullException("placeConverter");
+            if (placeConverter == null) throw new ArgumentNullException(nameof(placeConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _placeConverter = placeConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.Place> GetAllPlaces()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Place>()
                     .List()
@@ -40,7 +47,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _placeConverter.Convert(place);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -50,7 +57,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _placeConverter.Convert(place);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var existInOrderContentCount = session.QueryOver<domain.OrderContent>()
                     .Where(x => x.Place.Id == domain.Id)
@@ -72,7 +79,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _placeConverter.Convert(place);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();

@@ -154,6 +154,12 @@ namespace Elrob.Terminal.Common
             Bind<ICardItemPresenter>().To<CardItemPresenter>();
             Bind<ILogInMethodChoosePresenter>().To<LogInMethodChoosePresenter>();
             #endregion
+
+            #region Others
+
+            this.Bind<ISessionFactory>().To<SessionFactory>();
+
+            #endregion
         }
     }
 }

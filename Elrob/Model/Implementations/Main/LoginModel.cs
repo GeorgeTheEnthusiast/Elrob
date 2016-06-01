@@ -10,16 +10,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     public class LoginModel : ILoginModel
     {
         private readonly IUserConverter _userConverter;
-        public LoginModel(IUserConverter userConverter)
+
+        private ISessionFactory _sessionFactory;
+
+        public LoginModel(IUserConverter userConverter, ISessionFactory sessionFactory)
         {
-            if (userConverter == null) throw new ArgumentNullException("userConverter");
+            if (userConverter == null) throw new ArgumentNullException(nameof(userConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _userConverter = userConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public User GetUserByLoginName(string loginName)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var userDomain = session.QueryOver<Domain.User>()
                     .Where(x => x.LoginName == loginName)

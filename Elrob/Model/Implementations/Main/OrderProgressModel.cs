@@ -14,20 +14,27 @@ namespace Elrob.Terminal.Model.Implementations.Main
         private readonly IOrderProgressConverter _orderProgressConverter;
         private readonly IOrderContentConverter _orderContentConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderProgressModel( 
             IOrderProgressConverter orderProgressConverter,
-            IOrderContentConverter orderContentConverter)
+            IOrderContentConverter orderContentConverter, ISessionFactory sessionFactory)
         {
-            if (orderProgressConverter == null) throw new ArgumentNullException("orderProgressConverter");
-            if (orderContentConverter == null) throw new ArgumentNullException("orderContentConverter");
+            if (orderProgressConverter == null) throw new ArgumentNullException(nameof(orderProgressConverter));
+            if (orderContentConverter == null) throw new ArgumentNullException(nameof(orderContentConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _orderProgressConverter = orderProgressConverter;
             _orderContentConverter = orderContentConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.OrderProgress> GetOrderContentProgressById(int orderContentId)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.OrderProgress>()
                     .Where(x => x.OrderContent.Id == orderContentId)
@@ -42,7 +49,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
         public List<dto.OrderContent> GetOrderContent(int orderId, int placeId)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.OrderContent>()
                     .Where(x => x.Order.Id == orderId)
@@ -58,7 +65,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
         public List<dto.OrderContent> GetOrderContent(int orderId)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.OrderContent>()
                     .Where(x => x.Order.Id == orderId)
@@ -75,7 +82,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _orderProgressConverter.Convert(orderProgress);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Delete(domain);
                 session.Flush();

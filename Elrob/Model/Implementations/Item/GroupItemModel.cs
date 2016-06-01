@@ -11,19 +11,26 @@ namespace Elrob.Terminal.Model.Implementations.Item
     {
         private readonly IGroupConverter _groupConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public GroupItemModel( 
-            IGroupConverter groupConverter)
+            IGroupConverter groupConverter, ISessionFactory sessionFactory)
         {
-            if (groupConverter == null) throw new ArgumentNullException("groupConverter");
+            if (groupConverter == null) throw new ArgumentNullException(nameof(groupConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _groupConverter = groupConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void AddGroup(dto.Group group)
         {
             var domain = _groupConverter.Convert(group);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -33,7 +40,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             var domain = _groupConverter.Convert(group);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();
@@ -42,7 +49,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public bool IsGroupExist(string groupName)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.Group>()
                     .Where(x => x.Name == groupName)

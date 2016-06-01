@@ -14,17 +14,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     {
         private readonly ICardConverter _cardConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public CardModel( 
-            ICardConverter cardConverter)
+            ICardConverter cardConverter, ISessionFactory sessionFactory)
         {
-            if (cardConverter == null) throw new ArgumentNullException("cardConverter");
+            if (cardConverter == null) throw new ArgumentNullException(nameof(cardConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _cardConverter = cardConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.Card> GetAllCards()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Card>()
                     .List()
@@ -40,7 +47,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _cardConverter.Convert(card);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var existedInUser = session.QueryOver<domain.User>()
                     .Where(x => x.Card.Id == domain.Id)
@@ -62,7 +69,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _cardConverter.Convert(card);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -70,7 +77,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
         public bool IsCardExist(string loginName)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.Card>()
                     .Where(x => x.Login == loginName)

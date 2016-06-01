@@ -16,18 +16,25 @@ namespace Elrob.Terminal.Model.Implementations.Item
         private readonly IPermissionConverter _permissionConverter;
         private readonly IGroupConverter _groupConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public PermissionGroupItemModel( 
             IPermissionGroupConverter permissionGroupConverter, 
             IPermissionConverter permissionConverter,
-            IGroupConverter groupConverter)
+            IGroupConverter groupConverter, ISessionFactory sessionFactory)
         {
-            if (permissionGroupConverter == null) throw new ArgumentNullException("permissionGroupConverter");
-            if (permissionConverter == null) throw new ArgumentNullException("permissionConverter");
-            if (groupConverter == null) throw new ArgumentNullException("groupConverter");
+            if (permissionGroupConverter == null) throw new ArgumentNullException(nameof(permissionGroupConverter));
+            if (permissionConverter == null) throw new ArgumentNullException(nameof(permissionConverter));
+            if (groupConverter == null) throw new ArgumentNullException(nameof(groupConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _permissionGroupConverter = permissionGroupConverter;
             _permissionConverter = permissionConverter;
             _groupConverter = groupConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void MergePermissionGroup(dto.Group @group, List<dto.Permission> permissions)
@@ -36,7 +43,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
             var domainGroup = _groupConverter.Convert(group);
             int groupId = group.Id;
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var permissionGroupsOldState = session.QueryOver<Domain.PermissionGroup>()
                     .Where(x => x.Group.Id == groupId)
@@ -73,7 +80,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public List<dto.Permission> GetAllPermissions()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Permission>()
                     .OrderBy(x => x.Name)

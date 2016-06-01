@@ -15,17 +15,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     {
         private readonly IOrderContentConverter _orderContentConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderContentModel( 
-            IOrderContentConverter orderContentConverter)
+            IOrderContentConverter orderContentConverter, ISessionFactory sessionFactory)
         {
-            if (orderContentConverter == null) throw new ArgumentNullException("orderContentConverter");
+            if (orderContentConverter == null) throw new ArgumentNullException(nameof(orderContentConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _orderContentConverter = orderContentConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.OrderContent> GetOrderContent(int orderId, int placeId)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var orderContentDomain = session.QueryOver<Domain.OrderContent>()
                  .Where(x => x.Order.Id == orderId
@@ -53,7 +60,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
         public List<dto.OrderContent> GetOrderContent(int orderId)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var orderContentDomain = session.QueryOver<Domain.OrderContent>()
                  .Where(x => x.Order.Id == orderId)
@@ -82,7 +89,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _orderContentConverter.Convert(orderContent);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -92,7 +99,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var orderDomain = _orderContentConverter.Convert(orderContent);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domainOrderContent = session.QueryOver<domain.OrderContent>()
                     .Where(x => x.Id == orderDomain.Id)
@@ -107,7 +114,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _orderContentConverter.Convert(orderContent);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();

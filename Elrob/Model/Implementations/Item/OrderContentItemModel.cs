@@ -15,23 +15,30 @@ namespace Elrob.Terminal.Model.Implementations.Item
         private readonly IMaterialConverter _materialConverter;
         private readonly IPlaceConverter _placeConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderContentItemModel( 
-            IOrderContentConverter orderContentConverter, IMaterialConverter materialConverter, IPlaceConverter placeConverter)
+            IOrderContentConverter orderContentConverter, IMaterialConverter materialConverter, IPlaceConverter placeConverter, ISessionFactory sessionFactory)
         {
-            if (orderContentConverter == null) throw new ArgumentNullException("orderContentConverter");
-            if (materialConverter == null) throw new ArgumentNullException("materialConverter");
-            if (placeConverter == null) throw new ArgumentNullException("placeConverter");
+            if (orderContentConverter == null) throw new ArgumentNullException(nameof(orderContentConverter));
+            if (materialConverter == null) throw new ArgumentNullException(nameof(materialConverter));
+            if (placeConverter == null) throw new ArgumentNullException(nameof(placeConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _orderContentConverter = orderContentConverter;
             _materialConverter = materialConverter;
             _placeConverter = placeConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void AddOrderContnt(dto.OrderContent orderContent)
         {
             var domain = _orderContentConverter.Convert(orderContent);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -41,7 +48,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             var domain = _orderContentConverter.Convert(orderContent);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();
@@ -50,7 +57,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public List<dto.Material> GetAllMaterials()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Material>()
                     .List()
@@ -64,7 +71,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public List<dto.Place> GetAllPlaces()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Place>()
                     .List()

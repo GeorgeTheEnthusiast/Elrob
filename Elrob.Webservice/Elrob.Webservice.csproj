@@ -107,19 +107,17 @@
   <ItemGroup>
     <Content Include="ExcelService.svc" />
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="ConfigurationManager.cs" />
-    <Compile Include="Controllers\DailyReportController.cs" />
-    <Compile Include="Controllers\EmailSenderController.cs" />
     <Compile Include="Controllers\ExcelRowsReader.cs" />
     <Compile Include="Controllers\ExcelSheetTools.cs" />
     <Compile Include="Controllers\ExcelValueParser.cs" />
     <Compile Include="Controllers\FileController.cs" />
-    <Compile Include="Controllers\IDailyReportController.cs" />
-    <Compile Include="Controllers\IEmailSenderController.cs" />
     <Compile Include="Controllers\IExcelRowsReader.cs" />
     <Compile Include="Controllers\IExcelSheetTools.cs" />
     <Compile Include="Controllers\IExcelValueParser.cs" />
@@ -190,9 +188,7 @@
     </Compile>
     <Compile Include="IConfigurationManager.cs" />
     <Compile Include="IExcelService.cs" />
-    <Compile Include="Jobs\DailyReportJob.cs" />
-    <Compile Include="Jobs\NinjectJobFactory.cs" />
-    <Compile Include="Jobs\QuartzJobFactory.cs" />
+    <Compile Include="ISessionFactory.cs" />
     <Compile Include="MessageInspectors\TrafficLoggerBehavior.cs" />
     <Compile Include="MessageInspectors\TrafficLoggerBehaviorExtensionElement.cs" />
     <Compile Include="MessageInspectors\TrafficLoggerMessageInspector.cs" />

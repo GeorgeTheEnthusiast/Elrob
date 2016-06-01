@@ -13,17 +13,24 @@ namespace Elrob.Terminal.Model.Implementations.Choose
     {
         private readonly IOrderContentConverter _orderContentConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderContentChooseModel( 
-            IOrderContentConverter orderContentConverter)
+            IOrderContentConverter orderContentConverter, ISessionFactory sessionFactory)
         {
-            if (orderContentConverter == null) throw new ArgumentNullException("orderContentConverter");
+            if (orderContentConverter == null) throw new ArgumentNullException(nameof(orderContentConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _orderContentConverter = orderContentConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.OrderContent> GetOrderContentsByOrderAndPlace(dto.Order order, dto.Place place)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.OrderContent>()
                      .Where(x => x.Order.Id == order.Id)
@@ -39,7 +46,7 @@ namespace Elrob.Terminal.Model.Implementations.Choose
 
         public List<dto.OrderContent> GetOrderContentsByOrder(dto.Order order)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.OrderContent>()
                     .Where(x => x.Order.Id == order.Id)

@@ -14,16 +14,23 @@ namespace Elrob.Terminal.Model.Implementations.Choose
     {
         private readonly IUserConverter _userConverter;
 
-        public LogInMethodChooseModel(IUserConverter userConverter)
+        private ISessionFactory _sessionFactory;
+
+        public LogInMethodChooseModel(IUserConverter userConverter, ISessionFactory sessionFactory)
         {
-            if (userConverter == null) throw new ArgumentNullException("userConverter");
+            if (userConverter == null) throw new ArgumentNullException(nameof(userConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _userConverter = userConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public dto.User GetUserByCard(dto.Card card)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.User>()
                     .JoinQueryOver<Card>(c => c.Card)

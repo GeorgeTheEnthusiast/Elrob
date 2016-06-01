@@ -11,19 +11,26 @@ namespace Elrob.Terminal.Model.Implementations.Item
     {
         private readonly IOrderProgressConverter _orderProgressConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderProgressItemModel( 
-            IOrderProgressConverter orderProgressConverter)
+            IOrderProgressConverter orderProgressConverter, ISessionFactory sessionFactory)
         {
-            if (orderProgressConverter == null) throw new ArgumentNullException("orderProgressConverter");
+            if (orderProgressConverter == null) throw new ArgumentNullException(nameof(orderProgressConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _orderProgressConverter = orderProgressConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void AddOrderProgress(dto.OrderProgress orderProgress)
         {
             var domain = _orderProgressConverter.Convert(orderProgress);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -33,7 +40,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             var domain = _orderProgressConverter.Convert(orderProgress);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();

@@ -11,19 +11,22 @@ namespace Elrob.Terminal.Model.Implementations.Item
     {
         private readonly IOrderConverter _orderConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderItemModel( 
-            IOrderConverter orderConverter)
+            IOrderConverter orderConverter, ISessionFactory sessionFactory)
         {
-            if (orderConverter == null) throw new ArgumentNullException("orderConverter");
+            if (orderConverter == null) throw new ArgumentNullException(nameof(orderConverter));
 
             _orderConverter = orderConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void AddOrder(dto.Order order)
         {
             var domain = _orderConverter.Convert(order);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -33,7 +36,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             var domain = _orderConverter.Convert(order);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();
@@ -42,7 +45,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public bool IsOrderExist(dto.Order order)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.Order>()
                     .Where(x => x.Name == order.Name)

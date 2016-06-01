@@ -15,25 +15,32 @@ namespace Elrob.Terminal.Model.Implementations.Item
         private readonly IGroupConverter _groupConverter;
         private readonly ICardConverter _cardConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public UserItemModel( 
             IUserConverter userConverter,
             IGroupConverter groupConverter,
-            ICardConverter cardConverter)
+            ICardConverter cardConverter, ISessionFactory sessionFactory)
         {
-            if (userConverter == null) throw new ArgumentNullException("userConverter");
-            if (groupConverter == null) throw new ArgumentNullException("groupConverter");
-            if (cardConverter == null) throw new ArgumentNullException("cardConverter");
+            if (userConverter == null) throw new ArgumentNullException(nameof(userConverter));
+            if (groupConverter == null) throw new ArgumentNullException(nameof(groupConverter));
+            if (cardConverter == null) throw new ArgumentNullException(nameof(cardConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _userConverter = userConverter;
             _groupConverter = groupConverter;
             _cardConverter = cardConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void AddUser(dto.User user)
         {
             var domain = _userConverter.Convert(user);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -43,7 +50,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             var domain = _userConverter.Convert(user);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();
@@ -52,7 +59,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public bool IsUserExist(string loginName)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.User>()
                     .Where(x => x.LoginName == loginName)
@@ -64,7 +71,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public List<dto.Group> GetAllGroups()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Group>()
                     .List()
@@ -78,7 +85,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public List<dto.Card> GetAllCards()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Card>()
                     .List()
@@ -92,7 +99,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public bool IsCardIsUnique(int cardId, int userId)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.User>()
                     .Where(x => x.Card.Id == cardId)

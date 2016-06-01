@@ -14,17 +14,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     {
         private readonly IGroupConverter _groupConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public GroupModel( 
-            IGroupConverter groupConverter)
+            IGroupConverter groupConverter, ISessionFactory sessionFactory)
         {
-            if (groupConverter == null) throw new ArgumentNullException("groupConverter");
+            if (groupConverter == null) throw new ArgumentNullException(nameof(groupConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _groupConverter = groupConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.Group> GetAllGroups()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Group>()
                     .List()
@@ -40,7 +47,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _groupConverter.Convert(group);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var existInUser = session.QueryOver<domain.User>()
                     .Where(x => x.Group.Id == group.Id)

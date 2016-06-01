@@ -14,19 +14,22 @@ namespace Elrob.Terminal.Model.Implementations.Item
         private readonly IMaterialConverter _materialConverter;
         private readonly IPlaceConverter _placeConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public OrderPreviewItemModel( 
-            IMaterialConverter materialConverter, IPlaceConverter placeConverter)
+            IMaterialConverter materialConverter, IPlaceConverter placeConverter, ISessionFactory sessionFactory)
         {
-            if (materialConverter == null) throw new ArgumentNullException("materialConverter");
-            if (placeConverter == null) throw new ArgumentNullException("placeConverter");
+            if (materialConverter == null) throw new ArgumentNullException(nameof(materialConverter));
+            if (placeConverter == null) throw new ArgumentNullException(nameof(placeConverter));
             
             _materialConverter = materialConverter;
             _placeConverter = placeConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.Material> GetAllMaterials()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Material>()
                     .List()
@@ -40,7 +43,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public List<dto.Place> GetAllPlaces()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Place>()
                     .List()

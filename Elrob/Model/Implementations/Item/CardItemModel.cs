@@ -11,19 +11,26 @@ namespace Elrob.Terminal.Model.Implementations.Item
     {
         private readonly ICardConverter _cardConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public CardItemModel( 
-            ICardConverter cardConverter)
+            ICardConverter cardConverter, ISessionFactory sessionFactory)
         {
-            if (cardConverter == null) throw new ArgumentNullException("cardConverter");
+            if (cardConverter == null) throw new ArgumentNullException(nameof(cardConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _cardConverter = cardConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void UpdateCard(dto.Card card)
         {
             var domain = _cardConverter.Convert(card);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();

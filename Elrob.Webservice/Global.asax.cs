@@ -8,9 +8,7 @@ using System.Web.SessionState;
 namespace Elrob.Webservice
 {
     using System.Reflection;
-
-    using Elrob.Webservice.Jobs;
-
+    
     using Ninject;
 
     using NLog;
@@ -21,6 +19,7 @@ namespace Elrob.Webservice
     {
         public static StandardKernel Kernel;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
+        public static IScheduler Scheduler;
 
         protected void Application_Start(object sender, EventArgs e)
         {
@@ -28,9 +27,6 @@ namespace Elrob.Webservice
 
             Kernel = new StandardKernel();
             Kernel.Load(Assembly.GetExecutingAssembly());
-
-            //QuartzJobFactory.ScheduleJob<DailyReportJob>(SimpleScheduleBuilder.Create());
-            QuartzJobFactory.ScheduleJob<DailyReportJob>(CronScheduleBuilder.DailyAtHourAndMinute(00, 00));
         }
 
         protected void Session_Start(object sender, EventArgs e)

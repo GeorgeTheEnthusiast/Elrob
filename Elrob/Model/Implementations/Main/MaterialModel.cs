@@ -14,17 +14,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     {
         private readonly IMaterialConverter _materialConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public MaterialModel( 
-            IMaterialConverter materialConverter)
+            IMaterialConverter materialConverter, ISessionFactory sessionFactory)
         {
-            if (materialConverter == null) throw new ArgumentNullException("materialConverter");
-            
+            if (materialConverter == null) throw new ArgumentNullException(nameof(materialConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
+
             _materialConverter = materialConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.Material> GetAllMaterials()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Material>()
                     .List()
@@ -40,7 +47,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _materialConverter.Convert(material);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var existInOrderContentCount = session.QueryOver<domain.OrderContent>()
                     .Where(x => x.Material.Id == domain.Id)

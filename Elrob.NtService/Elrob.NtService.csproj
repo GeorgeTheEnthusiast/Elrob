@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{99B5CD2E-0818-4511-8E60-3A203102A973}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Elrob.NtService</RootNamespace>
+    <AssemblyName>Elrob.NtService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.0\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.3.0.0\lib\net40\Common.Logging.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Iesi.Collections.4.0.0.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NHibernate, Version=4.0.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHibernate.4.0.4.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.2.3\lib\net45\NLog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Quartz, Version=2.3.3.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Quartz.2.3.3\lib\net40\Quartz.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Topshelf, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b800c4cfcdeea87b, processorArchitecture=MSIL">
+      <HintPath>..\packages\Topshelf.4.0.1\lib\net452\Topshelf.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bootstrapper.cs" />
+    <Compile Include="ConfigurationManager.cs" />
+    <Compile Include="Controllers\DailyReportController.cs" />
+    <Compile Include="Controllers\EmailSenderController.cs" />
+    <Compile Include="Controllers\IDailyReportController.cs" />
+    <Compile Include="Controllers\IEmailSenderController.cs" />
+    <Compile Include="Converters\Implementations\CardConverter.cs" />
+    <Compile Include="Converters\Implementations\GroupConverter.cs" />
+    <Compile Include="Converters\Implementations\MaterialConverter.cs" />
+    <Compile Include="Converters\Implementations\OrderContentConverter.cs" />
+    <Compile Include="Converters\Implementations\OrderConverter.cs" />
+    <Compile Include="Converters\Implementations\OrderProgressConverter.cs" />
+    <Compile Include="Converters\Implementations\PermissionConverter.cs" />
+    <Compile Include="Converters\Implementations\PermissionGroupConverter.cs" />
+    <Compile Include="Converters\Implementations\PlaceConverter.cs" />
+    <Compile Include="Converters\Implementations\UserConverter.cs" />
+    <Compile Include="Converters\Implementations\WeekRangeConverter.cs" />
+    <Compile Include="Converters\Interfaces\ICardConverter.cs" />
+    <Compile Include="Converters\Interfaces\IGroupConverter.cs" />
+    <Compile Include="Converters\Interfaces\IMaterialConverter.cs" />
+    <Compile Include="Converters\Interfaces\IOrderContentConverter.cs" />
+    <Compile Include="Converters\Interfaces\IOrderConverter.cs" />
+    <Compile Include="Converters\Interfaces\IOrderProgressConverter.cs" />
+    <Compile Include="Converters\Interfaces\IPermissionConverter.cs" />
+    <Compile Include="Converters\Interfaces\IPermissionGroupConverter.cs" />
+    <Compile Include="Converters\Interfaces\IPlaceConverter.cs" />
+    <Compile Include="Converters\Interfaces\IUserConverter.cs" />
+    <Compile Include="Converters\Interfaces\IWeekRangeConverter.cs" />
+    <Compile Include="Domain\Card.cs" />
+    <Compile Include="Domain\Group.cs" />
+    <Compile Include="Domain\Mappings\CardMap.cs" />
+    <Compile Include="Domain\Mappings\GroupMap.cs" />
+    <Compile Include="Domain\Mappings\MaterialMap.cs" />
+    <Compile Include="Domain\Mappings\OrderContentMap.cs" />
+    <Compile Include="Domain\Mappings\OrderMap.cs" />
+    <Compile Include="Domain\Mappings\OrderProgressMap.cs" />
+    <Compile Include="Domain\Mappings\PermissionGroupMap.cs" />
+    <Compile Include="Domain\Mappings\PermissionMap.cs" />
+    <Compile Include="Domain\Mappings\PlaceMap.cs" />
+    <Compile Include="Domain\Mappings\UserMap.cs" />
+    <Compile Include="Domain\Material.cs" />
+    <Compile Include="Domain\Order.cs" />
+    <Compile Include="Domain\OrderContent.cs" />
+    <Compile Include="Domain\OrderProgress.cs" />
+    <Compile Include="Domain\Permission.cs" />
+    <Compile Include="Domain\PermissionGroup.cs" />
+    <Compile Include="Domain\Place.cs" />
+    <Compile Include="Domain\User.cs" />
+    <Compile Include="Dto\Card.cs" />
+    <Compile Include="Dto\DailyReport.cs" />
+    <Compile Include="Dto\Group.cs" />
+    <Compile Include="Dto\Material.cs" />
+    <Compile Include="Dto\Order.cs" />
+    <Compile Include="Dto\OrderContent.cs" />
+    <Compile Include="Dto\OrderProgress.cs" />
+    <Compile Include="Dto\Permission.cs" />
+    <Compile Include="Dto\PermissionGroup.cs" />
+    <Compile Include="Dto\PermissionType.cs" />
+    <Compile Include="Dto\Place.cs" />
+    <Compile Include="Dto\User.cs" />
+    <Compile Include="Dto\WeekRange.cs" />
+    <Compile Include="Extensions\NinjectExtensions.cs" />
+    <Compile Include="IConfigurationManager.cs" />
+    <Compile Include="ISessionFactory.cs" />
+    <Compile Include="Jobs\DailyReportJob.cs" />
+    <Compile Include="Jobs\NinjectJobFactory.cs" />
+    <Compile Include="Jobs\QuartzJobFactory.cs" />
+    <Compile Include="NHibernateHelper.cs" />
+    <Compile Include="NTService.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="App.Debug.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="App.Release.config">
+      <DependentUpon>App.config</DependentUpon>
+    </None>
+    <None Include="Install.bat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="job_scheduling_data_2_0.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="NLog.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
+  <Target Name="AfterCompile" Condition="Exists('App.$(Configuration).config')">
+    <!--Generate transformed app config in the intermediate directory-->
+    <TransformXml Source="App.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="App.$(Configuration).config" />
+    <!--Force build process to use the transformed configuration file from now on.-->
+    <ItemGroup>
+      <AppConfigWithTargetPath Remove="App.config" />
+      <AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
+        <TargetPath>$(TargetFileName).config</TargetPath>
+      </AppConfigWithTargetPath>
+    </ItemGroup>
+  </Target>
+  <!--Override After Publish to support ClickOnce AfterPublish. Target replaces the untransformed config file copied to the deployment directory with the transformed one.-->
+  <Target Name="AfterPublish">
+    <PropertyGroup>
+      <DeployedConfig>$(_DeploymentApplicationDir)$(TargetName)$(TargetExt).config$(_DeploymentFileMappingExtension)</DeployedConfig>
+    </PropertyGroup>
+    <!--Publish copies the untransformed App.config to deployment directory so overwrite it-->
+    <Copy Condition="Exists('$(DeployedConfig)')" SourceFiles="$(IntermediateOutputPath)$(TargetFileName).config" DestinationFiles="$(DeployedConfig)" />
+  </Target>
+</Project>

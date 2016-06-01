@@ -17,25 +17,32 @@ namespace Elrob.Terminal.Model.Implementations.Main
         private readonly IOrderContentConverter _orderContentConverter;
         private readonly IOrderConverter _orderConverter;
 
+        private readonly ISessionFactory _sessionFactory;
+
         public OrderPreviewModel(IPlaceConverter placeConverter, 
             IMaterialConverter materialConverter,
             IOrderContentConverter orderContentConverter,
-            IOrderConverter orderConverter)
+            IOrderConverter orderConverter, ISessionFactory sessionFactory)
         {
-            if (placeConverter == null) throw new ArgumentNullException("placeConverter");
-            if (materialConverter == null) throw new ArgumentNullException("materialConverter");
-            if (orderContentConverter == null) throw new ArgumentNullException("orderContentConverter");
-            if (orderConverter == null) throw new ArgumentNullException("orderConverter");
+            if (placeConverter == null) throw new ArgumentNullException(nameof(placeConverter));
+            if (materialConverter == null) throw new ArgumentNullException(nameof(materialConverter));
+            if (orderContentConverter == null) throw new ArgumentNullException(nameof(orderContentConverter));
+            if (orderConverter == null) throw new ArgumentNullException(nameof(orderConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _placeConverter = placeConverter;
             _materialConverter = materialConverter;
             _orderContentConverter = orderContentConverter;
             _orderConverter = orderConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.Place> GetAllPlaces()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Place>()
                     .List()
@@ -49,7 +56,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
         public List<dto.Material> GetAllMaterials()
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.Material>()
                     .List()
@@ -65,7 +72,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var orderDomain = _orderConverter.Convert(order);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
@@ -107,7 +114,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
                             session.Save(content);
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
                         transaction.Rollback();
 
@@ -121,7 +128,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
         public bool IsOrderExist(string orderName)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.Order>()
                     .Where(x => x.Name == orderName)

@@ -11,18 +11,25 @@ namespace Elrob.Terminal.Model.Implementations.Item
     {
         private readonly IPlaceConverter _placeConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public PlaceItemModel( 
-            IPlaceConverter placeConverter)
+            IPlaceConverter placeConverter, ISessionFactory sessionFactory)
         {
-            if (placeConverter == null) throw new ArgumentNullException("placeConverter");
+            if (placeConverter == null) throw new ArgumentNullException(nameof(placeConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
             _placeConverter = placeConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public void AddPlace(dto.Place place)
         {
             var domain = _placeConverter.Convert(place);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Save(domain);
             }
@@ -32,7 +39,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             var domain = _placeConverter.Convert(place);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Update(domain);
                 session.Flush();
@@ -41,7 +48,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
         public bool IsPlaceExist(string placeName)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var rowCount = session.QueryOver<Domain.Place>()
                     .Where(x => x.Name == placeName)

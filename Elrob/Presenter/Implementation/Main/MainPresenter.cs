@@ -24,7 +24,6 @@ namespace Elrob.Terminal.Presenter.Implementation.Main
         private readonly IMainView _mainView;
         private readonly IMainModel _mainModel;
         private readonly IOrderContentConverter _orderContentConverter;
-        private Task<ImportDataResponse> excelTask;
         private static ILogger _logger = LogManager.GetCurrentClassLogger();
         private IOrderPreviewPresenter _orderPreviewPresenter;
         private IOrderChoosePresenter _orderChoosePresenter;

@@ -13,17 +13,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
     {
         private readonly IPermissionGroupConverter _permissionGroupConverter;
 
+        private ISessionFactory _sessionFactory;
+
         public PermissionGroupModel( 
-            IPermissionGroupConverter permissionGroupConverter)
+            IPermissionGroupConverter permissionGroupConverter, ISessionFactory sessionFactory)
         {
-            if (permissionGroupConverter == null) throw new ArgumentNullException("permissionGroupConverter");
+            if (permissionGroupConverter == null) throw new ArgumentNullException(nameof(permissionGroupConverter));
+            if (sessionFactory == null)
+            {
+                throw new ArgumentNullException(nameof(sessionFactory));
+            }
 
             _permissionGroupConverter = permissionGroupConverter;
+            this._sessionFactory = sessionFactory;
         }
 
         public List<dto.PermissionGroup> GetPermissionGroupsByGroupId(int groupId)
         {
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 var domain = session.QueryOver<Domain.PermissionGroup>()
                     .Where(x => x.Group.Id == groupId)
@@ -41,7 +48,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             var domain = _permissionGroupConverter.Convert(permissionGroup);
 
-            using (var session = NHibernateHelper.OpenSession())
+            using (var session = _sessionFactory.OpenSession())
             {
                 session.Delete(domain);
                 session.Flush();

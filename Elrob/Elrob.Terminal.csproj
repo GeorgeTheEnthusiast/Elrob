@@ -121,6 +121,7 @@
     <Compile Include="Common\DependencyBindings.cs" />
     <Compile Include="Common\GenericSortComparer.cs" />
     <Compile Include="Common\Helpers.cs" />
+    <Compile Include="Common\ISessionFactory.cs" />
     <Compile Include="Common\ISortComparer.cs" />
     <Compile Include="Common\SqlStatementInterceptor.cs" />
     <Compile Include="Common\UISafeThread.cs" />
@@ -158,7 +159,7 @@
     <Compile Include="Domain\Mappings\OrderProgressMap.cs" />
     <Compile Include="Domain\Mappings\CardMap.cs" />
     <Compile Include="Domain\Material.cs" />
-    <Compile Include="Common\NHibernateHelper.cs" />
+    <Compile Include="Common\SessionFactory.cs" />
     <Compile Include="Domain\OrderProgress.cs" />
     <Compile Include="Domain\Order.cs" />
     <Compile Include="Domain\OrderContent.cs" />
