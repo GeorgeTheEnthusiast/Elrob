@@ -6,10 +6,12 @@ using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Main;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class CardModel : ICardModel
     {
         private readonly ICardConverter _cardConverter;
@@ -33,7 +35,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Card>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Card>()
                     .List()
                     .ToList();
 
@@ -49,7 +51,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
             using (var session = _sessionFactory.OpenSession())
             {
-                var existedInUser = session.QueryOver<domain.User>()
+                var existedInUser = session.QueryOver<Elrob.Common.Domain.User>()
                     .Where(x => x.Card.Id == domain.Id)
                     .List()
                     .ToList();
@@ -79,7 +81,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.Card>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.Card>()
                     .Where(x => x.Login == loginName)
                     .RowCount();
 

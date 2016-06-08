@@ -2,9 +2,9 @@
 using AutoMapper;
 using Elrob.Terminal.Converters.Interfaces;
 using GroupDto = Elrob.Terminal.Dto.Group;
-using GroupDomain = Elrob.Terminal.Domain.Group;
+using GroupDomain = Elrob.Common.Domain.Group;
 using PermissionDto = Elrob.Terminal.Dto.Permission;
-using PermissionDomain = Elrob.Terminal.Domain.Permission;
+using PermissionDomain = Elrob.Common.Domain.Permission;
 
 namespace Elrob.Terminal.Converters.Implementations
 {

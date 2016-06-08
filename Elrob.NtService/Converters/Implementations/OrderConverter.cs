@@ -1,5 +1,5 @@
 ﻿using OrderDto = Elrob.NtService.Dto.Order;
-using OrderDomain = Elrob.NtService.Domain.Order;
+using OrderDomain = Elrob.Common.Domain.Order;
 
 namespace Elrob.NtService.Converters.Implementations
 {

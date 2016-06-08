@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using OrderDto = Elrob.Terminal.Dto.Order;
-using OrderDomain = Elrob.Terminal.Domain.Order;
+using OrderDomain = Elrob.Common.Domain.Order;
 
 namespace Elrob.Terminal.Converters.Interfaces
 {

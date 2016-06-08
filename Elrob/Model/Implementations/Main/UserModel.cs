@@ -6,10 +6,12 @@ using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Main;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class UserModel : IUserModel
     {
         private readonly IUserConverter _userConverter;
@@ -33,7 +35,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.User>()
+                var domain = session.QueryOver<Elrob.Common.Domain.User>()
                     .List()
                     .ToList();
 
@@ -47,7 +49,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domainOrderContent = session.QueryOver<domain.OrderProgress>()
+                var domainOrderContent = session.QueryOver<Elrob.Common.Domain.OrderProgress>()
                     .Where(x => x.User.Id == user.Id)
                     .SingleOrDefault();
 
@@ -56,7 +58,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
                     return false;
                 }
 
-                var domainUser = session.QueryOver<domain.User>()
+                var domainUser = session.QueryOver<Elrob.Common.Domain.User>()
                     .Where(x => x.Id == user.Id)
                     .SingleOrDefault();
 

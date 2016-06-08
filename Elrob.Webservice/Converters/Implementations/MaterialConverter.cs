@@ -1,5 +1,5 @@
 ﻿using MaterialDto = Elrob.Webservice.Dto.Material;
-using MaterialDomain = Elrob.Webservice.Domain.Material;
+using MaterialDomain = Elrob.Common.Domain.Material;
 
 namespace Elrob.Webservice.Converters.Implementations
 {

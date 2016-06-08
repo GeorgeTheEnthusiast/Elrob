@@ -7,6 +7,8 @@ using Elrob.Terminal.Model.Interfaces.Main;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class LoginModel : ILoginModel
     {
         private readonly IUserConverter _userConverter;
@@ -29,7 +31,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var userDomain = session.QueryOver<Domain.User>()
+                var userDomain = session.QueryOver<Elrob.Common.Domain.User>()
                     .Where(x => x.LoginName == loginName)
                     .SingleOrDefault();
 

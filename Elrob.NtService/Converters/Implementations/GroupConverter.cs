@@ -1,7 +1,7 @@
 ﻿using GroupDto = Elrob.NtService.Dto.Group;
-using GroupDomain = Elrob.NtService.Domain.Group;
+using GroupDomain = Elrob.Common.Domain.Group;
 using PermissionDto = Elrob.NtService.Dto.Permission;
-using PermissionDomain = Elrob.NtService.Domain.Permission;
+using PermissionDomain = Elrob.Common.Domain.Permission;
 
 namespace Elrob.NtService.Converters.Implementations
 {

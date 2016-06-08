@@ -1,9 +1,9 @@
 ﻿using OrderContentDto = Elrob.NtService.Dto.OrderContent;
-using OrderContentDomain = Elrob.NtService.Domain.OrderContent;
+using OrderContentDomain = Elrob.Common.Domain.OrderContent;
 using OrderDto = Elrob.NtService.Dto.Order;
-using OrderDomain = Elrob.NtService.Domain.Order;
+using OrderDomain = Elrob.Common.Domain.Order;
 using MaterialDto = Elrob.NtService.Dto.Material;
-using MaterialDomain = Elrob.NtService.Domain.Material;
+using MaterialDomain = Elrob.Common.Domain.Material;
 using Place = Elrob.NtService.Dto.Place;
 
 namespace Elrob.NtService.Converters.Implementations
@@ -26,12 +26,12 @@ namespace Elrob.NtService.Converters.Implementations
                 x.CreateMap<OrderContentDto, OrderContentDomain>();
                 x.CreateMap<OrderDto, OrderDomain>();
                 x.CreateMap<MaterialDto, MaterialDomain>();
-                x.CreateMap<Place, Domain.Place>();
+                x.CreateMap<Place, Elrob.Common.Domain.Place>();
 
                 x.CreateMap<OrderContentDomain, OrderContentDto>();
                 x.CreateMap<OrderDomain, OrderDto>();
                 x.CreateMap<MaterialDomain, MaterialDto>();
-                x.CreateMap<Domain.Place, Place>();
+                x.CreateMap<Elrob.Common.Domain.Place, Place>();
 
                 x.CreateMap<OrderContentDto, OrderContentDto>();
                 x.CreateMap<OrderDto, OrderDto>();

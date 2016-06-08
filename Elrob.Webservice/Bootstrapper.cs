@@ -5,6 +5,7 @@ using System.Web;
 
 namespace Elrob.Webservice
 {
+    using Elrob.Common.DataAccess;
     using Elrob.Webservice.Controllers;
     using Elrob.Webservice.Converters.Implementations;
     using Elrob.Webservice.Converters.Interfaces;

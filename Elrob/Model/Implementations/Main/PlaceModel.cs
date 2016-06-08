@@ -6,10 +6,12 @@ using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Main;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class PlaceModel : IPlaceModel
     {
         private readonly IPlaceConverter _placeConverter;
@@ -33,7 +35,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Place>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Place>()
                     .List()
                     .ToList();
 
@@ -59,7 +61,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
             using (var session = _sessionFactory.OpenSession())
             {
-                var existInOrderContentCount = session.QueryOver<domain.OrderContent>()
+                var existInOrderContentCount = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .Where(x => x.Place.Id == domain.Id)
                     .RowCount();
 

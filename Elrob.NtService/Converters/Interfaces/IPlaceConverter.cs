@@ -6,10 +6,10 @@
 
     public interface IPlaceConverter
     {
-        List<Place> Convert(List<Domain.Place> input);
+        List<Place> Convert(List<Elrob.Common.Domain.Place> input);
 
-        Domain.Place Convert(Place place);
+        Elrob.Common.Domain.Place Convert(Place place);
 
-        Place Convert(Domain.Place place);
+        Place Convert(Elrob.Common.Domain.Place place);
     }
 }

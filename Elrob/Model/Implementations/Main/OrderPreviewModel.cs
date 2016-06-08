@@ -6,10 +6,12 @@ using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Main;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class OrderPreviewModel : IOrderPreviewModel
     {
         private readonly IPlaceConverter _placeConverter;
@@ -44,7 +46,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Place>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Place>()
                     .List()
                     .ToList();
                 
@@ -58,7 +60,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Material>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Material>()
                     .List()
                     .ToList();
 
@@ -85,7 +87,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
                         {
                             content.Order = orderDomain;
 
-                            var existedMaterial = session.QueryOver<domain.Material>()
+                            var existedMaterial = session.QueryOver<Elrob.Common.Domain.Material>()
                                 .Where(x => x.Name == content.Material.Name)
                                 .SingleOrDefault();
 
@@ -98,7 +100,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
                                 content.Material.Id = (int)session.Save(content.Material);
                             }
 
-                            var existedPlace = session.QueryOver<domain.Place>()
+                            var existedPlace = session.QueryOver<Elrob.Common.Domain.Place>()
                                 .Where(x => x.Name == content.Place.Name)
                                 .SingleOrDefault();
 
@@ -130,7 +132,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.Order>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.Order>()
                     .Where(x => x.Name == orderName)
                     .RowCount();
 

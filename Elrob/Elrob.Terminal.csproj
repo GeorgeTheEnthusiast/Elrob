@@ -121,7 +121,6 @@
     <Compile Include="Common\DependencyBindings.cs" />
     <Compile Include="Common\GenericSortComparer.cs" />
     <Compile Include="Common\Helpers.cs" />
-    <Compile Include="Common\ISessionFactory.cs" />
     <Compile Include="Common\ISortComparer.cs" />
     <Compile Include="Common\SqlStatementInterceptor.cs" />
     <Compile Include="Common\UISafeThread.cs" />
@@ -150,30 +149,9 @@
     <Compile Include="Converters\Implementations\OrderContentConverter.cs" />
     <Compile Include="Converters\Implementations\GroupConverter.cs" />
     <Compile Include="Converters\Implementations\UserConverter.cs" />
-    <Compile Include="Domain\Mappings\PermissionGroupMap.cs" />
-    <Compile Include="Domain\Mappings\OrderContentMap.cs" />
-    <Compile Include="Domain\Mappings\PermissionMap.cs" />
-    <Compile Include="Domain\Mappings\OrderMap.cs" />
-    <Compile Include="Domain\Mappings\MaterialMap.cs" />
-    <Compile Include="Domain\Group.cs" />
-    <Compile Include="Domain\Mappings\OrderProgressMap.cs" />
-    <Compile Include="Domain\Mappings\CardMap.cs" />
-    <Compile Include="Domain\Material.cs" />
-    <Compile Include="Common\SessionFactory.cs" />
-    <Compile Include="Domain\OrderProgress.cs" />
-    <Compile Include="Domain\Order.cs" />
-    <Compile Include="Domain\OrderContent.cs" />
-    <Compile Include="Domain\Permission.cs" />
-    <Compile Include="Domain\PermissionGroup.cs" />
-    <Compile Include="Domain\Card.cs" />
     <Compile Include="Dto\OrderProgress.cs" />
     <Compile Include="Dto\LogInMethod.cs" />
     <Compile Include="Dto\PermissionType.cs" />
-    <Compile Include="Domain\Place.cs" />
-    <Compile Include="Domain\Mappings\GroupMap.cs" />
-    <Compile Include="Domain\User.cs" />
-    <Compile Include="Domain\Mappings\PlaceMap.cs" />
-    <Compile Include="Domain\Mappings\UserMap.cs" />
     <Compile Include="Dto\Group.cs" />
     <Compile Include="Dto\Material.cs" />
     <Compile Include="Dto\Order.cs" />
@@ -662,6 +640,17 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\ExcelServiceServiceReference\" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\Elrob.Common\Elrob.Common.csproj">
+      <Project>{082e54bc-5bb4-43c2-a6bf-1b7f6de8a9bd}</Project>
+      <Name>Elrob.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Elrob.Reports\Elrob.Reports.csproj">
+      <Project>{5cd8afb4-81e1-4b06-a02b-7e0deeda11e4}</Project>
+      <Name>Elrob.Reports</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

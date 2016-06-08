@@ -16,17 +16,15 @@
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
-                x.CreateMap<Domain.Permission, Permission>();
-                //x.CreateMap<Domain.Group, Group>();
+                x.CreateMap<Elrob.Common.Domain.Permission, Permission>();
 
-                x.CreateMap<Permission, Domain.Permission>();
-                //x.CreateMap<Group, Domain.Group>();
+                x.CreateMap<Permission, Elrob.Common.Domain.Permission>();
             });
 
             this._mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<Permission> Convert(List<Domain.Permission> input)
+        public List<Permission> Convert(List<Elrob.Common.Domain.Permission> input)
         {
             if (input == null)
             {
@@ -35,13 +33,13 @@
             return this._mapper.Map<List<Permission>>(input);
         }
 
-        public List<Domain.Permission> Convert(List<Permission> input)
+        public List<Elrob.Common.Domain.Permission> Convert(List<Permission> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<Domain.Permission>>(input);
+            return this._mapper.Map<List<Elrob.Common.Domain.Permission>>(input);
         }
     }
 }

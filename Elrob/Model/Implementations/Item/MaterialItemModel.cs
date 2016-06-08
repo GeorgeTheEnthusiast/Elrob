@@ -7,6 +7,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class MaterialItemModel : IMaterialItemModel
     {
         private readonly IMaterialConverter _materialConverter;
@@ -51,7 +53,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.Material>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.Material>()
                     .Where(x => x.Name == materialName)
                     .RowCount();
 

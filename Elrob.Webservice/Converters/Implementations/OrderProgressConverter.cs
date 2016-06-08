@@ -6,7 +6,8 @@
     using AutoMapper;
 
     using Elrob.Webservice.Converters.Interfaces;
-    using Elrob.Webservice.Dto;
+    using dto = Elrob.Webservice.Dto;
+    using domain = Elrob.Common.Domain;
 
     public class OrderProgressConverter : IOrderProgressConverter
     {
@@ -16,46 +17,46 @@
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
-                x.CreateMap<Domain.OrderProgress, OrderProgress>();
-                x.CreateMap<Domain.User, User>();
-                x.CreateMap<Domain.OrderContent, OrderContent>();
-                x.CreateMap<Domain.Group, Group>();
-                x.CreateMap<Domain.Order, Order>();
-                x.CreateMap<Domain.Place, Place>();
-                x.CreateMap<Domain.Material, Material>();
-                x.CreateMap<Domain.Permission, Permission>();
-                x.CreateMap<Domain.Card, Card>();
+                x.CreateMap<domain.OrderProgress, dto.OrderProgress>();
+                x.CreateMap<domain.User, dto.User>();
+                x.CreateMap<domain.OrderContent, dto.OrderContent>();
+                x.CreateMap<domain.Group, dto.Group>();
+                x.CreateMap<domain.Order, dto.Order>();
+                x.CreateMap<domain.Place, dto.Place>();
+                x.CreateMap<domain.Material, dto.Material>();
+                x.CreateMap<domain.Permission, dto.Permission>();
+                x.CreateMap<domain.Card, dto.Card>();
 
-                x.CreateMap<OrderProgress, Domain.OrderProgress>();
-                x.CreateMap<User, Domain.User>();
-                x.CreateMap<OrderContent, Domain.OrderContent>();
-                x.CreateMap<Group, Domain.Group>();
-                x.CreateMap<Order, Domain.Order>();
-                x.CreateMap<Place, Domain.Place>();
-                x.CreateMap<Material, Domain.Material>();
-                x.CreateMap<Permission, Domain.Permission>();
-                x.CreateMap<Card, Domain.Card>();
+                x.CreateMap<dto.OrderProgress, domain.OrderProgress>();
+                x.CreateMap<dto.User, domain.User>();
+                x.CreateMap<dto.OrderContent, domain.OrderContent>();
+                x.CreateMap<dto.Group, domain.Group>();
+                x.CreateMap<dto.Order, domain.Order>();
+                x.CreateMap<dto.Place, domain.Place>();
+                x.CreateMap<dto.Material, domain.Material>();
+                x.CreateMap<dto.Permission, domain.Permission>();
+                x.CreateMap<dto.Card, domain.Card>();
             });
 
             this._mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<OrderProgress> Convert(List<Domain.OrderProgress> input)
+        public List<dto.OrderProgress> Convert(List<domain.OrderProgress> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<OrderProgress>>(input);
+            return this._mapper.Map<List<dto.OrderProgress>>(input);
         }
 
-        public Domain.OrderProgress Convert(OrderProgress input)
+        public domain.OrderProgress Convert(dto.OrderProgress input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<Domain.OrderProgress>(input);
+            return this._mapper.Map<domain.OrderProgress>(input);
         }
     }
 }

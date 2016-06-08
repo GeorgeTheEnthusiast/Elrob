@@ -2,7 +2,7 @@
 using AutoMapper;
 using Elrob.Terminal.Converters.Interfaces;
 using MaterialDto = Elrob.Terminal.Dto.Material;
-using MaterialDomain = Elrob.Terminal.Domain.Material;
+using MaterialDomain = Elrob.Common.Domain.Material;
 
 namespace Elrob.Terminal.Converters.Implementations
 {

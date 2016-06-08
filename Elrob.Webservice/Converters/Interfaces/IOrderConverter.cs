@@ -1,5 +1,5 @@
 ﻿using OrderDto = Elrob.Webservice.Dto.Order;
-using OrderDomain = Elrob.Webservice.Domain.Order;
+using OrderDomain = Elrob.Common.Domain.Order;
 
 namespace Elrob.Webservice.Converters.Interfaces
 {

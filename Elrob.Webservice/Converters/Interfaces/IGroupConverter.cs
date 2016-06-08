@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using Elrob.Webservice.Domain;
+    using Elrob.Common.Domain;
 
     public interface IGroupConverter
     {

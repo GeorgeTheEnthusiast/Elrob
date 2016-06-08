@@ -9,6 +9,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class OrderContentItemModel : IOrderContentItemModel
     {
         private readonly IOrderContentConverter _orderContentConverter;
@@ -59,7 +61,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Material>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Material>()
                     .List()
                     .ToList();
 
@@ -73,7 +75,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Place>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Place>()
                     .List()
                     .ToList();
 

@@ -6,10 +6,12 @@ using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Main;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class GroupModel : IGroupModel
     {
         private readonly IGroupConverter _groupConverter;
@@ -33,7 +35,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Group>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Group>()
                     .List()
                     .ToList();
 
@@ -49,7 +51,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
             using (var session = _sessionFactory.OpenSession())
             {
-                var existInUser = session.QueryOver<domain.User>()
+                var existInUser = session.QueryOver<Elrob.Common.Domain.User>()
                     .Where(x => x.Group.Id == group.Id)
                     .RowCount();
 

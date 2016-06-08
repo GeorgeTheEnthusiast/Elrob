@@ -5,8 +5,8 @@ namespace Elrob.Terminal.Converters.Interfaces
 {
     public interface IPlaceConverter
     {
-        List<Place> Convert(List<Domain.Place> input);
+        List<Place> Convert(List<Elrob.Common.Domain.Place> input);
 
-        Domain.Place Convert(Place place);
+        Elrob.Common.Domain.Place Convert(Place place);
     }
 }

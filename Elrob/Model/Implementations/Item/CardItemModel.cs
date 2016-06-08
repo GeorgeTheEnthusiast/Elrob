@@ -7,6 +7,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class CardItemModel : ICardItemModel
     {
         private readonly ICardConverter _cardConverter;

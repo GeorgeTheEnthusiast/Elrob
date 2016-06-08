@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using MaterialDto = Elrob.Terminal.Dto.Material;
-using MaterialDomain = Elrob.Terminal.Domain.Material;
+using MaterialDomain = Elrob.Common.Domain.Material;
 
 namespace Elrob.Terminal.Converters.Interfaces
 {

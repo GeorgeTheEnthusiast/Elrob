@@ -2,6 +2,7 @@
 {
     using System;
 
+    using Elrob.Common.DataAccess;
     using Elrob.NtService;
     using Elrob.NtService.Controllers;
     using Elrob.NtService.Converters.Interfaces;

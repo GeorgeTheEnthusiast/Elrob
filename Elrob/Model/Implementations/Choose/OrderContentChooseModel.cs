@@ -9,6 +9,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Choose
 {
+    using Elrob.Common.DataAccess;
+
     public class OrderContentChooseModel : IOrderContentChooseModel
     {
         private readonly IOrderContentConverter _orderContentConverter;
@@ -32,7 +34,7 @@ namespace Elrob.Terminal.Model.Implementations.Choose
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.OrderContent>()
+                var domain = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                      .Where(x => x.Order.Id == order.Id)
                      .And(x => x.Place.Id == place.Id)
                      .List()
@@ -48,7 +50,7 @@ namespace Elrob.Terminal.Model.Implementations.Choose
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.OrderContent>()
+                var domain = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .Where(x => x.Order.Id == order.Id)
                     .List()
                     .ToList();

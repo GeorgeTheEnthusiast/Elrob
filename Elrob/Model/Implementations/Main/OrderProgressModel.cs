@@ -9,6 +9,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class OrderProgressModel : IOrderProgressModel
     {
         private readonly IOrderProgressConverter _orderProgressConverter;
@@ -36,7 +38,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.OrderProgress>()
+                var domain = session.QueryOver<Elrob.Common.Domain.OrderProgress>()
                     .Where(x => x.OrderContent.Id == orderContentId)
                     .List()
                     .ToList();
@@ -51,7 +53,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.OrderContent>()
+                var domain = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .Where(x => x.Order.Id == orderId)
                     .And(x => x.Place.Id == placeId)
                     .List()
@@ -67,7 +69,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.OrderContent>()
+                var domain = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .Where(x => x.Order.Id == orderId)
                     .List()
                     .ToList();

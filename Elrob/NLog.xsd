@@ -452,7 +452,7 @@
         </xs:attribute>
         <xs:attribute name="appInfo" type="xs:string">
           <xs:annotation>
-            <xs:documentation>AppInfo field. By default it's the friendly name of the current AppDomain.</xs:documentation>
+            <xs:documentation>AppInfo field. By default it's the friendly name of the current AppElrob.Common.Domain.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="includeNdc" type="xs:boolean">
@@ -1420,17 +1420,17 @@
         </xs:attribute>
         <xs:attribute name="bcc" type="SimpleLayoutAttribute">
           <xs:annotation>
-            <xs:documentation>BCC email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).</xs:documentation>
+            <xs:documentation>BCC email addresses separated by semicolons (e.g. john@Elrob.Common.Domain.com;jane@Elrob.Common.Domain.com).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="to" type="SimpleLayoutAttribute">
           <xs:annotation>
-            <xs:documentation>Recipients' email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).</xs:documentation>
+            <xs:documentation>Recipients' email addresses separated by semicolons (e.g. john@Elrob.Common.Domain.com;jane@Elrob.Common.Domain.com).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="cc" type="SimpleLayoutAttribute">
           <xs:annotation>
-            <xs:documentation>CC email addresses separated by semicolons (e.g. john@domain.com;jane@domain.com).</xs:documentation>
+            <xs:documentation>CC email addresses separated by semicolons (e.g. john@Elrob.Common.Domain.com;jane@Elrob.Common.Domain.com).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="body" type="SimpleLayoutAttribute">
@@ -1445,7 +1445,7 @@
         </xs:attribute>
         <xs:attribute name="from" type="SimpleLayoutAttribute">
           <xs:annotation>
-            <xs:documentation>Sender's email address (e.g. joe@domain.com).</xs:documentation>
+            <xs:documentation>Sender's email address (e.g. joe@Elrob.Common.Domain.com).</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="replaceNewlineWithBrTagInHtml" type="xs:boolean">
@@ -1780,7 +1780,7 @@
         </xs:attribute>
         <xs:attribute name="appInfo" type="xs:string">
           <xs:annotation>
-            <xs:documentation>AppInfo field. By default it's the friendly name of the current AppDomain.</xs:documentation>
+            <xs:documentation>AppInfo field. By default it's the friendly name of the current AppElrob.Common.Domain.</xs:documentation>
           </xs:annotation>
         </xs:attribute>
         <xs:attribute name="includeNdc" type="xs:boolean">

@@ -44,6 +44,8 @@ using Ninject.Modules;
 
 namespace Elrob.Terminal.Common
 {
+    using Elrob.Common.DataAccess;
+
     public class DependencyBindings : NinjectModule
     {
         public override void Load()

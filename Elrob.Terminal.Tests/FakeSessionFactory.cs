@@ -11,7 +11,7 @@ namespace Elrob.Terminal.Tests
 
     using NHibernate;
 
-    using ISessionFactory = Elrob.Terminal.Common.ISessionFactory;
+    using ISessionFactory = Elrob.Common.DataAccess.ISessionFactory;
 
     public class FakeSessionFactory : ISessionFactory
     {
@@ -19,7 +19,7 @@ namespace Elrob.Terminal.Tests
         {
             NHibernate.ISessionFactory sessionFactory = Fluently.Configure()
                               .Database(() => SQLiteConfiguration.Standard.InMemory().ShowSql())
-                              .Mappings(x => x.FluentMappings.AddFromAssembly(typeof(Domain.OrderContent).Assembly))
+                              .Mappings(x => x.FluentMappings.AddFromAssembly(typeof(Elrob.Common.Domain.OrderContent).Assembly))
                               .BuildSessionFactory();
 
             return sessionFactory.OpenSession();

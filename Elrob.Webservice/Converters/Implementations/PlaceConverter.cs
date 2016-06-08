@@ -6,7 +6,8 @@
     using AutoMapper;
 
     using Elrob.Webservice.Converters.Interfaces;
-    using Elrob.Webservice.Dto;
+    using dto = Elrob.Webservice.Dto;
+    using domain = Elrob.Common.Domain;
 
     public class PlaceConverter : IPlaceConverter
     {
@@ -16,38 +17,38 @@
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
-                x.CreateMap<Domain.Place, Place>();
-                x.CreateMap<Place, Domain.Place>();
+                x.CreateMap<domain.Place, dto.Place>();
+                x.CreateMap<dto.Place, domain.Place>();
             });
 
             this._mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<Place> Convert(List<Domain.Place> input)
+        public List<dto.Place> Convert(List<domain.Place> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<Place>>(input);
+            return this._mapper.Map<List<dto.Place>>(input);
         }
 
-        public Domain.Place Convert(Place place)
+        public domain.Place Convert(dto.Place place)
         {
             if (place == null)
             {
                 throw new ArgumentNullException(nameof(place));
             }
-            return this._mapper.Map<Domain.Place>(place);
+            return this._mapper.Map<domain.Place>(place);
         }
 
-        public Place Convert(Domain.Place place)
+        public dto.Place Convert(domain.Place place)
         {
             if (place == null)
             {
                 throw new ArgumentNullException(nameof(place));
             }
-            return this._mapper.Map<Place>(place);
+            return this._mapper.Map<dto.Place>(place);
         }
     }
 }

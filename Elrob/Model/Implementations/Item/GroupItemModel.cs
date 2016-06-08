@@ -7,6 +7,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class GroupItemModel : IGroupItemModel
     {
         private readonly IGroupConverter _groupConverter;
@@ -51,7 +53,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.Group>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.Group>()
                     .Where(x => x.Name == groupName)
                     .RowCount();
 

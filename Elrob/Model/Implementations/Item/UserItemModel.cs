@@ -9,6 +9,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class UserItemModel : IUserItemModel
     {
         private readonly IUserConverter _userConverter;
@@ -61,7 +63,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.User>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.User>()
                     .Where(x => x.LoginName == loginName)
                     .RowCount();
 
@@ -73,7 +75,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Group>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Group>()
                     .List()
                     .ToList();
 
@@ -87,7 +89,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Card>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Card>()
                     .List()
                     .ToList();
 
@@ -101,7 +103,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.User>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.User>()
                     .Where(x => x.Card.Id == cardId)
                     .And(x => x.Id != userId)
                     .And(x => x.Card != null)

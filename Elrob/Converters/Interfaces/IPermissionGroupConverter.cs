@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Elrob.Terminal.Domain;
+using Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Converters.Interfaces
 {

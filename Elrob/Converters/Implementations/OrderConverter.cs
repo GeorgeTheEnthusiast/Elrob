@@ -2,7 +2,7 @@
 using AutoMapper;
 using Elrob.Terminal.Converters.Interfaces;
 using OrderDto = Elrob.Terminal.Dto.Order;
-using OrderDomain = Elrob.Terminal.Domain.Order;
+using OrderDomain = Elrob.Common.Domain.Order;
 
 namespace Elrob.Terminal.Converters.Implementations
 {

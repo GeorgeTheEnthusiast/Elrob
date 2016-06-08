@@ -60,6 +60,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Elrob.Common\Elrob.Common.csproj">
+      <Project>{082E54BC-5BB4-43C2-A6BF-1B7F6DE8A9BD}</Project>
+      <Name>Elrob.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Elrob.NtService\Elrob.NtService.csproj">
       <Project>{99b5cd2e-0818-4511-8e60-3a203102a973}</Project>
       <Name>Elrob.NtService</Name>

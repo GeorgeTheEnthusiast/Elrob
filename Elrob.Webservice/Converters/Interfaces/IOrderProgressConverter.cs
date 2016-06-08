@@ -1,5 +1,5 @@
 ﻿using OrderProgressDto = Elrob.Webservice.Dto.OrderProgress;
-using OrderProgressDomain = Elrob.Webservice.Domain.OrderProgress;
+using OrderProgressDomain = Elrob.Common.Domain.OrderProgress;
 
 namespace Elrob.Webservice.Converters.Interfaces
 {

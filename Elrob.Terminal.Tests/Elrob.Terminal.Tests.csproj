@@ -97,6 +97,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Elrob.Common\Elrob.Common.csproj">
+      <Project>{082e54bc-5bb4-43c2-a6bf-1b7f6de8a9bd}</Project>
+      <Name>Elrob.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Elrob\Elrob.Terminal.csproj">
       <Project>{2cc669d3-4907-4726-b381-992e53cd0534}</Project>
       <Name>Elrob.Terminal</Name>

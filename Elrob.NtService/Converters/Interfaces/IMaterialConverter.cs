@@ -1,5 +1,5 @@
 ﻿using MaterialDto = Elrob.NtService.Dto.Material;
-using MaterialDomain = Elrob.NtService.Domain.Material;
+using MaterialDomain = Elrob.Common.Domain.Material;
 
 namespace Elrob.NtService.Converters.Interfaces
 {

@@ -7,6 +7,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class PlaceItemModel : IPlaceItemModel
     {
         private readonly IPlaceConverter _placeConverter;
@@ -50,7 +52,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.Place>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.Place>()
                     .Where(x => x.Name == placeName)
                     .RowCount();
 

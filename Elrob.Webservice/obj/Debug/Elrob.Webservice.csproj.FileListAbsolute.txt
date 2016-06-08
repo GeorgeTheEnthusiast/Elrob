@@ -56,3 +56,5 @@ d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csproj.ResolveComRefer
 d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.dll
 d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.pdb
 d:\repo\Elrob\Elrob.Webservice\obj\Debug\Elrob.Webservice.csprojResolveAssemblyReference.cache
+d:\repo\Elrob\Elrob.Webservice\bin\Elrob.Common.dll
+d:\repo\Elrob\Elrob.Webservice\bin\Elrob.Common.pdb

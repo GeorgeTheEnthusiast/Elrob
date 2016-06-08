@@ -15,31 +15,31 @@ namespace Elrob.Terminal.Converters.Implementations
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
-                x.CreateMap<Domain.OrderProgress, OrderProgress>();
-                x.CreateMap<Domain.User, User>();
-                x.CreateMap<Domain.OrderContent, OrderContent>();
-                x.CreateMap<Domain.Group, Group>();
-                x.CreateMap<Domain.Order, Order>();
-                x.CreateMap<Domain.Place, Place>();
-                x.CreateMap<Domain.Material, Material>();
-                x.CreateMap<Domain.Permission, Permission>();
-                x.CreateMap<Domain.Card, Card>();
+                x.CreateMap<Elrob.Common.Domain.OrderProgress, OrderProgress>();
+                x.CreateMap<Elrob.Common.Domain.User, User>();
+                x.CreateMap<Elrob.Common.Domain.OrderContent, OrderContent>();
+                x.CreateMap<Elrob.Common.Domain.Group, Group>();
+                x.CreateMap<Elrob.Common.Domain.Order, Order>();
+                x.CreateMap<Elrob.Common.Domain.Place, Place>();
+                x.CreateMap<Elrob.Common.Domain.Material, Material>();
+                x.CreateMap<Elrob.Common.Domain.Permission, Permission>();
+                x.CreateMap<Elrob.Common.Domain.Card, Card>();
 
-                x.CreateMap<OrderProgress, Domain.OrderProgress>();
-                x.CreateMap<User, Domain.User>();
-                x.CreateMap<OrderContent, Domain.OrderContent>();
-                x.CreateMap<Group, Domain.Group>();
-                x.CreateMap<Order, Domain.Order>();
-                x.CreateMap<Place, Domain.Place>();
-                x.CreateMap<Material, Domain.Material>();
-                x.CreateMap<Permission, Domain.Permission>();
-                x.CreateMap<Card, Domain.Card>();
+                x.CreateMap<OrderProgress, Elrob.Common.Domain.OrderProgress>();
+                x.CreateMap<User, Elrob.Common.Domain.User>();
+                x.CreateMap<OrderContent, Elrob.Common.Domain.OrderContent>();
+                x.CreateMap<Group, Elrob.Common.Domain.Group>();
+                x.CreateMap<Order, Elrob.Common.Domain.Order>();
+                x.CreateMap<Place, Elrob.Common.Domain.Place>();
+                x.CreateMap<Material, Elrob.Common.Domain.Material>();
+                x.CreateMap<Permission, Elrob.Common.Domain.Permission>();
+                x.CreateMap<Card, Elrob.Common.Domain.Card>();
             });
 
             _mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<OrderProgress> Convert(List<Domain.OrderProgress> input)
+        public List<OrderProgress> Convert(List<Elrob.Common.Domain.OrderProgress> input)
         {
             if (input == null)
             {
@@ -48,13 +48,13 @@ namespace Elrob.Terminal.Converters.Implementations
             return _mapper.Map<List<OrderProgress>>(input);
         }
 
-        public Domain.OrderProgress Convert(OrderProgress input)
+        public Elrob.Common.Domain.OrderProgress Convert(OrderProgress input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return _mapper.Map<Domain.OrderProgress>(input);
+            return _mapper.Map<Elrob.Common.Domain.OrderProgress>(input);
         }
     }
 }

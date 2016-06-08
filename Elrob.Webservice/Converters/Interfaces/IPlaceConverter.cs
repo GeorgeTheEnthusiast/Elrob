@@ -2,14 +2,15 @@
 {
     using System.Collections.Generic;
 
-    using Elrob.Webservice.Dto;
+    using dto = Elrob.Webservice.Dto;
+    using domain = Elrob.Common.Domain;
 
     public interface IPlaceConverter
     {
-        List<Place> Convert(List<Domain.Place> input);
+        List<dto.Place> Convert(List<domain.Place> input);
 
-        Domain.Place Convert(Place place);
+        domain.Place Convert(dto.Place place);
 
-        Place Convert(Domain.Place place);
+        dto.Place Convert(domain.Place place);
     }
 }

@@ -1,11 +1,11 @@
 ﻿using UserDto = Elrob.Webservice.Dto.User;
-using UserDomain = Elrob.Webservice.Domain.User;
+using UserDomain = Elrob.Common.Domain.User;
 using GroupDto = Elrob.Webservice.Dto.Group;
-using GroupDomain = Elrob.Webservice.Domain.Group;
+using GroupDomain = Elrob.Common.Domain.Group;
 using PermissionDto = Elrob.Webservice.Dto.Permission;
-using PermissionDomain = Elrob.Webservice.Domain.Permission;
+using PermissionDomain = Elrob.Common.Domain.Permission;
 using CardDto = Elrob.Webservice.Dto.Card;
-using CardDomain = Elrob.Webservice.Domain.Card;
+using CardDomain = Elrob.Common.Domain.Card;
 
 namespace Elrob.Webservice.Converters.Implementations
 {

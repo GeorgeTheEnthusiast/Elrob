@@ -10,9 +10,10 @@ namespace Elrob.Terminal.Tests.Model.Implementations.Choose
     using System.Data.Common;
     using System.Diagnostics;
 
+    using Elrob.Common.DataAccess;
     using Elrob.Terminal.Common;
     using Elrob.Terminal.Converters.Interfaces;
-    using Elrob.Terminal.Domain;
+    using Elrob.Common.Domain;
     using Elrob.Terminal.Model.Implementations.Choose;
     using Elrob.Terminal.Model.Interfaces.Choose;
 
@@ -46,7 +47,7 @@ namespace Elrob.Terminal.Tests.Model.Implementations.Choose
         [Test]
         public void GetUserByCard_Properly_Returns_Data()
         {
-            Domain.User user = _fixture.Create<Domain.User>();
+            Elrob.Common.Domain.User user = _fixture.Create<Elrob.Common.Domain.User>();
 
             using (var session = _fakeSessionFactory.OpenSession())
             {
@@ -55,7 +56,7 @@ namespace Elrob.Terminal.Tests.Model.Implementations.Choose
 
             using (var session = _fakeSessionFactory.OpenSession())
             {
-                var users = session.QueryOver<Domain.User>().List().ToList();
+                var users = session.QueryOver<Elrob.Common.Domain.User>().List().ToList();
             }
         }
     }

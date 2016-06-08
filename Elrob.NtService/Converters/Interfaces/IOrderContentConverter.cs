@@ -1,5 +1,5 @@
 ﻿using OrderContentDto = Elrob.NtService.Dto.OrderContent;
-using OrderContentDomain = Elrob.NtService.Domain.OrderContent;
+using OrderContentDomain = Elrob.Common.Domain.OrderContent;
 
 namespace Elrob.NtService.Converters.Interfaces
 {

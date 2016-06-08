@@ -1,5 +1,5 @@
 ﻿using CardDto = Elrob.Webservice.Dto.Card;
-using CardDomain = Elrob.Webservice.Domain.Card;
+using CardDomain = Elrob.Common.Domain.Card;
 
 namespace Elrob.Webservice.Converters.Implementations
 {

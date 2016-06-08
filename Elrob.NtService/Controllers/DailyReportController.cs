@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
 
+    using Elrob.Common.DataAccess;
     using Elrob.NtService.Converters.Interfaces;
     using Elrob.NtService.Dto;
 
@@ -35,12 +36,12 @@
 
             using (var session = this._sessionFactory.OpenSession())
             {
-                Domain.OrderContent orderContentAlias = null;
-                Domain.Order orderAlias = null;
-                Domain.OrderProgress orderProgressAlias = null;
-                Domain.Place placeAlias = null;
+                Elrob.Common.Domain.OrderContent orderContentAlias = null;
+                Elrob.Common.Domain.Order orderAlias = null;
+                Elrob.Common.Domain.OrderProgress orderProgressAlias = null;
+                Elrob.Common.Domain.Place placeAlias = null;
 
-                var places = session.QueryOver<Domain.Place>()
+                var places = session.QueryOver<Elrob.Common.Domain.Place>()
                     .List()
                     .ToList();
 
@@ -64,7 +65,7 @@
                 
                 var resultWithPercentages = (from o in orderContents
                               join p in orderProgresses on o.Id equals p.OrderContent.Id into joinedOP
-                              from pp in joinedOP.DefaultIfEmpty(new Domain.OrderProgress())
+                              from pp in joinedOP.DefaultIfEmpty(new Elrob.Common.Domain.OrderProgress())
                               select new { OrderContent = o, OrderProgress = pp } into newSelect
                               group newSelect by new
                             {

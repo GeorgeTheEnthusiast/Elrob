@@ -4,12 +4,14 @@ using System.Linq;
 using Elrob.Terminal.Common;
 using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
-using Elrob.Terminal.Domain;
+using Elrob.Common.Domain;
 using Elrob.Terminal.Model.Interfaces.Choose;
 using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Choose
 {
+    using Elrob.Common.DataAccess;
+
     public class LogInMethodChooseModel : ILogInMethodChooseModel
     {
         private readonly IUserConverter _userConverter;
@@ -32,7 +34,7 @@ namespace Elrob.Terminal.Model.Implementations.Choose
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.User>()
+                var domain = session.QueryOver<Elrob.Common.Domain.User>()
                     .JoinQueryOver<Card>(c => c.Card)
                     .Where(x => x.Login == card.Login)
                     .And(x => x.Password == card.Password)

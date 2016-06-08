@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
 
-    using Elrob.NtService.Domain;
+    using Elrob.Common.Domain;
 
     public interface IPermissionGroupConverter
     {

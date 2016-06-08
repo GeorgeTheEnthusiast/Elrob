@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using AutoMapper;
 using Elrob.Terminal.Converters.Interfaces;
 using CardDto = Elrob.Terminal.Dto.Card;
-using CardDomain = Elrob.Terminal.Domain.Card;
+using CardDomain = Elrob.Common.Domain.Card;
 
 namespace Elrob.Terminal.Converters.Implementations
 {

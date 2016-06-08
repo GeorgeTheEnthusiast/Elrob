@@ -2,12 +2,13 @@
 {
     using System.Collections.Generic;
 
-    using Elrob.Webservice.Dto;
+    using dto = Elrob.Webservice.Dto;
+    using domain = Elrob.Common.Domain;
 
     public interface IPermissionConverter
     {
-        List<Permission> Convert(List<Domain.Permission> input);
+        List<dto.Permission> Convert(List<domain.Permission> input);
 
-        List<Domain.Permission> Convert(List<Permission> input);
+        List<domain.Permission> Convert(List<dto.Permission> input);
     }
 }

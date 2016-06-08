@@ -1,5 +1,5 @@
 ﻿using UserDto = Elrob.Webservice.Dto.User;
-using UserDomain = Elrob.Webservice.Domain.User;
+using UserDomain = Elrob.Common.Domain.User;
 
 namespace Elrob.Webservice.Converters.Interfaces
 {

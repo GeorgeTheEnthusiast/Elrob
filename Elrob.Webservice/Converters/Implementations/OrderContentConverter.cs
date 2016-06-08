@@ -1,10 +1,5 @@
-﻿using OrderContentDto = Elrob.Webservice.Dto.OrderContent;
-using OrderContentDomain = Elrob.Webservice.Domain.OrderContent;
-using OrderDto = Elrob.Webservice.Dto.Order;
-using OrderDomain = Elrob.Webservice.Domain.Order;
-using MaterialDto = Elrob.Webservice.Dto.Material;
-using MaterialDomain = Elrob.Webservice.Domain.Material;
-using Place = Elrob.Webservice.Dto.Place;
+﻿using dto = Elrob.Webservice.Dto;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Webservice.Converters.Implementations
 {
@@ -23,53 +18,53 @@ namespace Elrob.Webservice.Converters.Implementations
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
-                x.CreateMap<OrderContentDto, OrderContentDomain>();
-                x.CreateMap<OrderDto, OrderDomain>();
-                x.CreateMap<MaterialDto, MaterialDomain>();
-                x.CreateMap<Place, Domain.Place>();
+                x.CreateMap<dto.OrderContent, domain.OrderContent>();
+                x.CreateMap<dto.Order, domain.Order>();
+                x.CreateMap<dto.Material, domain.Material>();
+                x.CreateMap<dto.Place, domain.Place>();
 
-                x.CreateMap<OrderContentDomain, OrderContentDto>();
-                x.CreateMap<OrderDomain, OrderDto>();
-                x.CreateMap<MaterialDomain, MaterialDto>();
-                x.CreateMap<Domain.Place, Place>();
+                x.CreateMap<domain.OrderContent, dto.OrderContent>();
+                x.CreateMap<domain.Order, dto.Order>();
+                x.CreateMap<domain.Material, dto.Material>();
+                x.CreateMap<domain.Place, dto.Place>();
 
-                x.CreateMap<OrderContentDto, OrderContentDto>();
-                x.CreateMap<OrderDto, OrderDto>();
-                x.CreateMap<MaterialDto, MaterialDto>();
-                x.CreateMap<Place, Place>();
+                x.CreateMap<dto.OrderContent, dto.OrderContent>();
+                x.CreateMap<dto.Order, dto.Order>();
+                x.CreateMap<dto.Material, dto.Material>();
+                x.CreateMap<dto.Place, dto.Place>();
             });
 
             this._mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<OrderContentDomain> Convert(List<OrderContentDto> input)
+        public List<domain.OrderContent> Convert(List<dto.OrderContent> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<OrderContentDomain>>(input);
+            return this._mapper.Map<List<domain.OrderContent>>(input);
         }
 
-        public List<OrderContentDto> Convert(List<OrderContentDomain> input)
+        public List<dto.OrderContent> Convert(List<domain.OrderContent> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<OrderContentDto>>(input);
+            return this._mapper.Map<List<dto.OrderContent>>(input);
         }
 
-        public OrderContentDomain Convert(OrderContentDto input)
+        public domain.OrderContent Convert(dto.OrderContent input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<OrderContentDomain>(input);
+            return this._mapper.Map<domain.OrderContent>(input);
         }
 
-        public OrderContentDto Clone(OrderContentDto source, OrderContentDto destination)
+        public dto.OrderContent Clone(dto.OrderContent source, dto.OrderContent destination)
         {
             if (source == null)
             {
@@ -79,7 +74,7 @@ namespace Elrob.Webservice.Converters.Implementations
             {
                 throw new ArgumentNullException(nameof(destination));
             }
-            return this._mapper.Map<OrderContentDto, OrderContentDto>(source, destination);
+            return this._mapper.Map<dto.OrderContent, dto.OrderContent>(source, destination);
         }
     }
 }

@@ -7,6 +7,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class OrderItemModel : IOrderItemModel
     {
         private readonly IOrderConverter _orderConverter;
@@ -47,7 +49,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var rowCount = session.QueryOver<Domain.Order>()
+                var rowCount = session.QueryOver<Elrob.Common.Domain.Order>()
                     .Where(x => x.Name == order.Name)
                     .And(x => x.Id != order.Id)
                     .RowCount();

@@ -7,10 +7,12 @@ using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Main;
 using NHibernate.Criterion;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class OrderContentModel : IOrderContentModel
     {
         private readonly IOrderContentConverter _orderContentConverter;
@@ -34,13 +36,13 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var orderContentDomain = session.QueryOver<Domain.OrderContent>()
+                var orderContentDomain = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                  .Where(x => x.Order.Id == orderId
                      && x.Place.Id == placeId)
                  .List()
                  .ToList();
 
-                var progressDomain = session.QueryOver<Domain.OrderProgress>()
+                var progressDomain = session.QueryOver<Elrob.Common.Domain.OrderProgress>()
                     .Where(x => x.OrderContent.IsIn(orderContentDomain))
                     .List()
                     .ToList();
@@ -62,12 +64,12 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var orderContentDomain = session.QueryOver<Domain.OrderContent>()
+                var orderContentDomain = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                  .Where(x => x.Order.Id == orderId)
                  .List()
                  .ToList();
 
-                var progressDomain = session.QueryOver<Domain.OrderProgress>()
+                var progressDomain = session.QueryOver<Elrob.Common.Domain.OrderProgress>()
                     .Where(x => x.OrderContent.IsIn(orderContentDomain))
                     .List()
                     .ToList();
@@ -101,7 +103,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
             using (var session = _sessionFactory.OpenSession())
             {
-                var domainOrderContent = session.QueryOver<domain.OrderContent>()
+                var domainOrderContent = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .Where(x => x.Id == orderDomain.Id)
                     .SingleOrDefault();
 

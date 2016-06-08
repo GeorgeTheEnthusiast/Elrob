@@ -102,5 +102,10 @@ namespace Elrob.Terminal.View.Implementations.Main
         {
             DialogResult = DialogResult.Cancel;
         }
+
+        private void buttonReports_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

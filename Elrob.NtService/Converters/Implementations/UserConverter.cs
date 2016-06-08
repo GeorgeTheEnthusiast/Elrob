@@ -1,11 +1,11 @@
 ﻿using UserDto = Elrob.NtService.Dto.User;
-using UserDomain = Elrob.NtService.Domain.User;
+using UserDomain = Elrob.Common.Domain.User;
 using GroupDto = Elrob.NtService.Dto.Group;
-using GroupDomain = Elrob.NtService.Domain.Group;
+using GroupDomain = Elrob.Common.Domain.Group;
 using PermissionDto = Elrob.NtService.Dto.Permission;
-using PermissionDomain = Elrob.NtService.Domain.Permission;
+using PermissionDomain = Elrob.Common.Domain.Permission;
 using CardDto = Elrob.NtService.Dto.Card;
-using CardDomain = Elrob.NtService.Domain.Card;
+using CardDomain = Elrob.Common.Domain.Card;
 
 namespace Elrob.NtService.Converters.Implementations
 {

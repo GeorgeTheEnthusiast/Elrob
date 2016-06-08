@@ -6,10 +6,12 @@ using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Main;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class OrderModel : IOrderModel
     {
         private readonly IOrderConverter _orderConverter;
@@ -33,7 +35,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Order>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Order>()
                     .List()
                     .ToList();
 
@@ -59,14 +61,14 @@ namespace Elrob.Terminal.Model.Implementations.Main
 
             using (var session = _sessionFactory.OpenSession())
             {
-                var orderContent = session.QueryOver<domain.OrderContent>()
+                var orderContent = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .Where(x => x.Order.Id == orderDomain.Id)
                     .List()
                     .ToList();
 
                 foreach (var content in orderContent)
                 {
-                    var orderProgress = session.QueryOver<domain.OrderProgress>()
+                    var orderProgress = session.QueryOver<Elrob.Common.Domain.OrderProgress>()
                     .Where(x => x.OrderContent.Id == content.Id)
                     .List()
                     .ToList();
@@ -79,7 +81,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
                     session.Delete(content);
                 }
                 
-                var order = session.QueryOver<domain.Order>()
+                var order = session.QueryOver<Elrob.Common.Domain.Order>()
                     .Where(x => x.Id == orderDomain.Id)
                     .SingleOrDefault();
 
@@ -103,24 +105,24 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domainOrder = session.QueryOver<Domain.Order>()
+                var domainOrder = session.QueryOver<Elrob.Common.Domain.Order>()
                     .List()
                     .ToList();
 
-                var domainOrderContent = session.QueryOver<domain.OrderContent>()
+                var domainOrderContent = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .Where(x => x.Place.Id == placeId)
                     .List()
                     .ToList();
 
-                var domainOrderProgress = session.QueryOver<domain.OrderProgress>()
+                var domainOrderProgress = session.QueryOver<Elrob.Common.Domain.OrderProgress>()
                     .List()
                     .ToList();
 
                 var list = (from o in domainOrder
                     join c in domainOrderContent on o.Id equals c.Order.Id into oc
-                    from ocResult in oc.DefaultIfEmpty(new domain.OrderContent())
+                    from ocResult in oc.DefaultIfEmpty(new Elrob.Common.Domain.OrderContent())
                     join p in domainOrderProgress on ocResult.Id equals p.OrderContent.Id into ocp
-                    from ocpResult in ocp.DefaultIfEmpty(new domain.OrderProgress())
+                    from ocpResult in ocp.DefaultIfEmpty(new Elrob.Common.Domain.OrderProgress())
                             select new { o, ocResult, ocpResult } into allTables
                     group allTables by new { allTables.o.Id, allTables.o.Name, allTables.o.StartDate } into allTablesGrouped
                     let toCompleteSum = allTablesGrouped.Sum(x => x.ocResult.ToComplete)
@@ -146,23 +148,23 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domainOrder = session.QueryOver<Domain.Order>()
+                var domainOrder = session.QueryOver<Elrob.Common.Domain.Order>()
                     .List()
                     .ToList();
 
-                var domainOrderContent = session.QueryOver<domain.OrderContent>()
+                var domainOrderContent = session.QueryOver<Elrob.Common.Domain.OrderContent>()
                     .List()
                     .ToList();
 
-                var domainOrderProgress = session.QueryOver<domain.OrderProgress>()
+                var domainOrderProgress = session.QueryOver<Elrob.Common.Domain.OrderProgress>()
                     .List()
                     .ToList();
 
                 var list = (from o in domainOrder
                             join c in domainOrderContent on o.Id equals c.Order.Id into oc
-                            from ocResult in oc.DefaultIfEmpty(new domain.OrderContent())
+                            from ocResult in oc.DefaultIfEmpty(new Elrob.Common.Domain.OrderContent())
                             join p in domainOrderProgress on ocResult.Id equals p.OrderContent.Id into ocp
-                            from ocpResult in ocp.DefaultIfEmpty(new domain.OrderProgress())
+                            from ocpResult in ocp.DefaultIfEmpty(new Elrob.Common.Domain.OrderProgress())
                             select new { o, ocResult, ocpResult } into allTables
                             group allTables by new { allTables.o.Id, allTables.o.Name, allTables.o.StartDate } into allTablesGrouped
                             let toCompleteSum = allTablesGrouped.Sum(x => x.ocResult.ToComplete)

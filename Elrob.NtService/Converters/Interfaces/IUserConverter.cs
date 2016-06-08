@@ -1,5 +1,5 @@
 ﻿using UserDto = Elrob.NtService.Dto.User;
-using UserDomain = Elrob.NtService.Domain.User;
+using UserDomain = Elrob.Common.Domain.User;
 
 namespace Elrob.NtService.Converters.Interfaces
 {

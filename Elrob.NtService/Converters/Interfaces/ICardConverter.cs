@@ -1,5 +1,5 @@
 ﻿using CardDto = Elrob.NtService.Dto.Card;
-using CardDomain = Elrob.NtService.Domain.Card;
+using CardDomain = Elrob.Common.Domain.Card;
 
 namespace Elrob.NtService.Converters.Interfaces
 {

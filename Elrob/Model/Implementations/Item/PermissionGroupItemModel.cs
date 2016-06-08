@@ -6,10 +6,12 @@ using Elrob.Terminal.Converters;
 using Elrob.Terminal.Converters.Interfaces;
 using Elrob.Terminal.Model.Interfaces.Item;
 using dto = Elrob.Terminal.Dto;
-using domain = Elrob.Terminal.Domain;
+using domain = Elrob.Common.Domain;
 
 namespace Elrob.Terminal.Model.Implementations.Item
 {
+    using Elrob.Common.DataAccess;
+
     public class PermissionGroupItemModel : IPermissionGroupItemModel
     {
         private readonly IPermissionGroupConverter _permissionGroupConverter;
@@ -45,7 +47,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
 
             using (var session = _sessionFactory.OpenSession())
             {
-                var permissionGroupsOldState = session.QueryOver<Domain.PermissionGroup>()
+                var permissionGroupsOldState = session.QueryOver<Elrob.Common.Domain.PermissionGroup>()
                     .Where(x => x.Group.Id == groupId)
                     .List()
                     .ToList();
@@ -58,7 +60,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
                     }
                     else
                     {
-                        Domain.PermissionGroup newRow = new domain.PermissionGroup()
+                        Elrob.Common.Domain.PermissionGroup newRow = new Elrob.Common.Domain.PermissionGroup()
                         {
                             Group = domainGroup,
                             Permission = newState
@@ -82,7 +84,7 @@ namespace Elrob.Terminal.Model.Implementations.Item
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.Permission>()
+                var domain = session.QueryOver<Elrob.Common.Domain.Permission>()
                     .OrderBy(x => x.Name)
                     .Asc
                     .List()

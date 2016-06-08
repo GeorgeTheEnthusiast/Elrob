@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Elrob.Terminal.Converters.Implementations;
 using Elrob.Terminal.Converters.Interfaces;
-using DomainEntities = Elrob.Terminal.Domain;
+using DomainEntities = Elrob.Common.Domain;
 using DtoEntities = Elrob.Terminal.Dto;
 using WebServiceEntities = Elrob.Terminal.ExcelServiceServiceReference;
 using NUnit.Framework;

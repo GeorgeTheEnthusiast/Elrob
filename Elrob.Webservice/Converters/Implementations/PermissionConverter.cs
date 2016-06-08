@@ -6,7 +6,8 @@
     using AutoMapper;
 
     using Elrob.Webservice.Converters.Interfaces;
-    using Elrob.Webservice.Dto;
+    using dto = Elrob.Webservice.Dto;
+    using domain = Elrob.Common.Domain;
 
     public class PermissionConverter : IPermissionConverter
     {
@@ -16,32 +17,30 @@
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
-                x.CreateMap<Domain.Permission, Permission>();
-                //x.CreateMap<Domain.Group, Group>();
+                x.CreateMap<domain.Permission, dto.Permission>();
 
-                x.CreateMap<Permission, Domain.Permission>();
-                //x.CreateMap<Group, Domain.Group>();
+                x.CreateMap<dto.Permission, domain.Permission>();
             });
 
             this._mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<Permission> Convert(List<Domain.Permission> input)
+        public List<dto.Permission> Convert(List<domain.Permission> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<Permission>>(input);
+            return this._mapper.Map<List<dto.Permission>>(input);
         }
 
-        public List<Domain.Permission> Convert(List<Permission> input)
+        public List<domain.Permission> Convert(List<dto.Permission> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<Domain.Permission>>(input);
+            return this._mapper.Map<List<domain.Permission>>(input);
         }
     }
 }

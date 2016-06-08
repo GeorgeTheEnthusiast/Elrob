@@ -40,6 +40,7 @@
             this.buttonGroups = new System.Windows.Forms.Button();
             this.buttonOrderProgress = new System.Windows.Forms.Button();
             this.buttonLogOut = new System.Windows.Forms.Button();
+            this.buttonReports = new System.Windows.Forms.Button();
             this.panelUser.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -152,11 +153,22 @@
             this.buttonLogOut.UseVisualStyleBackColor = true;
             this.buttonLogOut.Click += new System.EventHandler(this.buttonLogOut_Click);
             // 
+            // buttonReports
+            // 
+            this.buttonReports.Location = new System.Drawing.Point(347, 72);
+            this.buttonReports.Name = "buttonReports";
+            this.buttonReports.Size = new System.Drawing.Size(206, 86);
+            this.buttonReports.TabIndex = 8;
+            this.buttonReports.Text = "Raporty";
+            this.buttonReports.UseVisualStyleBackColor = true;
+            this.buttonReports.Click += new System.EventHandler(this.buttonReports_Click);
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(902, 630);
+            this.Controls.Add(this.buttonReports);
             this.Controls.Add(this.buttonLogOut);
             this.Controls.Add(this.buttonOrderProgress);
             this.Controls.Add(this.buttonGroups);
@@ -194,5 +206,6 @@
         private System.Windows.Forms.Button buttonGroups;
         private System.Windows.Forms.Button buttonOrderProgress;
         private System.Windows.Forms.Button buttonLogOut;
+        private System.Windows.Forms.Button buttonReports;
     }
 }

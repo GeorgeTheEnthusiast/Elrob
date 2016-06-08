@@ -2,13 +2,13 @@
 using AutoMapper;
 using Elrob.Terminal.Converters.Interfaces;
 using UserDto = Elrob.Terminal.Dto.User;
-using UserDomain = Elrob.Terminal.Domain.User;
+using UserDomain = Elrob.Common.Domain.User;
 using GroupDto = Elrob.Terminal.Dto.Group;
-using GroupDomain = Elrob.Terminal.Domain.Group;
+using GroupDomain = Elrob.Common.Domain.Group;
 using PermissionDto = Elrob.Terminal.Dto.Permission;
-using PermissionDomain = Elrob.Terminal.Domain.Permission;
+using PermissionDomain = Elrob.Common.Domain.Permission;
 using CardDto = Elrob.Terminal.Dto.Card;
-using CardDomain = Elrob.Terminal.Domain.Card;
+using CardDomain = Elrob.Common.Domain.Card;
 
 namespace Elrob.Terminal.Converters.Implementations
 {

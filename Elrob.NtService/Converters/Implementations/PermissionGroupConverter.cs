@@ -1,4 +1,4 @@
-﻿using PermissionGroupDomain = Elrob.NtService.Domain.PermissionGroup;
+﻿using PermissionGroupDomain = Elrob.Common.Domain.PermissionGroup;
 
 namespace Elrob.NtService.Converters.Implementations
 {
@@ -19,18 +19,18 @@ namespace Elrob.NtService.Converters.Implementations
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
                 x.CreateMap<PermissionGroup, PermissionGroupDomain>();
-                x.CreateMap<Permission, Domain.Permission>();
-                x.CreateMap<Group, Domain.Group>();
+                x.CreateMap<Permission, Elrob.Common.Domain.Permission>();
+                x.CreateMap<Group, Elrob.Common.Domain.Group>();
 
                 x.CreateMap<PermissionGroupDomain, PermissionGroup>();
-                x.CreateMap<Domain.Permission, Permission>();
-                x.CreateMap<Domain.Group, Group>();
+                x.CreateMap<Elrob.Common.Domain.Permission, Permission>();
+                x.CreateMap<Elrob.Common.Domain.Group, Group>();
             });
 
             this._mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<PermissionGroup> Convert(List<Domain.PermissionGroup> input)
+        public List<PermissionGroup> Convert(List<Elrob.Common.Domain.PermissionGroup> input)
         {
             if (input == null)
             {
@@ -39,13 +39,13 @@ namespace Elrob.NtService.Converters.Implementations
             return this._mapper.Map<List<PermissionGroup>>(input);
         }
 
-        public List<Domain.PermissionGroup> Convert(List<PermissionGroup> input)
+        public List<Elrob.Common.Domain.PermissionGroup> Convert(List<PermissionGroup> input)
         {
             if (input == null)
             {
                 throw new ArgumentNullException(nameof(input));
             }
-            return this._mapper.Map<List<Domain.PermissionGroup>>(input);
+            return this._mapper.Map<List<Elrob.Common.Domain.PermissionGroup>>(input);
         }
 
         public PermissionGroupDomain Convert(PermissionGroup input)

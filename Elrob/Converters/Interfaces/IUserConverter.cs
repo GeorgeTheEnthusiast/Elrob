@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UserDto = Elrob.Terminal.Dto.User;
-using UserDomain = Elrob.Terminal.Domain.User;
+using UserDomain = Elrob.Common.Domain.User;
 
 namespace Elrob.Terminal.Converters.Interfaces
 {

@@ -9,6 +9,8 @@ using dto = Elrob.Terminal.Dto;
 
 namespace Elrob.Terminal.Model.Implementations.Main
 {
+    using Elrob.Common.DataAccess;
+
     public class PermissionGroupModel : IPermissionGroupModel
     {
         private readonly IPermissionGroupConverter _permissionGroupConverter;
@@ -32,7 +34,7 @@ namespace Elrob.Terminal.Model.Implementations.Main
         {
             using (var session = _sessionFactory.OpenSession())
             {
-                var domain = session.QueryOver<Domain.PermissionGroup>()
+                var domain = session.QueryOver<Elrob.Common.Domain.PermissionGroup>()
                     .Where(x => x.Group.Id == groupId)
                     .List()
                     .OrderBy(x => x.Permission.Name)

@@ -1,7 +1,7 @@
 ﻿using GroupDto = Elrob.Webservice.Dto.Group;
-using GroupDomain = Elrob.Webservice.Domain.Group;
+using GroupDomain = Elrob.Common.Domain.Group;
 using PermissionDto = Elrob.Webservice.Dto.Permission;
-using PermissionDomain = Elrob.Webservice.Domain.Permission;
+using PermissionDomain = Elrob.Common.Domain.Permission;
 
 namespace Elrob.Webservice.Converters.Implementations
 {

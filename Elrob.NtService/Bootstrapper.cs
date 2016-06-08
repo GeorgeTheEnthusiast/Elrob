@@ -1,5 +1,6 @@
 ﻿namespace Elrob.NtService
 {
+    using Elrob.Common.DataAccess;
     using Elrob.NtService.Controllers;
     using Elrob.NtService.Converters.Implementations;
     using Elrob.NtService.Converters.Interfaces;

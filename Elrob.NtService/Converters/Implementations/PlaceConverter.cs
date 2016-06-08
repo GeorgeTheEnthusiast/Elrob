@@ -16,14 +16,14 @@
         {
             MapperConfiguration mapperConfiguration = new MapperConfiguration(x =>
             {
-                x.CreateMap<Domain.Place, Place>();
-                x.CreateMap<Place, Domain.Place>();
+                x.CreateMap<Elrob.Common.Domain.Place, Place>();
+                x.CreateMap<Place, Elrob.Common.Domain.Place>();
             });
 
             this._mapper = mapperConfiguration.CreateMapper();
         }
 
-        public List<Place> Convert(List<Domain.Place> input)
+        public List<Place> Convert(List<Elrob.Common.Domain.Place> input)
         {
             if (input == null)
             {
@@ -32,16 +32,16 @@
             return this._mapper.Map<List<Place>>(input);
         }
 
-        public Domain.Place Convert(Place place)
+        public Elrob.Common.Domain.Place Convert(Place place)
         {
             if (place == null)
             {
                 throw new ArgumentNullException(nameof(place));
             }
-            return this._mapper.Map<Domain.Place>(place);
+            return this._mapper.Map<Elrob.Common.Domain.Place>(place);
         }
 
-        public Place Convert(Domain.Place place)
+        public Place Convert(Elrob.Common.Domain.Place place)
         {
             if (place == null)
             {

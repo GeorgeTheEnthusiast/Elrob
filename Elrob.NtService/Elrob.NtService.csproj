@@ -115,26 +115,6 @@
     <Compile Include="Converters\Interfaces\IPlaceConverter.cs" />
     <Compile Include="Converters\Interfaces\IUserConverter.cs" />
     <Compile Include="Converters\Interfaces\IWeekRangeConverter.cs" />
-    <Compile Include="Domain\Card.cs" />
-    <Compile Include="Domain\Group.cs" />
-    <Compile Include="Domain\Mappings\CardMap.cs" />
-    <Compile Include="Domain\Mappings\GroupMap.cs" />
-    <Compile Include="Domain\Mappings\MaterialMap.cs" />
-    <Compile Include="Domain\Mappings\OrderContentMap.cs" />
-    <Compile Include="Domain\Mappings\OrderMap.cs" />
-    <Compile Include="Domain\Mappings\OrderProgressMap.cs" />
-    <Compile Include="Domain\Mappings\PermissionGroupMap.cs" />
-    <Compile Include="Domain\Mappings\PermissionMap.cs" />
-    <Compile Include="Domain\Mappings\PlaceMap.cs" />
-    <Compile Include="Domain\Mappings\UserMap.cs" />
-    <Compile Include="Domain\Material.cs" />
-    <Compile Include="Domain\Order.cs" />
-    <Compile Include="Domain\OrderContent.cs" />
-    <Compile Include="Domain\OrderProgress.cs" />
-    <Compile Include="Domain\Permission.cs" />
-    <Compile Include="Domain\PermissionGroup.cs" />
-    <Compile Include="Domain\Place.cs" />
-    <Compile Include="Domain\User.cs" />
     <Compile Include="Dto\Card.cs" />
     <Compile Include="Dto\DailyReport.cs" />
     <Compile Include="Dto\Group.cs" />
@@ -150,11 +130,9 @@
     <Compile Include="Dto\WeekRange.cs" />
     <Compile Include="Extensions\NinjectExtensions.cs" />
     <Compile Include="IConfigurationManager.cs" />
-    <Compile Include="ISessionFactory.cs" />
     <Compile Include="Jobs\DailyReportJob.cs" />
     <Compile Include="Jobs\NinjectJobFactory.cs" />
     <Compile Include="Jobs\QuartzJobFactory.cs" />
-    <Compile Include="NHibernateHelper.cs" />
     <Compile Include="NTService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -180,6 +158,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Elrob.Common\Elrob.Common.csproj">
+      <Project>{082e54bc-5bb4-43c2-a6bf-1b7f6de8a9bd}</Project>
+      <Name>Elrob.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
